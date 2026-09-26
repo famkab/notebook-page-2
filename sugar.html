@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Artificial Leaf · Fatima Abid</title>
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="assets/img/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/img/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Caveat:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/journal.css">
+<style>
+.stack{display:grid;gap:46px}
+.stack>section{display:grid;gap:16px}
+.label{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--pencil)}
+.sec-lede{margin:0;max-width:74ch;color:var(--pencil);font-size:15.5px}
+
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(265px,1fr));gap:20px}
+.cols>div{border-top:3px solid var(--k,var(--rule-strong));padding-top:11px;display:grid;gap:5px}
+.cols .lbl{font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--pencil)}
+.cols p{margin:0;font-size:15px}
+
+/* double diamond */
+.dd{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:1px solid var(--rule-strong);
+  border-radius:6px;overflow:hidden;background:var(--paper)}
+.dd>div{padding:13px 14px;border-left:1px dashed var(--rule);display:grid;gap:4px;align-content:start}
+.dd>div:first-child{border-left:0}
+.dd .s{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--pencil)}
+.dd b{font-family:var(--serif);font-size:17px;font-weight:600}
+.dd p{margin:0;font-size:13.5px;color:var(--pencil)}
+
+/* markets */
+.q{margin:0;max-width:60ch;border-left:4px solid var(--hi-solid);padding:2px 0 2px 18px;
+  font-family:var(--serif);font-size:clamp(19px,2.2vw,23px);line-height:1.34}
+.fields{display:flex;flex-wrap:wrap;gap:7px;margin:4px 0 0;padding:0;list-style:none}
+.fields li{border:1px solid var(--rule-strong);border-radius:999px;padding:5px 13px;font-size:14px;
+  color:var(--pencil);background:var(--paper)}
+.fields li.pick{border-color:var(--ink);color:var(--ink);background:var(--hi)}
+.dead{display:grid;grid-template-columns:minmax(0,1fr) 46px minmax(0,1fr);gap:14px;align-items:center;
+  border:1px solid var(--rule-strong);border-radius:6px;padding:16px 18px;background:var(--paper)}
+.dead b{font-family:var(--serif);font-size:18px;font-weight:600;display:block;margin-bottom:4px}
+.dead .vs{font-size:1.7rem;color:var(--red);text-align:center;line-height:1}
+.dead p{margin:0;font-size:15px;color:var(--pencil)}
+.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:0;
+  border:1px solid var(--rule-strong);border-radius:6px;overflow:hidden;background:var(--paper)}
+.feat>div{padding:14px 15px;border-left:1px dashed var(--rule);display:grid;gap:4px;align-content:start}
+.feat>div:first-child{border-left:0}
+.feat .n{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;color:var(--pencil)}
+.feat b{font-family:var(--serif);font-size:17px;font-weight:600}
+.feat p{margin:0;font-size:13.5px;color:var(--pencil)}
+figure.fig{margin:4px 0 0;display:grid;gap:8px}
+figure.fig img{display:block;width:100%;height:auto;border:1px solid var(--rule-strong);border-radius:6px;
+  background:#fff}
+figure.fig figcaption{margin:0;font-size:13px;color:var(--pencil);max-width:74ch}
+figure.fig figcaption b{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--pencil);display:block;margin-bottom:3px;font-weight:400}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) figure.fig img{filter:brightness(.88)}}
+:root[data-theme="dark"] figure.fig img{filter:brightness(.88)}
+.persona{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:0;
+  border:1px solid var(--rule-strong);border-radius:6px;overflow:hidden;background:var(--paper)}
+.persona>div{padding:16px 18px;display:grid;gap:6px;align-content:start}
+.persona>div+div{border-left:1px dashed var(--rule)}
+.persona .who{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--pencil)}
+.persona h3{margin:0;font-family:var(--serif);font-size:21px;font-weight:600}
+.persona .role{margin:0;font-size:14px;color:var(--pencil)}
+.persona p{margin:0;font-size:14.5px}
+.persona ul{margin:2px 0 0;padding-left:17px;display:grid;gap:3px;font-size:14.5px}
+.persona .hmw{border-left:3px solid var(--hi-solid);padding-left:13px;font-family:var(--serif);font-size:17px;
+  line-height:1.35}
+@media (max-width:700px){ .persona{grid-template-columns:1fr} .persona>div+div{border-left:0;border-top:1px dashed var(--rule)} }
+.timeline{display:grid;margin:0;padding:0;list-style:none;border-left:2px solid var(--rule-strong);margin-left:6px}
+.timeline li{padding:0 0 16px 18px;position:relative;font-size:15px}
+.timeline li::before{content:"";position:absolute;left:-7px;top:7px;width:11px;height:11px;border-radius:50%;
+  background:var(--paper);border:2px solid var(--ink)}
+.timeline b{font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--pencil);display:block}
+.turn{display:grid;grid-template-columns:minmax(0,1fr) 44px minmax(0,1fr);gap:14px;align-items:center;
+  border:1px solid var(--rule-strong);border-radius:6px;padding:18px 20px;background:var(--paper)}
+.turn b{font-family:var(--serif);font-size:18px;font-weight:600;display:block;margin-bottom:4px}
+.turn .arrow{font-family:var(--hand);font-size:1.7rem;color:var(--red);text-align:center}
+.turn p{margin:0;font-size:15px;color:var(--pencil)}
+
+
+.todo{border:1px dashed var(--red);border-radius:6px;padding:14px 16px;display:grid;gap:6px;background:var(--paper);max-width:80ch}
+.todo .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--red)}
+.todo p{margin:0;font-size:14px;color:var(--pencil)}
+.todo ul{margin:2px 0 0;padding-left:18px;font-size:14px;color:var(--pencil);display:grid;gap:4px}
+
+@media (max-width:760px){
+  .dead{grid-template-columns:1fr;gap:8px}
+  .dead .vs{transform:rotate(90deg)}
+  .dd{grid-template-columns:1fr}
+  .dd>div{border-left:0;border-top:1px dashed var(--rule)}
+  .dd>div:first-child{border-top:0}
+  .feat>div{border-left:0;border-top:1px dashed var(--rule)}
+  .feat>div:first-child{border-top:0}
+  .dd{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .dd>div:nth-child(3){border-left:0}
+  .turn{grid-template-columns:1fr}
+  .turn .arrow{transform:rotate(90deg)}
+}
+
+
+.eyebrow{display:flex;flex-wrap:wrap;gap:9px 14px;align-items:center}
+.eyebrow .mono{line-height:1;display:inline-flex;align-items:center}
+.headmeta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin:24px 0 0;
+  border-top:1px solid var(--rule-strong)}
+.headmeta>div{padding:13px 20px 14px 18px;border-left:1px dashed var(--rule)}
+.headmeta>div:first-child{border-left:0;padding-left:0}
+.headmeta .k{font-family:var(--mono);font-size:.62rem;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--pencil);display:block;margin-bottom:6px}
+.headmeta .rt{margin:0 0 7px;font-family:var(--serif);font-size:16px;font-weight:600;line-height:1.25}
+.headmeta ul{margin:0;padding-left:17px;display:grid;gap:5px;font-size:14.5px}
+.headmeta .cx{grid-column:1 / -1;border-left:0;padding:13px 0 0;border-top:1px dashed var(--rule)}
+.headmeta .cx .k{color:var(--red)}
+.headmeta .cx p{margin:0;font-size:15px;max-width:78ch}
+@media (max-width:700px){
+  .headmeta{grid-template-columns:1fr}
+  .headmeta>div{border-left:0;padding:12px 0 13px;border-top:1px dashed var(--rule)}
+  .headmeta>div:first-child{border-top:0;padding-top:0}
+}
+</style>
+
+<a class="skip" href="#main">Skip to the page</a>
+<div class="layout">
+<main id="main" tabindex="-1">
+  <div class="pagehead">
+    <div class="eyebrow">
+      <span class="mono">SUGAR Global Network · Nice, France · 2021–2022 · p. 18–20</span>
+    </div>
+    <h1>The Artificial Leaf</h1>
+    <p class="lede">An academic–industry innovation programme run on SUGAR’s Triple Diamond, with a six-person team of
+      students from the University of Bologna and the Université Côte d’Azur. I was hired by the Innovation Centre
+      for Entrepreneurship. The Istituto Italiano di Tecnologia was the client.</p>
+  </div>
+
+  <div class="stack" style="margin-top:26px">
+
+    <section aria-labelledby="brief-h">
+      <div class="label">The brief</div>
+      <h2 id="brief-h">A technology with no market yet</h2>
+      <div class="cols">
+        <div style="--k:var(--green)"><span class="lbl">What they had</span>
+          <p>An artificial photosynthesis system turning CO₂ into carbon monoxide, formic acid, methanol, ethanol and
+            ethylene using solar energy. Built at lab scale, with no market.</p></div>
+        <div style="--k:var(--blue)"><span class="lbl">What we were asked</span>
+          <p>Find it a business opportunity. Six students across service design, engineering, architecture, economics
+            and education, over nine months.</p></div>
+      </div>
+    </section>
+
+    <section aria-labelledby="ch-h">
+      <div class="label">The challenge, as written</div>
+      <h2 id="ch-h">What the institute asked for</h2>
+      <blockquote class="q">How might we develop an innovative service based on the &ldquo;Artificial photosynthesis
+        technology&rdquo; and create a business opportunity out of it?</blockquote>
+      <p class="sec-lede">Nine months, three diamonds, three cities. The answer we delivered was a different question.</p>
+    </section>
+
+    <section aria-labelledby="dd-h">
+      <div class="label">The method</div>
+      <h2 id="dd-h">Three diamonds, diverge and converge each time</h2>
+      <div class="dd">
+        <div><span class="s">Diamond 1 &middot; autumn</span><b>Where could it go?</b>
+          <p>Desk research across nine fields, case studies of comparable technologies, expert interviews, personas.</p></div>
+        <div><span class="s">Diamond 2 &middot; winter</span><b>Does it work there?</b>
+          <p>Plastics taken forward. Critical experience prototypes, then dark horse and funky prototypes, then one
+            merged functional system.</p></div>
+        <div><span class="s">Diamond 3 &middot; spring</span><b>What is the real problem?</b>
+          <p>The challenge turned around. Design vision, solution, brand and interface, built and tested against a
+            real case.</p></div>
+      </div>
+    </section>
+
+    <section aria-labelledby="mk-h">
+      <div class="label">Diamond 1 &middot; discover</div>
+      <h2 id="mk-h">Nine fields, narrowed twice</h2>
+      <p class="sec-lede">The technology turns CO&#8322; into carbon monoxide, formic acid, methanol, ethanol and
+        ethylene, which means almost any heavy-emitting sector is arguably a candidate. Narrowing it took two passes.</p>
+      <div class="cols">
+        <div style="--k:var(--blue)"><span class="lbl">Pass one &middot; three guiding features</span>
+          <p>Desirability, technical feasibility, economic viability. Used to contextualise each application and pick
+            the three most promising sectors to research in depth.</p></div>
+        <div style="--k:var(--green)"><span class="lbl">Pass two &middot; eight selection criteria</span>
+          <p>Efficiency. Space the technology needs. Amount of waste produced. Feasibility. Subsidy. Filtration system.
+            Cutting pollution and using the derived chemicals at once. Future relevance.</p></div>
+      </div>
+      <p class="sec-lede">The criteria went onto a mind map of every application we had found, and the team voted on it
+        directly. Plastics upcycling was taken forward.</p>
+      <ul class="fields" aria-label="Fields researched">
+        <li>Chimneys</li><li>Cement production</li><li>Fashion</li><li>Building sector</li><li>Transportation</li>
+        <li class="pick">Plastic upcycling</li><li>Agriculture</li><li>Digital pollution</li><li>Waste sector</li>
+      </ul>
+      <figure class="fig">
+        <img src="assets/img/sugar-mindmap.png" width="1400" height="947"
+          alt="Mind map of applications for artificial photosynthesis, branching from a central node into clothing,
+            smart cities, construction, industry, food, tech, oceans, transportation and enhanced photosynthesis.
+            Green dots above a node record votes; the most-voted nodes are outlined.">
+        <figcaption><b>Fall report, 2021</b>Every application we found, on one map. The green dots are the team&rsquo;s
+          votes against the eight criteria, so the shortlist is visible in the artefact rather than written up
+          afterwards.</figcaption>
+      </figure>
+    </section>
+
+    <section aria-labelledby="per-h">
+      <div class="label">Diamond 1 &middot; define</div>
+      <h2 id="per-h">A persona, and the question it opens</h2>
+      <p class="sec-lede">Personas were built from the interviews with companies, experts and researchers, one per
+        sector. Each one ends in a &ldquo;how might we&rdquo; question, which is what the next phase prototypes
+        against.</p>
+      <div class="persona">
+        <div>
+          <span class="who">Persona &middot; cement production</span>
+          <h3>Sebasti&agrave;n</h3>
+          <p class="role">Carbon capture lead in a cement production factory. Environmental engineer in southwest
+            France, working on solutions to climate change. Calls himself a navigator, runs, skis.</p>
+          <p><b>Frustrations</b></p>
+          <p>Subsidies, and a government doing too little in power generation.</p>
+        </div>
+        <div>
+          <span class="who">Main needs</span>
+          <ul>
+            <li>Turn carbon dioxide into an opportunity, and avoid the fees.</li>
+            <li>Keep productivity and efficiency running around the clock.</li>
+            <li>Work inside an ecosystem.</li>
+            <li>Be an industrial leader in the energy transition.</li>
+          </ul>
+          <p class="hmw">How might we help Sebasti&agrave;n use the artificial leaf to intervene with carbon dioxide
+            storage during the production of cement, in order to add value to it?</p>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="turn-h">
+      <div class="label">Diamond 3 &middot; the u-turn</div>
+      <h2 id="turn-h">The deadlock underneath</h2>
+      <p class="sec-lede">We had plastics, months of research behind it and prototypes tested against it. Reaching out
+        to companies is where the pattern showed up. The technology is so customisable that defining a valuable
+        application meant involving a company in designing it, and no company would engage at that stage.</p>
+      <div class="dead">
+        <div><b>The scientists</b><p>Need companies to invest so the technology can be developed further.</p></div>
+        <div class="vs" aria-hidden="true">&#8644;</div>
+        <div><b>The companies</b><p>Need the technology developed further before they are comfortable investing.</p></div>
+      </div>
+      <p class="sec-lede">The problem was not finding an application for the leaf. It was getting companies to
+        understand its value while it was still early. We rewrote the challenge:</p>
+      <blockquote class="q">How might we create a reliable system around the artificial leaf technology during its
+        development phase in order to onboard companies?</blockquote>
+    </section>
+
+    <section aria-labelledby="sol-h">
+      <div class="label">What we delivered</div>
+      <h2 id="sol-h">CO/LAB, an onboarding tool for a technology that is not finished</h2>
+      <p class="sec-lede">Software that simulates installing the leaf in a specific factory, so the institute and a
+        company can work through the technical, physical and financial logistics together, on editable templates, in
+        the same room. It states plainly that the technology has a low readiness level, and pairs that with the
+        projections a company needs in order to invest anyway.</p>
+      <div class="feat">
+        <div><span class="n">01</span><b>Survey</b><p>The company enters its CO&#8322; emissions, its emissions taxes,
+          the space it has and the output it wants.</p></div>
+        <div><span class="n">02</span><b>Technical simulation</b><p>Location and desired output volume produce a
+          detailed simulation.</p></div>
+        <div><span class="n">03</span><b>Financial estimation</b><p>A benefits evaluation and a costs-and-benefits
+          analysis built from what they entered.</p></div>
+        <div><span class="n">04</span><b>3D model of the plant</b><p>How much space the installation takes and what
+          infrastructure it needs. Specified, and left as the next build.</p></div>
+      </div>
+      <figure class="fig">
+        <img src="assets/img/sugar-colab.png" width="1400" height="909"
+          alt="The CO/LAB dashboard: a left navigation rail, three simulation cards for survey, technical simulation
+            and financial simulation with progress bars, a visual data chart and a placeholder for the 3D model of the
+            plant, and a right sidebar holding the company name and date.">
+        <figcaption><b>Spring report, 2022</b>The dashboard. The three simulations run in order and each one carries
+          its progress, so a company can see how far into the conversation it is. The 3D model sits in its place,
+          marked as the next build.</figcaption>
+      </figure>
+      <p class="sec-lede">The parts that mattered most were the ones around the software. Questions the scientists were
+        answering over and over got compiled in one place. Meetings got a structure that survived a company&rsquo;s
+        questions. Each session left an automatic record, and the company left with a printed report to plan from.</p>
+    </section>
+
+    <section aria-labelledby="tl-h">
+      <div class="label">Nine months, in order</div>
+      <h2 id="tl-h">How it ran</h2>
+      <ul class="timeline">
+        <li><b>Oct 2021 &middot; Nice</b>Global kickoff. The team meets.</li>
+        <li><b>Nov 2021</b>Needfinding. Desk research, case studies, expert interviews, personas.</li>
+        <li><b>Dec 2021</b>Plastics selected as the application. A critical experience prototype built against it.
+          Fall presentation.</li>
+        <li><b>Jan 2022</b>Plastic industry research. Dark horse and funky prototypes, developed and tested.</li>
+        <li><b>Feb 2022</b>The prototypes merged into one functional system prototype.</li>
+        <li><b>Mar 2022 &middot; Bologna</b>The u-turn. Away from plastics, toward science communication and
+          onboarding for technology transfer.</li>
+        <li><b>Apr 2022 &middot; Turin</b>Design principles and design vision. Winter presentation.</li>
+        <li><b>May 2022</b>Both ends of the solution built: the interface and what sits behind it.</li>
+        <li><b>Jun 2022 &middot; San Francisco</b>CO/LAB presented at the SUGAR Expo.</li>
+      </ul>
+    </section>
+
+  </div>
+
+  <div class="nextcase"><a href="index.html"><span><small>Back to</small>Contents</span><span class="open" aria-hidden="true">open →</span></a></div>
+  <footer class="pagefoot">
+    <span>The Artificial Leaf · SUGAR Global Network with the Istituto Italiano di Tecnologia, 2021–22</span>
+    <span><a href="index.html">← Contents</a></span>
+  </footer>
+</main>
+</div>
+<script src="assets/site.js"></script>
+</html>

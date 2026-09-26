@@ -1,0 +1,1712 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Beeline · Fatima Abid</title>
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="assets/img/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/img/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Caveat:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/journal.css">
+<style>
+.stack{display:grid;gap:46px}
+.stack>section{display:grid;gap:16px}
+.label{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--pencil)}
+.sec-lede{margin:0;max-width:74ch;color:var(--pencil);font-size:15.5px}
+.evtag{font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  background:var(--hi);color:var(--hi-ink);border-radius:3px;padding:4px 9px;width:max-content}
+
+/* status line */
+.status{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border:1px solid var(--rule-strong);
+  border-radius:6px;overflow:hidden;background:var(--paper)}
+.status div{padding:11px 13px;border-left:1px dashed var(--rule);display:grid;gap:3px;font-size:13.5px}
+.status div:first-child{border-left:0}
+.status .s{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--pencil)}
+.status div.on{background:var(--amber-w)}
+.status div.on b{color:var(--amber)}
+.status b{font-family:var(--serif);font-size:16px;font-weight:600}
+
+/* artefacts */
+.arts{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:14px}
+.art{border-top:2px solid var(--rule-strong);padding-top:10px;display:grid;gap:4px}
+.art b{font-family:var(--serif);font-size:17px;font-weight:600}
+.art span{font-size:14px;color:var(--pencil)}
+
+/* translation */
+.trans{display:grid;border:1px solid var(--rule-strong);border-radius:6px;overflow:hidden;background:var(--paper)}
+.trans .th{display:grid;grid-template-columns:minmax(0,1fr) 40px minmax(0,1fr);background:var(--paper-2);
+  border-bottom:1px solid var(--rule-strong)}
+.trans .th span{padding:8px 13px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--pencil)}
+.trans .tr{display:grid;grid-template-columns:minmax(0,1fr) 40px minmax(0,1fr);border-top:1px solid var(--rule)}
+.trans .tr:first-of-type{border-top:0}
+.trans .tr>div{padding:12px 13px;font-size:14.5px}
+.trans .ar{display:grid;place-items:center;font-family:var(--hand);font-size:21px;color:var(--red);
+  border-left:1px dashed var(--rule);border-right:1px dashed var(--rule);padding:0}
+.trans .to{color:var(--pencil)}
+.trans .tier{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--blue)}
+
+/* terms */
+.terms{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px 26px}
+.terms>div{border-top:1px solid var(--rule);padding-top:9px;display:grid;gap:2px}
+.terms dt{font-family:var(--serif);font-size:16px;font-weight:600}
+.terms dd{margin:0;font-size:14px;color:var(--pencil);line-height:1.5}
+
+.todo{border:1px dashed var(--red);border-radius:6px;padding:14px 16px;display:grid;gap:6px;background:var(--paper);max-width:80ch}
+.todo .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--red)}
+.todo p{margin:0;font-size:14px;color:var(--pencil)}
+p.todo{display:block;font-size:14.5px;color:var(--pencil);max-width:76ch}
+p.todo .lbl{display:block;margin-bottom:3px}
+.todo ul{margin:2px 0 0;padding-left:18px;font-size:14px;color:var(--pencil);display:grid;gap:4px}
+
+@media (max-width:760px){
+  .status{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .status div:nth-child(3){border-left:0}
+  .trans .th,.trans .tr{grid-template-columns:1fr}
+  .trans .ar{border:0;padding:4px 0;transform:rotate(90deg)}
+}
+
+
+.press{display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline;margin:16px 0 0;max-width:76ch;font-size:14.5px}
+.press b{font-family:var(--mono);font-size:.62rem;letter-spacing:.09em;text-transform:uppercase;color:var(--pencil);font-weight:400}
+.press a{color:var(--blue);text-decoration:underline;text-underline-offset:3px;display:inline-flex;align-items:center;min-height:24px}
+.press .src{font-size:13px;color:var(--pencil)}
+
+.eyebrow{display:flex;flex-wrap:wrap;gap:9px 14px;align-items:center}
+.eyebrow .mono{line-height:1;display:inline-flex;align-items:center}
+.eyebrow .evtag{line-height:1;display:inline-flex;align-items:center;padding:6px 10px;margin:0}
+.headmeta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin:24px 0 0;
+  border-top:1px solid var(--rule-strong)}
+.headmeta>div{padding:13px 20px 14px 18px;border-left:1px dashed var(--rule)}
+.headmeta>div:first-child{border-left:0;padding-left:0}
+.headmeta .k{font-family:var(--mono);font-size:.62rem;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--pencil);display:block;margin-bottom:6px}
+.headmeta .rt{margin:0 0 7px;font-family:var(--serif);font-size:16px;font-weight:600;line-height:1.25}
+.headmeta ul{margin:0;padding-left:17px;display:grid;gap:5px;font-size:14.5px}
+.headmeta .cx{grid-column:1 / -1;border-left:0;padding:13px 0 0;border-top:1px dashed var(--rule)}
+.headmeta .cx .k{color:var(--red)}
+.headmeta .cx p{margin:0;font-size:15px;max-width:78ch}
+@media (max-width:700px){
+  .headmeta{grid-template-columns:1fr}
+  .headmeta>div{border-left:0;padding:12px 0 13px;border-top:1px dashed var(--rule)}
+  .headmeta>div:first-child{border-top:0;padding-top:0}
+}
+
+/* ---------- artefact tabs ---------- */
+.tabs{display:flex;flex-wrap:wrap;gap:6px;border-bottom:1px solid var(--rule-strong);padding-bottom:10px}
+.tabs button{border:1px solid var(--rule-strong);background:var(--paper);border-radius:999px;padding:7px 15px;
+  cursor:pointer;font-family:var(--body);font-size:14px;color:var(--pencil);display:inline-flex;gap:7px;align-items:baseline}
+.tabs button:hover{border-color:var(--ink);color:var(--ink)}
+.tabs button[aria-selected="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.tabs button small{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;opacity:.75}
+.tpanel{display:grid;gap:18px;padding-top:22px}
+.tpanel>.what{margin:0;max-width:74ch;font-size:15.5px;color:var(--pencil)}
+.comp{display:grid;gap:18px}
+.comp .sheet,.comp .sheet.ls{max-width:none;margin:0;background:none;box-shadow:none;padding:0;border-radius:0;background-image:none;border:0}
+.comp .band,.comp .band-head{border:0;background:none}
+.comp .pagehead,.comp .subnav,.comp .where,.comp .sample-note,.comp .terms-page{display:none}
+/* status strip */
+.status{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--rule-strong);
+  border-radius:6px;overflow:hidden;background:var(--paper)}
+.status div{padding:11px 13px;border-left:1px dashed var(--rule);display:grid;gap:3px;font-size:13.5px}
+.status div:first-child{border-left:0}
+.status .s{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--pencil)}
+.status div.on{background:var(--amber-w)}
+.status div.on b{color:var(--amber)}
+.status b{font-family:var(--serif);font-size:16px;font-weight:600}
+.arts{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:14px}
+.art{border-top:2px solid var(--rule-strong);padding-top:10px;display:grid;gap:4px}
+.art b{font-family:var(--serif);font-size:17px;font-weight:600}
+.art span{font-size:14px;color:var(--pencil)}
+@media (max-width:760px){ .status{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .status div:nth-child(3){border-left:0} }
+
+
+.c-ev{
+  --bg:var(--paper); --surface:var(--paper); --sunk:var(--paper-2); --line:var(--rule-strong); --muted:var(--pencil);
+  --honey:var(--hi-solid); --honey-soft:var(--amber-w); --honey-ink:var(--hi-ink);
+  --display:var(--serif);
+  --ok:var(--green); --ok-soft:var(--green-w); --bad:var(--red); --bad-soft:var(--red-w);
+  --warn:var(--amber); --warn-soft:var(--amber-w); --part:var(--amber); --part-soft:var(--amber-w);
+  --no:var(--pencil); --no-soft:var(--paper-2);
+}
+.c-ev h1, .c-ev h2, .c-ev h3, .c-ev h4{font-family:var(--serif)!important;font-weight:600}
+.c-ev .wrap{max-width:none!important}
+.c-ev .wrap>header{display:none}
+
+.c-ev{ --c-bar:var(--red); --c-bar-soft:var(--red-w); --c-per:var(--blue); --c-per-soft:var(--blue-w);
+  --c-chl:var(--green); --c-chl-soft:var(--green-w); --c-dec:var(--ink); --c-dec-soft:var(--paper-2);
+  --c-met:var(--blue); --c-met-soft:var(--blue-w); --c-out:var(--amber); --c-out-soft:var(--amber-w); }
+.c-ev .subnav{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 26px}
+.c-ev .subnav a{text-decoration:none;font-size:14px;color:var(--pencil);border:1px solid var(--rule-strong);
+  border-radius:999px;padding:6px 13px;background:var(--paper)}
+.c-ev .subnav a:hover{border-color:var(--ink);color:var(--ink)}
+.c-ev .subnav a[aria-current="page"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.c-ev .pagehead h1{margin:2px 0 4px}
+.c-ev .where{display:none}
+
+.c-ev{
+  --bg:var(--paper-2); --surface:var(--paper); --sunk:var(--paper-2); --muted:var(--pencil); --line:var(--rule-strong);
+  --honey:var(--hi-solid); --honey-soft:var(--amber-w); --honey-ink:var(--hi-ink);
+  --c-bar:var(--red); --c-bar-soft:var(--red-w);
+  --c-per:var(--blue); --c-per-soft:var(--blue-w);
+  --c-chl:var(--green); --c-chl-soft:var(--green-w);
+  --c-dec:var(--ink); --c-dec-soft:var(--paper-2);
+  --c-met:var(--blue); --c-met-soft:var(--blue-w);
+  --c-out:var(--amber); --c-out-soft:var(--amber-w);
+  --ok:var(--green); --ok-soft:var(--green-w); --part:var(--amber); --part-soft:var(--amber-w); --no:var(--pencil); --no-soft:var(--paper-2);
+  --display:var(--serif);
+  --body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,"SF Mono",Menlo,monospace;
+}
+.c-ev .wrap{max-width:1240px;margin-inline:auto;display:grid;gap:24px}
+
+/* header */
+.c-ev .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:flex;gap:10px;align-items:center}
+.c-ev h1{font-family:var(--serif);font-weight:600;font-size:clamp(34px,5vw,60px);line-height:1.04;letter-spacing:-.02em;margin:8px 0 10px;text-wrap:balance}
+.c-ev .lede{max-width:66ch;color:var(--muted);margin:0;font-size:18px}
+.c-ev .rough{margin-top:44px;display:grid;gap:12px}
+.c-ev .note{display:flex;gap:10px;align-items:flex-start;background:var(--paper-2);border:1px solid var(--rule);border-radius:6px;padding:10px 14px;font-size:13.5px;max-width:78ch}
+.c-ev .note b{color:var(--honey-ink)}
+.c-ev .approx{border-bottom:1.5px dotted currentColor;cursor:help;white-space:nowrap}
+
+/* tabs */
+.c-ev .tabs{display:flex;gap:4px;border-bottom:1.5px solid var(--line)}
+.c-ev .tab{background:none;border:0;padding:12px 16px 10px;font-family:var(--display);font-weight:700;font-size:17px;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-1.5px;display:flex;gap:8px;align-items:baseline}
+.c-ev .tab small{font-family:var(--mono);font-size:11px;font-weight:500}
+.c-ev .tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--honey)}
+.c-ev .tab:hover{color:var(--ink)}
+
+/* ===== decision trail ===== */
+.c-ev .trail-layout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:clamp(20px,3vw,40px);align-items:start}
+.c-ev .picker{display:grid;gap:8px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px)}
+.c-ev .picker h2, .c-ev .panel-h{font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 4px}
+.c-ev .pick{text-align:left;background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;cursor:pointer;display:grid;gap:4px;transition:border-color .2s,background .2s}
+.c-ev .pick:hover{border-color:var(--c-bar)}
+.c-ev .pick[aria-pressed="true"]{border-color:var(--c-bar);background:var(--c-bar-soft)}
+.c-ev .pick .q{font-family:var(--display);font-weight:700;font-size:16.5px;line-height:1.2;letter-spacing:-.01em}
+.c-ev .pick .f{font-size:13px;color:var(--muted);display:flex;gap:6px;align-items:center}
+.c-ev .pick .f::before{content:"";width:8px;height:8px;border-radius:2px;background:var(--c-dec);flex:none}
+
+.c-ev .trail{background:var(--surface);border:1.5px solid var(--line);border-radius:16px;padding:clamp(18px,2.6vw,32px);display:grid;gap:0}
+.c-ev .trail-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap;margin-bottom:18px}
+.c-ev .trail-top .q{font-family:var(--display);font-weight:800;font-size:clamp(26px,3vw,38px);line-height:1.05;letter-spacing:-.02em;margin:4px 0 0;text-wrap:balance}
+.c-ev .station{display:grid;grid-template-columns:132px 28px minmax(0,1fr);column-gap:10px;position:relative}
+.c-ev .station .lab{font-family:var(--mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--k);padding-top:4px;text-align:right}
+.c-ev .station .rail{position:relative;display:flex;justify-content:center}
+.c-ev .station .rail::before{content:"";position:absolute;top:0;bottom:0;width:3px;background:var(--line)}
+.c-ev .station:first-of-type .rail::before{top:12px}
+.c-ev .station:last-of-type .rail::before{bottom:auto;height:12px}
+.c-ev .station .dot{position:relative;margin-top:4px;width:16px;height:16px;border-radius:50%;background:var(--surface);border:3.5px solid var(--k);z-index:1}
+.c-ev .station .body{padding-bottom:16px;display:grid;gap:8px}
+.c-ev .station .body .h{font-family:var(--display);font-weight:700;font-size:18px;line-height:1.25;letter-spacing:-.005em}
+.c-ev .station .body p{margin:0;max-width:68ch}
+.c-ev .s-bar{--k:var(--c-bar)} .c-ev .s-chl{--k:var(--c-chl)} .c-ev .s-dec{--k:var(--c-dec)} .c-ev .s-met{--k:var(--c-met)} .c-ev .s-evi{--k:var(--part)} .c-ev .s-next{--k:var(--honey-ink)} .c-ev .s-out{--k:var(--c-out)}
+.c-ev .who{display:flex;flex-wrap:wrap;gap:6px}
+.c-ev .chip{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:3px 10px;font-size:13px;background:var(--sunk);border:1px solid var(--line)}
+.c-ev .chip.per{background:var(--c-per-soft);border-color:transparent;color:var(--ink)}
+.c-ev .chip.per b{color:var(--c-per)}
+.c-ev .chip.met{background:var(--c-met-soft);border-color:transparent}
+.c-ev .chip.met b{font-family:var(--mono);font-size:11.5px;color:var(--c-met)}
+.c-ev .bet{background:var(--c-dec-soft);border-radius:10px;padding:10px 14px;font-size:15px}
+.c-ev .bet b{font-family:var(--mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;display:block;color:var(--muted);margin-bottom:2px}
+.c-ev .meta{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+.c-ev ul.pts{margin:0;padding-left:18px;display:grid;gap:6px;max-width:70ch}
+.c-ev .pill{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;border-radius:999px;padding:3px 9px;font-weight:500;width:max-content}
+.c-ev .pill::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.c-ev .pill.yes{background:var(--ok-soft);color:var(--ok)}
+.c-ev .pill.partly{background:var(--part-soft);color:var(--part)}
+.c-ev .pill.no{background:var(--no-soft);color:var(--no)}
+.c-ev .pill.no::before{background:none;border:1.5px solid currentColor}
+.c-ev .outs{display:grid;gap:6px}
+.c-ev .outs div{display:grid;grid-template-columns:34px 1fr;gap:8px;font-size:14.5px}
+.c-ev .outs span{font-family:var(--mono);font-size:12px;color:var(--c-out);padding-top:2px}
+.c-ev .shows{display:flex;flex-wrap:wrap;gap:6px;align-items:center;border-top:1.5px solid var(--line);padding-top:14px;margin-top:4px}
+.c-ev .shows .t{font-family:var(--mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-right:4px}
+.c-ev .shows .chip{background:var(--honey-soft);border-color:transparent}
+
+/* instrument demo */
+.c-ev .demo{border:1.5px dashed var(--c-met);border-radius:12px;padding:14px;display:grid;gap:10px;max-width:520px;background:var(--surface)}
+.c-ev .demo .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--c-met)}
+.c-ev .demo fieldset{border:0;margin:0;padding:0;display:grid;gap:10px}
+.c-ev .demo legend{font-family:var(--display);font-weight:700;font-size:17px;line-height:1.3;padding:0}
+.c-ev .opts{display:flex;gap:8px;flex-wrap:wrap}
+.c-ev .opts label{position:relative}
+.c-ev .opts input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.c-ev .opts span{display:inline-block;border:1.5px solid var(--line);border-radius:999px;padding:8px 16px;font-weight:700;cursor:pointer;background:var(--surface);transition:background .15s,border-color .15s}
+.c-ev .opts input:checked+span{background:var(--c-met);border-color:var(--c-met);color:var(--surface)}
+.c-ev .opts input:focus-visible+span{outline:3px solid var(--honey);outline-offset:2px}
+.c-ev .demo .res{font-size:13.5px;color:var(--muted);min-height:1.5em}
+
+/* ===== metric ladder ===== */
+.c-ev .sum{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.c-ev .sum .c{background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;display:grid;gap:2px}
+.c-ev .sum .n{font-family:var(--display);font-weight:800;font-size:30px;line-height:1;letter-spacing:-.02em}
+.c-ev .sum .l{font-size:13px;color:var(--muted)}
+.c-ev .ladder-layout{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(16px,2.4vw,32px);align-items:start}
+.c-ev .ladder{background:var(--surface);border:1.5px solid var(--line);border-radius:16px;padding:8px 0 10px;overflow:hidden}
+.c-ev .lhead, .c-ev .lrow{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(210px,1.25fr) 64px;gap:12px;align-items:center;padding:0 16px}
+.c-ev .lhead{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-block:8px 6px}
+.c-ev .rungs-h{display:grid;grid-template-columns:repeat(4,1fr);text-align:center;font-size:9px;letter-spacing:0;column-gap:2px}
+.c-ev .tier{padding:12px 16px 4px;display:flex;gap:10px;align-items:baseline;border-top:1.5px solid var(--line);margin-top:6px}
+.c-ev .tier:first-of-type{border-top:0;margin-top:0}
+.c-ev .tier b{font-family:var(--display);font-size:14px;letter-spacing:.06em;text-transform:uppercase}
+.c-ev .tier span{font-size:13px;color:var(--muted);font-style:italic}
+.c-ev .lrow{width:100%;text-align:left;background:none;border:0;padding-block:8px;cursor:pointer;border-left:3px solid transparent}
+.c-ev .lrow:hover{background:var(--sunk)}
+.c-ev .lrow[aria-pressed="true"]{background:var(--c-met-soft);border-left-color:var(--c-met)}
+.c-ev .lrow .nm{display:grid;gap:0;min-width:0}
+.c-ev .lrow .nm i{font-style:normal;font-family:var(--mono);font-size:11px;color:var(--c-met)}
+.c-ev .lrow .nm b{font-weight:700;font-size:14.5px;line-height:1.25}
+.c-ev .lrow.sub .nm{padding-left:14px}
+.c-ev .lrow.sub .nm b{font-weight:400;font-size:13.5px}
+.c-ev .track{position:relative;display:grid;grid-template-columns:repeat(4,1fr);align-items:center;height:22px}
+.c-ev .track::before{content:"";position:absolute;left:12.5%;right:12.5%;top:50%;height:2px;background:var(--line);transform:translateY(-50%)}
+.c-ev .track .fill{position:absolute;left:12.5%;top:50%;height:4px;background:var(--c-met);transform:translateY(-50%);border-radius:2px}
+.c-ev .track .n{position:relative;justify-self:center;width:12px;height:12px;border-radius:50%;background:var(--surface);border:2px solid var(--line)}
+.c-ev .track .n.on{background:var(--c-met);border-color:var(--c-met)}
+.c-ev .track .n.tgt{box-shadow:0 0 0 3px var(--surface),0 0 0 5px var(--honey)}
+.c-ev .qa{font-family:var(--mono);font-size:12px;text-align:right;color:var(--muted)}
+.c-ev .qa b{color:var(--ink);font-weight:500}
+.c-ev .legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12.5px;color:var(--muted);padding:10px 16px 2px;border-top:1.5px solid var(--line);margin-top:8px}
+.c-ev .legend i{display:inline-block;width:12px;height:12px;border-radius:50%;vertical-align:-2px;margin-right:6px}
+
+.c-ev .detail{background:var(--surface);border:1.5px solid var(--line);border-radius:16px;padding:clamp(16px,2.2vw,26px);display:grid;gap:16px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px)}
+.c-ev .detail .id{font-family:var(--mono);font-size:12px;color:var(--c-met)}
+.c-ev .detail h3{font-family:var(--display);font-weight:800;font-size:26px;line-height:1.08;letter-spacing:-.015em;margin:2px 0 6px}
+.c-ev .detail p{margin:0}
+.c-ev .kv{display:grid;grid-template-columns:110px minmax(0,1fr);gap:8px 14px;font-size:14.5px}
+.c-ev .kv dt{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+.c-ev .kv dd{margin:0}
+.c-ev .qs{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.c-ev .qs li{display:grid;grid-template-columns:78px minmax(0,1fr);gap:10px;align-items:start;font-size:14px}
+.c-ev .qs li small{display:block;color:var(--muted);font-size:13px;margin-top:2px}
+.c-ev .feats{display:flex;flex-wrap:wrap;gap:6px}
+.c-ev .feats .chip b{font-family:var(--mono);font-size:10.5px;color:var(--muted);font-weight:500}
+.c-ev .asks{list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:14px}
+.c-ev .asks li{display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:8px;align-items:baseline}
+.c-ev .asks .num{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+.c-ev .asks .by{font-size:12px;color:var(--muted);white-space:nowrap}
+.c-ev .asks li.closed{color:var(--muted);text-decoration:line-through}
+
+.c-ev .checks{background:var(--surface);border:1.5px solid var(--line);border-radius:16px;padding:clamp(16px,2.2vw,26px);display:grid;gap:14px}
+.c-ev .checks h3{font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.01em;margin:0}
+.c-ev .checkgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.c-ev .check{border-radius:12px;padding:14px;background:var(--sunk);display:grid;gap:6px;align-content:start}
+.c-ev .check .n{font-family:var(--display);font-weight:800;font-size:28px;line-height:1}
+.c-ev .check .t{font-weight:700;font-size:14.5px}
+.c-ev .check p{margin:0;font-size:13.5px;color:var(--muted)}
+.c-ev .check .ids{display:flex;flex-wrap:wrap;gap:4px}
+.c-ev .check .ids button{font-family:var(--mono);font-size:11.5px;border:1px solid var(--line);background:var(--surface);border-radius:6px;padding:2px 7px;cursor:pointer}
+.c-ev .check .ids button:hover{border-color:var(--c-met);color:var(--c-met)}
+
+.c-ev footer{font-size:13px;color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:space-between;border-top:1.5px solid var(--line);padding-top:16px}
+
+@media (max-width:980px){
+  .c-ev .trail-layout, .c-ev .ladder-layout{grid-template-columns:1fr}
+  .c-ev .picker{position:static;grid-auto-flow:column;grid-auto-columns:minmax(220px,1fr);overflow-x:auto;padding-bottom:6px}
+  .c-ev .picker h2{display:none}
+  }
+@media (min-width:981px){ .c-ev .picker h2{font-family:var(--serif);font-size:19px;font-weight:600;margin:0 0 8px}
+  .c-ev .detail{position:static}
+  .c-ev .checkgrid{grid-template-columns:1fr}
+  .c-ev .sum{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:560px){
+  .c-ev .picker{grid-auto-flow:row;grid-auto-columns:auto;overflow-x:visible;padding-bottom:0;gap:8px}
+  .c-ev .station{grid-template-columns:22px minmax(0,1fr)}
+  .c-ev .station .lab{grid-column:2;text-align:left;padding:0 0 2px}
+  .c-ev .station .rail{grid-row:1 / span 2;grid-column:1}
+  .c-ev .lhead, .c-ev .lrow{grid-template-columns:minmax(0,1fr) 150px}
+  .c-ev .lhead>:last-child, .c-ev .lrow .qa{display:none}
+  .c-ev .kv{grid-template-columns:1fr;gap:2px}
+  .c-ev .kv dd{margin-bottom:8px}
+  .c-ev .qs li{grid-template-columns:1fr;gap:4px}
+}
+@media (prefers-reduced-motion:reduce){.c-ev *{transition:none!important}}
+
+.c-ev .sample-note{font-family:var(--hand);font-size:1.25rem;color:var(--red);margin:0 0 22px;max-width:70ch;line-height:1.35}
+
+.c-ev .lm03{width:100%;height:auto;display:block;margin:14px 0 0;overflow:visible}
+.c-ev .lm03 .track{fill:var(--rule)}
+.c-ev .lm03 .bar{fill:var(--blue)}
+.c-ev .lm03 .lbl{font-family:var(--body);font-size:12.5px;fill:var(--pencil)}
+.c-ev .lm03 .val{font-family:var(--mono);font-size:12.5px;fill:var(--pencil)}
+.c-ev .lm03-wrap{border-top:1px solid var(--rule-strong);padding-top:18px;margin-top:8px}
+.c-ev .lm03-key{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13px;color:var(--pencil);margin-top:12px;align-items:center}
+.c-ev .lm03-key i{display:inline-block;width:15px;height:9px;border-radius:2px;margin-right:7px;vertical-align:middle}
+@media (max-width:640px){ .c-ev .lm03 .lbl{font-size:16px} .c-ev .lm03 .val{font-size:15px} }
+
+/* ---------- problem model ---------- */
+.c-ev .pm{display:grid;gap:44px}
+.c-ev .pm section{display:grid;gap:18px}
+.c-ev .sec-h{display:flex;gap:14px;align-items:baseline;flex-wrap:wrap}
+
+/* 1. how it reads */
+.c-ev .sentence{background:var(--paper);border:1px solid var(--rule-strong);border-radius:6px;padding:clamp(16px,2.5vw,26px);font-family:var(--serif);font-size:clamp(19px,2vw,24px);line-height:1.6}
+.c-ev .sentence .w{border-bottom:2px solid var(--k);padding-bottom:1px}
+.c-ev .layers{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border:1px solid var(--rule-strong);border-radius:6px;overflow:hidden;background:var(--paper)}
+.c-ev .layer{padding:16px 18px 18px;display:grid;gap:6px;align-content:start;border-top:4px solid var(--k);position:relative}
+.c-ev .layer+.layer{border-left:1px dashed var(--rule-strong)}
+.c-ev .layer .n{font-family:var(--serif);font-size:40px;line-height:1;color:var(--k)}
+.c-ev .layer b{font-family:var(--serif);font-weight:600;font-size:19px}
+.c-ev .layer .ask{font-family:var(--hand);font-size:21px;color:var(--k);line-height:1.1}
+.c-ev .layer p{margin:0;font-size:14.5px}
+.c-ev .layer .src{font-family:var(--mono);font-size:10.5px;color:var(--pencil);letter-spacing:.04em;text-transform:uppercase;margin-top:4px}
+.c-ev .layer .arrow{position:absolute;right:-13px;top:44px;z-index:1;font-family:var(--hand);font-size:26px;color:var(--pencil);background:var(--paper);line-height:1;padding:0 2px}
+.c-ev .k-bar{--k:var(--red);--w:var(--red-w)} .c-ev .k-per{--k:var(--ink);--w:var(--paper-2)} .c-ev .k-chl{--k:var(--green);--w:var(--green-w)} .c-ev .k-out{--k:var(--hi-ink);--w:var(--hi-w)}
+.c-ev .rules{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.c-ev .rules div{border-top:2px solid var(--ink);padding-top:10px;display:grid;gap:4px}
+.c-ev .rules b{font-family:var(--serif);font-weight:600;font-size:17px}
+.c-ev .rules p{margin:0;font-size:14.5px;color:var(--pencil)}
+
+/* 2. follow one fear */
+.c-ev .flay{display:grid;gap:0;border:1px solid var(--rule-strong);border-radius:6px;background:var(--paper);overflow:hidden}
+.c-ev .flay-band{display:grid;grid-template-columns:168px minmax(0,1fr);gap:20px;padding:18px 20px;align-items:start;
+  border-left:5px solid var(--k,var(--rule-strong))}
+.c-ev .lay+.flay-band{border-top:1px dashed var(--rule-strong)}
+.c-ev .flay-k{font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--k);padding-top:5px}
+.c-ev .flay-k small{display:block;font-family:var(--body);font-size:11.5px;letter-spacing:0;text-transform:none;color:var(--pencil);margin-top:3px;line-height:1.35}
+.c-ev .flay-row{display:flex;flex-wrap:wrap;gap:8px}
+.c-ev .it{border:1px solid var(--rule-strong);background:var(--paper);border-radius:4px;padding:8px 12px;font-size:14px;
+  line-height:1.35;transition:opacity .18s,border-color .18s,background .18s}
+.c-ev .it.dim{opacity:.26}
+.c-ev .it.on{border-color:var(--k);background:var(--w)}
+.c-ev button.it{cursor:pointer;font-family:var(--serif);font-size:16px;border-radius:999px;padding:7px 14px}
+.c-ev button.it:hover{border-color:var(--k)}
+.c-ev .it .id{font-family:var(--mono);font-size:10.5px;color:var(--pencil);margin-right:6px}
+.c-ev .it b{font-family:var(--serif);font-size:16px;font-weight:600;display:block}
+.c-ev .it .sub{font-size:12.5px;color:var(--pencil)}
+.c-ev .outs24{display:grid;grid-template-columns:repeat(auto-fill,minmax(212px,1fr));gap:8px}
+.c-ev .outs24 .it{display:grid;grid-template-columns:26px minmax(0,1fr);gap:6px;align-items:start;font-size:13px;padding:9px 11px}
+.c-ev .outs24 .id{margin:0;padding-top:1px}
+.c-ev .story{font-family:var(--serif);font-size:18px;line-height:1.55;margin:0;max-width:78ch;background:var(--paper);border-left:3px solid var(--hi-solid);padding:12px 18px}
+@media (max-width:760px){ .c-ev .flay-band{grid-template-columns:1fr;gap:10px} .c-ev .flay-k{padding-top:0} }
+
+/* 3. matrix */
+.c-ev .matrix-wrap{overflow-x:auto;background:var(--paper);border:1px solid var(--rule-strong);border-radius:6px}
+.c-ev table.mx{border-collapse:collapse;width:100%;min-width:980px;font-size:13px}
+.c-ev .mx th, .c-ev .mx td{padding:0;text-align:center;border-bottom:1px solid var(--rule)}
+.c-ev .mx tbody td, .c-ev .mx tbody th{height:52px}
+.c-ev .mx thead th{font-family:var(--mono);font-size:10.5px;color:var(--pencil);font-weight:400;padding:12px 4px 10px;border-bottom:1px solid var(--rule-strong)}
+.c-ev .mx thead th.grp{font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:10px 4px 2px;border-bottom:0}
+.c-ev .mx th.row{text-align:left;padding:0}
+.c-ev .mx th.row button{all:unset;cursor:pointer;display:block;padding:12px 16px;font-family:var(--serif);font-size:15.5px;font-weight:400;white-space:nowrap;width:100%;box-sizing:border-box}
+.c-ev .mx th.row button small{font-family:var(--mono);font-size:10.5px;color:var(--pencil);margin-right:6px}
+.c-ev .mx th.row button.mx tr.on th.row button{background:var(--red-w);box-shadow:inset 3px 0 0 var(--red)}
+.c-ev .mx td.p, .c-ev .mx td.c{font-family:var(--mono);font-size:11px;white-space:nowrap;padding:0 14px;color:var(--pencil);text-align:left;line-height:1.5}
+.c-ev .mx td.c{color:var(--green)}
+.c-ev .mx td.o{width:30px;position:relative;padding:0 2px}
+/* the dot stays 12px; the focus and tap area around it is 24px (WCAG 2.5.8) */
+.c-ev .pm-dot{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%}
+.c-ev .pm-dot::before{content:"";width:12px;height:12px;border-radius:50%;background:var(--hi-solid);
+  border:1.5px solid var(--hi-ink)}
+.c-ev .mx td.gapcol{background:repeating-linear-gradient(135deg,transparent 0 5px,var(--red-w) 5px 8px)}
+.c-ev .mx thead th.gaph{color:var(--red);font-weight:500}
+.c-ev .mx tfoot td{font-family:var(--mono);font-size:10.5px;color:var(--pencil);padding:12px 2px;border-bottom:0}
+.c-ev .mx .sep{border-left:1px solid var(--rule-strong)}
+.c-ev .readout{min-height:1.6em;font-size:14.5px}
+.c-ev .readout b{font-family:var(--mono);color:var(--hi-ink);font-weight:500;margin-right:6px}
+.c-ev .keys{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:var(--pencil);align-items:center}
+.c-ev .keys i{display:inline-block;vertical-align:-2px;margin-right:6px}
+.c-ev .sticky{justify-self:start;background:var(--hi-solid);color:#2a2410;font-family:var(--hand);font-size:21px;line-height:1.15;padding:10px 14px 12px;max-width:340px;transform:rotate(-1.5deg);box-shadow:0 6px 12px -8px rgba(0,0,0,.4)}
+
+@media (max-width:980px){
+  .c-ev .layers, .c-ev .trace{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .c-ev .layer:nth-child(3){border-left:0}
+  .c-ev .layer:nth-child(n+3){border-top-width:4px}
+  .c-ev .layer .arrow{display:none}
+  .c-ev .card:nth-child(3)::before{display:none}
+  .c-ev .rules{grid-template-columns:1fr}
+}
+@media (max-width:600px){
+  .c-ev .layers, .c-ev .trace{grid-template-columns:1fr}
+  .c-ev .layer+.layer{border-left:0}
+  .c-ev .card+.card::before{content:"↓";left:14px;top:-26px;display:block!important}
+  .c-ev .trace{gap:30px}
+}
+.c-ev .more{margin:8px 0 0;font-size:13.5px;color:var(--pencil);font-style:italic}
+
+.c-ev .sample-note{font-family:var(--hand);font-size:1.25rem;color:var(--red);margin:0 0 22px;max-width:70ch;line-height:1.35}
+.c-ev .mx th.row button:focus-visible{outline:2.5px solid var(--blue);outline-offset:3px}
+
+
+.c-mv .subnav{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 26px}
+.c-mv .subnav a{text-decoration:none;font-size:14px;color:var(--pencil);border:1px solid var(--rule-strong);
+  border-radius:999px;padding:6px 13px;background:var(--paper)}
+.c-mv .subnav a:hover{border-color:var(--ink);color:var(--ink)}
+.c-mv .subnav a[aria-current="page"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.c-mv .pagehead h1{margin:2px 0 4px}
+.c-mv .where{display:none}
+
+/* colours and fonts come from journal.css :root, so dark mode and the ink setting reach this component */
+.c-mv{--hi-w:#F1E6B8}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .c-mv{--hi-w:#342F1C}}
+:root[data-theme="dark"] .c-mv{--hi-w:#342F1C}
+.c-mv .sheet{max-width:1160px;margin:0 auto 28px;background:var(--paper);border-radius:18px;box-shadow:0 18px 40px -24px rgba(0,0,0,.35);padding:clamp(22px,4vw,52px) clamp(18px,4.5vw,60px) 48px;background-image:radial-gradient(circle,var(--rule-strong) 1.1px,transparent 1.4px);background-size:28px 28px;display:grid;gap:26px;position:relative}
+.c-mv .where{position:absolute;top:18px;right:22px;font-family:var(--hand);font-size:20px;color:var(--blue);transform:rotate(2deg)}
+.c-mv .mono{font-family:var(--mono);font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--pencil)}
+.c-mv .hand{font-family:var(--hand);font-size:23px;line-height:1.1;color:var(--blue)}
+.c-mv h2{font-family:var(--serif);font-weight:500;font-size:clamp(24px,2.8vw,32px);line-height:1.15;margin:0;text-wrap:balance}
+.c-mv h3{font-family:var(--serif);font-weight:500;font-size:clamp(21px,2.2vw,26px);margin:0;line-height:1.2}
+.c-mv .note .head .nh{font-family:var(--serif);font-weight:500;font-size:clamp(21px,2.2vw,26px);margin:0;line-height:1.2}
+.c-mv .lede{max-width:68ch;margin:0;font-size:18px}
+.c-mv .muted{color:var(--pencil)}
+.c-mv .hl{background:linear-gradient(transparent 40%,var(--hi) 40% 90%,transparent 90%);padding:0 2px}
+.c-mv .panel{background:var(--paper);border:1px solid var(--rule-strong);border-radius:6px;padding:clamp(14px,2vw,22px)}
+.c-mv .seg{display:inline-flex;border:1px solid var(--rule-strong);border-radius:999px;overflow:hidden;background:var(--paper)}
+.c-mv .seg button{border:0;background:none;padding:7px 14px;cursor:pointer;font-size:14px;color:var(--pencil)}
+.c-mv .seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+
+/* ===== 1 lifecycle strip ===== */
+.c-mv .life{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));border:1px solid var(--rule-strong);border-radius:6px;overflow:hidden;background:var(--paper);position:relative}
+.c-mv .stage{padding:12px 12px 14px;display:grid;gap:6px;align-content:start;border-left:1px dashed var(--rule-strong);position:relative;min-height:150px}
+.c-mv .stage:first-child{border-left:0}
+.c-mv .stage .n{font-family:var(--mono);font-size:10.5px;color:var(--pencil);letter-spacing:.06em;text-transform:uppercase}
+.c-mv .stage b{font-family:var(--serif);font-size:18px;font-weight:600}
+.c-mv .stage ul{margin:0;padding:0;list-style:none;display:grid;gap:4px;font-size:13.5px}
+.c-mv .stage ul li::before{content:"✓ ";color:var(--green);font-weight:700}
+.c-mv .band{position:absolute;left:0;right:0;bottom:0;height:6px;background:var(--hi-solid)}
+.c-mv .trad{position:absolute;top:0;bottom:0;border-left:2px dashed var(--red);pointer-events:none}
+.c-mv .trad span{position:absolute;top:6px;left:6px;font-family:var(--hand);font-size:18px;color:var(--red);white-space:nowrap;transform:rotate(-2deg);background:var(--paper);padding:0 4px;line-height:1.1}
+.c-mv .life-foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:14px}
+
+/* ===== 2 curve ===== */
+.c-mv .curve-wrap{display:grid;gap:14px}
+.c-mv .curve-controls{display:flex;flex-wrap:wrap;gap:12px 22px;align-items:center}
+.c-mv #curve{width:100%;height:auto;display:block}
+.c-mv .legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:var(--pencil);align-items:center;margin-top:10px}
+.c-mv .legend svg{vertical-align:middle;margin-right:6px}
+.c-mv .chart{overflow-x:auto}
+.c-mv .chart svg{display:block;width:100%;min-width:760px;height:auto}
+.c-mv .hot{cursor:pointer}
+.c-mv .hot circle{transition:r .15s}
+.c-mv .hot:hover circle.ring, .c-mv .hot:focus circle.ring{stroke-width:3}
+.c-mv .hot:focus{outline:none}
+.c-mv .hot:focus-visible circle.ring{stroke:var(--blue);stroke-width:3.5}
+.c-mv .note{display:grid;gap:14px}
+.c-mv .note .head{display:grid;gap:6px}
+.c-mv .oo{display:grid;gap:14px}
+.c-mv .oo>div{border-top:3px solid var(--k);padding-top:10px;display:grid;gap:6px;align-content:start}
+.c-mv .oo .lab{display:flex;gap:8px;align-items:center;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--pencil)}
+.c-mv .oo p{margin:0;font-size:15px;max-width:74ch}
+.c-mv .tip{font-size:13.5px;color:var(--pencil)}
+.c-mv .note .said{font-family:var(--hand);font-size:22px;line-height:1.2;color:var(--ink);background:var(--paper-2);padding:12px 14px;border-radius:4px;transform:rotate(-.6deg)}
+.c-mv .note .said span{display:block;font-family:var(--mono);font-size:10.5px;color:var(--pencil);margin-top:6px;transform:none}
+.c-mv .pill{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;border-radius:999px;padding:3px 9px;width:max-content}
+.c-mv .pill::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.c-mv .p-good{background:var(--green-w);color:var(--green)} .c-mv .p-bad{background:var(--red-w);color:var(--red)} .c-mv .p-mixed{background:var(--amber-w);color:var(--amber)}
+.c-mv .struggle{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border:1px solid var(--rule-strong);border-radius:6px;overflow:hidden;background:var(--paper)}
+.c-mv .struggle>div{padding:16px 18px;display:grid;gap:8px;align-content:start}
+.c-mv .struggle>div+div{border-left:1px dashed var(--rule-strong)}
+.c-mv .struggle b{font-family:var(--serif);font-size:20px;font-weight:600}
+.c-mv .struggle ul{margin:0;padding-left:18px;display:grid;gap:6px;font-size:14.5px}
+.c-mv .s-rem{border-top:4px solid var(--red)} .c-mv .s-keep{border-top:4px solid var(--green)}
+.c-mv .cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.c-mv .dcard{background:var(--paper);border:1px solid var(--rule-strong);border-radius:4px;padding:16px 18px;display:grid;gap:10px;align-content:start;position:relative}
+.c-mv .dcard .top{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;align-items:baseline}
+.c-mv .dcard h4{margin:0;font-family:var(--serif);font-size:21px;font-weight:600;line-height:1.2}
+.c-mv .dl{display:grid;grid-template-columns:96px minmax(0,1fr);gap:6px 12px;font-size:14.5px;margin:0}
+.c-mv .dl dt{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--pencil);padding-top:3px}
+.c-mv .dl dd{margin:0}
+.c-mv .dl dd.gave{color:var(--red)}
+.c-mv .dl dd.chose{font-weight:700}
+.c-mv .stamp{font-family:var(--mono);font-size:10.5px;border:1.2px solid var(--amber);color:var(--amber);border-radius:3px;padding:1px 6px;transform:rotate(-1.5deg)}
+
+/* ===== 3 system ===== */
+.c-mv .sys{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:22px;align-items:start}
+.c-mv .sys svg{width:100%;height:auto;display:block}
+.c-mv .node{cursor:pointer}
+.c-mv .node rect{transition:stroke-width .15s}
+.c-mv .node:hover rect, .c-mv .node:focus rect{stroke-width:2.5}
+.c-mv .node:focus{outline:none}
+.c-mv .node:focus-visible rect{stroke:var(--blue);stroke-width:3}
+.c-mv .node[aria-pressed="true"] rect{stroke-width:3}
+.c-mv .detail{display:grid;gap:10px;align-content:start}
+.c-mv .detail .big{font-family:var(--serif);font-size:44px;line-height:1}
+.c-mv .detail h4{margin:0;font-family:var(--serif);font-size:22px;font-weight:600}
+.c-mv .detail p{margin:0}
+.c-mv .row{font-family:var(--mono);font-size:12px;background:var(--paper-2);border-radius:4px;padding:10px 12px;display:grid;gap:4px;overflow-x:auto}
+.c-mv .row span{white-space:nowrap}
+.c-mv .redact{background:var(--ink);color:transparent;border-radius:2px;user-select:none}
+.c-mv .kv{display:flex;flex-wrap:wrap;gap:6px}
+.c-mv .kv span{font-size:13px;border-radius:999px;padding:3px 10px;background:var(--paper-2)}
+.c-mv .sticky{justify-self:start;background:var(--hi-solid);color:#2a2410;font-family:var(--hand);font-size:21px;line-height:1.15;padding:10px 14px 12px;max-width:380px;transform:rotate(-1.2deg);box-shadow:0 6px 12px -8px rgba(0,0,0,.4)}
+
+@media (max-width:900px){
+  .c-mv .life{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .c-mv .stage:nth-child(4){border-left:0}
+  .c-mv .trad{display:none}
+  .c-mv .oo, .c-mv .struggle, .c-mv .cards, .c-mv .sys{grid-template-columns:1fr}
+  .c-mv .struggle>div+div{border-left:0;border-top:1px dashed var(--rule-strong)}
+}
+@media (max-width:520px){ .c-mv .life{grid-template-columns:1fr} .c-mv .stage{border-left:0;border-top:1px dashed var(--rule-strong);min-height:0} .c-mv .dl{grid-template-columns:1fr;gap:2px} .c-mv .where{position:static;display:block} }
+
+/* ===== 3 how I work (v2) ===== */
+.c-mv .flow{list-style:none;margin:0;padding:0;display:grid;gap:0;counter-reset:none}
+.c-mv .flow>li{display:grid;grid-template-columns:150px minmax(0,1fr);gap:18px;padding:0 0 18px;position:relative}
+.c-mv .flow>li::before{content:"";position:absolute;left:14px;top:30px;bottom:0;width:2px;background:var(--rule-strong)}
+.c-mv .flow>li:last-child::before{display:none}
+.c-mv .sn{display:flex;gap:10px;align-items:center;font-family:var(--serif);font-size:19px;font-weight:600;align-self:start}
+.c-mv .sn span{width:30px;height:30px;border-radius:50%;border:2px solid var(--ink);display:grid;place-items:center;font-family:var(--mono);font-size:12px;background:var(--paper);flex:none;position:relative;z-index:1}
+.c-mv .two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.c-mv .three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.c-mv .box{background:var(--paper);border:1px solid var(--rule-strong);border-left:5px solid var(--k);border-radius:4px;padding:14px 16px;display:grid;gap:6px;align-content:start}
+.c-mv .box b{font-family:var(--serif);font-size:19px;font-weight:600;line-height:1.2}
+.c-mv .box .sub{font-family:var(--hand);font-size:19px;color:var(--pencil);line-height:1.1}
+.c-mv .box p{margin:0;font-size:14.5px}
+.c-mv .box .tag{font-family:var(--mono);font-size:10.5px;color:var(--pencil);text-transform:uppercase;letter-spacing:.05em}
+.c-mv .k-red{--k:var(--red)} .c-mv .k-green{--k:var(--green)} .c-mv .k-blue{--k:var(--blue)} .c-mv .k-hi{--k:var(--hi-solid)} .c-mv .k-ink{--k:var(--ink)} .c-mv .k-amber{--k:var(--amber)}
+.c-mv .join{grid-column:2;margin:6px 0 0;font-family:var(--hand);font-size:20px;color:var(--blue);text-align:center}
+.c-mv .routes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:4px}
+.c-mv .routes div{background:var(--paper-2);border-radius:4px;padding:8px 10px;font-size:13.5px;display:grid;gap:2px}
+.c-mv .routes b{font-family:var(--serif);font-size:17px;line-height:1.15}
+.c-mv .loops{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-left:168px}
+.c-mv .loops div{border:1px dashed var(--rule-strong);border-radius:4px;padding:12px 14px;display:grid;gap:4px}
+.c-mv .loops b{font-family:var(--hand);font-size:22px;color:var(--blue);font-weight:500}
+.c-mv .loops p{margin:0;font-size:14.5px}
+.c-mv .lundy{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border:1px solid var(--rule-strong);border-radius:6px;overflow:hidden;background:var(--paper)}
+.c-mv .lundy>div{padding:14px 16px;display:grid;gap:6px;align-content:start;border-top:4px solid var(--green)}
+.c-mv .lundy>div+div{border-left:1px dashed var(--rule-strong)}
+.c-mv .lundy .n{font-family:var(--serif);font-size:22px;font-weight:600;color:var(--green)}
+.c-mv .lundy p{margin:0;font-size:14.5px}
+@media (max-width:900px){
+  .c-mv .flow>li{grid-template-columns:1fr;gap:8px}
+  .c-mv .flow>li::before{display:none}
+  .c-mv .two, .c-mv .three, .c-mv .routes, .c-mv .loops{grid-template-columns:1fr}
+  .c-mv .loops{margin-left:0}
+  .c-mv .join{grid-column:1}
+  .c-mv .lundy{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .c-mv .lundy>div:nth-child(3){border-left:0}
+}
+@media (max-width:520px){ .c-mv .lundy{grid-template-columns:1fr} .c-mv .lundy>div+div{border-left:0} }
+
+.c-mv .st-chain{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 0;font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.04em}
+.c-mv .st-chain li{display:flex;align-items:center}
+.c-mv .st-chain li:not(:last-child)::after{content:"→";margin:0 10px;color:var(--pencil)}
+.c-mv .st-chain li:last-child{color:var(--red);font-weight:600}
+.c-mv .has-stamp{position:relative;padding-right:150px}
+.c-mv .boardstamp{position:absolute;top:12px;right:14px;font-family:var(--mono);font-size:10.5px;font-weight:600;line-height:1.25;letter-spacing:.08em;text-transform:uppercase;text-align:center;color:var(--red);border:2px solid var(--red);border-radius:6px;padding:6px 10px;transform:rotate(-6deg);opacity:.85;box-shadow:inset 0 0 0 2px var(--paper),inset 0 0 0 3px var(--red);pointer-events:none}
+.c-mv .dcard{position:relative}
+.c-mv .boardstamp.sm{position:static;display:inline-block;justify-self:end;margin-top:10px;font-size:9.5px;transform:rotate(-4deg)}
+@media (max-width:640px){.c-mv .has-stamp{padding-right:16px;padding-top:64px}}
+.c-mv .st-explain{background:var(--paper-2);border:1px solid var(--rule);border-radius:4px;padding:14px 16px;margin:10px 0 18px;display:grid;gap:10px}
+.c-mv .st-explain p{margin:0;max-width:78ch;font-size:15px}
+.c-mv .st-chain{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 0;font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.04em}
+.c-mv .st-chain li{display:flex;align-items:center}
+.c-mv .st-chain li:not(:last-child)::after{content:"→";margin:0 10px;color:var(--pencil)}
+.c-mv .st-chain li:last-child{color:var(--red);font-weight:600}
+
+.c-mv .sample-note{font-family:var(--hand);font-size:1.25rem;color:var(--red);margin:0 0 22px;max-width:70ch;line-height:1.35}
+
+
+.c-ls .intro{display:grid;gap:14px}
+.c-ls .intro .lede{margin:0}
+.c-ls .intro p{margin:0}
+.c-ls .subnav{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 26px}
+.c-ls .subnav a{text-decoration:none;font-size:14px;color:var(--pencil);border:1px solid var(--rule-strong);
+  border-radius:999px;padding:6px 13px;background:var(--paper)}
+.c-ls .subnav a:hover{border-color:var(--ink);color:var(--ink)}
+.c-ls .subnav a[aria-current="page"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.c-ls .pagehead h1{margin:2px 0 4px}
+.c-ls .where{display:none}
+
+/* colours and fonts come from journal.css :root */
+.c-ls .sheet{max-width:1180px;margin:0 auto;background:var(--paper);border-radius:18px;box-shadow:0 18px 40px -24px rgba(0,0,0,.35);padding:clamp(22px,4vw,48px) clamp(16px,4vw,52px) 48px;background-image:radial-gradient(circle,var(--rule-strong) 1.1px,transparent 1.4px);background-size:28px 28px;display:grid;gap:40px}
+.c-ls .mono{font-family:var(--mono);font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--pencil)}
+.c-ls h1{font-family:var(--serif);font-weight:600;font-size:clamp(34px,5vw,60px);line-height:1.04;margin:4px 0 8px;letter-spacing:-.02em}
+.c-ls h2{font-family:var(--serif);font-weight:500;font-size:clamp(24px,2.8vw,32px);line-height:1.15;margin:0;text-wrap:balance}
+.c-ls h3{font-family:var(--serif);font-weight:600;font-size:19px;margin:0}
+.c-ls .lede{max-width:70ch;margin:0;font-size:18px}
+.c-ls .muted{color:var(--pencil)}
+.c-ls .terms-page{margin-top:44px;padding-top:22px;border-top:1px solid var(--rule);display:grid;gap:12px}
+.c-ls .termlist{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px 28px;margin:6px 0 0}
+.c-ls .termlist>div{border-top:1px solid var(--rule);padding-top:8px}
+.c-ls .termlist dt{font-family:var(--serif);font-size:16px;font-weight:600;margin-bottom:2px}
+.c-ls .termlist dd{margin:0;font-size:14px;color:var(--pencil);line-height:1.5}
+.c-ls .note-hand{font-family:var(--hand);font-size:20px;color:var(--blue);line-height:1.15;display:flex;align-items:flex-start;gap:10px}
+.c-ls .note-hand::before{content:"";flex:none;width:42px;height:36px;margin-top:-6px;background:currentColor;
+ -webkit-mask:var(--arrow) no-repeat center/contain; mask:var(--arrow) no-repeat center/contain}
+.c-ls{--arrow:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 38"><path d="M38 35 C34 22 27 12 14 7" fill="none" stroke="black" stroke-width="2.6" stroke-linecap="round"/><path d="M14 7 L16 18 M14 7 L25 9" fill="none" stroke="black" stroke-width="2.6" stroke-linecap="round"/></svg>')}
+
+/* controls */
+.c-ls .seg{display:inline-flex;border:1px solid var(--rule-strong);border-radius:999px;overflow:hidden;background:var(--paper)}
+.c-ls .seg button{border:0;background:none;padding:7px 14px;cursor:pointer;font-size:14px;color:var(--pencil)}
+.c-ls .seg button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.c-ls .check{display:inline-flex;gap:8px;align-items:center;font-size:14px;color:var(--pencil);cursor:pointer}
+
+/* grid bands */
+.c-ls .band{display:grid;gap:16px}
+.c-ls .band-head{display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;margin-bottom:2px}
+.c-ls .grid{display:grid;grid-template-columns:var(--cols);border:1px solid var(--rule-strong);border-radius:6px;overflow:hidden;background:var(--paper)}
+.c-ls{--cols:270px repeat(3,minmax(0,1fr))}
+.c-ls .gh{background:var(--paper-2);padding:8px 10px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--pencil);border-bottom:1px solid var(--rule-strong)}
+.c-ls .gh.stage{text-align:center}
+.c-ls .rl{padding:12px 12px;font-size:14px;border-top:1px solid var(--rule);display:grid;gap:2px}
+.c-ls .rl .sub{color:var(--pencil);font-size:12.5px}
+.c-ls .rl .sub:empty{display:none}
+.c-ls .cell.txt.indent{padding-left:30px;position:relative}
+.c-ls .cell.txt.indent::before{content:"";position:absolute;left:10px;top:17px;width:12px;border-top:1px solid var(--rule-strong)}
+.c-ls .cell{border-top:1px solid var(--rule);border-left:1px dashed var(--rule);display:grid;place-items:center;padding:11px 8px;gap:5px;font-size:13px;text-align:center}
+.c-ls .cell.txt{place-items:start;text-align:left;font-size:13.5px}
+.c-ls .dim{opacity:.22}
+.c-ls .mk{width:15px;height:15px;border-radius:2px;display:inline-block}
+.c-ls .mk.found{background:var(--k);border:1.5px solid var(--k)}
+.c-ls .mk.inf{background:transparent;border:1.5px dashed var(--k)}
+.c-ls .mk.dot{border-radius:50%}
+.c-ls .k-red{--k:var(--red)} .c-ls .k-blue{--k:var(--blue)} .c-ls .k-green{--k:var(--green)} .c-ls .k-amber{--k:var(--amber)} .c-ls .k-ink{--k:var(--ink)}
+.c-ls .flag .mk.inf{box-shadow:0 0 0 3px var(--hi)}
+.c-ls .line{display:flex;align-items:center;gap:12px;color:var(--red);font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin:6px 0 0}
+.c-ls .line::before, .c-ls .line::after{content:"";flex:1;border-top:2px dashed var(--red)}
+.c-ls .stagebar{display:grid;grid-template-columns:var(--cols)}
+.c-ls .stagebar>div+div{border-left:1px dashed var(--rule)}
+.c-ls .sum{padding:10px;font-size:14px}
+.c-ls .sum:first-child{font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--pencil);display:flex;align-items:center}
+
+/* curve */
+.c-ls .chart{overflow-x:auto;border:1px solid var(--rule-strong);border-radius:6px;background:var(--paper);padding:10px}
+.c-ls .chart svg{display:block;width:100%;min-width:720px;height:auto}
+.c-ls .hot{cursor:pointer}
+.c-ls .hot:focus{outline:none}
+.c-ls .hot:focus-visible circle{stroke:var(--blue);stroke-width:3}
+.c-ls .panel{border:1px solid var(--rule-strong);border-radius:6px;background:var(--paper);padding:14px 16px;display:grid;gap:8px}
+.c-ls .risk{display:grid;grid-template-columns:var(--cols)}
+.c-ls .risk div{padding:7px 10px;text-align:center;font-size:13.5px}
+.c-ls .risk .lo{background:var(--green-w);color:var(--green)}
+.c-ls .risk .mid{background:var(--amber-w);color:var(--amber)}
+.c-ls .risk .hi{background:var(--red-w);color:var(--red)}
+.c-ls .bar-row{cursor:pointer}
+.c-ls .bar-row[aria-pressed="true"]{background:var(--hi)}
+.c-ls .tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:3px}
+.c-ls .btag{font-family:var(--mono);font-size:9.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--pencil);border:1px solid var(--rule-strong);border-radius:3px;padding:1px 5px}
+
+/* outcomes */
+.c-ls .outs{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;margin-top:2px}
+.c-ls .out{background:var(--paper-2);border-radius:4px;padding:10px 12px;display:grid;gap:4px;font-size:13.5px;border-left:4px solid var(--green)}
+.c-ls .out .n{font-family:var(--mono);font-size:10.5px;color:var(--pencil)}
+.c-ls .chip{font-family:var(--mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;border-radius:999px;padding:2px 8px;background:var(--paper);border:1px solid var(--rule-strong);color:var(--pencil);width:max-content}
+.c-ls .who{display:flex;flex-wrap:wrap;gap:5px;justify-content:center}
+.c-ls .role{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;border-radius:999px;padding:2px 8px;border:1px solid var(--rule-strong);background:var(--paper)}
+.c-ls .role i{width:9px;height:9px;border-radius:50%;background:var(--r)}
+.c-ls .role.future{border-style:dashed}
+.c-ls .role.grain{border-color:var(--red);color:var(--red)}
+.c-ls .prod{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.c-ls .card{border-radius:4px;padding:9px 10px;font-size:12.5px;line-height:1.2;border:1px solid var(--rule-strong);background:var(--paper);display:grid;gap:4px;align-content:space-between;width:152px;min-height:78px}
+.c-ls .card.future{background:var(--amber-w);border-color:var(--amber)}
+.c-ls .card.live{background:var(--green-w);border-color:var(--green)}
+.c-ls .card{place-items:center;text-align:center;align-content:center}
+.c-ls .hscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+.c-ls .swipe-hint{display:none;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--pencil);margin:0}
+@media (max-width:640px){ .c-ls .swipe-hint{display:block} }
+.c-ls .intro p, .c-ls .band p, .c-ls .out, .c-ls .card{overflow-wrap:anywhere}
+@media (max-width:640px){
+  .c-ls .hscroll>.grid, .c-ls .hscroll>.stagebar{min-width:620px}
+  .c-ls .sheet{padding-inline:14px}
+}
+.c-ls .legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13px;color:var(--pencil);align-items:center}
+.c-ls .legend span{display:inline-flex;align-items:center;gap:7px}
+@media (max-width:860px){
+  .c-ls{--cols:150px repeat(3,minmax(0,1fr))}
+  .c-ls .rl{font-size:13px}
+  }
+@media (max-width:640px){
+  .c-ls{--cols:118px repeat(3,minmax(0,1fr))}
+  .c-ls .gh{font-size:9px;padding:6px 4px}
+  .c-ls .rl{padding:8px 7px;font-size:12.5px}
+  .c-ls .rl .sub{font-size:11.5px}
+  .c-ls .cell{padding:6px 3px;font-size:12px}
+  .c-ls .sum{font-size:12.5px;padding:8px 6px}
+  .c-ls .risk div{font-size:11.5px;padding:6px 4px}
+  .c-ls .card{width:100%;min-height:0;font-size:11.5px}
+  .c-ls .role{font-size:10px}
+  .c-ls .dim{opacity:.16}
+}
+
+.c-ls .walk-start{border:1px solid var(--rule-strong);background:var(--paper);border-radius:999px;padding:6px 14px;cursor:pointer;font-size:14px}
+.c-ls .walk-start:hover{border-color:var(--ink)}
+.c-ls .ring{position:absolute;border:2.5px solid var(--red);border-radius:5px;pointer-events:none;z-index:40;transition:all .3s cubic-bezier(.2,.7,.3,1);box-shadow:0 0 0 9999px var(--scrim)}
+.c-ls .ring::after{content:attr(data-n);position:absolute;top:-15px;left:10px;font-family:var(--hand);font-size:26px;color:var(--red);background:var(--paper);padding:0 6px;line-height:1}
+.c-ls .walkbar{position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--paper);border-top:2px solid var(--ink);box-shadow:0 -12px 30px -22px rgba(0,0,0,.6)}
+.c-ls .wb-in{max-width:1180px;margin:0 auto;padding:12px clamp(14px,3vw,32px);display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.c-ls .wb-txt{max-width:74ch;display:grid;gap:2px}
+.c-ls .wb-txt p{margin:0;font-size:15px}
+.c-ls .wb-btns{display:flex;gap:8px}
+.c-ls .wb-btns button{border:1px solid var(--rule-strong);background:var(--paper);border-radius:999px;padding:7px 14px;cursor:pointer;font-size:14px}
+.c-ls .wb-btns #wbNext{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.c-ls .walking{padding-bottom:180px}
+.c-ls .notebtn{border:0;background:none;cursor:pointer;color:var(--blue);font-family:var(--mono);font-size:10.5px;
+  padding:4px 6px;margin:-4px -6px;text-decoration:underline dotted;justify-self:start}
+.c-ls .rownote{grid-column:1/-1;background:var(--paper-2);border-top:1px solid var(--rule);padding:10px 14px;font-size:13.5px;color:var(--ink)}
+.c-ls .rownote b{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--pencil);display:block;margin-bottom:3px}
+
+.c-ls .sample-note{font-family:var(--hand);font-size:1.25rem;color:var(--red);margin:0 0 22px;max-width:70ch;line-height:1.35}
+
+.c-ev .layer .enf{display:block;margin-top:9px;padding-top:8px;border-top:1px dashed var(--rule-strong);
+  font-size:13px;line-height:1.45;color:var(--ink)}
+.c-ev .layer .enf::before{content:"Rule";display:block;font-family:var(--mono);font-size:9px;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--pencil);margin-bottom:3px}
+.c-ev .exnav{display:flex;align-items:center;gap:12px;margin:12px 0 4px}
+.c-ev .exnav button{border:1px solid var(--rule-strong);background:var(--paper);border-radius:999px;
+  min-width:36px;min-height:36px;cursor:pointer;font-size:15px;color:var(--pencil);font-family:var(--body)}
+.c-ev .exnav button:hover{border-color:var(--ink);color:var(--ink)}
+.c-ev .dots{display:flex;gap:6px}
+.c-ev .dots button{min-width:0;min-height:0;width:26px;height:26px;border-radius:50%;border:0;background:none;
+  cursor:pointer;display:grid;place-items:center;padding:0}
+.c-ev .dots button i{display:block;width:8px;height:8px;border-radius:50%;background:var(--rule-strong)}
+.c-ev .dots button[aria-current="true"] i{background:var(--ink)}
+.c-ev .subtabs{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 16px}
+.c-ev .subtabs button{border:1px solid var(--rule-strong);background:var(--paper);border-radius:999px;
+  padding:6px 14px;cursor:pointer;font-family:var(--body);font-size:13.5px;color:var(--pencil)}
+.c-ev .subtabs button:hover{border-color:var(--ink);color:var(--ink)}
+.c-ev .subtabs button[aria-selected="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.c-ev .lm05{width:100%;height:auto;display:block;margin:14px 0 0;overflow:visible}
+.c-ev .lm05 .track{fill:var(--paper-2)}
+.c-ev .lm05 .bar{fill:var(--rule-strong)}
+.c-ev .lm05 .bar.on{fill:var(--blue)}
+.c-ev .lm05 .lbl{font-size:13.5px;fill:var(--ink)}
+.c-ev .lm05 .val{font-family:var(--mono);font-size:13px;fill:var(--pencil)}
+.c-ev .lm05-wrap{border-top:1px solid var(--rule-strong);padding-top:18px;margin-top:8px}
+.c-ev .ph{color:var(--red);font-weight:400}
+.c-ev .lrow.static{cursor:default;opacity:.72}
+.c-ev .lrow.static:hover{background:none}
+.c-ev .idchip{font-family:var(--mono);font-size:10.5px;border:1px solid var(--rule-strong);border-radius:3px;
+  padding:2px 6px;color:var(--pencil)}
+.byfbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:flex-end;margin-bottom:14px}
+.byfbar button{border:1px solid var(--rule-strong);background:var(--paper);border-radius:999px;padding:8px 16px;
+  cursor:pointer;font-family:var(--body);font-size:14px;color:var(--pencil)}
+.byfbar button:hover{border-color:var(--ink);color:var(--ink)}
+.byfbar button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+/* ---- Build Your Future planner ---- */
+.byf{--t1:#E6E3DB;--t2:#F0E4CF;--t3:#DDE6DC;--t4:#DDE2EA;--t5:#E4E0EA;--t6:#EEDDD8}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .byf{
+  --t1:#25282B;--t2:#33291B;--t3:#26302A;--t4:#262C37;--t5:#2B2833;--t6:#33282A}}
+:root[data-theme="dark"] .byf{--t1:#25282B;--t2:#33291B;--t3:#26302A;--t4:#262C37;--t5:#2B2833;--t6:#33282A}
+.byfwrap{overflow-x:auto;padding-bottom:6px}
+.byf-hint{display:none;margin:0 0 8px;font-family:var(--mono);font-size:11px;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--pencil)}
+@media (max-width:920px){ .byf-hint{display:block} }
+.byf{min-width:880px}
+.strip{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));position:relative;margin:0 0 12px;padding:7px 0}
+.strip::before{content:"";position:absolute;left:8%;right:8%;top:50%;border-top:1px dashed var(--rule-strong)}
+.strip .dot{position:relative;justify-self:center;width:15px;height:15px;border-radius:50%;
+  border:1.5px solid var(--ink);background:var(--paper)}
+.strip .dot.on{background:var(--ink)}
+.stripmeta{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px}
+.stripmeta .k,.stripmeta b{font-family:var(--mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--pencil);font-weight:400}
+.cols{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:9px;align-items:start}
+.col{border:1px solid var(--rule-strong);border-radius:6px;background:var(--paper);display:flex;
+  flex-direction:column;min-height:300px}
+.col .head{background:var(--st);border-bottom:1px solid var(--rule-strong);border-radius:5px 5px 0 0;padding:10px}
+.col .head .name{display:block;font-family:var(--serif);font-weight:600;font-size:15.5px;line-height:1.15;color:var(--ink)}
+.cards{display:flex;flex-direction:column;gap:8px;padding:10px;flex:1}
+.cards .empty{margin:0;padding:2px;font-size:12px;font-style:italic;color:var(--pencil)}
+.pc{position:relative;border:1px solid var(--rule-strong);border-radius:8px;background:var(--st);padding:7px 9px 6px}
+.pc .type{display:block;font-family:var(--mono);font-size:8.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--pencil)}
+.pc .t{display:block;margin:2px 0 5px;font-size:12.5px;line-height:1.22;color:var(--ink)}
+.pc .gd{display:flex;gap:3px;justify-content:flex-end}
+.pc .gd i{font-style:normal;width:14px;height:14px;border:1px solid var(--rule-strong);border-radius:50%;
+  font-family:var(--mono);font-size:8.5px;display:grid;place-items:center;color:var(--pencil)}
+.pc .gd i.sel{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+/* the conversational layer: tags that sit over the board and point at what they read */
+.cols{position:relative;transition:padding-top .18s ease}
+.col{position:relative}
+.bub{display:none;position:absolute;z-index:5;bottom:calc(100% + 11px);left:6px;width:max-content;
+  max-width:calc(100% + 34px);border:1px solid #1E1E1C;border-radius:5px;background:var(--k);
+  padding:2px 9px 3px;font-family:var(--hand);font-weight:700;font-size:15px;line-height:1.2;color:#1E1E1C;
+  box-shadow:2px 2px 0 rgba(30,30,28,.18)}
+.bub::after{content:"";position:absolute;left:13px;bottom:-6px;border:6px solid transparent;
+  border-top-color:#1E1E1C;border-bottom:0}
+.byf.on .bub{display:block}
+.b-miss{--k:#E3A69E} .b-check{--k:#EDC08E} .b-more{--k:#AFCFB6} .b-why{--k:#AFC5DE}
+.byf.on .col.flag{border-color:var(--ink)}
+.byf.on .col.flag .head{border-bottom-color:var(--ink)}
+
+</style>
+
+<a class="skip" href="#main">Skip to the page</a>
+<div class="layout">
+<main id="main" tabindex="-1">
+  <div class="pagehead">
+    <div class="eyebrow">
+      <span class="mono">Greater Manchester Combined Authority · p. 12–17</span>
+      <span class="evtag">In discovery, in development</span>
+    </div>
+    <h1>Beeline, and the systems under it</h1>
+    <p class="lede">Beeline is the young person’s version of the MBacc, Greater Manchester’s framework of technical
+      and academic routes into work. It runs across the region’s ten local authorities and serves people up to 25 years old.</p>
+    <p class="press"><b>In the press</b>
+      <a href="https://www.bbc.co.uk/news/articles/cj4k2djd5qpo">Schools to offer technical subjects to pupils from
+        age 14 in England, Burnham says</a>
+      <span class="src">BBC News, 27 July 2026</span></p>
+  </div>
+
+  <div class="stack">
+
+    <section aria-labelledby="art-h">
+      <div class="label">Systems artefacts</div>
+      <h2 id="art-h">Understanding careers education, and building a service for it</h2>
+      <p class="sec-lede">Six artefacts that carry the work: how careers education actually behaves across a region,
+        and what a young person needs from something built inside it.</p>
+
+      <div class="tabs" role="tablist" aria-label="Systems artefacts">
+        <button class="tab" role="tab" id="tab-ls" aria-controls="view-ls" aria-selected="true">Service Landscape</button>
+        <button class="tab" role="tab" id="tab-pm" aria-controls="view-pm" aria-selected="false" tabindex="-1">Problem Model</button>
+        <button class="tab" role="tab" id="tab-dt" aria-controls="view-dt" aria-selected="false" tabindex="-1">Decision Trail</button>
+        <button class="tab" role="tab" id="tab-ml" aria-controls="view-ml" aria-selected="false" tabindex="-1">Metric Ladder</button>
+        <button class="tab" role="tab" id="tab-mv" aria-controls="view-mv" aria-selected="false" tabindex="-1">MVP Experience Curve</button>
+        <button class="tab" role="tab" id="tab-ai" aria-controls="view-ai" aria-selected="false" tabindex="-1">Conversational Layer</button>
+      </div>
+
+      <div class="tpanel" id="view-ls" role="tabpanel" aria-labelledby="tab-ls">
+                <div class="comp c-ls"><div class="sheet ls">
+  <div class="intro">
+
+  <div class="band">
+    <div class="band-head"><h2>What the system is doing</h2></div>
+    <div class="stagebar" id="ls-sysSummary"></div>
+    <div class="grid" id="ls-gSystem"></div>
+  </div>
+
+  <p class="line">Line of experience</p>
+
+  <div class="band">
+    <div class="band-head"><h2>The young person’s reality</h2></div>
+    <p class="muted" style="margin:0;max-width:70ch;font-size:14.5px">The pressure curve is how much is being decided, and how hard it is to undo. It is drawn from the fixed points in the school calendar. Tap a point to see what is happening.</p>
+    <div class="chart"><svg id="ls-curve" viewBox="0 0 1000 320" role="img" aria-labelledby="ls-curveT"><title id="ls-curveT">Pressure on a young person across Key Stages 3 to 5</title></svg></div>
+    <div class="panel" id="ls-curveNote" aria-live="polite"></div>
+    <div class="risk" id="ls-riskRow"></div>
+    <div class="grid" id="ls-gBarriers"></div>
+    <div class="legend">
+      <span><i class="mk found k-ink"></i>Found evidence</span>
+      <span><i class="btag">held in place</i> A systemic barrier holds them there</span>
+      <span><i class="btag">voice louder than theirs</i> Someone else is speaking for them</span>
+      <span><i class="btag">too many roads</i> Too much at once, so they may freeze</span>
+      
+    </div>
+  </div>
+
+  <p class="line">Line of digital offer</p>
+
+  <div class="band">
+    <div class="band-head"><h2>What we build</h2></div>
+    <div class="grid" id="ls-gProd"></div>
+    <div class="legend"><span><i class="mk found k-green"></i>Live now</span><span><i class="mk found k-amber"></i>Next, not built yet</span></div>
+  </div>
+
+  <div class="band">
+    <div class="band-head"><h3>Where it reaches</h3><span class="muted" style="font-size:14px">Delivery buys reach. Channels buy trust.</span></div>
+    <div class="grid" id="ls-gReach"></div>
+    <div class="legend">
+      <span><i class="mk found k-green"></i>Reaches well</span>
+      <span><i class="mk inf k-green"></i>Reaches weakly</span>
+      <span><i class="mk inf k-red"></i>Not available</span>
+    </div>
+  </div>
+
+  <p class="muted" style="font-size:13.5px;margin:0">Drawn from my own landscape mapping for Beeline. Evidence marks show what I could confirm from a source and what is still inferred.</p>
+</div></div></div>
+      </div>
+
+      <div class="tpanel" id="view-pm" role="tabpanel" aria-labelledby="tab-pm" hidden>
+        <p class="what">A fear in a young person’s own words, traced to the people who carry it, the challenges it
+          opens, and the outcomes it resolves into.</p>
+        <div class="comp c-ev">
+<div class="pm">
+  
+
+  <!-- 1. how to read it -->
+  <section aria-labelledby="ev-read-h">
+    <div class="sec-h"><h2 id="ev-read-h">How to read it</h2><span class="hand">one sentence, four layers — step through the examples</span></div>
+    <p class="sentence" id="ev-sentence" aria-live="polite"></p>
+    <div class="exnav">
+      <button type="button" id="ev-prev" aria-label="Previous example">←</button>
+      <span class="dots" id="ev-dots"></span>
+      <button type="button" id="ev-next" aria-label="Next example">→</button>
+    </div>
+    <div class="layers">
+      <div class="layer k-bar"><span class="arrow" aria-hidden="true">→</span><span class="n">6</span><b>Barriers</b><span class="ask">the fear, in their own words</span><p>Written in a young person’s voice, never ours, so we design against what they feel, not what we assume.</p><span class="src">From: landscape mapping</span><span class="enf">Every roadmap phase names the barrier it moves, before it is planned in.</span></div>
+      <div class="layer k-per"><span class="arrow" aria-hidden="true">→</span><span class="n">5</span><b>Personas</b><span class="ask">who carries it</span><p>Different young people carry the same fear differently. One barrier can sit with two personas.</p><span class="src">From: user research</span></div>
+      <div class="layer k-chl"><span class="arrow" aria-hidden="true">→</span><span class="n">10</span><b>Challenges</b><span class="ask">how might we change it</span><p>“How might we…” questions that open a barrier up without jumping to a solution.</p><span class="src">From: design assurance</span><span class="enf">Every new proposal has to answer one of these ten questions.</span></div>
+      <div class="layer k-out"><span class="n">24</span><b>Outcomes</b><span class="ask">what resolved looks like</span><p>“I can…” statements, numbered from first steps (1) to work-ready (24). They become the success measures.</p><span class="src">From: the Equalex framework</span><span class="enf">A change counts as working when a young person can say the outcome.</span></div>
+    </div>
+  </section>
+
+  <!-- 2. follow one fear -->
+  <section aria-labelledby="ev-follow-h">
+    <div class="sec-h"><h2 id="ev-follow-h">Follow one fear, pain or barrier</h2><span class="hand">tap one — the layers below dim to what it reaches</span></div>
+    <div class="flay">
+      <div class="flay-band k-bar"><span class="flay-k">The fear<small>in their words</small></span><div class="flay-row" id="ev-Lbar" role="group" aria-label="Choose a barrier"></div></div>
+      <div class="flay-band k-per"><span class="flay-k">Carried by<small>who it lands on</small></span><div class="flay-row" id="ev-Lper"></div></div>
+      <div class="flay-band k-chl"><span class="flay-k">How might we<small>the challenge it opens</small></span><div class="flay-row" id="ev-Lchl"></div></div>
+      <div class="flay-band k-out"><span class="flay-k">Resolved when<small>what they can say</small></span><div class="flay-row outs24" id="ev-Lout"></div></div>
+    </div>
+    <p class="story" id="ev-story" aria-live="polite"></p>
+  </section>
+
+  <!-- 3. whole system -->
+  <section aria-labelledby="ev-sys-h">
+    <div class="sec-h"><h2 id="ev-sys-h">See the whole system</h2><span class="hand">and where it has a gap</span></div>
+    <p class="lede muted" style="font-size:15.5px">Each row is a fear, each dot an outcome it resolves into. Tap a row to follow it above; hover a dot to read the outcome.</p>
+    <div class="keys"><span><i class="pm-dot"></i>links to this outcome</span><span><i style="width:14px;height:12px;background:repeating-linear-gradient(135deg,transparent 0 3px,var(--red-w) 3px 5px);border:1px solid var(--red)"></i>no fear traces here yet</span></div>
+    <div class="matrix-wrap"><table class="mx" id="ev-mx"></table></div>
+    <p class="readout" id="ev-readout" aria-live="polite"></p>
+    <div class="sticky">Outcome 6 has no fear pointing at it. That’s design assurance working: either a barrier is missing, or part of the service we haven’t mapped is doing the job.</div>
+  </section>
+</div>
+  </div>
+      </div>
+
+      <div class="tpanel" id="view-dt" role="tabpanel" aria-labelledby="tab-dt" hidden>
+        <p class="what">One barrier, the design decision taken against it, what the evidence then said, and what I
+          did about the gap.</p>
+        <div class="comp c-ev">
+    <div class="trail-layout">
+      <div class="picker" id="ev-picker" aria-label="Choose a trail"></div>
+      <article class="trail" id="ev-trail" aria-live="polite"></article>
+    </div>
+  </div>
+      </div>
+
+      <div class="tpanel" id="view-ml" role="tabpanel" aria-labelledby="tab-ml" hidden>
+        <p class="what">Fourteen metrics on a four-step climb, from named, to defined, to baselined, to trended — each one only moving up when the evidence allows it.</p>
+        <div class="comp c-ev">
+    <div style="display:grid;gap:18px">
+            
+      <div class="ladder-layout">
+        <div class="ladder" id="ev-ladder" role="group" aria-label="Metrics by step reached"></div>
+        <aside class="detail" id="ev-detail" aria-live="polite"></aside>
+      </div>
+      <section class="checks" aria-label="Design assurance">
+        <div>
+          <div class="panel-h">Design assurance</div>
+        </div>
+        <div class="checkgrid" id="ev-checkgrid"></div>
+      </section>
+
+      <section class="rough">
+        <h2>Two metrics, in action</h2>
+        <div class="subtabs" role="tablist" aria-label="Metric examples">
+          <button type="button" role="tab" id="ev-t03" aria-controls="ev-p03" aria-selected="true">LM-03 Decision Quality</button>
+          <button type="button" role="tab" id="ev-t05" aria-controls="ev-p05" aria-selected="false" tabindex="-1">LM-05 Follow-Through</button>
+        </div>
+
+        <div id="ev-p03" role="tabpanel" aria-labelledby="ev-t03">
+          <p class="sec-lede">LM-03 asks whether young people leave with more options than they arrived with. A session
+            counts as broadening when it explores two or more <button class="term" data-term="gateways">gateways</button>.
+            This is the first month it could be read: between two thirds and four fifths of sessions narrow to one
+            gateway, and the ones that broaden cluster in Digital and Engineering. That reading is what the Discovery
+            Quiz redesign is now aimed at, and it gave the board a baseline to judge the next release against.</p>
+          <div class="lm03-wrap">
+            <svg class="lm03" viewBox="0 0 888 278" role="img" aria-labelledby="lm03t lm03d">
+  <title id="ev-lm03t">Share of paired-gateway sessions that explored two or more gateways</title>
+  <desc id="ev-lm03d">Digital and Technology 35 per cent. Engineering and Manufacturing 35. Financial, Business and Professional 30. Creative, Culture and Sport 30. Health and Social Care 30. Construction and the Green Economy 25. Education and Early Years 20.</desc>
+  <g>
+    <text class="lbl" x="256" y="24.0" text-anchor="end">Digital and Technology</text>
+    <rect class="track" x="268" y="8" width="560" height="22" rx="4"/>
+    <rect class="bar" x="268" y="8" width="196.0" height="22" rx="4"/>
+    <text class="val" x="474.0" y="24.0">35%</text>
+  </g>
+  <g>
+    <text class="lbl" x="256" y="62.0" text-anchor="end">Engineering and Manufacturing</text>
+    <rect class="track" x="268" y="46" width="560" height="22" rx="4"/>
+    <rect class="bar" x="268" y="46" width="196.0" height="22" rx="4"/>
+    <text class="val" x="474.0" y="62.0">35%</text>
+  </g>
+  <g>
+    <text class="lbl" x="256" y="100.0" text-anchor="end">Financial, Business and Professional</text>
+    <rect class="track" x="268" y="84" width="560" height="22" rx="4"/>
+    <rect class="bar" x="268" y="84" width="168.0" height="22" rx="4"/>
+    <text class="val" x="446.0" y="100.0">30%</text>
+  </g>
+  <g>
+    <text class="lbl" x="256" y="138.0" text-anchor="end">Creative, Culture and Sport</text>
+    <rect class="track" x="268" y="122" width="560" height="22" rx="4"/>
+    <rect class="bar" x="268" y="122" width="168.0" height="22" rx="4"/>
+    <text class="val" x="446.0" y="138.0">30%</text>
+  </g>
+  <g>
+    <text class="lbl" x="256" y="176.0" text-anchor="end">Health and Social Care</text>
+    <rect class="track" x="268" y="160" width="560" height="22" rx="4"/>
+    <rect class="bar" x="268" y="160" width="168.0" height="22" rx="4"/>
+    <text class="val" x="446.0" y="176.0">30%</text>
+  </g>
+  <g>
+    <text class="lbl" x="256" y="214.0" text-anchor="end">Construction and the Green Economy</text>
+    <rect class="track" x="268" y="198" width="560" height="22" rx="4"/>
+    <rect class="bar" x="268" y="198" width="140.0" height="22" rx="4"/>
+    <text class="val" x="418.0" y="214.0">25%</text>
+  </g>
+  <g>
+    <text class="lbl" x="256" y="252.0" text-anchor="end">Education and Early Years</text>
+    <rect class="track" x="268" y="236" width="560" height="22" rx="4"/>
+    <rect class="bar" x="268" y="236" width="112.0" height="22" rx="4"/>
+    <text class="val" x="390.0" y="252.0">20%</text>
+  </g>
+</svg>
+          <div class="lm03-key"><span><i style="background:var(--blue)"></i>Explored two or more gateways</span>
+            <span><i style="background:var(--rule)"></i>Narrowed to one</span>
+            <span>Paired-gateway sessions, 6 July to 4 August 2026. Percentages rounded to the nearest five.</span></div>
+
+        </div>
+        
+        </div>
+
+        <div id="ev-p05" role="tabpanel" aria-labelledby="ev-t05" hidden>
+          <p class="sec-lede">LM-05 asks whether interest turns into a real next step, counted as outbound clicks to
+            live job searches and technical courses. People who finish the Discovery Quiz open more than double the
+            job searches of people who browse the landing page, and more than any of the seven gateway pages manages
+            on its own. The best of those, Finance, Business &amp; Professional Services, reaches 4.0.</p>
+          <div class="lm05-wrap">
+            <svg class="lm05" viewBox="0 0 880 210" role="img" aria-labelledby="ev-lm05t ev-lm05d">
+              <title id="ev-lm05t">Job searches opened per person, by where they came from</title>
+              <desc id="ev-lm05d">People who finish the Discovery Quiz open 5.4 job searches each, the best gateway page 4.0, and the landing page 2.4.</desc>
+              <g font-family="var(--body)">
+                <text class="lbl" x="0" y="42">Discovery Quiz</text>
+                <rect class="track" x="250" y="26" width="560" height="22" rx="4"/>
+                <rect class="bar on" x="250" y="26" width="504" height="22" rx="4"/>
+                <text class="val" x="820" y="42">5.4</text>
+                <text class="lbl" x="0" y="112">Best gateway page</text>
+                <rect class="track" x="250" y="96" width="560" height="22" rx="4"/>
+                <rect class="bar" x="250" y="96" width="373" height="22" rx="4"/>
+                <text class="val" x="820" y="112">4.0</text>
+                <text class="lbl" x="0" y="182">Landing page</text>
+                <rect class="track" x="250" y="166" width="560" height="22" rx="4"/>
+                <rect class="bar" x="250" y="166" width="224" height="22" rx="4"/>
+                <text class="val" x="820" y="182">2.4</text>
+              </g>
+            </svg>
+            <div class="lm03-key">
+              <span><i style="background:var(--blue)"></i>Job searches opened per person</span>
+              <span>Averages, rounded to one decimal place.</span>
+            </div>
+          </div>
+          <p class="sec-lede" style="margin-top:16px">This is the clearest evidence the quiz does the job it was
+            built for, and it is also why step-level tracking is the open ask: how many people start it, and how many
+            finish, is still invisible.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+      </div>
+
+      <div class="tpanel" id="view-mv" role="tabpanel" aria-labelledby="tab-mv" hidden>
+                <div class="comp c-mv">
+  <span class="where" aria-hidden="true">Beeline tab: “Show &amp; Tells” ↓</span>
+  <div>
+    <p class="lede">How the Discovery toolkit felt to young people, phase by phase, from their own feedback.
+      Confidence dips while they work out the game, then spikes once they do. <span class="hl">Some of that dip is
+      the point.</span> Tap a numbered moment to read what happened there.</p>
+  </div>
+
+  <div class="curve-wrap">
+    <div class="curve-controls">
+      <span class="seg" role="group" aria-label="Which curve" id="mv-curveSeg">
+        <button type="button" data-v="mvp" aria-pressed="true">What happened · MVP, July 2026</button>
+        <button type="button" data-v="tobe" aria-pressed="false">What we designed for · Phase 3</button>
+      </span>
+    </div>
+    <div class="panel chart"><svg id="mv-curve" viewBox="0 0 1000 360" role="img" aria-labelledby="mv-curveTitle"><title id="mv-curveTitle">Experience curve across five phases of a Beeline Discovery session</title></svg></div>
+    <div class="legend" id="mv-legend"></div>
+        <div class="note panel" id="mv-note" aria-live="polite"></div>
+  </div>
+
+</div>
+      </div>
+
+      <div class="tpanel" id="view-ai" role="tabpanel" aria-labelledby="tab-ai" hidden>
+                <p class="what">The layer does not sit on a blank page. It sits on <b>Build Your Future</b>, a
+          planning board (another feature I designed) where a young person lays out the steps they are actually
+          considering, from the subjects they take now to the job they are aiming at. The layer reads that board and
+          speaks about what is on it.</p>
+
+        <div class="byfbar">
+          <button type="button" id="bl-layer" aria-pressed="false" aria-controls="bl-board">Show the conversational layer</button>
+        </div>
+
+        <p class="byf-hint">Swipe the board sideways to see every stage</p>
+        <div class="byfwrap">
+        <div class="byf" id="bl-board">
+          <div class="stripmeta"><span class="k">Readiness</span><b>5 of 6 stages</b></div>
+          <div class="strip" aria-hidden="true"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></div>
+          <div class="cols">
+            <section class="col" style="--st:var(--t1)" aria-label="Early Awareness"><div class="head"><span class="name">Early Awareness</span></div><div class="cards"><div class="pc"><span class="type">Subject</span><span class="t">Maths</span><span class="gd" aria-hidden="true"><i class="sel">1</i><i class="">4</i><i class="">6</i></span></div><div class="pc"><span class="type">Subject</span><span class="t">Design &amp; Technology</span><span class="gd" aria-hidden="true"><i class="sel">1</i><i class="">2</i><i class="sel">3</i><i class="">4</i></span></div><div class="pc"><span class="type">Subject</span><span class="t">Environmental Sciences</span><span class="gd" aria-hidden="true"><i class="sel">3</i><i class="">5</i></span></div><div class="pc"><span class="type">Subject</span><span class="t">English Literature</span><span class="gd" aria-hidden="true"><i class="">2</i><i class="">7</i></span></div></div></section>
+            <section class="col flag" style="--st:var(--t2)" aria-label="Exploration"><div class="head"><span class="name">Exploration</span></div><div class="bub b-why">Why this matters&hellip;</div><div class="cards"><div class="pc"><span class="type">Activity</span><span class="t">Coding challenge with a digital skills hub</span><span class="gd" aria-hidden="true"><i class="sel">1</i></span></div><div class="pc"><span class="type">Activity</span><span class="t">Write for Curriculum for Life</span><span class="gd" aria-hidden="true"><i class="">2</i><i class="">7</i></span></div></div></section>
+            <section class="col flag" style="--st:var(--t3)" aria-label="Exposure"><div class="head"><span class="name">Exposure</span></div><div class="bub b-miss">Missing step!</div><div class="cards"><p class="empty">Nothing here yet.</p></div></section>
+            <section class="col" style="--st:var(--t4)" aria-label="Immersion"><div class="head"><span class="name">Immersion</span></div><div class="cards"><div class="pc"><span class="type">Course</span><span class="t">T Level in Digital Production</span><span class="gd" aria-hidden="true"><i class="sel">1</i></span></div><div class="pc"><span class="type">Course</span><span class="t">Construction &amp; Environment (Level 3)</span><span class="gd" aria-hidden="true"><i class="sel">3</i></span></div></div></section>
+            <section class="col flag" style="--st:var(--t5)" aria-label="Next Step"><div class="head"><span class="name">Next Step</span></div><div class="bub b-more">More routes available!</div><div class="cards"><div class="pc"><span class="type">Apprenticeship</span><span class="t">Apprentice web developer</span><span class="gd" aria-hidden="true"><i class="sel">1</i></span></div><div class="pc"><span class="type">First job</span><span class="t">Junior engineer</span><span class="gd" aria-hidden="true"><i class="sel">3</i><i class="">4</i></span></div></div></section>
+            <section class="col" style="--st:var(--t6)" aria-label="Progression"><div class="head"><span class="name">Progression</span></div><div class="cards"><div class="pc"><span class="type">Ambition</span><span class="t">Chartered engineer</span><span class="gd" aria-hidden="true"><i class="sel">3</i><i class="">4</i></span></div><div class="pc"><span class="type">Ambition</span><span class="t">UX designer to product lead</span><span class="gd" aria-hidden="true"><i class="sel">1</i><i class="">2</i></span></div></div></section>
+          </div>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="life-h">
+      <h2 id="life-h">Where I work across the lifecycle</h2>
+      <p class="sec-lede">From mapping the system to the metrics the board reads.</p>
+      <div data-life="beeline" class="life-wrap"></div>
+    </section>
+
+  </div>
+  <div class="nextcase"><a href="sugar.html"><span><small>Next</small>The Artificial Leaf</span><span class="open" aria-hidden="true">open →</span></a></div>
+  <footer class="pagefoot">
+    <span>Beeline · Greater Manchester Combined Authority</span>
+    <span><a href="index.html">← Contents</a> · <a href="sugar.html">The Artificial Leaf →</a></span>
+  </footer>
+</main>
+</div>
+<script src="assets/site.js"></script>
+<script>
+(function(){
+const b=document.getElementById("bl-layer");
+if(!b)return;
+b.onclick=()=>{
+  const on=b.getAttribute("aria-pressed")!=="true";
+  b.setAttribute("aria-pressed",on);
+  b.textContent=on?"Hide the conversational layer":"Show the conversational layer";
+  const board=document.getElementById("bl-board");
+  board.classList.toggle("on",on);
+  const cols=board.querySelector(".cols");
+  if(on){let m=0;board.querySelectorAll(".bub").forEach(x=>{m=Math.max(m,x.offsetHeight)});
+    cols.style.paddingTop=(m+13)+"px";}
+  else cols.style.paddingTop="";
+};
+})();
+</script>
+
+<script>
+(function(){
+const $=id=>document.getElementById(id), T=["03","05"];
+function set(k){T.forEach(x=>{const on=x===k;$("ev-t"+x).setAttribute("aria-selected",on);
+  $("ev-t"+x).tabIndex=on?0:-1;$("ev-p"+x).hidden=!on;});}
+T.forEach(k=>{$("ev-t"+k).onclick=()=>set(k);});
+})();
+</script>
+
+<script>
+(function(){
+const $=id=>document.getElementById(id);
+const EX=[
+ {b:"“It’s not for people like me”", p:"Sarah (uncertain explorer)",
+  c:"how might we redirect people through our services without them losing confidence or feeling dismissed?",
+  o:"“I know that jobs aren’t just for ‘certain types of people’ and my options aren’t limited by stereotypes.”"},
+ {b:"“I can’t see the link”", p:"Daniel (outcome-focused)",
+  c:"how might we separate exploring jobs from building a pathway?",
+  o:"“I can see how my hobbies and interests might connect to real jobs in the future.”"},
+ {b:"“I’m stuck and left behind”", p:"Heather (supported sense-maker)",
+  c:"how might we reduce what a young person has to hold in their head at any one point?",
+  o:"“I know what I enjoy doing and what I’m naturally curious about.”"}
+];
+let i=1;
+function render(){
+  const e=EX[i];
+  $("ev-sentence").innerHTML=
+    `Because a young person tells us <span class="w" style="--k:var(--red)">${e.b}</span>, and it’s `+
+    `<span class="w" style="--k:var(--ink)">${e.p}</span> who carries that fear, we ask `+
+    `<span class="w" style="--k:var(--green)">${e.c}</span> We’ll know it’s resolved when they can say `+
+    `<span class="w" style="--k:var(--hi-ink)">${e.o}</span>`;
+  $("ev-dots").innerHTML=EX.map((_,n)=>
+    `<button type="button" data-i="${n}" aria-current="${n===i}" aria-label="Example ${n+1} of ${EX.length}"><i></i></button>`).join("");
+  $("ev-dots").querySelectorAll("button").forEach(b=>b.onclick=()=>{i=+b.dataset.i;render()});
+}
+$("ev-prev").onclick=()=>{i=(i+EX.length-1)%EX.length;render()};
+$("ev-next").onclick=()=>{i=(i+1)%EX.length;render()};
+render();
+})();
+</script>
+
+<script>
+(function(){
+const T=["ls","pm","dt","ml","mv","ai"], $=id=>document.getElementById(id);
+function setTab(k){T.forEach(x=>{const on=x===k;$("tab-"+x).setAttribute("aria-selected",on);$("tab-"+x).tabIndex=on?0:-1;$("view-"+x).hidden=!on;});}
+window.__blTab=setTab;
+T.forEach(k=>{$("tab-"+k).onclick=()=>setTab(k);});
+document.querySelector(".tabs").addEventListener("keydown",e=>{
+  if(e.key!=="ArrowRight"&&e.key!=="ArrowLeft")return;
+  const i=T.findIndex(k=>$("tab-"+k).getAttribute("aria-selected")==="true");
+  const to=T[(i+(e.key==="ArrowRight"?1:T.length-1))%T.length];
+  setTab(to);$("tab-"+to).focus();});
+})();
+</script>
+<script>
+(function(){
+
+
+const A=(t,tip)=>`<span class="approx" title="${tip||"Illustrative figure. Exact figure held by GMCA"}">≈${t}</span>`;
+
+/* ---------- shared data ---------- */
+const OUTCOMES={1:"I know that jobs aren’t just for ‘certain types of people’ and my options aren’t limited by stereotypes.",8:"I can see how my hobbies and interests might connect to real jobs in the future.",12:"I understand that there are thousands of jobs out there, and some haven’t even been created yet.",13:"I understand there are lots of different ways to work, like apprenticeships, T-Levels, or office vs. remote.",15:"I can confidently compare different gateways and decide which next step is right for me.",16:"I know that I am just starting to figure out my skills, and that is okay.",20:"I can point to real things I’ve done, inside or outside of school, to show I am building workplace skills.",23:"I can show employers how I’ve used my skills in the real world."};
+
+const METRICS=[
+ {id:"PRG-01",name:"School Reach & Adoption",tier:"PRG",rung:2,target:null,targetText:"30% of Greater Manchester secondary schools",
+  measures:"Schools in Greater Manchester actively using Beeline resources: the game, the website, lesson plans and the wider educator toolkit.",why:"Proves adoption and educator buy-in, not just distribution.",
+  evidence:"Decks have gone out to schools, but sending a deck isn’t adoption. The inherited baseline combined the educator toolkit and Beeline in one number, so there’s no Beeline-only baseline yet.",
+  next:"Triangulate a source that identifies schools using Beeline specifically: custom URLs, toolkit downloads and participation records.",asks:[16,10],
+  qs:[["No","Which schools are actually using Beeline, as opposed to having been sent a deck?","The difference between distribution and adoption."]]},
+ {id:"PRG-02",name:"Community Reach & Adoption",tier:"PRG",rung:3,target:3,targetText:"Breadth of settings within each borough",
+  measures:"Presence across settings within Greater Manchester’s local authorities: the breadth of setting types reached, not just the count of authorities.",why:"Proves community buy-in beyond schools.",
+  evidence:"Present in all ten Greater Manchester boroughs. The Phase 1 target is met.",
+  next:"Record settings engaged per borough, turning presence into breadth.",asks:[11],
+  qs:[["Yes","Is Beeline present in all ten boroughs?","Met, September 2026."],["Not yet","How many, and what kinds of, setting within each borough?","Needs setting type recorded in the engagement tracker."]]},
+ {id:"PRG-03",name:"Co-design Participation",tier:"PRG",rung:2,target:null,targetText:"A first count of groups and reported reach",
+  measures:"Young people and groups actively involved in shaping Beeline, held as three sub-metrics.",why:"Tracks whether we design with young people, not for them.",
+  evidence:"Youth co-design group structured on the Lundy model, running to July 2027, with four community partners engaged.",
+  next:"Agree how co-design participation is recorded, so it can be counted.",asks:[12,14,15],
+  qs:[["Not yet","How many young people are involved, and consistently?","Meaningful participation, not growth."],["Partly","How many people do settings tell us they reach with Beeline resources?","Always labelled as projected, never as achieved reach."],["Partly","Are co-design groups drawn from a varied enough range of settings?","Qualitative, captured in design assurance rounds."]]},
+ {id:"PRG-03-01",name:"Co-design groups engaged",tier:"PRG",sub:true,rung:2,target:null,targetText:"A count per co-design block",
+  measures:"Number of co-design groups actively engaged in a co-design block.",why:"Shows the programme is designing with young people.",
+  evidence:"Four community partners engaged; co-design blocks running to July 2027.",next:"A countable field per co-design block.",asks:[13],qs:[]},
+ {id:"PRG-03-02",name:"Projected reach through resources",tier:"PRG",sub:true,rung:2,target:null,targetText:"A first dated total, held apart from measured reach",
+  measures:"Reach that settings report back through the toolkit request form.",why:"An early read on where resources land during Launch & Learn.",
+  evidence:"Self-reported by groups. Reported, not observed, so it’s never quoted as achieved reach.",next:"Agree how projected reach is derived from the form.",asks:[14],qs:[]},
+ {id:"PRG-03-03",name:"Varied settings of co-design groups",tier:"PRG",sub:true,rung:2,target:null,targetText:"Qualitative, so it doesn’t climb further",
+  measures:"The range and type of settings co-design groups sit in.",why:"Guards against a cohort that is engaged but narrow.",
+  evidence:"From the toolkit request form and design assurance rounds.",next:"Record setting type consistently.",asks:[15],qs:[]},
+ {id:"PRG-04",name:"Unplugged Transition Rate",tier:"PRG",rung:2,target:3,targetText:"Baselined",
+  measures:"People entering the digital service from physical or offline activations (QR panels, decks, events).",why:"Tests whether Unplugged work bridges young people into Beeline. Also reports against the Service Standard digital take-up KPI.",
+  evidence:"QR codes and tracked links are built and logged. Nothing has been read off them yet.",
+  next:"Read arrivals for one complete calendar month.",asks:[18],
+  qs:[["Not yet","How many people arrive from a physical activation?","Needs one full month of arrivals read."]]},
+ {id:"PRD-01",name:"Total Active Users",tier:"PRD",rung:4,target:4,targetText:"Trended",
+  measures:"Unique users landing on the platform.",why:"Baseline digital reach, and the denominator the MNSR needs.",
+  evidence:"Carried over from the previous service. GA4 is collecting against the new definition.",
+  next:"Record a figure for each complete month. Three or more gives direction.",asks:[20],
+  qs:[["Not yet","How many unique people land on the platform?","GA4 is collecting; monthly figures not yet recorded under this definition."]]},
+ {id:"PRD-02",name:"Meaningful Next Step Rate",tier:"PRD",rung:1,target:null,targetText:"Not set: it follows its components",
+  measures:"Share of users who take at least one next step across the Learning Moments.",why:"The single figure that says whether the service moved anyone.",
+  evidence:"Deliberately sequenced after its components. It can’t be defined until each Learning Moment has a settled definition and population.",
+  next:"Agree the composition: numerator from the Learning Moments, denominator from Total Active Users.",asks:[9],
+  qs:[["No","What share of users take at least one next step?","Needs settled definitions for LM-01 to LM-05."]]},
+ {id:"LM-01",name:"Engagement",tier:"LM",rung:2,target:3,targetText:"Baselined",
+  measures:"Finishing the Discovery Quiz with three gateway results, OR arriving on a gateway page from an Unplugged code, OR staying 30+ seconds with real scroll on a core gateway page.",why:"Did the entry tools turn attention into active exploration?",
+  evidence:"The definition has three parts, and none has a stated population yet.",
+  next:"State the population for each part. Until then they can’t be added up or reported as one number.",asks:[21],
+  qs:[["Not yet","Does someone who starts the quiz reach three gateway results?","Needs a stated population."],["Not yet","Does an Unplugged campaign code actually land someone on a gateway page?","Ties back to PRG-04."],["Not yet","Does someone stay and scroll far enough to count as exploring?","Needs scroll-depth tracking and a population."]]},
+ {id:"LM-02",name:"Comprehension",tier:"LM",rung:2,target:3,targetText:"Baselined",
+  measures:"Whether young people understand the seven MBacc gateways: clarity from research, plus an in-service ‘I can…’ prompt.",why:"Checks the platform demystifies technical routes and reduces early self-exclusion (‘this isn’t for me’).",
+  evidence:"In-service instrument designed September 2026: one ‘I can…’ statement per prompt, answered Yes / Not sure / Not yet.",
+  next:"Field it at the shortlisted placements in the Phase 2 Learn window. Four of six placements are offline.",asks:[19],
+  qs:[["Not yet","Can a young person say what each of the seven gateways means?","Instrument designed, not yet fielded."],["Not yet","Does the platform reduce ‘this isn’t for me’?","The barrier LM-02 exists to address."]]},
+ {id:"LM-03",name:"Decision Quality",tier:"LM",rung:2,target:3,targetText:"Baselined",
+  measures:"Share of users who explore more than two MBacc gateways within a single journey.",why:"Checks the product prevents early narrowing.",
+  evidence:`First reading over a rolling 30-day window (${A("130")} active users on the anchor gateway). GA4 can only compare three segments at once, so it reads pairs, which is a tool limit and not a finding.`,
+  next:"A user-level export and a single-journey condition, so ‘more than two gateways’ can actually be read.",asks:[4,5,17],
+  qs:[["Yes","Do people look at more than one gateway at all?",`Only ${A("6 of 21")} possible gateway pairings are explored.`],["No","Do people look at more than two gateways?","The headline question. Pairs can’t answer it."],["No","Do they broaden within one journey, or across visits?","The definition says one journey."],["Yes","Which gateways get explored together?","Informs how gateways cross-link."],["Yes","Does a gateway’s standing change after a release?","Before and after release comparisons."],["Yes","Do people return in order to decide?","They return to decide, but not to act."]]},
+ {id:"LM-04",name:"Confidence",tier:"LM",rung:2,target:3,targetText:"Baselined",
+  measures:"Self-reported confidence about next career actions, from in-service prompts and research groups.",why:"Moving from passive viewing to motivated planning.",
+  evidence:"Shares the LM-02 instrument. Statement 15, placed at the Next Steps Guide, is the keystone reading.",
+  next:"Field the instrument, and record the move from a 1–5 score to Yes / Not sure / Not yet as a deliberate baseline restart.",asks:[19,8],
+  qs:[["Not yet","Does a young person leave with a next action in mind?","Statement 15 at the Next Steps Guide."],["No","Confidence to explore, to choose, and to prove?","Proving needs a workplace setting: the Employer Hub, Phase 3. A scope limit, not a gap."]]},
+ {id:"LM-05",name:"Follow-Through",tier:"LM",rung:3,target:4,targetText:"Trended",
+  measures:"Outbound clicks from gateway pages to live job searches or technical training courses.",why:"Does interest turn into a real, tangible next step?",
+  evidence:`First complete month under a corrected definition: ${A("1,900")} outbound clicks. The measure was redefined in August 2026, because earlier figures missed the landing page, so nothing before July 2026 is comparable.`,
+  next:"Add gateway page views as the denominator, which turns a count into a rate.",asks:[2,6,1,3,7],
+  qs:[["Yes","How many times did people act?",`${A("1,900")} clicks in the baseline month.`],["No","What share of people who reached a gateway went on to act?","The single highest-value gap."],["Yes","Where does interest concentrate?",`${A("90%")} of clicks came from the seven gateway pages.`],["Yes","Do gateways reach many people shallowly, or few deeply?","Reach and depth vary widely between gateways."],["No","Is depth real, or an artefact of how many roles a page lists?","Seven numbers would fix it."],["Partly","Does finishing the Discovery Quiz make someone more likely to act?",`Quiz finishers who acted opened ${A("2×")} as many searches, but only among people we can already see.`],["No","What share of people who start the quiz finish it?","Needs step-level tracking."],["Yes","Do people come back and act again?",`Almost never: a handful out of several hundred.`],["No","Do people act on training courses as well as job searches?","Only job searches are tracked, so half the definition is invisible."]]}
+];
+const TIERS={PRG:["Programme","Is it reaching people?"],PRD:["Product headline","Is it working overall?"],LM:["Learning Moments","What changed for them?"]};
+const RUNGS=["Named","Defined","Baselined","Trended"];
+
+const ASKS={1:["Quiz submissions download","Digital team","Open"],2:["Gateway page views per month","Digital team","Open"],3:["Quiz step-level tracking: start, each step, finish, abandon","Digital team","Open"],4:["User-level export: gateways touched per journey","Digital team","Open"],5:["Single-journey condition on the gateway segments","Digital team","Open"],6:["A count of roles listed on each gateway page","Content team","Open"],7:["Tracking on apprenticeship and T Level course links","Digital team","Open"],8:["Confirm the move to Yes / Not sure / Not yet","Product","Open"],9:["Agree the MNSR composition","Product","Open"],10:["Settle the denominator behind the schools target","Programme","Closed"],11:["Record setting type per borough","Engagement team","Open"],12:["Track co-design participation","Engagement team","Open"],13:["A countable field for co-design groups","Engagement team","Open"],14:["Derive projected reach from the request form","Engagement team","Open"],15:["Route setting type from the form to the tracker","Engagement team","Closed"],16:["A triangulated source for schools using Beeline","Programme","Open"],17:["A BigQuery export for the gateway deep dive","Digital team","Open"],18:["Read one full month of Unplugged arrivals","Me","Open"],19:["Field the in-service ‘I can…’ instrument","Me","Open"],20:["Record Total Active Users monthly","Me","Open"],21:["State the population for each part of LM-01","Me","Open"]};
+
+const FEATURES=[
+ ["Discovery Quiz","1","Live",["LM-01","LM-03","LM-05"]],
+ ["Gateway pages (refresh)","1","Live",["LM-02","LM-03","LM-05"]],
+ ["Explore jobs links","1","Live",["LM-05"]],
+ ["Next Steps Guide","1","Live",["LM-04","LM-05"]],
+ ["Homepage job links","1","Live",["LM-05"]],
+ ["Unplugged QR panels & decks","1–2","Live",["PRG-04","LM-01"]],
+ ["Educator toolkit","1","Live",["PRG-01"]],
+ ["Toolkit request form","1","Live",["PRG-03-02","PRG-03-03"]],
+ ["In-service ‘I can…’ instrument","2","In design",["LM-02","LM-04"]],
+ ["Gateway pages (restructure)","2","In design",[]],
+ ["Employer Hub","3","Idea",["LM-04"]],
+ ["Build Your Future","3","Idea",["LM-04"]]
+];
+
+/* ---------- trails ---------- */
+const TRAILS=[
+ {id:"link",q:"I can’t see the link",bar:"B2",people:[["Daniel","the Outcome-Focused"]],
+  chl:["C2","How might we separate exploring jobs from building a pathway, so the gateway pages stop being where the journey collapses?"],
+  dec:{name:"Discovery Quiz",meta:"Phase 1 · Live",bet:"Matching a young person to three gateways gives them a starting point, so they explore instead of stalling at the first page."},
+  met:["LM-01 Engagement","LM-03 Decision Quality","LM-05 Follow-Through"],outs:[8,15],
+  evi:{s:"partly",l:"Partly visible",pts:[`Quiz finishers who went on to act opened ${A("2×")} as many job searches as people arriving from the landing page.`,"But that only covers people we can already see acting. How many start, finish, or finish and stop isn’t visible yet, so the quiz can’t yet be judged on the job it was built for."]},
+  next:["Asked the digital team for quiz submissions and step-level tracking, and tied both to the metric they unblock.","Discovery Game v2 changes the product in Phase 2, so I logged a deliberate re-baseline instead of letting old and new numbers blur together."],
+  shows:["Testing assumptions","Evidence before claims","Working with engineering"]},
+ {id:"safe",q:"I’ll play it safe",bar:"B3",people:[["Sarah","the Uncertain Explorer"],["Dylan","the Overwhelmed Explorer"]],
+  chl:["C3","How might we support a journey that’s messy and non-linear, where exploring and deciding happen at the same time?"],
+  dec:{name:"Gateway pages refresh",meta:"Phase 1 · Live",bet:"A clear page per gateway lets someone compare routes instead of fixing on the first one they see."},
+  met:["LM-02 Comprehension","LM-03 Decision Quality","LM-05 Follow-Through"],outs:[12,13,15],
+  evi:{s:"partly",l:"Partly visible",pts:[`Only ${A("6 of 21")} possible gateway pairings are being explored. Broadening is happening, but narrowly.`,"People come back to decide, but not to act. Returning to follow through is almost non-existent.","The analytics tool can only compare three segments at once, so ‘more than two gateways’ can’t be read yet. I flagged that as a tool limit, not a finding."]},
+  next:["Gateway pages restructure (Phase 2, in design): use which gateways get explored together to decide how they cross-link.","Asked for a user-level export and a count of roles per page, so depth isn’t just an artefact of how long a page is."],
+  shows:["Synthesising messy data","Telling a tool limit from a finding","Iterating the product"]},
+];
+
+/* ---------- render: trail ---------- */
+const $=id=>document.getElementById(id);
+let trailId="link";
+function renderPicker(){
+  $("ev-picker").querySelectorAll(".pick").forEach(n=>n.remove());
+  TRAILS.forEach(t=>{
+    const b=document.createElement("button");
+    b.className="pick";b.type="button";b.setAttribute("aria-pressed",t.id===trailId);
+    b.innerHTML=`<span class="meta">${t.bar}</span><span class="q">“${t.q}”</span><span class="f">${t.dec.name}</span>`;
+    b.onclick=()=>{trailId=t.id;renderPicker();renderTrail()};
+    $("ev-picker").appendChild(b);
+  });
+}
+function station(cls,lab,body){return `<div class="station ${cls}"><div class="lab">${lab}</div><div class="rail"><span class="dot" aria-hidden="true"></span></div><div class="body">${body}</div></div>`}
+function renderTrail(){
+  const t=TRAILS.find(x=>x.id===trailId);
+  const demo=t.dec.demo?`<form class="demo" onsubmit="return false"><span class="tag">Try the component · placed at the Next Steps Guide</span>
+    <fieldset><legend>“${OUTCOMES[15]}”</legend>
+    <div class="opts">${["Yes","Not sure","Not yet"].map((o,i)=>`<label><input type="radio" name="ican" id="ican-${i}" value="${o}"><span>${o}</span></label>`).join("")}</div></fieldset>
+    <div class="res" id="ican-res">One question, three honest answers, no score.</div></form>`:"";
+  $("ev-trail").innerHTML=`
+    <div class="trail-top"><div><div class="meta">Barrier ${t.bar.slice(1)} · traced</div><p class="q">“${t.q}”</p></div></div>
+    ${station("s-bar","Carried by",`<div class="who">${t.people.map(p=>`<span class="chip per"><b>${p[0]}</b> ${p[1]}</span>`).join("")}</div>`)}
+    ${station("s-chl","Challenge",`<div class="meta">${t.chl[0]}</div><div class="h">${t.chl[1]}</div>`)}
+    ${station("s-dec","Design decision",`<div class="h">${t.dec.name} <span class="meta">· ${t.dec.meta}</span></div><div class="bet"><b>The bet</b>${t.dec.bet}</div>${demo}`)}
+    ${station("s-met","Measured by",`<div class="who">${t.met.map(m=>`<button type="button" class="chip met" data-go="${m.split(" ")[0]}"><b>${m.split(" ")[0]}</b>${m.split(" ").slice(1).join(" ")}</button>`).join("")}</div><div class="outs">${t.outs.map(n=>`<div><span>#${n}</span>${OUTCOMES[n]}</div>`).join("")}</div>`)}
+    ${station("s-evi","What the evidence said",`<span class="pill ${t.evi.s}">${t.evi.l}</span><ul class="pts">${t.evi.pts.map(p=>`<li>${p}</li>`).join("")}</ul>`)}
+    ${station("s-next","What I did next",`<ul class="pts">${t.next.map(p=>`<li>${p}</li>`).join("")}</ul>`)}`;
+  $("ev-trail").querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>{selId=b.dataset.go;window.__blTab("ml");renderLadder();$("ev-detail").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"nearest"})});
+  $("ev-trail").querySelectorAll('input[name="ican"]').forEach(r=>r.onchange=()=>{
+    const msg={"Yes":"Recorded as Yes. It counts toward LM-04 Confidence at this placement.","Not sure":"Recorded as Not sure. That’s a signal to improve this step, not a failure.","Not yet":"Recorded as Not yet. It tells us where support is missing, without asking for a score."};
+    $("ican-res").textContent=msg[r.value];
+  });
+}
+
+/* ---------- render: ladder ---------- */
+let selId="LM-05";
+const qaCount=m=>[m.qs.filter(q=>q[0]==="Yes").length,m.qs.length];
+function renderLadder(){
+  let h=`<div class="lhead"><span>Metric</span><span class="rungs-h">${RUNGS.map(r=>`<span>${r}</span>`).join("")}</span><span style="text-align:right">Can answer</span></div>`;
+  ["PRG","PRD","LM"].forEach(t=>{
+    h+=`<div class="tier"><b>${TIERS[t][0]}</b><span>${TIERS[t][1]}</span></div>`;
+    METRICS.filter(m=>m.tier===t).forEach(m=>{
+      const [y,n]=qaCount(m);
+      const fillW=(m.rung-1)*25;
+      const open=(m.id==="LM-03"||m.id==="LM-05");
+      h+=`<${open?"button":"div"} ${open?'type="button"':""} class="lrow${m.sub?" sub":""}${open?"":" static"}" ${open?`data-id="${m.id}" aria-pressed="${m.id===selId}"`:""} aria-label="${m.id} ${m.name}: ${RUNGS[m.rung-1]}${m.target?", 2027 target "+RUNGS[m.target-1]:""}">
+        <span class="nm"><i>${m.id}</i><b>${m.name}</b></span>
+        <span class="track" aria-hidden="true"><span class="fill" style="width:${fillW}%"></span>${[1,2,3,4].map(r=>`<span class="n${r<=m.rung?" on":""}${m.target===r&&m.target>m.rung?" tgt":""}"></span>`).join("")}</span>
+        <span class="qa">${n?`<b>${y}</b>/${n}`:"—"}</span></${open?"button":"div"}>`;
+    });
+  });
+  h+=`<div class="legend"><span><i style="background:var(--c-met)"></i>Step reached</span><span><i style="background:var(--surface);box-shadow:0 0 0 2px var(--honey)"></i>Where 2027 asks it to be</span><span>Can answer = must-answer questions answerable today</span></div>`;
+  $("ev-ladder").innerHTML=h;
+  $("ev-ladder").querySelectorAll("button.lrow").forEach(b=>b.onclick=()=>{selId=b.dataset.id;renderLadder()});
+  renderDetail();
+}
+const pillFor=s=>({"Yes":"yes","Partly":"partly","No":"no","Not yet":"no"})[s];
+function renderDetail(){
+  const m=METRICS.find(x=>x.id===selId);
+  const feats=FEATURES.filter(f=>f[3].includes(m.id));
+  $("ev-detail").innerHTML=`
+    <div><div class="id">${m.id} · ${TIERS[m.tier][0]}${m.sub?" · sub-metric":""}</div><h3>${m.name}</h3>
+      <span class="pill ${m.rung>=3?"yes":m.rung===2?"partly":"no"}">Step ${m.rung} · ${RUNGS[m.rung-1]}</span></div>
+    <dl class="kv">
+      <dt>Counts</dt><dd>${m.measures}</dd>
+      <dt>Why</dt><dd>${m.why}</dd>
+      <dt>Where it is</dt><dd>${m.evidence}</dd>
+      <dt>Next step</dt><dd>${m.next}</dd>
+      <dt>2027 asks</dt><dd>${m.targetText}</dd>
+    </dl>
+    ${m.qs.length?`<div><div class="panel-h">Must-answer questions</div><ul class="qs">${m.qs.map(q=>`<li><span class="pill ${pillFor(q[0])}">${q[0]}</span><span>${q[1]}<small>${q[2]}</small></span></li>`).join("")}</ul></div>`:""}
+    <div><div class="panel-h">Designed to move it</div>${feats.length?`<div class="feats">${feats.map(f=>`<span class="chip">${f[0]} <b>P${f[1]} · ${f[2]}</b></span>`).join("")}</div>`:`<p style="color:var(--c-bar);font-size:14px">No feature is designed to move this yet. It’s measured, not designed for.</p>`}</div>
+    <div><div class="panel-h">What unblocks it</div><ul class="asks">${m.asks.map(a=>`<li class="${ASKS[a][2]==="Closed"?"closed":""}"><span class="num">#${a}</span><span>${ASKS[a][0]}</span><span class="by">${ASKS[a][1]}${ASKS[a][2]==="Closed"?" · done":""}</span></li>`).join("")}</ul></div>`;
+}
+function renderChecks(){
+  const liveMetrics=new Set(FEATURES.filter(f=>f[2]==="Live").flatMap(f=>f[3]));
+  const notDesigned=METRICS.filter(m=>!liveMetrics.has(m.id)).map(m=>m.id);
+  const climbedBlocked=METRICS.filter(m=>m.rung>=3&&m.asks.some(a=>ASKS[a][2]==="Open")).map(m=>m.id);
+  const behind=METRICS.filter(m=>m.target&&m.target>m.rung).map(m=>m.id);
+  const dig=Object.values(ASKS).filter(a=>a[2]==="Open"&&a[1]==="Digital team").length;
+  const cards=[
+    [notDesigned.length,"Measured, but not designed for","No live feature points at these. Either the roadmap has a gap, or the metric belongs to the programme, not the product.",notDesigned],
+    [climbedBlocked.length,"Climbed while still blocked","These have a first number but still have open asks, so the number is real but incomplete.",climbedBlocked],
+    [behind.length,"Behind where 2027 asks",`Each one has a named next step. ${dig} of the open asks sit with the digital team, so the work is shared, not stuck.`,behind]
+  ];
+  $("ev-checkgrid").innerHTML=cards.map(c=>`<div class="check"><span class="n">${c[0]}</span><span class="t">${c[1]}</span><p>${c[2]}</p><div class="ids">${c[3].map(i=>`<span class="idchip">${i}</span>`).join("")}</div></div>`).join("");
+  $("ev-checkgrid").querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>{selId=b.dataset.go;renderLadder();$("ev-detail").scrollIntoView({behavior:"smooth",block:"nearest"})});
+}
+
+renderPicker();renderTrail();renderLadder();renderChecks();
+
+
+(function(){
+const BARRIERS=[
+ {id:1,q:"It’s not for people like me",p:["clare","sarah"],c:[1,6,10],o:[1,4,5,7,10,16]},
+ {id:2,q:"I can’t see the link",p:["daniel"],c:[2],o:[4,8,10,12,13,14,15],lead:8},
+ {id:5,q:"I’m stuck and left behind",p:["heather","dylan"],c:[4,5,7],o:[1,2,4,12,15,16,17,18,19,20,21,24]}
+];
+const P={sarah:["Sarah","the Uncertain Explorer"],daniel:["Daniel","the Outcome-Focused"],heather:["Heather","the Supported Sense-maker"],dylan:["Dylan","the Overwhelmed Explorer"],clare:["Clare","the Confident, Self-directed"]};
+const C={1:"redirect people through our services without them losing confidence or feeling dismissed",2:"separate exploring jobs from building a pathway, so the gateway pages stop being where the journey collapses",3:"support a journey that’s messy and non-linear, where exploring and deciding happen at the same time",4:"reduce what a young person has to hold in their head at any one point",5:"say what we’re obliged to say in far fewer words, without losing the meaning",6:"make it obvious that what a young person is reading is true and current",7:"make the Unplugged offline toolkits and the website hand off to each other properly",8:"support the adults around a young person, not only the young person",9:"help a young person see what they can now do that they couldn’t before",10:"make encounters with employers feel real and useful"};
+const O={1:"I know that jobs aren’t just for ‘certain types of people’ and my options aren’t limited by stereotypes.",2:"I know what I enjoy doing and what I’m naturally curious about.",3:"I can name a few different roles inside a company and explain what those people actually do every day.",4:"I know how to find out which industries are actually growing right now in Greater Manchester.",5:"I can look back at my experiences, see past the stereotypes, and aim wider for my career.",6:"I can name a few different jobs, even if I don’t know everything about what they do yet.",7:"I can describe the characteristics of the workplaces these jobs might take place in.",8:"I can see how my hobbies and interests might connect to real jobs in the future.",9:"I know which personal skills I need to work on (like communication) and how to start practising them.",10:"I can compare different places I’ve worked or visited to figure out which environment actually suits me best.",11:"I know what activities I actually enjoy doing and what I am curious to try next.",12:"I understand that there are thousands of jobs out there, and some haven’t even been created yet.",13:"I understand there are lots of different ways to work, like apprenticeships, T-Levels, or office vs. remote.",14:"I understand the different technical pathways available to me and how they actually differ.",15:"I can confidently compare different gateways and decide which next step is right for me.",16:"I know that I am just starting to figure out my skills, and that is okay.",17:"I know how to take feedback from an employer or mentor and use it to improve my plans.",18:"I can clearly explain what I learned from my work experiences, and how they changed my mind about what I want to do.",19:"I can clearly explain how my past experiences are helping me choose my next steps with confidence.",20:"I can point to real things I’ve done, inside or outside of school, to show I am building workplace skills.",21:"I can give examples of skills I have that workplaces need, like working well in a team or working online.",22:"I can complete a task set by an employer and easily spot the skills I used to get it done.",23:"I can show employers how I’ve used my skills in the real world.",24:"I can look back at my work experience and see how it helped me get ready for my career."};
+const $=id=>document.getElementById(id);
+let sel=2;
+const cap=s=>s[0].toUpperCase()+s.slice(1);
+const list=a=>a.length<2?a[0]:a.slice(0,-1).join(", ")+" and "+a[a.length-1];
+
+function layers(){
+  const b=sel?BARRIERS.find(x=>x.id===sel):null;
+  const dim=cond=>b&&!cond?" dim":"";
+  $("ev-Lbar").innerHTML=BARRIERS.map(x=>
+    `<button type="button" class="it${x.id===sel?" on":""}" aria-pressed="${x.id===sel}" data-id="${x.id}"><span class="id">B${x.id}</span>\u201c${x.q}\u201d</button>`).join("");
+  $("ev-Lbar").querySelectorAll("button").forEach(x=>x.onclick=()=>{sel=(sel===+x.dataset.id)?null:+x.dataset.id;render()});
+  $("ev-Lper").innerHTML=Object.keys(P).map(k=>
+    `<div class="it${dim(b&&b.p.includes(k))}"><b>${P[k][0]}</b><span class="sub">${P[k][1]}</span></div>`).join("");
+  $("ev-Lchl").innerHTML=Object.keys(C).map(n=>
+    `<div class="it${dim(b&&b.c.includes(+n))}"><span class="id">C${n}</span>${C[n]}?</div>`).join("");
+  const shown=(b?b.o:BARRIERS[0].o);
+  $("ev-Lout").innerHTML=shown.map(n=>
+    `<div class="it"><span class="id">#${n}</span><span>${O[n]}</span></div>`).join("");
+  if(!b){ $("ev-story").innerHTML="Three of the six fears, pains and barriers, the people who carry them, the challenges they open and the outcomes they resolve into. Tap one to follow it."; return; }
+  const lead=b.lead||[...b.o].sort((a,c)=>a-c)[0], names=b.p.map(k=>P[k][0]);
+  $("ev-story").innerHTML=`Because a young person tells us \u201c${b.q}\u201d, and ${list(names)} carr${names.length>1?"y":"ies"} that fear, we ask how might we ${C[b.c[0]]}${b.c.length>1?` (and ${b.c.length-1} more)`:""}? It is resolved when they can say \u201c${O[lead]}\u201d`;
+}
+function renderMatrix(){
+  const linked=n=>BARRIERS.some(b=>b.o.includes(n));
+  const cols=[...Array(24)].map((_,i)=>i+1);
+  let h=`<thead><tr><th class="grp" colspan="3"></th><th class="grp sep" colspan="24" style="text-align:left;padding-left:8px">Outcomes · 1 first steps → 24 work-ready</th></tr>
+  <tr><th scope="col" style="text-align:left;padding-left:12px">Fear</th><th scope="col" style="text-align:left;padding-left:8px">Carried by</th><th scope="col" style="text-align:left;padding-left:8px">Challenges</th>${cols.map(n=>`<th scope="col" class="${n===1?"sep ":""}${linked(n)?"":"gaph"}">${n}</th>`).join("")}</tr></thead><tbody>`;
+  BARRIERS.forEach(b=>{
+    h+=`<tr class="${b.id===sel?"on":""}"><th scope="row" class="row"><button type="button" data-id="${b.id}" aria-label="Follow barrier ${b.id}: ${b.q}"><small>B${b.id}</small>“${b.q}”</button></th>
+      <td class="p">${b.p.map(k=>P[k][0]).join(", ")}</td><td class="c">${b.c.map(n=>"C"+n).join(" ")}</td>
+      ${cols.map(n=>`<td class="o${n===1?" sep":""}${linked(n)?"":" gapcol"}">${b.o.includes(n)?`<span class="pm-dot" tabindex="0" role="img" data-o="${n}" data-b="${b.id}" aria-label="B${b.id} resolves into outcome ${n}: ${O[n]}"></span>`:""}</td>`).join("")}</tr>`;
+  });
+  h+=`</tbody><tfoot><tr><td colspan="3" style="text-align:left;padding-left:12px">Fears per outcome</td>${cols.map(n=>`<td class="${n===1?"sep":""}">${BARRIERS.filter(b=>b.o.includes(n)).length||"–"}</td>`).join("")}</tr></tfoot>`;
+  $("ev-mx").innerHTML=h;
+  $("ev-mx").querySelectorAll("th.row button").forEach(x=>x.onclick=()=>{sel=+x.dataset.id;render();$("ev-follow-h").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"})});
+  const show=e=>{const d=e.target.closest(".pm-dot");if(!d)return;const n=+d.dataset.o,shared=BARRIERS.filter(b=>b.o.includes(n)).map(b=>"B"+b.id);$("ev-readout").innerHTML=`<b>#${n}</b>${O[n]} <span class="muted">· shared by ${shared.join(", ")}</span>`};
+  $("ev-mx").onmouseover=show;$("ev-mx").onfocusin=show;
+}
+function render(){layers();renderMatrix()}
+render();
+$("ev-readout").innerHTML=`<b>#6</b>${O[6]} <span class="muted">· no fear points here yet</span>`;
+})();
+
+
+})();
+</script>
+<script>
+(function(){
+
+const $=id=>document.getElementById(id);
+const seg=(id,fn)=>$(id).querySelectorAll("button").forEach(b=>b.onclick=()=>{$(id).querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",x===b));fn(b.dataset.k||b.dataset.v)});
+
+/* curve */
+
+const PH=["Arrival & onboarding","Active discovery","The reveal & scoring","The digital bridge","The cyclical loop"];
+const X0=60,X1=980,W=(X1-X0)/5, Y=v=>300-v*250; // v: 0 low .. 1 high, .5 neutral
+const px=(p,f)=>X0+W*(p+f);
+// offline (dashed) and online (dotted) from the board, approximate
+const OFF=[[0,0,.5],[0,.35,.44],[0,.75,.16],[1,.05,.27],[1,.12,.72],[1,.9,.74],[2,.1,.84],[2,.3,.80],[2,.5,.44],[2,.9,.62],[3,.1,.88],[3,.3,.9],[3,.55,.5],[3,.95,.52],[4,.2,.54],[4,1,.4]];
+const TOBE=[[0,0,.5],[0,.6,.6],[1,.15,.5],[1,.55,.72],[2,.3,.8],[2,.6,.7],[2,.9,.8],[3,.5,.78],[4,.5,.84],[4,1,.9]];
+const HOT={mvp:[
+ {p:0,f:.62,v:.19,t:"bad",h:"Arrival & onboarding",off:"Young people are handed the toolkit, or a group opens the pack on its own. Without a facilitator they hesitate while they work out the mechanics. Peer groups adapt by trial and error, but structured settings need clear onboarding.",said:"“We sort of had to make up rules.” · “Clearer instructions, as I am not sure if we played this correctly.”",src:"Young people’s feedback, July 2026"},
+ {p:1,f:.08,v:.27,t:"good",h:"Active discovery: the productive dip",off:"Groups sort the 18 discovery cards together. Uncertainty over “doing it wrong” sometimes becomes a positive learning moment. With a facilitator it usually does; with peers alone it doesn’t always.",said:"“It was really fun to see how my personality fits a certain job pathway. It was confusing at first but once we got the hang of it, it was really easy.”",src:"Young people’s feedback, July 2026"},
+ {p:1,f:.85,v:.73,t:"good",h:"Active discovery: the spike",off:"Once groups figure it out, flexible rules let them adapt the game to how they work, and that builds real ownership. Seeing their matched gateways on the tally chart is a clear moment of delight.",said:"“It was fun to hear everyone’s different answers in my group.”",src:"Young people’s feedback, July 2026"},
+ {p:2,f:.5,v:.44,t:"mixed",h:"The reveal & scoring",off:"A result that matches a young person’s direction reads as accurate. One that differs opens reflection when an adult is there, but the pack carried no prompt for it. Rigid sector titles can trigger early narrowing, like reading “business” as hard maths.",said:"“Suggest what the pathways for these careers look like.” · “Include a larger variety of career pathways in the game.”",src:"Young people’s feedback, July 2026"},
+ {p:3,f:.55,v:.5,t:"bad",h:"The digital bridge",off:"Scanning a QR code to move from the tactile, social game to the online gateway pages causes a drop-off. Static pages feel disconnected from the energy of the game.",said:"“Second part: website gets basic and unfun, like any other careers website. A lot of words for the targeted group.”",src:"Young people’s feedback, July 2026"},
+ {p:4,f:.85,v:.42,t:"bad",h:"The cyclical loop",off:"Groups who followed the loop to the Next Steps Guide felt a strong sense of completion. Those who skipped straight to it risked losing confidence. It might help to put the guide at the end of the unplugged experience too.",said:"“The tally was easy to use and I liked the quiz.”",src:"Young people’s feedback, July 2026"}],tobe:[
+ {p:0,f:.6,v:.6,t:"good",h:"Explains itself",d:"The leaflet carries the sequence, the card limits and the framing that it’s not a test, so a group opening the pack alone starts where a facilitated group starts.",said:"Removes: working out the rules alone.",src:"Service design takeaway, Phase 3"},
+ {p:1,f:.15,v:.5,t:"good",h:"The dip we keep",d:"Sorting stays a conversation between young people about what sounds like them. Uncertainty here is about themselves, not the game, and peers help each other filter the noise.",said:"Keeps: not knowing yet, and talking it through.",src:"Service design takeaway, Phase 3"},
+ {p:2,f:.3,v:.8,t:"good",h:"Shows its working",d:"The tally is revealed once, at the end. The 3/1 model is explained where it’s used, and every gateway card carries recognisable roles.",said:"Delayed gratification, on purpose.",src:"Service design takeaway, Phase 3"},
+ {p:3,f:.5,v:.78,t:"good",h:"Keeps its promise on any device",d:"Three routes across the bridge (QR code, short URL, printed sheet) and a results page that opens with a suggestion, not a verdict.",said:"Removes: the cold drop-off.",src:"Service design takeaway, Phase 3"},
+ {p:4,f:.5,v:.84,t:"good",h:"Stays open",d:"All seven gateways are reachable from the results page, with employer content inside each, and changing direction is treated as the point.",said:"Keeps: exploring after the answer.",src:"Service design takeaway, Phase 3"}
+]};
+let view="mvp", sel={mvp:1,tobe:1};
+const path=pts=>pts.map(([p,f,v],i)=>`${i?"L":"M"}${px(p,f).toFixed(1)},${Y(v).toFixed(1)}`).join(" ");
+const col=t=>t==="good"?"var(--green)":t==="bad"?"var(--red)":"var(--amber)";
+function renderCurve(){
+  const s=$("mv-curve"); const H=HOT[view];
+  let g=`<title id="curveTitle">Experience curve across five phases of a Beeline Discovery session</title>`;
+  for(let i=0;i<=5;i++) g+=`<line x1="${X0+W*i}" y1="30" x2="${X0+W*i}" y2="310" stroke="var(--rule-strong)" stroke-dasharray="${i%5?"3 5":"0"}"/>`;
+  g+=`<line x1="${X0}" y1="${Y(.5)}" x2="${X1}" y2="${Y(.5)}" stroke="var(--rule-strong)"/>`;
+  g+=`<text x="${X0-8}" y="${Y(.9)}" text-anchor="end" font-family="var(--mono)" font-size="11" fill="var(--pencil)">good</text><text x="${X0-8}" y="${Y(.1)}" text-anchor="end" font-family="var(--mono)" font-size="11" fill="var(--pencil)">bad</text>`;
+  PH.forEach((p,i)=>g+=`<text x="${X0+W*i+W/2}" y="340" text-anchor="middle" font-family="var(--body)" font-size="13" fill="var(--ink)">${p}</text>`);
+  if(view==="mvp"){
+    g+=`<path d="${path(OFF)}" fill="none" stroke="var(--ink)" stroke-width="3.5" stroke-dasharray="12 8" stroke-linecap="round"/>`;
+    } else {
+    g+=`<path d="${path(OFF)}" fill="none" stroke="var(--rule-strong)" stroke-width="2.5" stroke-dasharray="12 8"/>`;
+    g+=`<path d="${path(TOBE)}" fill="none" stroke="var(--green)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>`;
+  }
+  H.forEach((h,i)=>{const cx=px(h.p,h.f),cy=Y(h.v),on=sel[view]===i;
+    g+=`<g class="hot" tabindex="0" role="button" aria-pressed="${on}" aria-label="${h.h}" data-i="${i}"><circle class="ring" cx="${cx}" cy="${cy}" r="${on?22:17}" fill="${on?"var(--hi)":"transparent"}" stroke="${col(h.t)}" stroke-width="2"/><text x="${cx}" y="${cy-(on?34:28)}" text-anchor="middle" font-family="var(--hand)" font-size="20" fill="${col(h.t)}">${i+1}</text></g>`;});
+  s.innerHTML=g;
+  s.querySelectorAll(".hot").forEach(el=>{const go=()=>{sel[view]=+el.dataset.i;renderCurve()};el.onclick=go;el.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();go()}}});
+  const h=H[sel[view]];
+  const pillCls=h.t==="good"?"p-good":h.t==="bad"?"p-bad":"p-mixed", pillTxt=h.t==="good"?"perceived good":h.t==="bad"?"perceived bad":"it depends";
+  $("mv-note").innerHTML = view==="mvp"
+   ? `<div class="head"><span class="pill ${pillCls}">${pillTxt} · point ${sel[view]+1} of ${H.length}</span><div class="nh">${h.h}</div></div>
+      <div class="oo"><div style="--k:var(--ink)"><p>${h.off}</p></div></div>
+      <div class="said">${h.said}<span>${h.src} · transcribed from handwriting</span></div>
+      <p class="tip">Tap the numbered circles on the curve to move between moments.</p>`
+   : `<div class="head"><span class="pill ${pillCls}">${PH[h.p]}</span><div class="nh">${h.h}</div><p style="margin:0">${h.d}</p></div><div class="said">${h.said}<span>${h.src}</span></div>`;
+  $("mv-legend").innerHTML=view==="mvp"
+   ?`<span><svg width="34" height="8"><line x1="0" y1="4" x2="34" y2="4" stroke="var(--ink)" stroke-width="3" stroke-dasharray="8 5"/></svg>July 2026, as it ran</span><span>Judgements come from young people, not from us.</span>`
+   :`<span><svg width="34" height="8"><line x1="0" y1="4" x2="34" y2="4" stroke="var(--green)" stroke-width="3"/></svg>intended curve</span><span><svg width="34" height="8"><line x1="0" y1="4" x2="34" y2="4" stroke="var(--rule-strong)" stroke-width="2.5" stroke-dasharray="8 5"/></svg>July 2026, for comparison</span>`;
+}
+seg("mv-curveSeg",v=>{view=v;renderCurve()});renderCurve();
+
+
+})();
+</script>
+<script>
+(function(){
+
+const $=id=>document.getElementById(id);
+const STAGES=["Key Stage 3 · Yr 7–9","Key Stage 4 · Yr 10–11","Key Stage 5 · Yr 12–13"];
+let barrier=null;
+
+/* ---------- data ---------- */
+const SYS=[
+ ["What is the system doing?",[
+  "Pressure is low, but the runway to the Year 9 options fork begins.",
+  "Post-16 deadlines land while Progress 8 pulls toward academic routes.",
+  "Retakes, transition years and high-stakes applications compete for capacity."]],
+ ["Equalex tier for intended outcomes",["Introduce &amp; Inspire","Investigate &amp; Explore","Apply &amp; Demonstrate"],
+  "Equalex sets the depth a careers experience is pitched at, in three tiers. Introduce and Inspire opens something up for the first time. Investigate and Explore asks a young person to look into it themselves. Apply and Demonstrate asks them to use it and show what they can do. Every intended outcome on this map is mapped to a tier, which is what lets the same activity run at different depths by age or need, and lets SEND versions map to EHCP goals."],
+ ["Skills Builder framework steps",["Steps 1–5","Steps 6–10","Steps 11–15"],
+  "The Skills Builder Universal Framework breaks eight essential skills, including listening, speaking, problem solving, creativity, staying positive, aiming high, leadership and teamwork, into numbered steps that run from the simplest version of a skill to the most advanced. Matching a band of steps to each key stage keeps what we ask of a young person in line with where they actually are."]
+];
+const CURVE=[
+ {x:.06,v:.22,l:"options fork",st:0,ev:1,t:"Year 9 options fork","d":"Subjects are chosen before most young people have met the jobs they lead to. Little feels decided, but the runway has started."},
+ {x:.36,v:.45,l:"mocks",st:1,ev:1,t:"Mock exams","d":"Predicted grades start deciding what a young person can apply for."},
+ {x:.5,v:.78,l:"deadlines",st:1,ev:1,t:"Post-16 deadlines","d":"Applications land while Progress 8 pulls schools toward academic routes. The highest-pressure point in the map."},
+ {x:.63,v:.3,lp:"below",l:"summer gap",st:1,ev:1,t:"The summer gap","d":"Results, then a gap with no one holding the thread. The September Guarantee sits here as a local authority duty."},
+ {x:.72,v:.5,l:"re-sit",st:2,ev:1,t:"Maths and English re-sits","d":"Level 2 maths and English become a condition of funding for continued study."},
+ {x:.82,v:.72,lp:"below",l:"UCAS /|apprenticeships",st:2,ev:1,t:"UCAS and apprenticeship window","d":"High-stakes applications compete for the same capacity as transition years and retakes."},
+ {x:.9,v:.86,l:"RON",st:2,ev:0,t:"Risk of NEET","d":"Where a young person falls out with nothing to fall back on. Drawn as inferred: the data to confirm it sits in Compass+ and local authority returns."},
+ {x:.97,v:.4,lp:"below",l:"destination",st:2,ev:1,t:"Destination","d":"Where they land, recorded after the fact through local authority returns."}
+];
+const RISK=[["Exit risk low","lo"],["Disengagement begins","mid"],["Highest attrition","hi"]];
+const BARRIERS=[
+ {id:0,t:"It’s not for people like me",s:"Gender, class, “I’m not a builder”",m:[1,1,1],tags:["voice"]},
+ {id:1,t:"I can’t see the link",s:"Subjects to real jobs",m:[1,1,0],tags:[]},
+ {id:2,t:"I’ll play it safe",s:"Peer copying, fear of visible failure",m:[1,1,0],tags:["roads"]},
+ {id:3,t:"Someone else is steering",s:"Parents, teachers, outdated advice",m:[0,1,1],tags:["voice"]},
+ {id:4,t:"I’m stuck and left behind",s:"Re-sits, foundation year, wrong path",m:[0,0,1],tags:["held"]},
+ {id:5,t:"I can’t prove myself",s:"Assessment centres, interviews",m:[0,1,1],tags:["held"]}
+];
+const TAG={held:"held in place",voice:"voice louder than theirs",roads:"too many roads"};
+const PROD=[
+ ["For the young person",[
+   [["Beeline Discovery Game v1",0],["Beeline Discovery Quiz v1",0],["Beeline Next Steps Guide v1",0]],
+   [["Beeline Discovery Quiz v2",1],["Build Your Future v1",1],["Beeline chatbot · light intro",1]],
+   [["Beeline Next Steps Guide v2",1],["The Employer Hub v1",1],["Beeline chatbot",1]]]],
+ ["For the adults around them",[
+   [["Parents &amp; carers support page",0],["Beeline support on GMCA",0]],[],[]]]
+];
+const REACH=[
+ ["Delivery","Everyone is in one, including the disengaged. Buys reach.",[
+  ["Mainstream schools",[2,2,1]],["Local authority &amp; Connexions",[2,2,0]],["Inclusive SEND provision",[2,2,1]],
+  ["PRUs and alternative provision",[0,1,2]],["Care leaver teams",[0,1,2]]]],
+ ["Channels","Reaches those who already showed up. Buys trust.",[
+  ["Youth Zones",[2,1,1]],["Community &amp; sports",[2,1,1]],["Libraries",[2,1,1]],
+  ["Faith groups",[2,2,2]],["Refugee groups",[2,2,2]],["Care-experienced groups",[1,2,2]]]],
+ ["Adults","Reaches the adult. Buys trust.",[
+  ["Parents &amp; carers",[2,2,1]],["Electively home educated",[2,2,2]]]]
+];
+
+/* ---------- helpers ---------- */
+const off=()=>false;
+const cls=i=>off(i)?"cell dim stage-off":"cell";
+const head=()=>`<div class="gh">${""}</div>`+STAGES.map((s,i)=>`<div class="gh stage ${off(i)?"stage-off":""}">${s}</div>`).join("");
+const notes=new Set();
+const rowLabel=(l,sub,n,key,kind)=>`<div class="rl">${l}<span class="sub">${sub}</span>${n?`<button type="button" class="notebtn" data-k="${key}" aria-expanded="${notes.has(key)}">${notes.has(key)?"hide":(kind||"policy note")}</button>`:""}</div>`;
+const noteRow=(n,key,kind)=>n&&notes.has(key)?`<div class="rownote"><b>${kind||"Policy note"}</b>${n}</div>`:"";
+const mark=(v,k)=>v===0?"":`<i class="mk ${v===1?"found":"inf"} k-${k}"></i>`;
+
+function renderAll(){
+  /* system */
+  $("ls-sysSummary").innerHTML=`<div class="sum">At a glance</div>`+SYS[0][1].map((t,i)=>`<div class="sum ${off(i)?"dim stage-off":""}">${t}</div>`).join("");
+  $("ls-gSystem").innerHTML=head()+SYS.slice(1).map(([l,v,n],r)=>rowLabel(l,"",n,"s"+r,"note")+v.map((t,i)=>`<div class="${cls(i)}">${t}</div>`).join("")+noteRow(n,"s"+r,"Note")).join("");
+  document.querySelectorAll(".c-ls .notebtn").forEach(b=>b.onclick=()=>{
+    const open=notes.has(b.dataset.k); open?notes.delete(b.dataset.k):notes.add(b.dataset.k); renderAll();
+  });
+  /* risk + barriers */
+  $("ls-riskRow").innerHTML=`<div class="sum">Exit risk</div>`+RISK.map(([t,c],i)=>`<div class="${c} ${off(i)?"dim stage-off":""}">${t}</div>`).join("");
+  $("ls-gBarriers").innerHTML=head()+BARRIERS.map(b=>`<div class="rl bar-row" role="button" tabindex="0" aria-pressed="${barrier===b.id}" data-b="${b.id}">${b.t}<span class="sub">${b.s}</span><span class="tags">${b.tags.map(t=>`<span class="btag">${TAG[t]}</span>`).join("")}</span></div>`+b.m.map((v,i)=>`<div class="${cls(i)}">${mark(v,"red")}</div>`).join("")).join("");
+  $("ls-gBarriers").querySelectorAll(".bar-row").forEach(el=>{
+    const go=()=>{barrier=barrier===+el.dataset.b?null:+el.dataset.b;renderAll()};
+    el.onclick=go; el.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();go()}};
+  });
+  /* products */
+  $("ls-gProd").innerHTML=head()+PROD.map(([l,cols])=>`<div class="rl">${l}</div>`+cols.map((items,i)=>`<div class="${cls(i)}"><span class="prod">${items.map(([t,f])=>`<span class="card ${f?"future":"live"}">${t}</span>`).join("")||`<span class="muted">—</span>`}</span></div>`).join("")).join("");
+  /* reach */
+  $("ls-gReach").innerHTML=head()+REACH.map(([g,cap,rows])=>`<div class="rl" style="background:var(--paper-2)"><b>${g}</b><span class="sub">${cap}</span></div><div class="cell" style="grid-column:span 3;background:var(--paper-2)"></div>`+rows.map(([l,m])=>`<div class="rl">${l}</div>`+m.map((v,i)=>`<div class="${cls(i)}">${v===2?`<i class="mk found k-green"></i>`:v===1?`<i class="mk inf k-green"></i>`:`<i class="mk inf k-red"></i>`}</div>`).join("")).join("")).join("");
+  renderCurve();
+}
+
+/* ---------- curve ---------- */
+let sel=2;
+const X=x=>60+x*900, Yv=v=>244-v*196;
+function lbl(p){
+  const parts=p.l.split("|"), below=p.lp==="below";
+  const y0=below?Yv(p.v)+24:Yv(p.v)-18-(parts.length-1)*15;
+  const anchor=p.x>.94?"end":"middle", x=p.x>.94?X(p.x)+10:X(p.x);
+  return `<text x="${x}" y="${y0}" text-anchor="${anchor}" font-family="var(--body)" font-size="12.5" fill="var(--ink)">`+
+    parts.map((t,i)=>`<tspan x="${x}" dy="${i?15:0}">${t}</tspan>`).join("")+`</text>`;
+}
+function renderCurve(){
+  const s=$("ls-curve");
+  let g=`<title id="curveT">Pressure on a young person across Key Stages 3 to 5</title>`;
+  for(let i=0;i<=3;i++){const x=60+i*300;g+=`<line x1="${x}" y1="18" x2="${x}" y2="284" stroke="var(--rule-strong)" stroke-dasharray="${i%3?"3 5":"0"}"/>`;}
+  STAGES.forEach((t,i)=>g+=`<text x="${60+i*300+150}" y="308" text-anchor="middle" font-family="var(--body)" font-size="13" fill="${off(i)?"var(--pencil)":"var(--ink)"}" opacity="${off(i)?.4:1}">${t.replace("·","—")}</text>`);
+  const pts=CURVE.map(p=>[X(p.x),Yv(p.v)]);
+  const solid=pts.slice(0,6), dashed=pts.slice(5);
+  const d=a=>a.map((p,i)=>`${i?"L":"M"}${p[0].toFixed(1)},${p[1].toFixed(1)}`).join(" ");
+  g+=`<path d="${d(solid)}" fill="none" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>`;
+  g+=`<path d="${d(dashed)}" fill="none" stroke="var(--red)" stroke-width="2.5" stroke-dasharray="9 6" stroke-linecap="round"/>`;
+  g+=`<text x="${X(.93)}" y="${Yv(.95)}" font-family="var(--hand)" font-size="20" fill="var(--red)">NEET</text>`;
+  CURVE.forEach((p,i)=>{
+    const on=sel===i, dimmed=off(p.st);
+    g+=`<g class="hot" tabindex="0" role="button" aria-pressed="${on}" aria-label="${p.t}" data-i="${i}" opacity="${dimmed?.3:1}">
+      <circle cx="${X(p.x)}" cy="${Yv(p.v)}" r="${on?11:7}" fill="${on?"var(--hi-solid)":"var(--paper)"}" stroke="${p.ev?"var(--ink)":"var(--red)"}" stroke-width="2.5"/>
+      ${lbl(p)}</g>`;
+  });
+  s.innerHTML=g;
+  s.querySelectorAll(".hot").forEach(el=>{const go=()=>{sel=+el.dataset.i;renderCurve()};el.onclick=go;el.onkeydown=e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();go()}}});
+  const p=CURVE[sel];
+  $("ls-curveNote").innerHTML=`<div class="mono">${STAGES[p.st]} · ${p.ev?"evidenced":"inferred, needs confirming"}</div><h3>${p.t}</h3><p style="margin:0">${p.d}</p>`;
+}
+
+renderAll();
+
+/* ---------- walkthrough ---------- */
+/* wrap wide grids so they scroll instead of squeezing on small screens */
+(function(){
+  var subs=[];
+  document.querySelectorAll(".c-ls .grid,.c-ls .stagebar").forEach(function(g){
+    if(g.parentElement&&g.parentElement.classList.contains("hscroll")) return;
+    var w=document.createElement("div"); w.className="hscroll";
+    g.parentNode.insertBefore(w,g); w.appendChild(g); subs.push(w);
+  });
+  /* keep every key-stage column strip in step so it reads as one table */
+  var lock=false;
+  subs.forEach(function(w){
+    w.addEventListener("scroll",function(){
+      if(lock) return; lock=true;
+      subs.forEach(function(o){ if(o!==w) o.scrollLeft=w.scrollLeft; });
+      requestAnimationFrame(function(){lock=false});
+    },{passive:true});
+  });
+  var first=document.querySelector(".c-ls .band");
+  if(first&&subs.length){ var h=document.createElement("p"); h.className="swipe-hint";
+    h.textContent="Swipe the tables sideways to move between key stages";
+    first.insertAdjacentElement("beforebegin",h); }
+})();
+
+})();
+</script>
+
+
+</html>
