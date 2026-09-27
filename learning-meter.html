@@ -3,6 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Learning Meter · Fatima Abid</title>
+<meta name="description" content="The Learning Meter at Kids&amp;Us: the rubric, the test set of about 4,000 answers, and the evaluation loop that ran before any of it reached a child.">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="assets/img/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/img/favicon-180.png">
@@ -172,22 +173,14 @@ h2{font-family:var(--serif);font-weight:500;font-size:clamp(24px,2.8vw,32px);lin
 .press a{color:var(--blue);text-decoration:underline;text-underline-offset:3px;display:inline-flex;align-items:center;min-height:24px}
 .press .src{font-size:13px;color:var(--pencil)}
 .shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;align-items:start}
-figure.fig{margin:0;display:grid;gap:8px;align-content:start}
-figure.fig img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:contain;
-  border:1px solid var(--rule-strong);border-radius:6px;background:var(--paper-2)}
-figure.fig figcaption{margin:0;font-size:13px;color:var(--pencil)}
-figure.fig figcaption b{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--pencil);display:block;margin-bottom:3px;font-weight:400}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) figure.fig img{filter:brightness(.88)}}
-:root[data-theme="dark"] figure.fig img{filter:brightness(.88)}
 </style>
 
 <a class="skip" href="#main">Skip to the page</a>
 <div class="layout">
 <main id="main" tabindex="-1">
-<div class="pagehead">
+<div class="pagehead norule">
   <div class="eyebrow">
-    <span class="mono">Kids&amp;Us · 2023–2024 · p. 2–7</span>
+    <span class="mono">Kids&amp;Us · p. 8–13</span>
     <span class="evtag">Evaluation before launch</span>
   </div>
   <h1>Learning Meter</h1>
@@ -202,6 +195,44 @@ figure.fig figcaption b{font-family:var(--mono);font-size:9.5px;letter-spacing:.
 
 <div class="wrap">
 
+  <section aria-label="My role">
+    <div class="rolecard">
+      <div class="rolebar"><span class="k">My role</span>
+        <span class="meta">Remote &middot; Barcelona &amp; Bilbao &middot; 2023–2024</span></div>
+      <div class="rolerow"><span class="lbl">Role</span>
+        <span class="fld">EdTech Specialist &amp; Project Manager</span></div>
+      <div class="rolerow"><span class="lbl">Led on</span>
+        <span class="fld">I designed the Learning Meter end to end, from the rubric bands and the prompt design to the evaluation loop that ran before launch. I wrote the game design documents for more than 25 activities with explainable feedback, and I redesigned the gamified loops from engagement data.</span></div>
+      <div class="rolerow"><span class="lbl">Team</span>
+        <span class="fld">Five direct reports, and matrix-managed digital, art, development and editorial specialists.</span></div>
+    </div>
+  </section>
+
+  <section aria-label="Rough work">
+    <button class="roughtab" type="button" aria-haspopup="dialog" data-rough="rough-lm"
+            data-label="Rough work behind the Learning Meter"
+            data-hand="My own boards and schemas, made by hand while I planned the content. The method name and one
+              product name are redacted.">
+      <span class="stack" aria-hidden="true"><span></span><span></span><i></i><b></b></span>
+      <span class="t"><b>Rough work</b><small>Two boards &middot; opens over the page</small></span>
+    </button>
+    <div id="rough-lm" hidden>
+      <div class="rough-item" data-src="assets/img/lm-rough-skills.jpg" data-cap="The diagnostic order"
+           data-alt="A board of sticky notes. Two notes at the top read following a named method, redacted, and
+             must appear in this order. Below them six dark notes read fixed activity one to six, and under each a
+             yellow note names a skill: listening, reading, grammar, vocabulary, speaking, writing.">The six fixed
+           activities that open a course, in the order the method asks for. Speaking and writing sit at the end,
+           which is where the Learning Meter reads.</div>
+      <div class="rough-item" data-src="assets/img/lm-rough-levels.jpg" data-cap="What a level changes"
+           data-alt="A schema. A box reading activity level differentiation, levels zero, one and two, branches to
+             two lists. Content design elements: content focus, distractor complexity, support mechanisms, audio
+             focus, skill complexity. Game design elements: template layering, guidance and hints, user prompts,
+             tested items, duration, screen count.">Everything a level actually changes, split into what the
+           content does and what the game does. The rubric bands had to hold steady across all three levels, so
+           this is what they were written against.</div>
+    </div>
+  </section>
+
   <section aria-labelledby="act-h">
     <div><div class="label">Where it sits</div>
       <h2 id="act-h">The activities the Learning Meter sits inside</h2></div>
@@ -209,33 +240,53 @@ figure.fig figcaption b{font-family:var(--mono);font-size:9.5px;letter-spacing:.
       how it will be answered. The Learning Meter reads the speaking and writing ones, where a child produces the
       language themselves.</p>
     <div class="shots">
-      <figure class="fig">
-        <img src="assets/img/ku-recipe-rush.png" width="1200" height="899"
+      <figure class="shot">
+        <button type="button"><img loading="lazy" decoding="async" src="assets/img/ku-recipe-rush.png" width="1200" height="899"
           alt="A MyWay activity intro screen titled Recipe Rush on a patterned teal background. A card reads: first,
             complete the recipe, then follow the steps by using the correct utensils and carrying out the correct
-            actions. A Play button sits below it, and a drag-and-drop icon marks the activity type in the corner.">
+            actions. A Play button sits below it, and a drag-and-drop icon marks the activity type in the corner."></button>
         <figcaption><b>An activity opens</b>The task in a child&rsquo;s own words, and the activity type marked before
           they start.</figcaption>
       </figure>
-      <figure class="fig">
-        <img src="assets/img/ku-recipe-task.png" width="1000" height="750"
+      <figure class="shot">
+        <button type="button"><img loading="lazy" decoding="async" src="assets/img/ku-recipe-task.png" width="1000" height="750"
           alt="The Recipe Rush activity. A torn recipe card taped to a mint green patterned background reads: chop the
             onion and fry it in some olive oil. A knife, a frying pan, a pot boiling on a hob, a wooden spoon and an
-            oven are laid out below it.">
+            oven are laid out below it."></button>
         <figcaption><b>The task itself</b>The instruction stays on screen while a child picks the utensils and carries
           out the actions in order.</figcaption>
       </figure>
-      <figure class="fig">
-        <img src="assets/img/ku-listening.png" width="1000" height="750"
+      <figure class="shot">
+        <button type="button"><img loading="lazy" decoding="async" src="assets/img/ku-listening.png" width="1000" height="750"
           alt="A MyWay listening activity. Three restaurant fronts sit across a patterned teal background: a sushi
             restaurant, an Italian one and a burger bar. A character avatar with a speaker bubble sits below them, and
-            a multiple-choice icon marks the activity type in the corner.">
+            a multiple-choice icon marks the activity type in the corner."></button>
         <figcaption><b>A different type</b>Audio plays from the character, and a child answers by choosing. The corner
           icon carries the change.</figcaption>
       </figure>
     </div>
     <p class="disclaimer"><b>Product screens from MyWay.</b> The artwork, characters and activity content are
       Kids&amp;Us&rsquo;s.</p>
+  </section>
+
+  <section aria-labelledby="am-h">
+    <div><div class="label">The tool behind them</div>
+      <h2 id="am-h">The Activity Maker</h2></div>
+    <p class="lede">Content developers built MyWay activities in a block-based authoring tool. I built and taught its
+      tutorial, and contributed code to its templates alongside the development team when a design needed more than
+      the Configuration column could carry.</p>
+    <figure class="shot">
+      <button type="button"><img loading="lazy" decoding="async" src="assets/img/ku-activity-maker.png" width="1500" height="960"
+        alt="The Kids&amp;Us Activity Maker. Block categories run down the left: game objects, audio, video, position,
+          appearance, custom logic, grading, arrays, waits and comments. The canvas holds three columns of blocks: an
+          objects definition listing hearts, a test button and a fail screen; a configuration column setting variables
+          and binding audio assets; and a start program column with the loop that runs them."></button>
+      <figcaption><b>Block categories, then three columns</b>The objects a screen contains, the configuration that
+        sets them up, and the start program that runs them. Recipe Rush, above, was built here.</figcaption>
+    </figure>
+    <p class="lede">Blocks take the syntax barrier away. The logic underneath still has to be joined up correctly, and
+      that is what the tutorial taught. Running it also showed where people got stuck, which fed back into what needed
+      fixing in the templates themselves.</p>
   </section>
 
   <section aria-labelledby="rub-h">
@@ -361,7 +412,7 @@ const band=s=>s>=90?100:s>=70?80:s>=40?60:0;
 
 /* scripted answers. STT = what speech-to-text heard; clean = after clean-up */
 const ANSWERS=[
- {id:"a1",said:"It's half past six.",stt:"its half past six",clean:"it's half past six",seen:true,expected:100,
+ {id:"a1",said:"It’s half past six.",stt:"its half past six",clean:"it's half past six",seen:true,expected:100,
   tuned:{score:100,fb:"Great job! That's exactly right."},early:{score:100,fb:"Great job! Your answer is perfect!"}},
  {id:"a2",said:"It is six thirty.",stt:"it is six thirty",clean:"it is six thirty",seen:false,expected:100,
   tuned:{score:100,fb:"Perfect! Six thirty is right too."},early:{score:80,fb:"Mostly correct. The answer is \"It is six thirty.\""},
@@ -375,7 +426,7 @@ const ANSWERS=[
   tuned:{score:0,fb:"Look again: the long hand says half past."},early:{score:60,fb:"Your answer hints at the correct time but is incomplete."},
   why:"A classic false pass: vague and wrong, but rewarded for “hinting”. The tuned rubric scores it 0."},
  {id:"a6",said:"Son las seis y media.",stt:"son las seis y media",clean:"son las seis y media",seen:false,expected:0,
-  tuned:{score:0,fb:"Try again in English: It's half past six."},early:{score:80,fb:"Correct time! Try saying it in English."},
+  tuned:{score:0,fb:"Try again in English: It’s half past six."},early:{score:80,fb:"Correct time! Try saying it in English."},
   why:"Right idea, wrong language. It became a hard rule: not English scores 0."}
 ];
 let mode="tuned", sel="a5";
@@ -424,7 +475,7 @@ $("m-early").onclick=()=>setMode("early");$("m-tuned").onclick=()=>setMode("tune
 
 /* rubric */
 const BANDS=[
- [100,"b100",["Full sentence, clear and relevant","Correct grammar and vocabulary","Clear pronunciation"],"It's half past six."],
+ [100,"b100",["Full sentence, clear and relevant","Correct grammar and vocabulary","Clear pronunciation"],"It’s half past six."],
  [80,"b80",["Full sentence, minor slips","Mostly correct grammar","Still easy to understand"],"Is half past six."],
  [60,"b60",["One word or a fragment","Frequent errors","Minimally does the task"],"Half six."],
  [0,"b0",["Wrong or off-topic","Breaks down communication","Not in English"],"Son las seis y media."]

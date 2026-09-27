@@ -3,6 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>JUMP Math Lab · Fatima Abid</title>
+<meta name="description" content="JUMP Math Lab: one design decision in depth. A forked pathway decided by a student’s own results, and the teacher dashboards that made it readable.">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="assets/img/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/img/favicon-180.png">
@@ -135,21 +136,14 @@ table.qg{border-collapse:separate;border-spacing:3px;font-size:12px;min-width:46
 @media (max-width:640px){ .journey{grid-template-columns:repeat(3,minmax(0,1fr))}
   .journey .col:nth-child(3),.journey .col:nth-child(4){display:none} }
 .shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
-figure.fig{margin:0;display:grid;gap:8px;align-content:start}
-figure.fig img{display:block;width:100%;height:auto;border:1px solid var(--rule-strong);border-radius:6px;background:#fff}
-figure.fig figcaption{margin:0;font-size:13px;color:var(--pencil)}
-figure.fig figcaption b{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--pencil);display:block;margin-bottom:3px;font-weight:400}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) figure.fig img{filter:brightness(.88)}}
-:root[data-theme="dark"] figure.fig img{filter:brightness(.88)}
 </style>
 
 <a class="skip" href="#main">Skip to the page</a>
 <div class="layout">
 <main id="main" tabindex="-1">
-  <div class="pagehead">
+  <div class="pagehead norule">
     <div class="eyebrow">
-      <span class="mono">JUMP Math · p. 8–11</span>
+      <span class="mono">JUMP Math · p. 14–17</span>
       <span class="evtag">One design decision, in depth</span>
     </div>
     <h1>The forked pathway</h1>
@@ -158,6 +152,49 @@ figure.fig figcaption b{font-family:var(--mono);font-size:9.5px;letter-spacing:.
   </div>
 
   <div class="stack">
+
+    <section aria-label="My role">
+      <div class="rolecard">
+        <div class="rolebar"><span class="k">My role</span>
+          <span class="meta">Remote &middot; Bilbao &amp; Toronto &middot; 2024–2025</span></div>
+      <div class="rolerow"><span class="lbl">Role</span>
+        <span class="fld">EdTech Specialist &amp; eLearning Developer</span></div>
+      <div class="rolerow"><span class="lbl">Led on</span>
+        <span class="fld">I designed the JUMP Math Lab template, including its UI patterns, its accessibility features and the forked pathway, and I redesigned the teacher dashboard over three rounds of Figma prototypes. I also ran <i>Making Math Click</i> on Coursera and the five-course professional learning site.</span></div>
+      <div class="rolerow"><span class="lbl">Team</span>
+        <span class="fld">Content leads and developers across Canada and Spain, working together on the professional learning site.</span></div>
+      </div>
+    </section>
+
+    <section aria-label="Rough work">
+      <button class="roughtab" type="button" aria-haspopup="dialog" data-rough="rough-jm"
+              data-label="Rough work behind JUMP Math Lab"
+              data-hand="My own sketches, notebook and working specs, made by hand while I designed this. Student names are invented.">
+        <span class="stack" aria-hidden="true"><span></span><span></span><i></i><b></b></span>
+        <span class="t"><b>Rough work</b><small>Five items &middot; opens over the page</small></span>
+      </button>
+      <div id="rough-jm" hidden>
+        <div class="rough-item" data-src="assets/img/jm-rough-fork.jpg" data-cap="The fork, first sketch"
+             data-alt="A hand-drawn diagram. A rounded box reading core question connects by a dashed line to what
+               the results say, which forks into two boxes, bonus in green and scaffold in blue. Both feed a note
+               reading data visual on lab. A dashed line runs under the whole thing labelled meaningful
+               gamification.">The whole decision on one line: the core questions, what the results say, and the two
+               ways on. The dashed line underneath is the reason for it, and what the data on the Lab had to
+               support.</div>
+        <div class="rough-item" data-src="assets/img/jm-rough-xapi.jpg" data-cap="What an activity records"
+             data-alt="A code notebook open beside an activity file. It imports the activity data from a
+               spreadsheet, then defines an xAPI statement template with fields for the actor, the verb, the object
+               and its definition, a timestamp, a result and a context.">Working out what each activity would emit
+               as a student moved through it. The dashboard could only show what the template recorded, so this
+               and the fork above are the same decision.</div>
+        <div class="rough-item" data-src="assets/img/jm-spec-1.jpg" data-cap="The check-in timeline"
+             data-alt="An annotated design spec for the JUMP Math teacher dashboard. A row of assessment nodes runs across the top with a hover panel showing a mastery breakdown, over a grid of students against questions. Handwritten notes in red down both margins point at elements and explain them.">The assessment timeline, from pre-assessment through the check-ins to post-assessment, with the hover snapshot and its mastery breakdown. My notes down the margins say what each element is for.</div>
+        <div class="rough-item" data-src="assets/img/jm-spec-2.jpg" data-cap="A student, in depth"
+             data-alt="An annotated design spec showing a single student panel. A chip marks the scaffold pathway, and beneath it core questions, a bonus question and a scaffold question are listed with attempts and time taken. Red annotations in the margins explain each element.">One student’s snapshot: the pathway they were routed onto, then the core, bonus and scaffold questions with attempts, time and the answer-video flags. This is the fork made legible to a teacher.</div>
+        <div class="rough-item" data-src="assets/img/jm-spec-3.jpg" data-cap="The three assessment views"
+             data-alt="A teacher dashboard spec with three assessment cards across the top, the first showing core question progress with the proportion on the bonus pathway and on the scaffold pathway, above a grid of students against questions.">Diagnostic, formative and summative side by side, with the diagnostic card carrying the split between the bonus pathway and the scaffold pathway.</div>
+      </div>
+    </section>
 
     <section aria-labelledby="jobs-h">
       <div class="label">The jobs behind it</div>
@@ -194,7 +231,7 @@ figure.fig figcaption b{font-family:var(--mono);font-size:9.5px;letter-spacing:.
       <div class="forkwrap">
         <svg class="fork" viewBox="0 0 700 250" role="img" aria-labelledby="forkT forkD">
           <title id="forkT">The forked pathway</title>
-          <desc id="forkD">Core questions lead to a fork. A student's own results decide whether the next questions are a bonus path that stretches them, or a scaffold path that gives another way in.</desc>
+          <desc id="forkD">Core questions lead to a fork. A student’s own results decide whether the next questions are a bonus path that stretches them, or a scaffold path that gives another way in.</desc>
           <!-- core -->
           <rect x="14" y="98" width="150" height="54" rx="6" fill="var(--paper-2)" stroke="var(--rule-strong)"/>
           <text x="89" y="120" text-anchor="middle" font-size="14" fill="var(--ink)">Core questions</text>
@@ -237,17 +274,17 @@ figure.fig figcaption b{font-family:var(--mono);font-size:9.5px;letter-spacing:.
       <p class="sec-lede">A section teaches, then asks. The bar along the bottom carries the three stages, so a
         student can see where they are inside the section while they are working through it.</p>
       <div class="shots">
-        <figure class="fig">
-          <img src="assets/img/jump-student-video.png" width="1300" height="732"
+        <figure class="shot">
+          <button type="button"><img loading="lazy" decoding="async" src="assets/img/jump-student-video.png" width="1300" height="732"
             alt="A JUMP Math lesson screen. Three multiplication problems are set out, the first worked through in a
-              grid with the carried digits in red. A Practice button sits to the right, locked.">
+              grid with the carried digits in red. A Practice button sits to the right, locked."></button>
           <figcaption><b>Teaching step</b>The method is worked through first. Practice stays locked until it is
             done.</figcaption>
         </figure>
-        <figure class="fig">
-          <img src="assets/img/jump-student-question.png" width="1300" height="731"
+        <figure class="shot">
+          <button type="button"><img loading="lazy" decoding="async" src="assets/img/jump-student-question.png" width="1300" height="731"
             alt="A JUMP Math practice question with four multiple-choice answers. The chosen answer is highlighted and
-              a banner at the top reads Correct, you aced that question. Next and Answer buttons sit to the right.">
+              a banner at the top reads Correct, you aced that question. Next and Answer buttons sit to the right."></button>
           <figcaption><b>Practice step</b>Feedback lands on the answer itself, and an answer video stays one tap away
             whether or not the student got it right.</figcaption>
         </figure>
@@ -297,7 +334,7 @@ figure.fig figcaption b{font-family:var(--mono);font-size:9.5px;letter-spacing:.
 
   </div>
 
-  <div class="nextcase"><a href="beeline.html"><span><small>Next</small>Beeline</span><span class="open" aria-hidden="true">open →</span></a></div>
+  <div class="nextcase"><a href="sugar.html"><span><small>Next</small>The Artificial Leaf</span><span class="open" aria-hidden="true">open →</span></a></div>
   <footer class="pagefoot">
     <span>JUMP Math Lab</span>
     <span><a href="index.html">← Contents</a> · <a href="beeline.html">Beeline →</a></span>

@@ -4,11 +4,15 @@
 
 /* ---------- pages ---------- */
 const PAGES=[
-  {g:"",                 href:"index.html",          n:"p. 1",     t:"Contents"},
-  {g:"",                 href:"learning-meter.html", n:"p. 2–7",   t:"Learning Meter"},
-  {g:"",                 href:"jump-math.html",      n:"p. 8–11",  t:"JUMP Math Lab"},
-  {g:"",                 href:"beeline.html",        n:"p. 12–17", t:"Beeline"},
-  {g:"",                 href:"sugar.html",          n:"p. 18–20", t:"The Artificial Leaf"}
+  {g:"start here",   gh:1, href:"index.html",    n:"p. 1",     t:"Contents"},
+  {g:"Current work", href:"beeline.html",        n:"p. 2–7",   t:"Beeline"},
+  {g:"Work before",  href:"learning-meter.html", n:"p. 8–13",  t:"Learning Meter"},
+  {g:"",             href:"jump-math.html",      n:"p. 14–17", t:"JUMP Math Lab"},
+  {g:"",             href:"sugar.html",          n:"p. 18–20", t:"The Artificial Leaf"},
+  {g:"About",        href:"how-i-work.html",     n:"p. 21",    t:"How I work", bk:1},
+  {g:"Also",         href:"beeline-unplugged.html", n:"p. 22–25", t:"Beeline Unplugged"},
+  {g:"",             href:"mbacc-summit.html",   n:"p. 26",    t:"MBacc Summit"},
+  {g:"",             href:"edeh.html",           n:"p. 27",    t:"European Digital Education Hub"}
 ];
 const here=(location.pathname.split("/").pop()||"index.html");
 const group=h=>h;
@@ -32,10 +36,10 @@ applySettings();
 function pageList(withTitle){
   let out="", lastG=null;
   PAGES.forEach(p=>{
-    if(p.g&&p.g!==lastG){ out+=`<div class="grp">${p.g}</div>`; lastG=p.g; }
+    if(p.g&&p.g!==lastG){ out+=`<div class="grp${p.gh?" hand":""}">${p.g}</div>`; lastG=p.g; }
     const cur=group(p.href)===group(here);
     out+=`<a href="${p.href}"${cur?' aria-current="page"':''}${withTitle?` title="${p.t}"`:""}>`+
-      `<span class="thumb" aria-hidden="true"><i></i></span>`+
+      `<span class="thumb" aria-hidden="true"><i></i>${p.bk?"<b></b>":""}</span>`+
       `<span class="pshort" aria-hidden="true">${p.n.replace("p. ","").split("–")[0]}</span>`+
       `<span class="pcopy"><strong>${p.t}</strong><small>${p.n}</small></span></a>`;
   });
@@ -61,7 +65,7 @@ const cur=PAGES.find(p=>group(p.href)===group(here))||PAGES[0];
 document.body.insertAdjacentHTML("afterbegin",`
 <header class="topbar">
   <a class="brand" href="index.html">Fatima Abid</a>
-  <button type="button" class="pagesbtn" id="pagesBtn" aria-expanded="false" aria-controls="pagesSheet"
+  <button type="button" class="pagesbtn" id="pagesBtn" aria-expanded="false" aria-haspopup="dialog"
     aria-label="Pages, current page ${cur.n.replace("p. ","")}: ${cur.t}">
     <span class="pn">${cur.n.replace("p. ","P. ")}</span><span class="cur">${cur.t}</span><span aria-hidden="true">▾</span>
   </button>
@@ -307,6 +311,13 @@ const LIFE={
   ["Evaluation loop before launch","Every answer graded twice"],
   ["Handoff to engineers","Caching for repeat answers"],
   ["False passes, agreement, latency, cost"]]},
+ sugar:{foot:"Five stages of six. The measurement end came later, at Kids&amp;Us and GMCA.",items:[
+  ["Desk research across nine fields","Case studies of comparable technologies","Expert and company interviews","Personas per sector"],
+  ["A critical experience prototype","Dark horse and funky prototypes"],
+  ["Prototype development and testing","Reaching out to companies"],
+  ["The challenge rewritten","Knowledge transfer office interview and journey map"],
+  ["CO/LAB: survey, technical simulation, financial estimation","Service blueprint and business model canvas"],
+  []]},
  jm:{foot:"From a teacher survey to xAPI data the dashboards read.",items:[
   ["Teacher survey","Usage patterns"],
   ["Figma dashboard mocks","Three rounds"],
@@ -328,9 +339,64 @@ function initLife(){
   });
 }
 
+/* ---------- rough-work folders ---------- */
+function initRough(){
+  document.querySelectorAll(".roughtab").forEach(tab=>{
+    if(tab.dataset.ready) return; tab.dataset.ready="1";
+    const src=document.getElementById(tab.dataset.rough);
+    if(!src) return;
+    const items=[...src.querySelectorAll(".rough-item")].map(el=>({
+      src:el.dataset.src||"", alt:el.dataset.alt||"", cap:el.dataset.cap||"", note:el.innerHTML.trim()}));
+    if(!items.length) return;
+    tab.onclick=()=>{
+      let i=0;
+      document.body.insertAdjacentHTML("beforeend",
+        `<div class="lightbox rough" role="dialog" aria-modal="true" aria-label="${tab.dataset.label||"Rough work"}">
+           <div class="lb-bar"><span class="lb-cap"></span>
+             <span><button type="button" class="lb-zoom">Actual size</button>
+             <button type="button" class="lb-close">Close \u2715</button></span></div>
+           <div class="lb-body"><div class="lb-img"></div><p class="lb-note"></p>
+             <div class="lb-strip" role="group" aria-label="Boards"></div>
+             <p class="lb-hand"></p></div>
+         </div>`);
+      const lb=document.querySelector(".lightbox:last-of-type");
+      const draw=()=>{
+        const it=items[i];
+        lb.querySelector(".lb-cap").textContent=it.cap;
+        lb.querySelector(".lb-note").innerHTML=it.src?it.note:"";
+        lb.querySelector(".lb-img").classList.toggle("prose",!it.src);
+        lb.querySelector(".lb-img").innerHTML=it.src
+          ? `<img src="${it.src}" alt="${it.alt.replace(/"/g,"&quot;")}">`
+          : `<div class="lb-prose">${it.note}</div>`;
+        lb.querySelector(".lb-strip").hidden=items.length<2;
+        lb.querySelector(".lb-strip").innerHTML=items.map((x,n)=>
+          `<button type="button" data-i="${n}" aria-current="${n===i}">${x.cap||("Board "+(n+1))}</button>`).join("");
+        lb.querySelectorAll(".lb-strip button").forEach(b=>b.onclick=()=>{i=+b.dataset.i;draw()});
+      };
+      lb.querySelector(".lb-hand").innerHTML=tab.dataset.hand||"";
+      lb.querySelector(".lb-zoom").hidden=!items.some(x=>x.src);
+      draw();
+      const close=()=>{lb.remove();tab.focus();document.removeEventListener("keydown",key)};
+      const key=e=>{
+        if(e.key==="Escape") return close();
+        if(e.key==="ArrowRight"){i=(i+1)%items.length;draw()}
+        if(e.key==="ArrowLeft"){i=(i+items.length-1)%items.length;draw()}
+      };
+      lb.querySelector(".lb-close").onclick=close;
+      lb.querySelector(".lb-zoom").onclick=e=>{
+        const on=lb.classList.toggle("zoomed");
+        e.target.textContent=on?"Fit to width":"Actual size";
+      };
+      lb.onclick=e=>{if(e.target===lb)close()};
+      document.addEventListener("keydown",key);
+      lb.querySelector(".lb-close").focus();
+    };
+  });
+}
+
 /* ---------- figures: click to enlarge ---------- */
 function initFigs(){
-  document.querySelectorAll("figure.fig button").forEach(b=>{
+  document.querySelectorAll("figure.fig button, figure.shot button").forEach(b=>{
     if(b.dataset.ready) return; b.dataset.ready="1";
     if(!b.querySelector(".zoom")) b.insertAdjacentHTML("beforeend",'<span class="zoom" aria-hidden="true">⤢</span>');
     b.onclick=()=>{
@@ -353,7 +419,7 @@ function initFigs(){
 }
 
 /* ---------- go ---------- */
-function ready(){ initTerms(); initTabs(); initLife(); initFigs(); initTerms();
+function ready(){ initTerms(); initTabs(); initLife(); initFigs();initRough(); initTerms();
   setTimeout(autoTerms,0); }
 if(document.readyState!=="loading") ready(); else document.addEventListener("DOMContentLoaded",ready);
 window.FA={initTerms,autoTerms,GLOSSARY};

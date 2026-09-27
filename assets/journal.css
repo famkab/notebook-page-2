@@ -2,7 +2,7 @@
 :root{
   --desk:#DCD9D2; --paper:#F1EFEA; --paper-2:#E8E5DE; --ink:#1E1E1C; --pencil:#636159; --rule:#D3CFC6; --rule-strong:#BDB8AD;
   --blue:#3D5A86; --red:#A2443A; --green:#446A4A; --amber:#935300;
-  --hi:rgba(232,203,74,.55); --hi-solid:#E8CB4A; --hi-ink:#7A5E00;
+  --hi:rgba(232,203,74,.55); --hi-solid:#E8CB4A; --hi-ink:#6A5100;
   --red-w:#EEDDD8; --green-w:#DDE6DC; --blue-w:#DDE2EA; --amber-w:#F0E4CF;
   --scrim:rgba(30,30,28,.45);
   --serif:"Newsreader",Georgia,serif; --body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
@@ -79,11 +79,17 @@ p{margin:0 0 14px}
 .thumb{position:relative;display:block;width:44px;height:58px;border:1px solid var(--rule-strong);border-radius:2px;
   background:repeating-linear-gradient(to bottom,var(--paper) 0,var(--paper) 10px,var(--rule) 11px,var(--paper) 12px)}
 .thumb i{position:absolute;left:6px;top:6px;width:21px;height:4px;background:var(--pencil)}
+.thumb b{position:absolute;right:7px;top:-2px;width:10px;height:21px;background:var(--bk-rough);
+  clip-path:polygon(0 0,100% 0,100% 100%,50% 74%,0 100%)}
+.sheet-pages .thumb b{right:4px;width:7px;height:14px}
 .rail-col .pcopy{min-width:0}
 .rail-col .pcopy strong{display:block;font-family:var(--serif);font-size:.88rem;font-weight:500;line-height:1.1}
 .rail-col .pcopy small{display:block;margin-top:5px;font-family:var(--mono);font-size:.58rem;text-transform:uppercase;color:var(--pencil)}
 .pshort{display:none}
 .rail-col .pages .grp{font-family:var(--mono);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--pencil);padding:10px 6px 2px}
+.rail-col .pages .grp.hand{font-family:var(--hand);font-size:1.15rem;letter-spacing:0;text-transform:none;
+  color:var(--red);padding:2px 6px 4px;transform:rotate(-3deg);transform-origin:left center}
+:root[data-rail="collapsed"] .pages .grp.hand{font-size:0;padding:6px 0 4px;transform:none}
 .rail-col .rail-settings{display:flex;flex:none;justify-content:space-between;align-items:center;gap:8px;padding-top:14px}
 .setbtn{border:1px solid var(--rule-strong);background:var(--paper);border-radius:999px;min-width:40px;min-height:40px;
   padding:0;cursor:pointer;font-size:15px;color:var(--pencil);display:inline-flex;align-items:center;justify-content:center;gap:8px}
@@ -149,6 +155,8 @@ p{margin:0 0 14px}
   text-transform:uppercase;color:var(--pencil)}
 main{padding:56px clamp(20px,5vw,72px) 70px;position:relative}
 .pagehead{display:grid;gap:14px;margin-bottom:34px;padding-bottom:26px;border-bottom:1px solid var(--rule)}
+/* the role bar under the head draws its own rule, so the head does not need one */
+.pagehead.norule{border-bottom:0;padding-bottom:4px;margin-bottom:20px}
 .pagehead .kicker{display:flex;flex-wrap:wrap;gap:8px}
 .tagline,.stamp-ctx{font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);
   border:1.2px solid var(--rule-strong);border-radius:3px;padding:5px 9px;display:inline-flex;gap:7px;align-items:center;min-height:32px}
@@ -164,7 +172,7 @@ h2,h3,[id]{scroll-margin-top:calc(var(--bar) + 12px)}
 .journal-footer{display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--rule);
   padding:24px clamp(20px,5vw,72px);color:var(--pencil);font-size:.82rem;background:var(--paper)}
 .journal-footer div{display:flex;gap:18px;flex-wrap:wrap}
-.journal-footer a{text-decoration:underline;text-underline-offset:4px}
+.journal-footer a{text-decoration:underline;text-underline-offset:4px;padding:5px 3px}
 .nextcase{border-top:1px solid var(--rule);padding:30px 0 6px;margin-top:34px}
 .nextcase a{display:flex;min-height:44px;align-items:center;justify-content:space-between;gap:16px;
   font-family:var(--serif);font-size:1.6rem;font-weight:500;text-decoration:none}
@@ -290,3 +298,106 @@ figure.fig figcaption{font-size:14px;color:var(--pencil);max-width:74ch}
 
 /* keep glossary terms in the smaller lifecycle text at a 24px target */
 .life li .term{padding-top:2px;padding-bottom:3px}
+
+/* ---- role block: BOOX-style labelled fields ---- */
+.rolecard{display:grid;gap:9px;max-width:82ch}
+.rolebar{display:flex;justify-content:space-between;align-items:baseline;gap:14px;
+  border-bottom:1px solid var(--rule-strong);padding-bottom:7px}
+.rolebar .k{font-family:var(--mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink)}
+.rolebar .meta{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--pencil);text-align:right}
+.rolerow{display:grid;grid-template-columns:82px minmax(0,1fr);gap:12px;align-items:center}
+.rolerow .lbl{font-size:13px;color:var(--pencil)}
+.rolerow .fld{border:1px solid var(--rule-strong);border-radius:5px;background:var(--paper);
+  padding:9px 12px;font-size:14.5px;line-height:1.42}
+@media (max-width:620px){ .rolerow{grid-template-columns:1fr;gap:4px} .rolebar{flex-direction:column;gap:2px}
+  .rolebar .meta{text-align:left} }
+
+/* ---- rough-work folder: a stack of sheets, opens a layer above ---- */
+.roughtab{display:inline-flex;align-items:center;gap:13px;background:none;border:0;padding:6px 4px;
+  cursor:pointer;text-align:left;font-family:var(--body);color:var(--ink)}
+.roughtab .stack{position:relative;display:block;width:44px;height:58px;flex:none}
+.roughtab .stack span,.roughtab .stack i{position:absolute;inset:0;border:1px solid var(--rule-strong);
+  border-radius:2px;background:var(--paper)}
+.roughtab .stack span:nth-child(1){transform:rotate(-5deg) translate(-3px,2px)}
+.roughtab .stack span:nth-child(2){transform:rotate(3deg) translate(2px,-1px)}
+.roughtab .stack i{background:repeating-linear-gradient(to bottom,var(--paper) 0,var(--paper) 10px,
+  var(--rule) 11px,var(--paper) 12px)}
+.roughtab .stack i::after{content:"";position:absolute;left:6px;top:6px;width:21px;height:4px;background:var(--pencil)}
+/* a bookmark in its own colour, so the drawer reads apart from the page bookmarks */
+:root{--bk-rough:#93A489}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bk-rough:#66735F}}
+:root[data-theme="dark"]{--bk-rough:#66735F}
+.roughtab .stack b{position:absolute;z-index:2;right:8px;top:-2px;width:11px;height:23px;background:var(--bk-rough);
+  clip-path:polygon(0 0,100% 0,100% 100%,50% 74%,0 100%)}
+.lightbox .lb-img.prose{max-width:860px;margin:0 auto;width:100%;padding:0}
+.lightbox .lb-prose{margin:0;text-align:left;color:var(--ink)}
+.lightbox .lb-prose p{margin:0 0 15px}
+.lightbox .lb-prose p:last-child{margin-bottom:0}
+.lightbox .lb-hand{margin:0;color:var(--paper);font-size:12.5px;opacity:.85;max-width:74ch}
+.roughtab .t{display:grid;gap:1px}
+.roughtab .t b{font-family:var(--serif);font-size:16px;font-weight:600}
+.roughtab .t small{font-family:var(--mono);font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--pencil)}
+.roughtab:hover .stack span:nth-child(1){transform:rotate(-8deg) translate(-5px,3px)}
+.roughtab:hover .stack span:nth-child(2){transform:rotate(6deg) translate(4px,-2px)}
+.roughtab .stack span,.roughtab .stack i{transition:transform .16s ease}
+@media (prefers-reduced-motion:reduce){ .roughtab .stack span,.roughtab .stack i{transition:none} }
+
+.lightbox .lb-strip{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.lightbox .lb-strip button{border:1px solid var(--paper);background:none;color:var(--paper);border-radius:4px;
+  padding:0 14px;height:38px;font-size:13px;cursor:pointer;font-family:var(--body);white-space:nowrap}
+.lightbox .lb-strip button[aria-current="true"]{background:var(--paper);color:var(--ink)}
+.lightbox .lb-note{margin:8px 0 0;color:var(--paper);font-size:13.5px;max-width:74ch}
+/* the rough overlay stacks image, note and board strip inside the second grid row */
+.lightbox.rough{background:rgba(30,30,28,.72)}
+/* image takes the leftover height; note, strip and hand keep theirs, whatever the sheet's shape */
+.lightbox.rough .lb-body{display:grid;grid-template-rows:minmax(0,1fr) auto auto auto;gap:10px;min-height:0;overflow:hidden}
+.lightbox.rough .lb-img:not(.prose){display:block;text-align:center;min-height:0;overflow:auto}
+.lightbox.rough:not(.zoomed) .lb-img:not(.prose) img{max-height:100%;max-width:100%;width:auto;object-fit:contain}
+.lightbox .lb-img.prose{justify-items:stretch}
+.lightbox .lb-zoom{border:1px solid var(--paper);background:none;color:var(--paper);border-radius:999px;
+  padding:5px 13px;font-size:13px;cursor:pointer;font-family:var(--body);margin-right:8px}
+.lightbox.zoomed .lb-img{place-items:start}
+.lightbox.zoomed .lb-img img{max-width:none;width:auto}
+
+/* ---- screenshots: fill their frame, click to enlarge ---- */
+figure.shot{margin:0;display:grid;gap:8px;align-content:start}
+figure.shot button{display:block;width:100%;padding:0;cursor:zoom-in;position:relative;
+  border:1px solid var(--rule-strong);border-radius:6px;overflow:hidden;background:var(--paper)}
+figure.shot img{display:block;width:100%;height:auto}
+figure.shot .zoom{position:absolute;right:10px;top:10px;width:34px;height:34px;border-radius:999px;
+  border:1px solid var(--rule-strong);background:var(--paper);display:grid;place-items:center;
+  font-size:14px;color:var(--pencil)}
+figure.shot figcaption{margin:0;font-size:13px;color:var(--pencil);max-width:74ch}
+figure.shot figcaption b{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--pencil);display:block;margin-bottom:3px;font-weight:400}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) figure.shot img{filter:brightness(.88)}}
+:root[data-theme="dark"] figure.shot img{filter:brightness(.88)}
+
+/* ---- notebook page: ruled paper with hand marks ---- */
+.nb-page{--rule-gap:30px;padding:clamp(26px,3vw,40px) clamp(20px,2.4vw,34px);
+  background-image:repeating-linear-gradient(to bottom,transparent 0,transparent calc(var(--rule-gap) - 1px),
+    var(--rule) calc(var(--rule-gap) - 1px),var(--rule) var(--rule-gap));
+  background-position:0 calc(clamp(26px,3vw,40px) + 6px);background-attachment:local}
+.nb-row{display:grid;grid-template-columns:104px minmax(0,1fr);gap:20px;align-items:start;
+  margin:0 0 var(--rule-gap)}
+.nb-row:last-child{margin-bottom:0}
+.nb-row p{margin:0;font-family:var(--serif);font-size:17px;line-height:var(--rule-gap);color:var(--ink)}
+.nb-mark{font-family:var(--hand);font-size:1.05rem;line-height:1.15;color:var(--red);
+  transform:rotate(-3deg);text-align:right;padding-top:4px;display:block}
+.nb-hl{background:linear-gradient(transparent 58%,var(--hi) 58% 94%,transparent 94%);padding:0 2px}
+.nb-circ{position:relative;display:inline-block;z-index:0}
+.nb-circ .term{border-bottom:0}
+.nb-circ svg{position:absolute;z-index:-1;left:-6px;top:-5px;width:calc(100% + 12px);height:calc(100% + 13px);
+  overflow:visible;pointer-events:none}
+.nb-circ ellipse{fill:none;stroke:var(--red);stroke-width:1.6;vector-effect:non-scaling-stroke}
+.nb-strike{position:relative;color:var(--pencil)}
+.nb-strike svg{position:absolute;left:-3px;top:38%;width:calc(100% + 6px);height:8px;overflow:visible}
+.nb-strike path{fill:none;stroke:var(--red);stroke-width:1.5;vector-effect:non-scaling-stroke;stroke-linecap:round}
+.nb-ul{position:relative;display:inline-block}
+.nb-ul svg{position:absolute;left:-2px;bottom:-5px;width:calc(100% + 4px);height:7px;overflow:visible}
+.nb-ul path{fill:none;stroke:var(--blue);stroke-width:1.6;vector-effect:non-scaling-stroke;stroke-linecap:round}
+@media (max-width:700px){
+  .nb-row{grid-template-columns:1fr;gap:4px}
+  .nb-mark{text-align:left;transform:rotate(-2deg);padding-top:0}
+}
+@media (prefers-reduced-motion:no-preference){}

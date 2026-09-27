@@ -3,6 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Beeline · Fatima Abid</title>
+<meta name="description" content="Beeline at Greater Manchester Combined Authority: the service landscape, problem model, decision trail, metric ladder and the conversational layer above the planner board.">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="assets/img/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/img/favicon-180.png">
@@ -314,13 +315,24 @@ p.todo .lbl{display:block;margin-bottom:3px}
   .c-ev .checkgrid{grid-template-columns:1fr}
   .c-ev .sum{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
+/* narrow: the metric name gets the full width, the climb sits under it */
+@media (max-width:760px){
+  .c-ev .lhead, .c-ev .lrow{grid-template-columns:minmax(0,1fr) 52px;column-gap:10px;row-gap:7px}
+  .c-ev .lhead>span:first-child{grid-area:1/1}
+  .c-ev .lhead>span:last-child{grid-area:1/2}
+  .c-ev .lhead .rungs-h{grid-area:2/1/auto/-1;font-size:8.5px;column-gap:0}
+  .c-ev .lrow{padding-block:11px}
+  .c-ev .lrow .nm{grid-area:1/1}
+  .c-ev .lrow .qa{grid-area:1/2}
+  .c-ev .lrow .track{grid-area:2/1/auto/-1;height:18px}
+  .c-ev .lrow .nm b{font-size:13.5px}
+}
 @media (max-width:560px){
   .c-ev .picker{grid-auto-flow:row;grid-auto-columns:auto;overflow-x:visible;padding-bottom:0;gap:8px}
   .c-ev .station{grid-template-columns:22px minmax(0,1fr)}
   .c-ev .station .lab{grid-column:2;text-align:left;padding:0 0 2px}
   .c-ev .station .rail{grid-row:1 / span 2;grid-column:1}
-  .c-ev .lhead, .c-ev .lrow{grid-template-columns:minmax(0,1fr) 150px}
-  .c-ev .lhead>:last-child, .c-ev .lrow .qa{display:none}
+  .c-ev .tier{flex-direction:column;gap:2px}
   .c-ev .kv{grid-template-columns:1fr;gap:2px}
   .c-ev .kv dd{margin-bottom:8px}
   .c-ev .qs li{grid-template-columns:1fr;gap:4px}
@@ -832,9 +844,9 @@ p.todo .lbl{display:block;margin-bottom:3px}
 <a class="skip" href="#main">Skip to the page</a>
 <div class="layout">
 <main id="main" tabindex="-1">
-  <div class="pagehead">
+  <div class="pagehead norule">
     <div class="eyebrow">
-      <span class="mono">Greater Manchester Combined Authority · p. 12–17</span>
+      <span class="mono">Greater Manchester Combined Authority · p. 2–7</span>
       <span class="evtag">In discovery, in development</span>
     </div>
     <h1>Beeline, and the systems under it</h1>
@@ -847,6 +859,39 @@ p.todo .lbl{display:block;margin-bottom:3px}
   </div>
 
   <div class="stack">
+
+    <section aria-label="My role">
+      <div class="rolecard">
+        <div class="rolebar"><span class="k">My role</span>
+          <span class="meta">Manchester &middot; 2026 – present</span></div>
+      <div class="rolerow"><span class="lbl">Role</span>
+        <span class="fld">Programme Manager, Youth Employment &amp; Opportunity Digital Services</span></div>
+      <div class="rolerow"><span class="lbl">Led on</span>
+        <span class="fld">I lead the product and service design of Beeline. I own the problem model, the roadmap and the metrics framework, I designed the Discovery quiz and Beeline Unplugged, and I run the experience mapping and design assurance through to developer and supplier handoff.</span></div>
+      <div class="rolerow"><span class="lbl">Team</span>
+        <span class="fld">Web developer, user researcher, the wider digital team, the wider YEO team, and a commissioned creative agency.</span></div>
+      </div>
+    </section>
+
+    <section aria-label="Rough work">
+      <button class="roughtab" type="button" aria-haspopup="dialog" data-rough="rough-beeline"
+              data-label="Rough work behind Beeline"
+              data-hand="My own boards, drawn by hand in Excalidraw while the work was going on. Figures, partner
+                names and place names are redacted.">
+        <span class="stack" aria-hidden="true"><span></span><span></span><i></i><b></b></span>
+        <span class="t"><b>Rough work</b><small>Four boards &middot; opens over the page</small></span>
+      </button>
+      <div id="rough-beeline" hidden>
+        <div class="rough-item" data-src="assets/img/bl-board-1.jpg" data-cap="The system layer"
+             data-alt="A hand-drawn service blueprint band titled “What applies”. Rows are grouped into System, Systemic Anchors, Gatsby Benchmarks and Other, and each row is marked against three columns for Key Stage 3, 4 and 5. Sticky notes down the left side carry observations. A red dashed line of visibility runs along the bottom.">What applies to a young person at each key stage: the system’s own activity, the systemic anchors (the Year 9 options fork, Progress 8, post-16 deadlines, the duty to participate), the eight Gatsby benchmarks, and what sits outside them. It runs down to the line of visibility.</div>
+        <div class="rough-item" data-src="assets/img/bl-board-2.jpg" data-cap="What runs underneath"
+             data-alt="A hand-drawn blueprint band. The upper half lists the MBacc, the GM Skills Plan and the survey readings the system holds. Below a red dashed line of experience, a pressure curve rises through the options fork, mocks and deadlines to a destination, with exit risk banded from low to highest attrition, and six barriers listed beneath.">The strategic frame and the data the system already holds about young people, then, below the line of experience, the young person’s reality: the pressure curve across the three key stages and the six barriers that sit under it.</div>
+        <div class="rough-item" data-src="assets/img/bl-board-3.jpg" data-cap="What success feels like"
+             data-alt="A hand-drawn blueprint band below a red dashed line of ambition. Six barriers run down the left. To their right, numbered sticky notes carry first-person outcome statements, tagged as know, do or become, arranged across three key-stage columns. A stakeholder map runs along the bottom.">The “I can…” outcome statements a young person should be able to say, set against the six barriers and sorted into what they know, what they can do and who they are becoming. The stakeholder map sits underneath.</div>
+        <div class="rough-item" data-src="assets/img/bl-board-4.jpg" data-cap="The digital offer"
+             data-alt="A hand-drawn blueprint band below a red dashed line of digital offer. Products are listed as sticky notes in two states, live and planned, split between young people and the adults around them. Below, delivery channels are grouped into universal, targeted and specialist, each marked across three columns.">The products for young people and for the adults around them, what is live and what is next, and the channels that carry them: the ones that reach everyone, the ones that reach people who already showed up, and the ones that reach the adult.</div>
+      </div>
+    </section>
 
     <section aria-labelledby="art-h">
       <div class="label">Systems artefacts</div>
@@ -1003,9 +1048,9 @@ p.todo .lbl{display:block;margin-bottom:3px}
             gateway, and the ones that broaden cluster in Digital and Engineering. That reading is what the Discovery
             Quiz redesign is now aimed at, and it gave the board a baseline to judge the next release against.</p>
           <div class="lm03-wrap">
-            <svg class="lm03" viewBox="0 0 888 278" role="img" aria-labelledby="lm03t lm03d">
+            <svg class="lm03" viewBox="-22 0 910 278" role="img" aria-labelledby="ev-lm03t ev-lm03d">
   <title id="ev-lm03t">Share of paired-gateway sessions that explored two or more gateways</title>
-  <desc id="ev-lm03d">Digital and Technology 35 per cent. Engineering and Manufacturing 35. Financial, Business and Professional 30. Creative, Culture and Sport 30. Health and Social Care 30. Construction and the Green Economy 25. Education and Early Years 20.</desc>
+  <desc id="ev-lm03d">Digital and Technology 35 per cent. Engineering and Manufacturing 35. Finance, Business &amp; Professional Services 30. Creative, Culture and Sport 30. Health and Social Care 30. Construction and the Green Economy 25. Education and Early Years 20.</desc>
   <g>
     <text class="lbl" x="256" y="24.0" text-anchor="end">Digital and Technology</text>
     <rect class="track" x="268" y="8" width="560" height="22" rx="4"/>
@@ -1019,7 +1064,7 @@ p.todo .lbl{display:block;margin-bottom:3px}
     <text class="val" x="474.0" y="62.0">35%</text>
   </g>
   <g>
-    <text class="lbl" x="256" y="100.0" text-anchor="end">Financial, Business and Professional</text>
+    <text class="lbl" x="256" y="100.0" text-anchor="end">Finance, Business &amp; Professional Services</text>
     <rect class="track" x="268" y="84" width="560" height="22" rx="4"/>
     <rect class="bar" x="268" y="84" width="168.0" height="22" rx="4"/>
     <text class="val" x="446.0" y="100.0">30%</text>
@@ -1154,7 +1199,7 @@ p.todo .lbl{display:block;margin-bottom:3px}
     </section>
 
   </div>
-  <div class="nextcase"><a href="sugar.html"><span><small>Next</small>The Artificial Leaf</span><span class="open" aria-hidden="true">open →</span></a></div>
+  <div class="nextcase"><a href="learning-meter.html"><span><small>Next</small>Learning Meter</span><span class="open" aria-hidden="true">open →</span></a></div>
   <footer class="pagefoot">
     <span>Beeline · Greater Manchester Combined Authority</span>
     <span><a href="index.html">← Contents</a> · <a href="sugar.html">The Artificial Leaf →</a></span>
@@ -1527,7 +1572,7 @@ const path=pts=>pts.map(([p,f,v],i)=>`${i?"L":"M"}${px(p,f).toFixed(1)},${Y(v).t
 const col=t=>t==="good"?"var(--green)":t==="bad"?"var(--red)":"var(--amber)";
 function renderCurve(){
   const s=$("mv-curve"); const H=HOT[view];
-  let g=`<title id="curveTitle">Experience curve across five phases of a Beeline Discovery session</title>`;
+  let g=`<title id="mv-curveTitle">Experience curve across five phases of a Beeline Discovery session</title>`;
   for(let i=0;i<=5;i++) g+=`<line x1="${X0+W*i}" y1="30" x2="${X0+W*i}" y2="310" stroke="var(--rule-strong)" stroke-dasharray="${i%5?"3 5":"0"}"/>`;
   g+=`<line x1="${X0}" y1="${Y(.5)}" x2="${X1}" y2="${Y(.5)}" stroke="var(--rule-strong)"/>`;
   g+=`<text x="${X0-8}" y="${Y(.9)}" text-anchor="end" font-family="var(--mono)" font-size="11" fill="var(--pencil)">good</text><text x="${X0-8}" y="${Y(.1)}" text-anchor="end" font-family="var(--mono)" font-size="11" fill="var(--pencil)">bad</text>`;
@@ -1658,7 +1703,7 @@ function lbl(p){
 }
 function renderCurve(){
   const s=$("ls-curve");
-  let g=`<title id="curveT">Pressure on a young person across Key Stages 3 to 5</title>`;
+  let g=`<title id="ls-curveT">Pressure on a young person across Key Stages 3 to 5</title>`;
   for(let i=0;i<=3;i++){const x=60+i*300;g+=`<line x1="${x}" y1="18" x2="${x}" y2="284" stroke="var(--rule-strong)" stroke-dasharray="${i%3?"3 5":"0"}"/>`;}
   STAGES.forEach((t,i)=>g+=`<text x="${60+i*300+150}" y="308" text-anchor="middle" font-family="var(--body)" font-size="13" fill="${off(i)?"var(--pencil)":"var(--ink)"}" opacity="${off(i)?.4:1}">${t.replace("·","—")}</text>`);
   const pts=CURVE.map(p=>[X(p.x),Yv(p.v)]);

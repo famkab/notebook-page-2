@@ -3,6 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>The Artificial Leaf · Fatima Abid</title>
+<meta name="description" content="The Artificial Leaf: nine months on SUGAR’s Triple Diamond finding a business opportunity for an artificial photosynthesis system, and the challenge we rewrote.">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="assets/img/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/img/favicon-180.png">
@@ -49,14 +50,6 @@
 .feat .n{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;color:var(--pencil)}
 .feat b{font-family:var(--serif);font-size:17px;font-weight:600}
 .feat p{margin:0;font-size:13.5px;color:var(--pencil)}
-figure.fig{margin:4px 0 0;display:grid;gap:8px}
-figure.fig img{display:block;width:100%;height:auto;border:1px solid var(--rule-strong);border-radius:6px;
-  background:#fff}
-figure.fig figcaption{margin:0;font-size:13px;color:var(--pencil);max-width:74ch}
-figure.fig figcaption b{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--pencil);display:block;margin-bottom:3px;font-weight:400}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) figure.fig img{filter:brightness(.88)}}
-:root[data-theme="dark"] figure.fig img{filter:brightness(.88)}
 .persona{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:0;
   border:1px solid var(--rule-strong);border-radius:6px;overflow:hidden;background:var(--paper)}
 .persona>div{padding:16px 18px;display:grid;gap:6px;align-content:start}
@@ -125,9 +118,9 @@ figure.fig figcaption b{font-family:var(--mono);font-size:9.5px;letter-spacing:.
 <a class="skip" href="#main">Skip to the page</a>
 <div class="layout">
 <main id="main" tabindex="-1">
-  <div class="pagehead">
+  <div class="pagehead norule">
     <div class="eyebrow">
-      <span class="mono">SUGAR Global Network · Nice, France · 2021–2022 · p. 18–20</span>
+      <span class="mono">SUGAR Global Network · p. 18–20</span>
     </div>
     <h1>The Artificial Leaf</h1>
     <p class="lede">An academic–industry innovation programme run on SUGAR’s Triple Diamond, with a six-person team of
@@ -136,6 +129,37 @@ figure.fig figcaption b{font-family:var(--mono);font-size:9.5px;letter-spacing:.
   </div>
 
   <div class="stack" style="margin-top:26px">
+
+    <section aria-label="My role">
+      <div class="rolecard">
+        <div class="rolebar"><span class="k">My role</span>
+          <span class="meta">Nice &middot; Bologna &amp; Turin &middot; San Francisco &middot; 2021–2022</span></div>
+      <div class="rolerow"><span class="lbl">Role</span>
+        <span class="fld">Product Designer and Developer</span></div>
+      <div class="rolerow"><span class="lbl">My part</span>
+        <span class="fld">I designed CO/LAB, the onboarding tool, and built the service blueprints and value proposition maps that aligned the science and business sides. I pitched it at the SUGAR Expo in San Francisco.</span></div>
+      <div class="rolerow"><span class="lbl">Team</span>
+        <span class="fld">A team of six students across service design, engineering, architecture, economics and education.</span></div>
+      </div>
+    </section>
+
+    <section aria-label="Rough work">
+      <button class="roughtab" type="button" aria-haspopup="dialog" data-rough="rough-sugar"
+              data-label="Rough work behind The Artificial Leaf"
+              data-hand="Working artefacts from the team’s own fall and spring reports, which I co-authored.
+                One interviewed company is named with its permission in the report.">
+        <span class="stack" aria-hidden="true"><span></span><span></span><i></i><b></b></span>
+        <span class="t"><b>Rough work</b><small>Three artefacts &middot; opens over the page</small></span>
+      </button>
+      <div id="rough-sugar" hidden>
+        <div class="rough-item" data-src="assets/img/sg-rough-journey.jpg" data-cap="Customer journey map"
+             data-alt="A customer journey map across investigation, evaluation and deliver phases. Rows list main stages, user actions, touchpoints and stakeholders involved. An experience map at the bottom plots happy, neutral and sad faces along the journey.">The service from the point of view of a company looking for new technologies, drawn from the Laurentia interview. Main stages across the top, then user actions, touchpoints and stakeholders, with an experience map underneath tracking how it feels at each step.</div>
+        <div class="rough-item" data-src="assets/img/sg-rough-blueprint.jpg" data-cap="Service blueprint"
+             data-alt="A service blueprint split into evaluation and collaboration phases. Columns cover completing the survey, the technical simulation, visualising results, financial estimation, 3D model plant installation, the follow-up meeting and starting a collaboration. Rows below a dashed line of visibility describe what the institute does at each step.">The same journey with what happens behind it: what the user does, what the institute does in response, and what each step needs. The 3D model step is marked as the next build rather than something we delivered.</div>
+        <div class="rough-item" data-src="assets/img/sg-rough-canvas.jpg" data-cap="Business model canvas"
+             data-alt="A business model canvas with panels for key partners, key activities, value propositions, customer relationships and customer segments across the top, and cost structure and revenue streams along the bottom.">How the tool would pay for itself: partners, activities, the value proposition to each side, and the cost and revenue lines under it.</div>
+      </div>
+    </section>
 
     <section aria-labelledby="brief-h">
       <div class="label">The brief</div>
@@ -192,11 +216,11 @@ figure.fig figcaption b{font-family:var(--mono);font-size:9.5px;letter-spacing:.
         <li>Chimneys</li><li>Cement production</li><li>Fashion</li><li>Building sector</li><li>Transportation</li>
         <li class="pick">Plastic upcycling</li><li>Agriculture</li><li>Digital pollution</li><li>Waste sector</li>
       </ul>
-      <figure class="fig">
-        <img src="assets/img/sugar-mindmap.png" width="1400" height="947"
+      <figure class="shot">
+        <button type="button"><img loading="lazy" decoding="async" src="assets/img/sugar-mindmap.png" width="1400" height="947"
           alt="Mind map of applications for artificial photosynthesis, branching from a central node into clothing,
             smart cities, construction, industry, food, tech, oceans, transportation and enhanced photosynthesis.
-            Green dots above a node record votes; the most-voted nodes are outlined.">
+            Green dots above a node record votes; the most-voted nodes are outlined."></button>
         <figcaption><b>Fall report, 2021</b>Every application we found, on one map. The green dots are the team&rsquo;s
           votes against the eight criteria, so the shortlist is visible in the artefact rather than written up
           afterwards.</figcaption>
@@ -266,11 +290,11 @@ figure.fig figcaption b{font-family:var(--mono);font-size:9.5px;letter-spacing:.
         <div><span class="n">04</span><b>3D model of the plant</b><p>How much space the installation takes and what
           infrastructure it needs. Specified, and left as the next build.</p></div>
       </div>
-      <figure class="fig">
-        <img src="assets/img/sugar-colab.png" width="1400" height="909"
+      <figure class="shot">
+        <button type="button"><img loading="lazy" decoding="async" src="assets/img/sugar-colab.png" width="1400" height="909"
           alt="The CO/LAB dashboard: a left navigation rail, three simulation cards for survey, technical simulation
             and financial simulation with progress bars, a visual data chart and a placeholder for the 3D model of the
-            plant, and a right sidebar holding the company name and date.">
+            plant, and a right sidebar holding the company name and date."></button>
         <figcaption><b>Spring report, 2022</b>The dashboard. The three simulations run in order and each one carries
           its progress, so a company can see how far into the conversation it is. The 3D model sits in its place,
           marked as the next build.</figcaption>
@@ -298,9 +322,16 @@ figure.fig figcaption b{font-family:var(--mono);font-size:9.5px;letter-spacing:.
       </ul>
     </section>
 
+
+    <section aria-labelledby="life-h">
+      <h2 id="life-h">Where I worked across the lifecycle</h2>
+      <p class="sec-lede">Nine months, from desk research to a specified tool.</p>
+      <div data-life="sugar" class="life-wrap"></div>
+    </section>
+
   </div>
 
-  <div class="nextcase"><a href="index.html"><span><small>Back to</small>Contents</span><span class="open" aria-hidden="true">open →</span></a></div>
+  <div class="nextcase"><a href="how-i-work.html"><span><small>Next</small>How I work</span><span class="open" aria-hidden="true">open →</span></a></div>
   <footer class="pagefoot">
     <span>The Artificial Leaf · SUGAR Global Network with the Istituto Italiano di Tecnologia, 2021–22</span>
     <span><a href="index.html">← Contents</a></span>

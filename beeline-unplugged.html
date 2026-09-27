@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Beeline Unplugged · Fatima Abid</title>
+<meta name="description" content="Beeline Unplugged: a deck of cards that runs the Beeline discovery logic without a screen, what six settings of field testing showed, and how it was designed to cost less.">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="assets/img/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/img/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Caveat:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/journal.css">
+<style>
+.stack{display:grid;gap:46px}
+.stack>section{display:grid;gap:16px}
+.label{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--pencil)}
+.stack h3{font-family:var(--serif);font-size:19px;font-weight:600;margin:10px 0 0}
+.sec-lede{margin:0;max-width:74ch;color:var(--pencil);font-size:15.5px}
+
+.parts{display:grid;gap:10px;margin:4px 0 0;padding:0;list-style:none}
+.parts li{display:grid;grid-template-columns:142px minmax(0,1fr);gap:18px;align-items:start;
+  border-top:1px solid var(--rule);padding:13px 0 0;font-size:14.5px;line-height:1.5}
+.parts .n{font-family:var(--mono);font-size:11px;color:var(--pencil);padding-top:3px;letter-spacing:.04em}
+
+.gwtable{width:100%;border-collapse:collapse;font-size:14px;margin-top:4px}
+.gwtable th,.gwtable td{border-bottom:1px solid var(--rule);padding:9px 10px;text-align:left}
+.gwtable thead th{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--pencil);font-weight:400;border-bottom:1px solid var(--rule-strong)}
+.gwtable td.n{text-align:right;font-family:var(--mono);font-size:13px;width:92px}
+.gwtable tfoot td{font-weight:400;border-bottom:0;border-top:1px solid var(--rule-strong);
+  font-family:var(--mono);font-size:13px}
+
+.bars{display:grid;gap:7px;margin:4px 0 0}
+.bar{display:grid;grid-template-columns:200px minmax(0,1fr) 48px;gap:12px;align-items:center;font-size:14px}
+.bar i{display:block;height:15px;border-radius:2px;background:var(--k,var(--rule-strong))}
+.bar span:last-child{font-family:var(--mono);font-size:12.5px;color:var(--pencil);text-align:right}
+
+.kits{width:100%;border-collapse:collapse;font-size:14px;margin-top:4px}
+.kits th,.kits td{border-bottom:1px solid var(--rule);padding:10px;text-align:left;vertical-align:top}
+.kits thead th{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--pencil);font-weight:400;border-bottom:1px solid var(--rule-strong)}
+
+.figs2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+
+@media (max-width:860px){ .figs2{grid-template-columns:1fr} }
+@media (max-width:620px){
+  .parts li{grid-template-columns:1fr;gap:3px}
+  .bar{grid-template-columns:1fr;gap:3px}
+  .bar span:last-child{text-align:left}
+}
+</style>
+
+<a class="skip" href="#main">Skip to the page</a>
+<div class="layout">
+<main id="main" tabindex="-1">
+  <div class="pagehead norule">
+    <div class="eyebrow">
+      <span class="mono">Greater Manchester Combined Authority · p. 22–25</span>
+    </div>
+    <h1>Beeline Unplugged</h1>
+    <p class="lede">A deck of cards that runs the Beeline discovery logic without a screen. What is in the pack, what
+      six settings of field testing showed, and how it was designed to cost less.</p>
+  </div>
+
+  <div class="stack" style="margin-top:26px">
+
+    <section aria-label="My role">
+      <div class="rolecard">
+        <div class="rolebar"><span class="k">My role</span>
+          <span class="meta">Manchester &middot; February – July 2026</span></div>
+        <div class="rolerow"><span class="lbl">Role</span>
+          <span class="fld">Programme Manager, Youth Employment &amp; Opportunity Digital Services</span></div>
+        <div class="rolerow"><span class="lbl">Led on</span>
+          <span class="fld">I designed the activity and the scoring model, ran the field testing and the design
+            assurance rounds, and briefed and worked with a commissioned creative agency through artwork and
+            production. I wrote the business case and the board decision paper, and set the measurement approach.</span></div>
+        <div class="rolerow"><span class="lbl">Team</span>
+          <span class="fld">The wider digital team, the wider YEO team, a commissioned creative agency for design and
+            production, and facilitators across six events.</span></div>
+      </div>
+    </section>
+
+    <section aria-label="Rough work">
+      <button class="roughtab" type="button" aria-haspopup="dialog" data-rough="rough-bu"
+              data-label="Rough work behind Beeline Unplugged"
+              data-hand="My own service blueprint, drawn by hand in Excalidraw while the work was going on.">
+        <span class="stack" aria-hidden="true"><span></span><span></span><i></i><b></b></span>
+        <span class="t"><b>Rough work</b><small>One sheet &middot; opens over the page</small></span>
+      </button>
+      <div id="rough-bu" hidden>
+        <div class="rough-item" data-src="assets/img/bu-blueprint.jpg" data-cap="Beeline Discovery service blueprint"
+             data-alt="A service blueprint across five phases from arrival to re-exploration. Offline touchpoints sit above a line of visibility and digital ones below it, with an intended experience curve, quotes from young people at each phase, the supporting roles, and the learning moment each phase is meant to move.">Both halves of the journey on one sheet: offline touchpoints above the line of visibility, digital ones below it, with the intended experience curve, what young people said at each phase, who is supporting them, and which Learning Moment the phase is meant to move.</div>
+      </div>
+    </section>
+
+    <section aria-labelledby="what-h">
+      <div class="label">What it is</div>
+      <h2 id="what-h">The pack, and why it was printed</h2>
+      <p class="sec-lede">Beeline is a digital service, so a print run needed a reason, and three carried it. A young
+        person in a busy assembly will not save a link they have no reason to care about yet, and an object they take
+        home moves the conversation past the school gate. Universal Design for Learning asks for more than one way to
+        act and express, which serves younger learners,
+        <button class="term" type="button" data-term="SEND">SEND</button> learners, and anyone who finds a careers
+        website intimidating before they find it useful. And much of our direct engagement came through social media,
+        so a physical route in holds when a channel we do not control moves.</p>
+      <p class="sec-lede">The pack is eighteen prompt cards, six Interests, six Skills and six Ambitions, with the
+        scoring model printed on their backs: three points for a clear fit, one for a related one, and a cap of two
+        <button class="term" type="button" data-term="gateways">gateways</button> sharing any score. With them come
+        seven gateway cards, a tally chart filled in by hand and taken home with a QR code on it, and a two-card
+        facilitation guide that opens with “You don’t need to be a careers expert”. Two to three minutes with one
+        young person, or a whole class with one adult.</p>
+      <p class="sec-lede">It is framed throughout as exploration. No right answers, nothing closed off, and no
+        narrowing at 14.</p>
+
+      <figure class="shot">
+        <button type="button"><img loading="lazy" decoding="async" src="assets/img/bu-card-guide.jpg" width="1500" height="662"
+          alt="The facilitation guide across two cards: goals, what you need, and five steps from reading the intro card to visiting Beeline."></button>
+        <figcaption>The facilitation guide. Five steps, no training required.</figcaption>
+      </figure>
+
+      <figure class="shot">
+        <button type="button"><img loading="lazy" decoding="async" src="assets/img/bu-card-interests.jpg" width="1500" height="780"
+          alt="The Interests prompt card and its six statements, from helping people to bringing order to messy situations."></button>
+        <figcaption>Interests: what do you enjoy doing, in and out of school.</figcaption>
+      </figure>
+
+      <figure class="shot">
+        <button type="button"><img loading="lazy" decoding="async" src="assets/img/bu-card-skills.jpg" width="1500" height="779"
+          alt="The Skills prompt card and its six statements, from giving advice to keeping track of tasks."></button>
+        <figcaption>Skills: written as things other people notice about you, not as a self-assessment.</figcaption>
+      </figure>
+
+      <figure class="shot">
+        <button type="button"><img loading="lazy" decoding="async" src="assets/img/bu-card-ambitions.jpg" width="1500" height="782"
+          alt="The Ambitions prompt card and its six statements, from making a difference to a job with clear progression."></button>
+        <figcaption>Ambitions: including pay and progression. Young people rarely think about work in those terms
+          until something puts the words in front of them.</figcaption>
+      </figure>
+
+      <figure class="shot">
+        <button type="button"><img loading="lazy" decoding="async" src="assets/img/bu-card-scoring.jpg" width="1500" height="814"
+          alt="The reverse of three cards showing the gateway scoring: three points for a clear fit, one point for a related fit."></button>
+        <figcaption>The back of every card. Showing the working is what stops the result reading as a verdict.</figcaption>
+      </figure>
+
+      <figure class="shot">
+        <button type="button"><img loading="lazy" decoding="async" src="assets/img/bu-card-gateways.jpg" width="1500" height="862"
+          alt="The seven gateway cards: Construction and the Green Economy, Digital and Technology, Engineering and Manufacturing, Creative Culture and Sport, Education and Early Years, Financial Business and Professional Services, and Health and Social Care."></button>
+        <figcaption>The seven gateways, each with jobs a 14-year-old can picture and a QR code into that gateway
+          online.</figcaption>
+      </figure>
+
+    </section>
+
+    <section aria-labelledby="field-h">
+      <div class="label">Field testing</div>
+      <h2 id="field-h">Six settings, to find out whether it worked</h2>
+      <p class="sec-lede">Round one ran across six public events between February and May 2026, each one chosen to
+        stress a different part of it: crowd and noise, a quiet corner, younger learners, older learners, families, and
+        a room with employers in it. Nothing was printed at volume until those rooms had been through it.</p>
+
+      <div class="figs2">
+        <figure class="shot">
+          <button type="button"><img loading="lazy" decoding="async" src="assets/img/bu-table.jpg" width="1200" height="1600"
+            alt="A table at a careers event with the Beeline Unplugged deck laid out: seven coloured gateway cards, rows of skills and interests prompt cards with QR codes, a tally sheet and a how-to-play card."></button>
+          <figcaption>The pack as a group meets it: gateway cards across the top, prompt cards to sort, and the tally
+            sheet that goes home with them.</figcaption>
+        </figure>
+        <figure class="shot">
+          <button type="button"><img loading="lazy" decoding="async" src="assets/img/bu-dotvote.jpg" width="1200" height="1600"
+            alt="The same table mid-session, hands reaching across it. Dot stickers have been added to the seven gateway cards to record which ones young people picked, with sheets of spare dots and a stack of tally charts beside them."></button>
+          <figcaption>Mid-session on the stand. Dots on the gateway cards record what young people picked, so the
+            spread is visible in the room rather than counted afterwards.</figcaption>
+        </figure>
+      </div>
+
+      <h3>The digital comparison</h3>
+      <p class="sec-lede">At the largest event, the cards reached about twice as many young people as the digital
+        service did on the same days, in the same building. The deck was on a stand in a hall; the website was there
+        for anyone who wanted it.</p>
+      <div class="bars">
+        <div class="bar" style="--k:var(--hi-solid)"><span>Unplugged, on the stand</span><i style="width:100%"></i><span>≈290</span></div>
+        <div class="bar" style="--k:var(--rule-strong)"><span>Beeline digital, same days</span><i style="width:49%"></i><span>≈140</span></div>
+      </div>
+
+      <h3>Every gateway got used</h3>
+      <p class="sec-lede">The spread mattered more than the ranking. No gateway went unselected, which answers the
+        concern that a short card deck would funnel everyone into the same two or three sectors.</p>
+      <table class="gwtable">
+        <thead><tr><th scope="col">Gateway</th><th scope="col" class="n">Young people</th></tr></thead>
+        <tbody>
+          <tr><td>Finance, Business &amp; Professional Services</td><td class="n">≈57</td></tr>
+          <tr><td>Construction and the Green Economy</td><td class="n">≈52</td></tr>
+          <tr><td>Creative, Culture and Sport</td><td class="n">≈42</td></tr>
+          <tr><td>Health and Social Care</td><td class="n">≈40</td></tr>
+          <tr><td>Education and Early Years</td><td class="n">≈37</td></tr>
+          <tr><td>Engineering and Manufacturing</td><td class="n">≈32</td></tr>
+          <tr><td>Digital and Technology</td><td class="n">≈31</td></tr>
+        </tbody>
+        <tfoot><tr><td>Seven of seven used</td><td class="n">≈291</td></tr></tfoot>
+      </table>
+
+    </section>
+
+
+      <div class="label">Offline and online</div>
+      <h2 id="two-h">Two shapes of the same journey</h2>
+      <p class="sec-lede">The offline and online halves run the same discovery logic and behave nothing alike. The
+        blueprint holds five phases, from arrival to re-exploration, and each one favours a different half. Designing
+        both meant being honest about which.</p>
+      <table class="kits">
+        <thead><tr><th scope="col">Phase</th><th scope="col">Offline, with the cards</th><th scope="col">Online, on the service</th></tr></thead>
+        <tbody>
+          <tr><td><b>Arrival</b></td>
+            <td>An adult sets it up, so the entry cost is a sentence. The pack is sitting on a table and someone picks it up.</td>
+            <td>They arrive alone and have to decide it is worth their time before anything has happened.</td></tr>
+          <tr><td><b>Active discovery</b></td>
+            <td>Cards, tally, panels and the person next to you, all live at once. Order is not fixed and people move between them.</td>
+            <td>One question at a time, in the order we chose. Clean, quick, and the same for everyone.</td></tr>
+          <tr><td><b>The reveal</b></td>
+            <td>The result lands in a room with someone in it. A surprising score becomes a conversation.</td>
+            <td>The result lands on a screen with nobody there. A surprising score can read as a verdict.</td></tr>
+          <tr><td><b>The bridge</b></td>
+            <td>Depends on a code being scanned later, often at home, from a chart in a pocket.</td>
+            <td>Already there. The next page is one tap away.</td></tr>
+          <tr><td><b>Coming back</b></td>
+            <td>Needs the pack again, and usually the adult again.</td>
+            <td>Costs nothing to return to, at any hour, as many times as they like.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section aria-labelledby="cost-h">
+      <div class="label">Cost</div>
+      <h2 id="cost-h">Designing it to cost less</h2>
+      <p class="sec-lede">Public money, so the cheapest version that still worked was part of the design rather than a
+        constraint applied afterwards. Four things brought the cost per young person down.</p>
+      <ul class="parts">
+        <li><span class="n">Bulk, not kits</span><span>Supplier minimums mean a single kit assembled to order costs
+          many times what the same kit costs inside a full run. Ordering every component in one print run and
+          assembling the kits ourselves moved the cost per contact from prohibitive to routine.</span></li>
+        <li><span class="n">Four configurations</span><span>Each sized to where it goes. A summit giveaway is a deck
+          and a guide. A school kit is boxed so it survives a term and gets reused. An event kit carries the panels
+          and the stickers that only a staffed stand needs. Nothing pays for materials it will not use.</span></li>
+        <li><span class="n">One deck, many young people</span><span>The tally chart is downloadable, so a class of
+          thirty needs one deck and thirty printed sheets. That decision alone changed what a school has to be
+          given.</span></li>
+        <li><span class="n">A v1, not the full order</span><span>The recommendation was a smaller first batch to early
+          events and a pilot group, with the tracked codes running, then a v2 once we knew where the friction was.
+          Money follows evidence instead of arriving ahead of it.</span></li>
+      </ul>
+      <p class="sec-lede">The specification argued for durability where it earns its keep: rounded corners and printed
+        boxes for the decks that live in classrooms, plain banding for the ones handed out at a summit and used
+        once.</p>
+    </section>
+  </div>
+
+  <p class="disclaimer">Drawn from my own business case, board decision paper and field-testing report. All figures are
+    rounded; the exact numbers belong to Greater Manchester Combined Authority. The field testing was an early
+    operational review, not an evaluation.</p>
+
+  <div class="nextcase"><a href="mbacc-summit.html"><span><small>Next</small>MBacc Summit</span><span class="open" aria-hidden="true">open →</span></a></div>
+  <footer class="pagefoot">
+    <span>Beeline Unplugged · Greater Manchester Combined Authority</span>
+    <span><a href="index.html">← Contents</a> · <a href="mbacc-summit.html">MBacc Summit →</a></span>
+  </footer>
+</main>
+</div>
+<script src="assets/site.js"></script>
+</html>
