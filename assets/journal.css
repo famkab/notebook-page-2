@@ -9,7 +9,7 @@
   --on-scrim:#F1EFEA; --on-scrim-ink:#1E1E1C;
   --serif:"Newsreader",Georgia,serif; --body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
   --hand:"Caveat","Segoe Print",cursive; --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
-  --rail:200px; --bar:56px;
+  --rail:200px; --bar:56px; --frame:18px;
   --grain:radial-gradient(var(--rule-strong) 1.1px,transparent 1.1px);
   --grain-size:28px 28px;
 }
@@ -33,7 +33,7 @@
 [hidden]{display:none!important}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--desk);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.55;
-  padding:18px 18px 0;-webkit-font-smoothing:antialiased}
+  padding:var(--frame) var(--frame) 0;-webkit-font-smoothing:antialiased}
 button{font:inherit;color:inherit}
 a{color:inherit}
 :focus-visible{outline:2.5px solid var(--blue);outline-offset:3px;border-radius:4px}
@@ -60,12 +60,13 @@ p{margin:0 0 14px}
 .hl,mark{background:linear-gradient(transparent 35%,var(--hi) 35% 88%,transparent 88%);color:inherit;padding-inline:2px}
 
 /* ============ the sheet on the desk ============ */
-.layout{margin:0 auto;display:grid;max-width:1240px;min-height:calc(100dvh - 36px);
+.layout{margin:0 auto;display:grid;max-width:1240px;min-height:calc(100dvh - var(--frame) * 2);
   grid-template-columns:var(--rail) minmax(0,1fr);border:1px solid var(--rule-strong);border-radius:18px;
   background:linear-gradient(to right,var(--paper-2) 0 var(--rail),var(--paper) var(--rail));
   box-shadow:0 18px 55px rgba(30,30,28,.14);overflow:clip}
 .rail-col{min-width:0;min-height:100%;align-self:stretch;border-right:1px solid var(--rule-strong);background:var(--paper-2)}
-.rail-col>.rail{position:sticky;top:0;display:flex;height:100dvh;min-width:0;flex-direction:column;overflow:hidden;padding:26px 16px 16px}
+.rail-col>.rail{position:sticky;top:var(--frame);display:flex;height:calc(100dvh - var(--frame));min-width:0;
+  flex-direction:column;overflow:hidden;padding:26px 16px 16px}
 .rail-col .railtop{display:grid;gap:5px;padding:0 6px 20px;position:relative}
 .rail-col .railtop .brand{font-family:var(--hand);font-size:1.8rem;line-height:1.1;text-decoration:none;display:block}
 .rail-col .railtop small{font-family:var(--mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:var(--pencil)}
@@ -235,7 +236,7 @@ h2,h3,[id]{scroll-margin-top:calc(var(--bar) + 12px)}
   white-space:nowrap;transform:rotate(-2deg);background:var(--paper);padding:0 4px;line-height:1.1}
 
 @media (max-width:1023px){
-  body{padding:0}
+  :root{--frame:0px}
   .layout{grid-template-columns:minmax(0,1fr);min-height:100dvh;border:0;border-radius:0;background:var(--paper);box-shadow:none}
   .rail-col{display:none}
   .topbar{display:grid}
