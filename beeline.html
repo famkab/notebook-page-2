@@ -1027,12 +1027,6 @@ p.todo .lbl{display:block;margin-bottom:3px}
         <div class="ladder" id="ev-ladder" role="group" aria-label="Metrics by step reached"></div>
         <aside class="detail" id="ev-detail" aria-live="polite"></aside>
       </div>
-      <section class="checks" aria-label="Design assurance">
-        <div>
-          <div class="panel-h">Design assurance</div>
-        </div>
-        <div class="checkgrid" id="ev-checkgrid"></div>
-      </section>
 
       <section class="rough">
         <h2>Two metrics, in action</h2>
@@ -1485,6 +1479,7 @@ function renderChecks(){
     [climbedBlocked.length,"Climbed while still blocked","These have a first number but still have open asks, so the number is real but incomplete.",climbedBlocked],
     [behind.length,"Behind where 2027 asks",`Each one has a named next step. ${dig} of the open asks sit with the digital team, so the work is shared, not stuck.`,behind]
   ];
+  if(!$("ev-checkgrid"))return;
   $("ev-checkgrid").innerHTML=cards.map(c=>`<div class="check"><span class="n">${c[0]}</span><span class="t">${c[1]}</span><p>${c[2]}</p><div class="ids">${c[3].map(i=>`<span class="idchip">${i}</span>`).join("")}</div></div>`).join("");
   $("ev-checkgrid").querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>{selId=b.dataset.go;renderLadder();$("ev-detail").scrollIntoView({behavior:"smooth",block:"nearest"})});
 }

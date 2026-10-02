@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Learning Meter · Fatima Abid</title>
-<meta name="description" content="The Learning Meter at Kids&amp;Us: the rubric, the test set of about 4,000 answers, and the evaluation loop that ran before any of it reached a child.">
+<meta name="description" content="The Learning Meter at Kids&amp;Us: the rubric, the test set of about 4,000 answers, and the evaluation loop that ran before any of it reached a learner.">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="assets/img/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/img/favicon-180.png">
@@ -184,10 +184,10 @@ h2{font-family:var(--serif);font-weight:500;font-size:clamp(24px,2.8vw,32px);lin
     <span class="evtag">Evaluation before launch</span>
   </div>
   <h1>Learning Meter</h1>
-  <p class="lede">Speaking and writing activities inside MyWay, Kids&amp;Us’s gamified app for children aged 8 to 12
-    learning English as a second language. A child speaks into a game and ten words come back telling them what to
+  <p class="lede">Speaking and writing activities inside MyWay, Kids&amp;Us’s gamified app for learners aged 8 to 12
+    learning English as a second language. A learner speaks into a game and ten words come back telling them what to
     fix, marked by AI against a teacher’s rubric. Getting those ten words right meant building the thing underneath:
-    rubrics, anchor answers, a test set, and an evaluation loop that ran before anything reached a child.</p>
+    rubrics, anchor answers, a test set, and an evaluation loop that ran before anything reached a learner.</p>
   <p class="press"><b>In the press</b>
     <a href="https://news.microsoft.com/es-es/2025/01/16/kidsus-mejora-la-participacion-de-su-alumnado-en-un-40-con-la-ia-de-microsoft/">Kids&amp;Us mejora la participación de su alumnado en un 40% con la IA de Microsoft</a>
     <span class="src">Microsoft Source EMEA, 16 January 2025 · Microsoft’s write-up of MyWay and the Azure OpenAI services behind it</span></p>
@@ -237,7 +237,7 @@ h2{font-family:var(--serif);font-weight:500;font-size:clamp(24px,2.8vw,32px);lin
     <div><div class="label">Where it sits</div>
       <h2 id="act-h">The activities the Learning Meter sits inside</h2></div>
     <p class="lede">MyWay teaches through short activities, each one framed as a game and marked in the corner with
-      how it will be answered. The Learning Meter reads the speaking and writing ones, where a child produces the
+      how it will be answered. The Learning Meter reads the speaking and writing ones, where a learner produces the
       language themselves.</p>
     <div class="shots">
       <figure class="shot">
@@ -245,7 +245,7 @@ h2{font-family:var(--serif);font-weight:500;font-size:clamp(24px,2.8vw,32px);lin
           alt="A MyWay activity intro screen titled Recipe Rush on a patterned teal background. A card reads: first,
             complete the recipe, then follow the steps by using the correct utensils and carrying out the correct
             actions. A Play button sits below it, and a drag-and-drop icon marks the activity type in the corner."></button>
-        <figcaption><b>An activity opens</b>The task in a child&rsquo;s own words, and the activity type marked before
+        <figcaption><b>An activity opens</b>The task in a learner&rsquo;s own words, and the activity type marked before
           they start.</figcaption>
       </figure>
       <figure class="shot">
@@ -253,7 +253,7 @@ h2{font-family:var(--serif);font-weight:500;font-size:clamp(24px,2.8vw,32px);lin
           alt="The Recipe Rush activity. A torn recipe card taped to a mint green patterned background reads: chop the
             onion and fry it in some olive oil. A knife, a frying pan, a pot boiling on a hob, a wooden spoon and an
             oven are laid out below it."></button>
-        <figcaption><b>The task itself</b>The instruction stays on screen while a child picks the utensils and carries
+        <figcaption><b>The task itself</b>The instruction stays on screen while a learner picks the utensils and carries
           out the actions in order.</figcaption>
       </figure>
       <figure class="shot">
@@ -261,7 +261,7 @@ h2{font-family:var(--serif);font-weight:500;font-size:clamp(24px,2.8vw,32px);lin
           alt="A MyWay listening activity. Three restaurant fronts sit across a patterned teal background: a sushi
             restaurant, an Italian one and a burger bar. A character avatar with a speaker bubble sits below them, and
             a multiple-choice icon marks the activity type in the corner."></button>
-        <figcaption><b>A different type</b>Audio plays from the character, and a child answers by choosing. The corner
+        <figcaption><b>A different type</b>Audio plays from the character, and a learner answers by choosing. The corner
           icon carries the change.</figcaption>
       </figure>
     </div>
@@ -301,7 +301,7 @@ h2{font-family:var(--serif);font-weight:500;font-size:clamp(24px,2.8vw,32px);lin
   <section aria-labelledby="demo-h">
     <div><div class="stepno"><i>Step 2</i><span class="label">The rubric, running</span></div>
       <h2 id="demo-h">Follow one answer through the Learning Meter</h2>
-      <p class="lede">This work lived in Jupyter notebooks, rubric spreadsheets and model runs, and what a child saw
+      <p class="lede">This work lived in Jupyter notebooks, rubric spreadsheets and model runs, and what a learner saw
         at the end of it was ten words of feedback. The walkthrough rebuilds the pipeline so the stages in between are
         visible: the same rubric, the same anchor answers, the same scores. Switch between the first prompts and the
         tuned ones to see what the evaluation loop changed.</p></div>
@@ -327,7 +327,7 @@ h2{font-family:var(--serif);font-weight:500;font-size:clamp(24px,2.8vw,32px);lin
           </div>
           <p id="mode-note"></p>
         </div>
-        <div class="label">Pick what the child said</div>
+        <div class="label">Pick what the learner said</div>
         <div class="answers" id="answers"></div>
       </div>
       <div class="card" aria-live="polite">
@@ -338,7 +338,7 @@ h2{font-family:var(--serif);font-weight:500;font-size:clamp(24px,2.8vw,32px);lin
 
   <section aria-labelledby="set-h">
     <div><div class="stepno"><i>Step 3</i><span class="label">The test set</span></div>
-      <h2 id="set-h">About 4,000 answers with known scores, before anything reached a child</h2></div>
+      <h2 id="set-h">About 4,000 answers with known scores, before anything reached a learner</h2></div>
     <div class="testset">
       <div class="setbar">
         <div class="bar2" role="img" aria-label="About 4,000 answers: roughly 1,300 real and roughly 2,700 synthetic">
@@ -346,7 +346,7 @@ h2{font-family:var(--serif);font-weight:500;font-size:clamp(24px,2.8vw,32px);lin
           <span class="syn" style="flex:2700"><span class="approx" title="Rounded">≈2,700</span>&nbsp;synthetic</span>
         </div>
         <div class="setkey">
-          <span><b>Real answers</b> came from children in the pilot schools, cleaned and scored by hand.</span>
+          <span><b>Real answers</b> came from learners in the pilot schools, cleaned and scored by hand.</span>
           <span><b>Synthetic answers</b> I wrote to stress-test it, covering the edge cases real data was thin on:
             other languages, fragments, and the near-misses a lenient model waves through.</span>
         </div>
@@ -374,14 +374,14 @@ h2{font-family:var(--serif);font-weight:500;font-size:clamp(24px,2.8vw,32px);lin
 
   <section aria-labelledby="dec-h">
     <div><div class="label">Design decisions</div><h2 id="dec-h">Trade-offs I designed around</h2>
-      <p class="lede">Each risk that comes with an LLM marking a child&rsquo;s English, and the decision that answered it.</p></div>
+      <p class="lede">Each risk that comes with an LLM marking a learner&rsquo;s English, and the decision that answered it.</p></div>
     <div class="decisions">
       <div class="dec"><b>Quality varies from run to run</b><p>Every answer in the test set was scored twice, and model settings stayed low-creativity, so drift showed up as a number before launch.</p></div>
       <div class="dec"><b>False praise</b><p>A lenient model waves near-misses through, and a wrong &ldquo;well done&rdquo; teaches the wrong thing. Anchor answers at every band and synthetic near-misses in the test set cut false passes from 58% to 27%.</p></div>
       <div class="dec"><b>The wrong language</b><p>A correct idea in another language is still a miss in a language course, so anything not in English scores 0, a hard rule in every prompt.</p></div>
       <div class="dec"><b>Latency</b><p>Feedback is read mid-game, so speed was tracked alongside accuracy: about 1&ndash;2 s typical, with rare peaks near 10 s.</p></div>
-      <div class="dec"><b>Cost and consistency</b><p>Children give many of the same answers. Matching them first made scoring instant and cheaper, and the same answer always got the same score.</p></div>
-      <div class="dec"><b>What the child reads</b><p>Ten words or fewer, in the first person, naming one fix, and strict on the score.</p></div>
+      <div class="dec"><b>Cost and consistency</b><p>Learners give many of the same answers. Matching them first made scoring instant and cheaper, and the same answer always got the same score.</p></div>
+      <div class="dec"><b>What the learner reads</b><p>Ten words or fewer, in the first person, naming one fix, and strict on the score.</p></div>
     </div>
   </section>
 
@@ -397,7 +397,7 @@ h2{font-family:var(--serif);font-weight:500;font-size:clamp(24px,2.8vw,32px);lin
     <div class="shots">
       <figure class="shot">
         <button type="button"><img loading="lazy" decoding="async" src="assets/img/ku-world-map.jpg" width="1400" height="788"
-          alt="An illustrated world map of islands with mission markers on it, a child's avatar in the middle, a settings
+          alt="An illustrated world map of islands with mission markers on it, a learner's avatar in the middle, a settings
             button and a character icon in the corners, and a small robot companion at the bottom right."></button>
         <figcaption><b>The world map</b>Missions open from an illustrated map of the course.</figcaption>
       </figure>
@@ -422,8 +422,8 @@ h2{font-family:var(--serif);font-weight:500;font-size:clamp(24px,2.8vw,32px);lin
 </section>
 
 <p class="disclaimer"><b>This demo is scripted, on purpose.</b> The real Learning Meter ran on Kids&amp;Us systems, on
-  children’s voice and writing data. I have since left the organisation, so the live model isn’t mine to run. Every
-  answer here is pre-scored from my own rubric, prompt databases and test results. No child data is shown, and all
+  learners’ voice and writing data. I have since left the organisation, so the live model isn’t mine to run. Every
+  answer here is pre-scored from my own rubric, prompt databases and test results. No learner data is shown, and all
   figures are rounded.</p>
 <div class="nextcase"><a href="beeline.html"><span><small>Next</small>Beeline</span><span class="open" aria-hidden="true">open →</span></a></div>
 <footer class="pagefoot">
@@ -473,7 +473,7 @@ function renderPipe(){
   const cached = a.seen && mode==="tuned";
   const b=BAND[band(r.score)], ok=band(r.score)===a.expected;
   const steps=[
-    ["s-stt",1,"Speech to text","","The child speaks. Speech-to-text is imperfect with young voices and accents, so nothing downstream trusts punctuation.",`heard: "${a.stt}"`,true],
+    ["s-stt",1,"Speech to text","","The learner speaks. Speech-to-text is imperfect with young voices and accents, so nothing downstream trusts punctuation.",`heard: "${a.stt}"`,true],
     ["s-clean",2,"Clean up","","Normalise spelling, case and punctuation so “I have a red car” and “I have a red car.” count as one answer.",`→ "${a.clean}"`,true],
     ["s-cache",3,"Seen this before?",cached?"match · instant · no AI call":"no match",
       cached?"This exact answer was already scored for this mini-activity, so the stored score is reused. The same answer always gets the same score."
@@ -481,7 +481,7 @@ function renderPipe(){
     ["s-ai",4,"Grade against the rubric",cached?"skipped":(mode==="tuned"?"tuned prompt · strict settings":"first prompt"),
       "The AI gets the activity, what to check, and anchor answers at 100 / 80 / 60 / 0, then must reply as a score plus feedback.",
       cached?"":`{ "score": ${r.score}, "explanation": "${r.fb}" }`,!cached],
-    ["s-out",5,"Back to the child","",null,"",true],
+    ["s-out",5,"Back to the learner","",null,"",true],
     ["s-log",6,"Logged for review",ok?"agrees with expected":"flagged: disagrees with expected",
       ok?"Stored with the activity, answer and score."
         :`Expected ${a.expected}, scored ${r.score}. Flagged answers are reviewed and fed back into the rubric and test set.`,"",true]
