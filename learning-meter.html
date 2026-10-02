@@ -180,7 +180,7 @@ h2{font-family:var(--serif);font-weight:500;font-size:clamp(24px,2.8vw,32px);lin
 <main id="main" tabindex="-1">
 <div class="pagehead norule">
   <div class="eyebrow">
-    <span class="mono">Kids&amp;Us · p. 8–13</span>
+    <span class="mono">Kids&amp;Us · p. 2–7</span>
     <span class="evtag">Evaluation before launch</span>
   </div>
   <h1>Learning Meter</h1>
@@ -202,7 +202,7 @@ h2{font-family:var(--serif);font-weight:500;font-size:clamp(24px,2.8vw,32px);lin
       <div class="rolerow"><span class="lbl">Role</span>
         <span class="fld">EdTech Specialist &amp; Project Manager</span></div>
       <div class="rolerow"><span class="lbl">Led on</span>
-        <span class="fld">I designed the Learning Meter end to end, from the rubric bands and the prompt design to the evaluation loop that ran before launch. I wrote the game design documents for more than 25 activities with explainable feedback, and I redesigned the gamified loops from engagement data.</span></div>
+        <span class="fld">I designed the Learning Meter end to end, from the CEFR-aligned rubric bands and the prompt design to the evaluation loop that ran before launch, and it went live in all 650 schools. I wrote the game design documents for more than 25 activities with explainable feedback, and redesigned the gamified loops from engagement data, A/B testing the change.</span></div>
       <div class="rolerow"><span class="lbl">Team</span>
         <span class="fld">Five direct reports, and matrix-managed digital, art, development and editorial specialists.</span></div>
     </div>
@@ -373,11 +373,40 @@ h2{font-family:var(--serif);font-weight:500;font-size:clamp(24px,2.8vw,32px);lin
 
 
   <section aria-labelledby="dec-h">
-    <div><div class="label">Design decisions</div><h2 id="dec-h">What I decided, and why</h2></div>
+    <div><div class="label">Design decisions</div><h2 id="dec-h">Trade-offs I designed around</h2>
+      <p class="lede">Each risk that comes with an LLM marking a child&rsquo;s English, and the decision that answered it.</p></div>
     <div class="decisions">
-      <div class="dec"><b>Feedback in ten words or fewer, spoken to a child</b><p>Feedback is read mid-game, so it is short, in the first person, names the fix, and stays strict on the score.</p></div>
-      <div class="dec"><b>Anything not in English scores 0</b><p>A correct idea in another language is still a miss in a language course, so it became a hard rule in every prompt.</p></div>
-      <div class="dec"><b>Reuse scores for answers already seen</b><p>Children give many of the same answers. Matching them first made scoring instant and cheaper, and it made the same answer always get the same score.</p></div>
+      <div class="dec"><b>Quality varies from run to run</b><p>Every answer in the test set was scored twice, and model settings stayed low-creativity, so drift showed up as a number before launch.</p></div>
+      <div class="dec"><b>False praise</b><p>A lenient model waves near-misses through, and a wrong &ldquo;well done&rdquo; teaches the wrong thing. Anchor answers at every band and synthetic near-misses in the test set cut false passes from 58% to 27%.</p></div>
+      <div class="dec"><b>The wrong language</b><p>A correct idea in another language is still a miss in a language course, so anything not in English scores 0, a hard rule in every prompt.</p></div>
+      <div class="dec"><b>Latency</b><p>Feedback is read mid-game, so speed was tracked alongside accuracy: about 1&ndash;2 s typical, with rare peaks near 10 s.</p></div>
+      <div class="dec"><b>Cost and consistency</b><p>Children give many of the same answers. Matching them first made scoring instant and cheaper, and the same answer always got the same score.</p></div>
+      <div class="dec"><b>What the child reads</b><p>Ten words or fewer, in the first person, naming one fix, and strict on the score.</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="eng-h">
+    <div><div class="label">Engagement</div><h2 id="eng-h">What moved engagement</h2>
+      <p class="lede">I redesigned the gamified loops from engagement data and A/B tested the redesign. MyWay went on
+        to reach more than 25,000 learners in its first rollout.</p></div>
+    <div class="ops">
+      <div class="op"><b>+40%</b><span>learner participation, A/B tested</span></div>
+      <div class="op"><b>3&ndash;4 &rarr; 7&ndash;8</b><span>activities a week</span></div>
+      <div class="op"><b>25,000+</b><span>learners in the first rollout, reported by Microsoft (2025)</span></div>
+    </div>
+    <div class="shots">
+      <figure class="shot">
+        <button type="button"><img loading="lazy" decoding="async" src="assets/img/ku-world-map.jpg" width="1400" height="788"
+          alt="An illustrated world map of islands with mission markers on it, a child's avatar in the middle, a settings
+            button and a character icon in the corners, and a small robot companion at the bottom right."></button>
+        <figcaption><b>The world map</b>Missions open from an illustrated map of the course.</figcaption>
+      </figure>
+      <figure class="shot">
+        <button type="button"><img loading="lazy" decoding="async" src="assets/img/ku-mission-structure.png" width="1111" height="352"
+          alt="A treemap of Mission 4. Three challenges, each split into blocks labelled Adaptive and Fixed, with adaptive
+            blocks broken down by level 0.0, 1.0 and 2.0."></button>
+        <figcaption><b>Inside a mission</b>Each challenge mixes adaptive activities, at levels 0.0, 1.0 and 2.0, with fixed ones. Product screens and artwork are Kids&amp;Us&rsquo;s.</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -396,7 +425,7 @@ h2{font-family:var(--serif);font-weight:500;font-size:clamp(24px,2.8vw,32px);lin
   children’s voice and writing data. I have since left the organisation, so the live model isn’t mine to run. Every
   answer here is pre-scored from my own rubric, prompt databases and test results. No child data is shown, and all
   figures are rounded.</p>
-<div class="nextcase"><a href="jump-math.html"><span><small>Next</small>JUMP Math Lab</span><span class="open" aria-hidden="true">open →</span></a></div>
+<div class="nextcase"><a href="beeline.html"><span><small>Next</small>Beeline</span><span class="open" aria-hidden="true">open →</span></a></div>
 <footer class="pagefoot">
   <span>Learning Meter · Kids&amp;Us</span>
   <span><a href="index.html">← Contents</a> · <a href="jump-math.html">JUMP Math Lab →</a></span>

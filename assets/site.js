@@ -5,8 +5,8 @@
 /* ---------- pages ---------- */
 const PAGES=[
   {g:"start here",   gh:1, href:"index.html",    n:"p. 1",     t:"Contents"},
-  {g:"Current work", href:"beeline.html",        n:"p. 2–7",   t:"Beeline"},
-  {g:"Work before",  href:"learning-meter.html", n:"p. 8–13",  t:"Learning Meter"},
+  {g:"Selected work", href:"learning-meter.html", n:"p. 2–7",  t:"Learning Meter"},
+  {g:"",             href:"beeline.html",        n:"p. 8–13",  t:"Beeline"},
   {g:"",             href:"jump-math.html",      n:"p. 14–17", t:"JUMP Math Lab"},
   {g:"",             href:"sugar.html",          n:"p. 18–20", t:"The Artificial Leaf"},
   {g:"About",        href:"how-i-work.html",     n:"p. 21",    t:"How I work", bk:1},
