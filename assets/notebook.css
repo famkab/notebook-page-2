@@ -58,4 +58,6 @@ html[data-theme="dark"][data-ink="black"] main{filter:invert(.9) hue-rotate(180d
 .lmw-band .n{font:400 22px Silkscreen,monospace;color:var(--bi)}
 .lmw-band ul{margin:0;padding-left:16px;font-size:14px;line-height:1.45}
 .lmw-band .ex{font:12.5px ui-monospace,Menlo,monospace;background:var(--card);border:1px dashed var(--rule);padding:6px 8px}
+/* decision trail */
+.trail-st{display:grid;grid-template-columns:minmax(0,132px) 28px minmax(0,1fr);gap:0 14px;align-items:start}.trail-st>.lab{grid-column:1;grid-row:1;text-align:right;padding-top:4px}.trail-st>.rail{grid-column:2;grid-row:1}.trail-st>.bd{grid-column:3;grid-row:1}@media (max-width:640px){.trail-st{grid-template-columns:22px minmax(0,1fr);gap:0 10px}.trail-st>.lab{grid-column:2;grid-row:1;text-align:left;padding:2px 0 8px}.trail-st>.rail{grid-column:1;grid-row:1/span 2}.trail-st>.bd{grid-column:2;grid-row:2}}@media (max-width:900px){[data-trail-picker]{position:static!important;max-width:none!important}}
 @media print{.nb-dock,.nb-pop{display:none}}
