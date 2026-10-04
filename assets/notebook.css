@@ -1,4 +1,5 @@
 /* shared interactive layer for the notebook pages */
+@font-face{font-family:Excalifont;src:url(excalifont.woff2) format('woff2');font-display:swap}
 :root{--ink:#1e1e1e;--paper:#f4f2ec;--card:#fbfaf6;--rule:#c9c4b6;--muted:#5f5b52;--sage:#83996f;--honey:#a89660;--rose:#b07070;--lilac:#8f80a8;--hi:#e9dda8}
 html[data-theme="dark"] body{background:#1b1c1d}
 html[data-theme="dark"] main{filter:invert(.9) hue-rotate(180deg)}
