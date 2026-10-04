@@ -1,525 +1,850 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Learning Meter · Fatima Abid</title>
-<meta name="description" content="The Learning Meter at Kids&amp;Us: the rubric, the test set of about 4,000 answers, and the evaluation loop that ran before any of it reached a learner.">
+<title>Note 01 — Learning Meter · Fatima Abid</title>
+<meta name="description" content="Note 01 · Learning Meter">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="assets/img/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/img/favicon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Caveat:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/journal.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&amp;family=Silkscreen&amp;family=Patrick+Hand&amp;display=swap">
 <style>
-:root{
-  --bg:var(--paper-2); --surface:var(--paper); --sunk:var(--paper-2); --muted:var(--pencil); --line:var(--rule-strong);
-  --honey:var(--hi-solid); --honey-soft:var(--amber-w); --honey-ink:var(--hi-ink);
-  --ai:var(--blue); --ai-soft:var(--blue-w); --cache:var(--green); --cache-soft:var(--green-w);
-  --b100:var(--green); --b80:var(--green); --b60:var(--amber); --b0:var(--red);
-  --b100-soft:var(--green-w); --b80-soft:var(--green-w); --b60-soft:var(--amber-w); --b0-soft:var(--red-w);
-  --display:var(--serif);
-}
-h1,h2,h3,h4{font-family:var(--serif)!important;font-weight:600}
-.pagehead h1{margin:2px 0 4px}
-.wrap{max-width:1200px;margin-inline:auto;display:grid;gap:44px}
-.wrap>section{display:grid;gap:18px}
-.wrap>section>div:first-child{display:grid;gap:8px}
-h2{font-family:var(--serif);font-weight:500;font-size:clamp(24px,2.8vw,32px);line-height:1.15;margin:0;text-wrap:balance}
-.lede{max-width:70ch;color:var(--muted);margin:0;font-size:18px}
-.sec-lede{margin:0;max-width:74ch;color:var(--pencil);font-size:15.5px}
-.label{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.approx{border-bottom:1.5px dotted currentColor;cursor:help;white-space:nowrap}
-.evtag{font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
-  background:var(--hi);color:var(--hi-ink);border-radius:3px;padding:4px 9px;width:max-content}
-
-/* step numbering down the case study */
-.stepno{display:flex;gap:10px;align-items:baseline}
-.stepno i{font-family:var(--mono);font-style:normal;font-size:11px;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--red)}
-
-/* demo */
-.demo{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(16px,2.4vw,28px);align-items:start}
-.card{background:var(--surface);border:1.5px solid var(--line);border-radius:16px;padding:clamp(16px,2.2vw,24px)}
-.act{display:grid;gap:14px}
-.act-top{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center}
-.clock{width:112px;height:112px;max-width:100%}
-.q{font-family:var(--display);font-weight:600;font-size:26px;letter-spacing:-.01em;line-height:1.1}
-.answers{display:grid;gap:8px}
-.ans{text-align:left;background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;
-  cursor:pointer;display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;font-family:var(--body);color:inherit}
-.ans:hover{border-color:var(--ai)}
-.ans[aria-pressed="true"]{border-color:var(--ai);background:var(--ai-soft)}
-.ans .said{font-size:15.5px}
-.ans small{font-family:var(--mono);font-size:10.5px;color:var(--muted)}
-.mode{display:flex;gap:4px;background:var(--sunk);border-radius:999px;padding:4px;width:max-content;max-width:100%}
-.mode button{border:0;background:none;border-radius:999px;padding:6px 12px;font-size:13px;font-weight:700;
-  cursor:pointer;color:var(--muted);font-family:var(--body)}
-.mode button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:inset 0 0 0 1px var(--rule-strong)}
-.mode-wrap{display:grid;gap:6px}
-.mode-wrap p{margin:0;font-size:13px;color:var(--muted)}
-
-.pipe{display:grid;gap:0}
-.step{display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;position:relative;transition:opacity .25s}
-.step .rail{position:relative;display:flex;justify-content:center}
-.step .rail::before{content:"";position:absolute;top:0;bottom:0;width:3px;background:var(--line)}
-.step:first-child .rail::before{top:14px}
-.step:last-child .rail::before{height:14px;bottom:auto}
-.step .dot{position:relative;z-index:1;margin-top:3px;width:22px;height:22px;border-radius:50%;background:var(--surface);
-  border:2.5px solid var(--line);display:grid;place-items:center;font-family:var(--mono);font-size:10px;color:var(--muted)}
-.step.on .dot{border-color:var(--k);background:var(--k);color:var(--surface)}
-.step.st-off{opacity:.38}
-.step .b{padding-bottom:16px;display:grid;gap:4px}
-.step .t{font-weight:700;font-size:15px;display:flex;gap:8px;flex-wrap:wrap;align-items:baseline}
-.step .t .tag{font-family:var(--mono);font-size:10.5px;font-weight:500;border-radius:999px;padding:1px 8px;
-  background:var(--sunk);color:var(--muted)}
-.step .d{font-size:14px;color:var(--muted);margin:0}
-.step .io{font-family:var(--mono);font-size:12.5px;background:var(--sunk);border-radius:8px;padding:6px 10px;
-  overflow-x:auto;white-space:pre-wrap;word-break:break-word;color:var(--ink)}
-.s-stt{--k:var(--muted)} .s-clean{--k:var(--muted)} .s-cache{--k:var(--cache)} .s-ai{--k:var(--ai)}
-.s-out{--k:var(--honey-ink)} .s-log{--k:var(--muted)}
-.child{border-radius:14px;padding:14px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;
-  background:var(--band-soft);border:1.5px solid var(--band)}
-.meter{width:74px;height:74px;max-width:100%}
-.child .fb{font-family:var(--display);font-weight:600;font-size:19px;line-height:1.25}
-.child .sc{font-family:var(--mono);font-size:11.5px;color:var(--band)}
-
-/* rubric */
-.bands{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
-.band{border-radius:12px;padding:12px;background:var(--bs);display:grid;gap:6px;align-content:start;border-top:4px solid var(--bc)}
-.band .n{font-family:var(--display);font-weight:600;font-size:26px;line-height:1;color:var(--bc)}
-.band ul{margin:0;padding-left:16px;font-size:13.5px;display:grid;gap:4px}
-.band .ex{font-family:var(--mono);font-size:12px;background:var(--surface);border-radius:8px;padding:6px 8px}
-.b100{--bc:var(--b100);--bs:var(--b100-soft)} .b80{--bc:var(--b80);--bs:var(--b80-soft)}
-.b60{--bc:var(--b60);--bs:var(--b60-soft)} .b0{--bc:var(--b0);--bs:var(--b0-soft)}
-
-/* test set */
-.testset{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:24px;align-items:start}
-.setbar{display:grid;gap:10px}
-.bar2{display:flex;height:38px;border:1.5px solid var(--line);border-radius:8px;overflow:hidden}
-.bar2 span{display:grid;place-items:center;font-family:var(--mono);font-size:11.5px;padding:0 6px;
-  white-space:nowrap;overflow:hidden;min-width:0}
-.bar2 .real{background:var(--ai-soft);color:var(--ink)}
-.bar2 .syn{background:var(--sunk);color:var(--muted);border-left:1.5px dashed var(--line)}
-.setkey{display:grid;gap:7px;font-size:14px;color:var(--muted)}
-.setkey b{color:var(--ink);font-weight:400}
-.dbl{border-left:4px solid var(--cache);padding-left:15px;display:grid;gap:7px}
-.dbl p{margin:0;font-size:14.5px;color:var(--muted)}
-
-/* results */
-.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-.stat{background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:16px;display:grid;gap:10px}
-.stat .t{font-weight:700;font-size:15px}
-.stat .row{display:grid;grid-template-columns:62px 1fr 48px;gap:8px;align-items:center;font-size:12.5px}
-.stat .row span:first-child{font-family:var(--mono);font-size:11px;color:var(--muted)}
-.bar{height:12px;background:var(--sunk);border-radius:6px;overflow:hidden}
-.bar i{display:block;height:100%;border-radius:6px}
-.stat .v{font-family:var(--mono);font-size:12.5px;text-align:right;font-variant-numeric:tabular-nums}
-.stat p{margin:0;font-size:13px;color:var(--muted)}
-.good i{background:var(--b100)} .bad i{background:var(--b0)} .old i{background:var(--rule-strong)}
-.ops{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:4px}
-.op{border-radius:12px;background:var(--sunk);padding:12px 14px;display:grid;gap:2px}
-.op b{font-family:var(--display);font-size:22px;font-weight:600;letter-spacing:-.01em}
-.op>span{font-size:13px;color:var(--muted)}
-.whynote{border-left:4px solid var(--b60);background:var(--sunk);border-radius:0 10px 10px 0;
-  padding:12px 16px;margin:16px 0 0;display:grid;gap:5px}
-.whynote .k{font-family:var(--mono);font-size:.6rem;letter-spacing:.09em;text-transform:uppercase;color:var(--b60)}
-.whynote p{margin:0;font-size:14.5px;line-height:1.55}
-.trade{border-left:4px solid var(--b60);background:var(--surface);border-radius:0 12px 12px 0;padding:12px 16px;
-  font-size:14.5px;max-width:84ch;margin:0}
-
-
-.decisions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-.dec{background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:16px;display:grid;gap:6px;align-content:start}
-.dec b{font-family:var(--display);font-size:17px;line-height:1.25}
-.dec p{margin:0;font-size:14px;color:var(--muted)}
-.shows{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
-.chip{display:inline-flex;border-radius:999px;padding:3px 10px;font-size:13px;background:var(--honey-soft)}
-.maps{border:1.5px solid var(--line);border-radius:14px;padding:18px 20px;display:grid;gap:8px;background:var(--surface);max-width:82ch}
-.maps q{font-family:var(--display);font-size:17px;line-height:1.4;color:var(--muted)}
-
-@media (max-width:980px){
-  .demo{grid-template-columns:1fr}
-  .bands{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .stats,.decisions,.testset,.jobs{grid-template-columns:1fr}
-  .job{border-left:0;padding-left:0;border-top:1px dashed var(--rule)}
-  .job:first-child{border-top:0}
-}
-@media (max-width:520px){ .bands{grid-template-columns:1fr} .act-top{grid-template-columns:1fr} }
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
-
-
-.eyebrow{display:flex;flex-wrap:wrap;gap:9px 14px;align-items:center}
-.eyebrow .mono{line-height:1;display:inline-flex;align-items:center}
-.eyebrow .evtag{line-height:1;display:inline-flex;align-items:center;padding:6px 10px;margin:0}
-.headmeta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin:24px 0 0;
-  border-top:1px solid var(--rule-strong)}
-.headmeta>div{padding:13px 20px 14px 18px;border-left:1px dashed var(--rule)}
-.headmeta>div:first-child{border-left:0;padding-left:0}
-.headmeta .k{font-family:var(--mono);font-size:.62rem;letter-spacing:.09em;text-transform:uppercase;
-  color:var(--pencil);display:block;margin-bottom:6px}
-.headmeta .rt{margin:0 0 7px;font-family:var(--serif);font-size:16px;font-weight:600;line-height:1.25}
-.headmeta ul{margin:0;padding-left:17px;display:grid;gap:5px;font-size:14.5px}
-.headmeta .cx{grid-column:1 / -1;border-left:0;padding:13px 0 0;border-top:1px dashed var(--rule)}
-.headmeta .cx .k{color:var(--red)}
-.headmeta .cx p{margin:0;font-size:15px;max-width:78ch}
-@media (max-width:700px){
-  .headmeta{grid-template-columns:1fr}
-  .headmeta>div{border-left:0;padding:12px 0 13px;border-top:1px dashed var(--rule)}
-  .headmeta>div:first-child{border-top:0;padding-top:0}
-}
-.press{display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline;margin:16px 0 0;max-width:76ch;font-size:14.5px}
-.press b{font-family:var(--mono);font-size:.62rem;letter-spacing:.09em;text-transform:uppercase;color:var(--pencil);font-weight:400}
-.press a{color:var(--blue);text-decoration:underline;text-underline-offset:3px;display:inline-flex;align-items:center;min-height:24px}
-.press .src{font-size:13px;color:var(--pencil)}
-.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;align-items:start}
+body{margin:0;background:#f4f2ec}
+a{color:#1e1e1e}a:hover{color:#5d4f78}
+.gl{border-bottom:1.5px dotted #5d4f78;position:relative;cursor:help;outline:none}.gl:focus{background:#e9dda8}.gl-tip{display:none;position:absolute;left:0;top:calc(100% + 6px);z-index:40;width:260px;max-width:70vw;background:#fbfaf6;border:2px solid #1e1e1e;box-shadow:4px 4px 0 #1e1e1e;padding:10px 12px;font:15px/1.45 Newsreader,Georgia,serif;font-style:normal;font-weight:400;color:#1e1e1e;text-align:left;white-space:normal;letter-spacing:0}.gl-tip b{display:block;font-family:Silkscreen,monospace;font-weight:400;font-size:11px;letter-spacing:.06em;margin-bottom:4px;color:#5d4f78}.gl-tip a{display:block;margin-top:6px;font-family:Silkscreen,monospace;font-size:10px;letter-spacing:.06em}.gl:hover .gl-tip,.gl:focus .gl-tip,.gl:focus-within .gl-tip{display:block}.gl sup{font-family:Silkscreen,monospace;font-size:8px;color:#5d4f78;margin-left:1px}
 </style>
+<link rel="stylesheet" href="assets/notebook.css">
+<script src="assets/notebook.js" defer></script>
+</head>
+<body data-page="learning-meter">
+<main>
+<div style="position: relative; min-height: 100%; box-sizing: border-box; padding: 28px clamp(16px, 4vw, 56px) 64px; font-family: 'Newsreader', Georgia, serif; color: #1e1e1e; background-color: #f4f2ec">
+<div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(#cfcabd 1.2px, transparent 1.3px); background-size: 22px 22px"></div>
+<div style="position: relative; max-width: 1160px; margin: 0 auto; display: flex; flex-direction: column; gap: 52px">
 
-<a class="skip" href="#main">Skip to the page</a>
-<div class="layout">
-<main id="main" tabindex="-1">
-<div class="pagehead norule">
-  <div class="eyebrow">
-    <span class="mono">Kids&amp;Us · p. 2–7</span>
-    <span class="evtag">Evaluation before launch</span>
-  </div>
-  <h1>Learning Meter</h1>
-  <p class="lede">Speaking and writing activities inside MyWay, Kids&amp;Us’s gamified app for learners aged 8 to 12
-    learning English as a second language. A learner speaks into a game and ten words come back telling them what to
-    fix, marked by AI against a teacher’s rubric. Getting those ten words right meant building the thing underneath:
-    rubrics, anchor answers, a test set, and an evaluation loop that ran before anything reached a learner.</p>
-  <p class="press"><b>In the press</b>
-    <a href="https://news.microsoft.com/es-es/2025/01/16/kidsus-mejora-la-participacion-de-su-alumnado-en-un-40-con-la-ia-de-microsoft/">Kids&amp;Us mejora la participación de su alumnado en un 40% con la IA de Microsoft</a>
-    <span class="src">Microsoft Source EMEA, 16 January 2025 · Microsoft’s write-up of MyWay and the Azure OpenAI services behind it</span></p>
-</div>
+<header style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 24px; border: 2px solid #1e1e1e; background: #fbfaf6; padding: 8px 12px; font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.06em">
+<a href="index.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; border: 2px solid #1e1e1e; text-decoration: none">◂ CONTENTS</a>
+<span style="background: #eef3e9; border: 2px solid #1e1e1e; padding: 6px 10px">NOTE 01 · KIDS&amp;US · P. 6–11</span>
+<span style="display: flex; align-items: center; gap: 8px">CHECKPOINTS
+<span aria-hidden="true" style="display: flex; gap: 3px"><span style="width: 14px; height: 12px; background: #83996f; display: block"></span><span style="width: 14px; height: 12px; background: #83996f; display: block"></span><span style="width: 14px; height: 12px; background: #83996f; display: block"></span><span style="width: 14px; height: 12px; background: #83996f; display: block"></span></span>
+4/4</span>
+</header>
 
-<div class="wrap">
-
-  <section aria-label="My role">
-    <div class="rolecard">
-      <div class="rolebar"><span class="k">My role</span>
-        <span class="meta">Remote &middot; Barcelona &amp; Bilbao &middot; 2023–2024</span></div>
-      <div class="rolerow"><span class="lbl">Role</span>
-        <span class="fld">EdTech Specialist &amp; Project Manager</span></div>
-      <div class="rolerow"><span class="lbl">Led on</span>
-        <span class="fld">I designed the Learning Meter end to end, from the CEFR-aligned rubric bands and the prompt design to the evaluation loop that ran before launch, and it went live in all 650 schools. I wrote the game design documents for more than 25 activities with explainable feedback, and redesigned the gamified loops from engagement data, A/B testing the change.</span></div>
-      <div class="rolerow"><span class="lbl">Team</span>
-        <span class="fld">Five direct reports, and matrix-managed digital, art, development and editorial specialists.</span></div>
-    </div>
-  </section>
-
-  <section aria-label="Rough work">
-    <button class="roughtab" type="button" aria-haspopup="dialog" data-rough="rough-lm"
-            data-label="Rough work behind the Learning Meter"
-            data-hand="My own boards and schemas, made by hand while I planned the content. The method name and one
-              product name are redacted.">
-      <span class="stack" aria-hidden="true"><span></span><span></span><i></i><b></b></span>
-      <span class="t"><b>Rough work</b><small>Two boards &middot; opens over the page</small></span>
-    </button>
-    <div id="rough-lm" hidden>
-      <div class="rough-item" data-src="assets/img/lm-rough-skills.jpg" data-cap="The diagnostic order"
-           data-alt="A board of sticky notes. Two notes at the top read following a named method, redacted, and
-             must appear in this order. Below them six dark notes read fixed activity one to six, and under each a
-             yellow note names a skill: listening, reading, grammar, vocabulary, speaking, writing.">The six fixed
-           activities that open a course, in the order the method asks for. Speaking and writing sit at the end,
-           which is where the Learning Meter reads.</div>
-      <div class="rough-item" data-src="assets/img/lm-rough-levels.jpg" data-cap="What a level changes"
-           data-alt="A schema. A box reading activity level differentiation, levels zero, one and two, branches to
-             two lists. Content design elements: content focus, distractor complexity, support mechanisms, audio
-             focus, skill complexity. Game design elements: template layering, guidance and hints, user prompts,
-             tested items, duration, screen count.">Everything a level actually changes, split into what the
-           content does and what the game does. The rubric bands had to hold steady across all three levels, so
-           this is what they were written against.</div>
-    </div>
-  </section>
-
-  <section aria-labelledby="act-h">
-    <div><div class="label">Where it sits</div>
-      <h2 id="act-h">The activities the Learning Meter sits inside</h2></div>
-    <p class="lede">MyWay teaches through short activities, each one framed as a game and marked in the corner with
-      how it will be answered. The Learning Meter reads the speaking and writing ones, where a learner produces the
-      language themselves.</p>
-    <div class="shots">
-      <figure class="shot">
-        <button type="button"><img loading="lazy" decoding="async" src="assets/img/ku-recipe-rush.png" width="1200" height="899"
-          alt="A MyWay activity intro screen titled Recipe Rush on a patterned teal background. A card reads: first,
-            complete the recipe, then follow the steps by using the correct utensils and carrying out the correct
-            actions. A Play button sits below it, and a drag-and-drop icon marks the activity type in the corner."></button>
-        <figcaption><b>An activity opens</b>The task in a learner&rsquo;s own words, and the activity type marked before
-          they start.</figcaption>
-      </figure>
-      <figure class="shot">
-        <button type="button"><img loading="lazy" decoding="async" src="assets/img/ku-recipe-task.png" width="1000" height="750"
-          alt="The Recipe Rush activity. A torn recipe card taped to a mint green patterned background reads: chop the
-            onion and fry it in some olive oil. A knife, a frying pan, a pot boiling on a hob, a wooden spoon and an
-            oven are laid out below it."></button>
-        <figcaption><b>The task itself</b>The instruction stays on screen while a learner picks the utensils and carries
-          out the actions in order.</figcaption>
-      </figure>
-      <figure class="shot">
-        <button type="button"><img loading="lazy" decoding="async" src="assets/img/ku-listening.png" width="1000" height="750"
-          alt="A MyWay listening activity. Three restaurant fronts sit across a patterned teal background: a sushi
-            restaurant, an Italian one and a burger bar. A character avatar with a speaker bubble sits below them, and
-            a multiple-choice icon marks the activity type in the corner."></button>
-        <figcaption><b>A different type</b>Audio plays from the character, and a learner answers by choosing. The corner
-          icon carries the change.</figcaption>
-      </figure>
-    </div>
-    <p class="disclaimer"><b>Product screens from MyWay.</b> The artwork, characters and activity content are
-      Kids&amp;Us&rsquo;s.</p>
-  </section>
-
-  <section aria-labelledby="am-h">
-    <div><div class="label">The tool behind them</div>
-      <h2 id="am-h">The Activity Maker</h2></div>
-    <p class="lede">Content developers built MyWay activities in a block-based authoring tool. I built and taught its
-      tutorial, and contributed code to its templates alongside the development team when a design needed more than
-      the Configuration column could carry.</p>
-    <figure class="shot">
-      <button type="button"><img loading="lazy" decoding="async" src="assets/img/ku-activity-maker.png" width="1500" height="960"
-        alt="The Kids&amp;Us Activity Maker. Block categories run down the left: game objects, audio, video, position,
-          appearance, custom logic, grading, arrays, waits and comments. The canvas holds three columns of blocks: an
-          objects definition listing hearts, a test button and a fail screen; a configuration column setting variables
-          and binding audio assets; and a start program column with the loop that runs them."></button>
-      <figcaption><b>Block categories, then three columns</b>The objects a screen contains, the configuration that
-        sets them up, and the start program that runs them. Recipe Rush, above, was built here.</figcaption>
-    </figure>
-    <p class="lede">Blocks take the syntax barrier away. The logic underneath still has to be joined up correctly, and
-      that is what the tutorial taught. Running it also showed where people got stuck, which fed back into what needed
-      fixing in the templates themselves.</p>
-  </section>
-
-  <section aria-labelledby="rub-h">
-    <div><div class="stepno"><i>Step 1</i><span class="label">The rubric I wrote</span></div>
-      <h2 id="rub-h">Four bands, each with anchor answers for every activity</h2></div>
-    <p class="lede">The model never scored against “good English” in general. For every mini-activity it got the
-      question, what to check, and a real example answer at each band. It could choose any score from 20 to 100,
-      anchored to these four.</p>
-    <div class="bands" id="bands"></div>
-  </section>
-
-  <section aria-labelledby="demo-h">
-    <div><div class="stepno"><i>Step 2</i><span class="label">The rubric, running</span></div>
-      <h2 id="demo-h">Follow one answer through the Learning Meter</h2>
-      <p class="lede">This work lived in Jupyter notebooks, rubric spreadsheets and model runs, and what a learner saw
-        at the end of it was ten words of feedback. The walkthrough rebuilds the pipeline so the stages in between are
-        visible: the same rubric, the same anchor answers, the same scores. Switch between the first prompts and the
-        tuned ones to see what the evaluation loop changed.</p></div>
-    <div class="demo">
-      <div class="card act">
-        <div class="act-top">
-          <svg class="clock" viewBox="0 0 120 120" role="img" aria-label="An analogue clock showing half past six">
-            <circle cx="60" cy="60" r="54" fill="var(--surface)" stroke="var(--ink)" stroke-width="4"/>
-            <g stroke="var(--muted)" stroke-width="3" stroke-linecap="round">
-              <line x1="60" y1="12" x2="60" y2="20"/><line x1="108" y1="60" x2="100" y2="60"/>
-              <line x1="60" y1="108" x2="60" y2="100"/><line x1="12" y1="60" x2="20" y2="60"/>
-            </g>
-            <line x1="60" y1="60" x2="60" y2="98" stroke="var(--ink)" stroke-width="4" stroke-linecap="round"/>
-            <line x1="60" y1="60" x2="66" y2="86" stroke="var(--ink)" stroke-width="6" stroke-linecap="round"/>
-            <circle cx="60" cy="60" r="5" fill="var(--honey)"/>
-          </svg>
-          <div><div class="label">Speaking · image prompt · AP1</div><div class="q">What time is it?</div></div>
-        </div>
-        <div class="mode-wrap">
-          <div class="mode" role="group" aria-label="Which version of the prompt">
-            <button type="button" id="m-early" aria-pressed="false">First prompts (2023)</button>
-            <button type="button" id="m-tuned" aria-pressed="true">Tuned (2024)</button>
-          </div>
-          <p id="mode-note"></p>
-        </div>
-        <div class="label">Pick what the learner said</div>
-        <div class="answers" id="answers"></div>
-      </div>
-      <div class="card" aria-live="polite">
-        <div class="pipe" id="pipe"></div>
-      </div>
-    </div>
-  </section>
-
-  <section aria-labelledby="set-h">
-    <div><div class="stepno"><i>Step 3</i><span class="label">The test set</span></div>
-      <h2 id="set-h">About 4,000 answers with known scores, before anything reached a learner</h2></div>
-    <div class="testset">
-      <div class="setbar">
-        <div class="bar2" role="img" aria-label="About 4,000 answers: roughly 1,300 real and roughly 2,700 synthetic">
-          <span class="real" style="flex:1300"><span class="approx" title="Rounded">≈1,300</span>&nbsp;real</span>
-          <span class="syn" style="flex:2700"><span class="approx" title="Rounded">≈2,700</span>&nbsp;synthetic</span>
-        </div>
-        <div class="setkey">
-          <span><b>Real answers</b> came from learners in the pilot schools, cleaned and scored by hand.</span>
-          <span><b>Synthetic answers</b> I wrote to stress-test it, covering the edge cases real data was thin on:
-            other languages, fragments, and the near-misses a lenient model waves through.</span>
-        </div>
-      </div>
-      <div class="dbl">
-        <h3>Double-scoring, to catch drift</h3>
-        <p>Every answer in the set was graded twice, so the same answer scoring differently on two runs showed up as a
-          number rather than as a complaint after launch. Model settings were kept low-creativity for the same reason:
-          grading has to be repeatable before it can be trusted.</p>
-      </div>
-    </div>
-  </section>
-
-  <section aria-labelledby="res-h">
-    <div><div class="stepno"><i>Step 4</i><span class="label">Before and after</span></div>
-      <h2 id="res-h">Did it get more trustworthy?</h2></div>
-    <div class="stats" id="stats"></div>
-    <p class="trade" id="trade"></p>
-    <div class="ops">
-      <div class="op"><b>100%</b><span>of responses came back as a valid score plus feedback</span></div>
-      <div class="op"><b><span class="approx" title="Typical range">≈1–2 s</span></b><span>typical response, with rare peaks near 10 s</span></div>
-    </div>
-  </section>
-
-
-  <section aria-labelledby="dec-h">
-    <div><div class="label">Design decisions</div><h2 id="dec-h">Trade-offs I designed around</h2>
-      <p class="lede">Each risk that comes with an LLM marking a learner&rsquo;s English, and the decision that answered it.</p></div>
-    <div class="decisions">
-      <div class="dec"><b>Quality varies from run to run</b><p>Every answer in the test set was scored twice, and model settings stayed low-creativity, so drift showed up as a number before launch.</p></div>
-      <div class="dec"><b>False praise</b><p>A lenient model waves near-misses through, and a wrong &ldquo;well done&rdquo; teaches the wrong thing. Anchor answers at every band and synthetic near-misses in the test set cut false passes from 58% to 27%.</p></div>
-      <div class="dec"><b>The wrong language</b><p>A correct idea in another language is still a miss in a language course, so anything not in English scores 0, a hard rule in every prompt.</p></div>
-      <div class="dec"><b>Latency</b><p>Feedback is read mid-game, so speed was tracked alongside accuracy: about 1&ndash;2 s typical, with rare peaks near 10 s.</p></div>
-      <div class="dec"><b>Cost and consistency</b><p>Learners give many of the same answers. Matching them first made scoring instant and cheaper, and the same answer always got the same score.</p></div>
-      <div class="dec"><b>What the learner reads</b><p>Ten words or fewer, in the first person, naming one fix, and strict on the score.</p></div>
-    </div>
-  </section>
-
-  <section aria-labelledby="eng-h">
-    <div><div class="label">Engagement</div><h2 id="eng-h">What moved engagement</h2>
-      <p class="lede">I redesigned the gamified loops from engagement data and A/B tested the redesign. MyWay went on
-        to reach more than 25,000 learners in its first rollout.</p></div>
-    <div class="ops">
-      <div class="op"><b>+40%</b><span>learner participation, A/B tested</span></div>
-      <div class="op"><b>3&ndash;4 &rarr; 7&ndash;8</b><span>activities a week</span></div>
-      <div class="op"><b>25,000+</b><span>learners in the first rollout, reported by Microsoft (2025)</span></div>
-    </div>
-    <div class="shots">
-      <figure class="shot">
-        <button type="button"><img loading="lazy" decoding="async" src="assets/img/ku-world-map.jpg" width="1400" height="788"
-          alt="An illustrated world map of islands with mission markers on it, a learner's avatar in the middle, a settings
-            button and a character icon in the corners, and a small robot companion at the bottom right."></button>
-        <figcaption><b>The world map</b>Missions open from an illustrated map of the course.</figcaption>
-      </figure>
-      <figure class="shot">
-        <button type="button"><img loading="lazy" decoding="async" src="assets/img/ku-mission-structure.png" width="1111" height="352"
-          alt="A treemap of Mission 4. Three challenges, each split into blocks labelled Adaptive and Fixed, with adaptive
-            blocks broken down by level 0.0, 1.0 and 2.0."></button>
-        <figcaption><b>Inside a mission</b>Each challenge mixes adaptive activities, at levels 0.0, 1.0 and 2.0, with fixed ones. Product screens and artwork are Kids&amp;Us&rsquo;s.</figcaption>
-      </figure>
-    </div>
-  </section>
-
-
-  <div class="shows"><span class="label" style="margin-right:4px">What this shows</span><span class="chip">Designing AI experiences</span><span class="chip">Evaluation before launch</span></div>
-
-</div>
-
-<section style="margin-top:40px;display:grid;gap:14px">
-  <h2>Where I worked across the lifecycle</h2>
-  <p class="sec-lede">From writing the rubric to the accuracy numbers that decided what shipped, and the handoff that kept it running.</p>
-  <div data-life="lm" class="life-wrap"></div>
+<section style="display: flex; flex-direction: column; gap: 18px">
+<p style="margin: 0; font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.08em; color: #4d5f3e">NOTE 01 · EVALUATION BEFORE LAUNCH</p>
+<h1 style="margin: 0; font-weight: 600; font-size: clamp(48px, 7vw, 92px); line-height: 1; letter-spacing: -0.02em">Learning Meter</h1>
+<p style="margin: 0; font-size: 21px; line-height: 1.55; max-width: 64ch; color: #2e2c28">Speaking and writing activities inside MyWay, Kids&amp;Us’s gamified app for learners aged 8 to 12 learning English as a second language. A learner speaks into a game and ten words come back telling them what to fix, marked by AI against a teacher’s rubric. Getting those ten words right meant building the thing underneath: rubrics, <span class="gl" tabindex="0">anchor answers<sup>?</sup><span class="gl-tip" role="tooltip"><b>ANCHOR ANSWER</b>An example answer for each rubric band, given to the scorer so it can see what each level looks like.</span></span>, a test set, and an evaluation loop that ran before anything reached a learner.</p>
+<p style="margin: 0; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; font-size: 16px"><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.08em; border: 1.5px solid #1e1e1e; padding: 3px 7px">IN THE PRESS</span><a href="https://news.microsoft.com/es-es/2025/01/16/kidsus-mejora-la-participacion-de-su-alumnado-en-un-40-con-la-ia-de-microsoft/">Kids&amp;Us mejora la participación de su alumnado en un 40% con la IA de Microsoft</a><span style="color: #5f5b52">Microsoft Source EMEA, 16 January 2025</span></p>
 </section>
 
-<p class="disclaimer"><b>This demo is scripted, on purpose.</b> The real Learning Meter ran on Kids&amp;Us systems, on
-  learners’ voice and writing data. I have since left the organisation, so the live model isn’t mine to run. Every
-  answer here is pre-scored from my own rubric, prompt databases and test results. No learner data is shown, and all
-  figures are rounded.</p>
-<div class="nextcase"><a href="beeline.html"><span><small>Next</small>Beeline</span><span class="open" aria-hidden="true">open →</span></a></div>
-<footer class="pagefoot">
-  <span>Learning Meter · Kids&amp;Us</span>
-  <span><a href="index.html">← Contents</a> · <a href="jump-math.html">JUMP Math Lab →</a></span>
-</footer>
-</main>
+<section aria-label="Character sheet" style="border: 2px solid #1e1e1e; background: #fbfaf6; box-shadow: 8px 8px 0 #1e1e1e">
+<div style="display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; background: #1e1e1e; color: #f4f2ec; padding: 8px 14px; font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.08em"><span>CHARACTER SHEET</span><span>REMOTE · BARCELONA &amp; BILBAO · 2023–2024</span></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 0">
+<div style="padding: 18px 20px; display: flex; flex-direction: column; gap: 6px; border-right: 1px dashed #c9c4b6"><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.08em; color: #5f5b52">CLASS</span><span style="font-size: 19px; font-weight: 600">EdTech Specialist &amp; Project Manager</span><span style="font-size: 16px; color: #4d5f3e">Product lead, AI Learning Meter and MyWay app</span></div>
+<div style="padding: 18px 20px; display: flex; flex-direction: column; gap: 6px; border-right: 1px dashed #c9c4b6"><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.08em; color: #5f5b52">QUEST</span><span style="font-size: 16px; line-height: 1.5">The Learning Meter end to end, from the <span class="gl" tabindex="0">CEFR<sup>?</sup><span class="gl-tip" role="tooltip"><b>CEFR</b>The Common European Framework of Reference for Languages, the scale from A1 to C2 used to describe how well someone uses a language.</span></span>-aligned <span class="gl" tabindex="0">rubric bands<sup>?</sup><span class="gl-tip" role="tooltip"><b>RUBRIC BAND</b>A level on the marking scale used to judge a learner’s spoken or written answer.</span></span> and the prompt design to the evaluation loop that ran before launch. Live in all 650 schools.</span></div>
+<div style="padding: 18px 20px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.08em; color: #5f5b52">TEAM</span><span style="font-size: 16px; line-height: 1.5">Five direct reports, and matrix-managed digital, art, development and editorial specialists.</span></div>
 </div>
-<script src="assets/site.js"></script>
-<script>
-const $=id=>document.getElementById(id);
-const BAND={100:["b100","var(--b100)","var(--b100-soft)"],80:["b80","var(--b80)","var(--b80-soft)"],
-            60:["b60","var(--b60)","var(--b60-soft)"],0:["b0","var(--b0)","var(--b0-soft)"]};
-const band=s=>s>=90?100:s>=70?80:s>=40?60:0;
+</section>
 
-/* scripted answers. STT = what speech-to-text heard; clean = after clean-up */
-const ANSWERS=[
- {id:"a1",said:"It’s half past six.",stt:"its half past six",clean:"it's half past six",seen:true,expected:100,
-  tuned:{score:100,fb:"Great job! That's exactly right."},early:{score:100,fb:"Great job! Your answer is perfect!"}},
- {id:"a2",said:"It is six thirty.",stt:"it is six thirty",clean:"it is six thirty",seen:false,expected:100,
-  tuned:{score:100,fb:"Perfect! Six thirty is right too."},early:{score:80,fb:"Mostly correct. The answer is \"It is six thirty.\""},
-  why:"Early prompts marked a correct alternative down because it didn’t match the first example."},
- {id:"a3",said:"Is half past six.",stt:"is half past six",clean:"is half past six",seen:false,expected:80,
-  tuned:{score:80,fb:"Nearly! Say: It is half past six."},early:{score:100,fb:"Your answer is correct."},
-  why:"The missing “It” went unnoticed. Anchor answers at 80 fixed this."},
- {id:"a4",said:"Half six.",stt:"half six",clean:"half six",seen:true,expected:60,
-  tuned:{score:60,fb:"Good try! Use a full sentence: It's half six."},early:{score:60,fb:"Incomplete sentence. Correct answer: It's half six."}},
- {id:"a5",said:"I think it's around six?",stt:"i think its around six",clean:"i think it's around six",seen:false,expected:0,
-  tuned:{score:0,fb:"Look again: the long hand says half past."},early:{score:60,fb:"Your answer hints at the correct time but is incomplete."},
-  why:"A classic false pass: vague and wrong, but rewarded for “hinting”. The tuned rubric scores it 0."},
- {id:"a6",said:"Son las seis y media.",stt:"son las seis y media",clean:"son las seis y media",seen:false,expected:0,
-  tuned:{score:0,fb:"Try again in English: It’s half past six."},early:{score:80,fb:"Correct time! Try saying it in English."},
-  why:"Right idea, wrong language. It became a hard rule: not English scores 0."}
-];
-let mode="tuned", sel="a5";
+<section aria-labelledby="path-h" style="display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.08em; color: #5f5b52">THE PATH</span><h2 id="path-h" style="margin: 0; font-size: 36px; font-weight: 600">Four checkpoints before a learner saw a score</h2></div>
+<ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 16px">
+<li style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 16px; display: flex; flex-direction: column; gap: 8px"><span style="font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em; background: #eef3e9; border: 1.5px solid #83996f; padding: 3px 7px; align-self: flex-start">CHECKPOINT 1 ✓</span><b style="font-size: 20px">The rubric I wrote</b><span style="font-size: 15px; line-height: 1.5; color: #2e2c28">Four bands, each with anchor answers for every activity.</span></li>
+<li style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 16px; display: flex; flex-direction: column; gap: 8px"><span style="font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em; background: #eef3e9; border: 1.5px solid #83996f; padding: 3px 7px; align-self: flex-start">CHECKPOINT 2 ✓</span><b style="font-size: 20px">The rubric, running</b><span style="font-size: 15px; line-height: 1.5; color: #2e2c28">One answer followed through the pipeline, first prompts against tuned.</span></li>
+<li style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 16px; display: flex; flex-direction: column; gap: 8px"><span style="font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em; background: #eef3e9; border: 1.5px solid #83996f; padding: 3px 7px; align-self: flex-start">CHECKPOINT 3 ✓</span><b style="font-size: 20px">The test set</b><span style="font-size: 15px; line-height: 1.5; color: #2e2c28">≈4,000 answers with known scores: ≈1,300 real, ≈2,700 synthetic.</span></li>
+<li style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 16px; display: flex; flex-direction: column; gap: 8px"><span style="font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em; background: #eef3e9; border: 1.5px solid #83996f; padding: 3px 7px; align-self: flex-start">CHECKPOINT 4 ✓</span><b style="font-size: 20px">Before and after</b><span style="font-size: 15px; line-height: 1.5; color: #2e2c28">Did it get more trustworthy? The score screen below.</span></li>
+</ol>
+<div style="display: flex; flex-wrap: wrap; gap: 10px"><a href="rough-work-learning-meter.html#rw1" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 4px 12px 4px 4px; border: 1.5px dashed #1e1e1e; background: #ebe8e0; text-decoration: none"><img src="assets/img/lm-rough-skills.jpg" alt="" style="width: 56px; height: 36px; object-fit: cover; object-position: top left; border: 1px solid #c9c4b6; display: block"><span style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Silkscreen', monospace; font-size: 9px; letter-spacing: 0.06em; color: #5f5b52">SKETCHED FIRST · ROUGH WORK</span><span style="font-family: 'Patrick Hand', cursive; font-size: 18px; line-height: 1">The diagnostic order ▸</span></span></a><a href="rough-work-learning-meter.html#rw2" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 4px 12px 4px 4px; border: 1.5px dashed #1e1e1e; background: #ebe8e0; text-decoration: none"><img src="assets/img/lm-rough-levels.jpg" alt="" style="width: 56px; height: 36px; object-fit: cover; object-position: top left; border: 1px solid #c9c4b6; display: block"><span style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Silkscreen', monospace; font-size: 9px; letter-spacing: 0.06em; color: #5f5b52">SKETCHED FIRST · ROUGH WORK</span><span style="font-family: 'Patrick Hand', cursive; font-size: 18px; line-height: 1">What a level changes ▸</span></span></a></div>
+</section>
 
-function renderAnswers(){
-  $("answers").innerHTML=ANSWERS.map(a=>`<button type="button" class="ans" data-id="${a.id}" aria-pressed="${a.id===sel}"><span class="said">“${a.said}”</span><small>expected ${a.expected}</small></button>`).join("");
-  $("answers").querySelectorAll(".ans").forEach(b=>b.onclick=()=>{sel=b.dataset.id;renderAnswers();renderPipe()});
-}
-function meterSVG(score,col){
-  const r=30,c=2*Math.PI*r,f=c*(Math.max(score,4)/100);
-  return `<svg class="meter" viewBox="0 0 74 74" aria-hidden="true"><circle cx="37" cy="37" r="${r}" fill="none" stroke="var(--line)" stroke-width="8"/><circle cx="37" cy="37" r="${r}" fill="none" stroke="${col}" stroke-width="8" stroke-linecap="round" stroke-dasharray="${f.toFixed(1)} ${c.toFixed(1)}" transform="rotate(-90 37 37)"/><text x="37" y="42" text-anchor="middle" font-family="var(--display)" font-weight="600" font-size="17" fill="var(--ink)">${score}</text></svg>`;
-}
-function renderPipe(){
-  const a=ANSWERS.find(x=>x.id===sel), r=a[mode];
-  const cached = a.seen && mode==="tuned";
-  const b=BAND[band(r.score)], ok=band(r.score)===a.expected;
-  const steps=[
-    ["s-stt",1,"Speech to text","","The learner speaks. Speech-to-text is imperfect with young voices and accents, so nothing downstream trusts punctuation.",`heard: "${a.stt}"`,true],
-    ["s-clean",2,"Clean up","","Normalise spelling, case and punctuation so “I have a red car” and “I have a red car.” count as one answer.",`→ "${a.clean}"`,true],
-    ["s-cache",3,"Seen this before?",cached?"match · instant · no AI call":"no match",
-      cached?"This exact answer was already scored for this mini-activity, so the stored score is reused. The same answer always gets the same score."
-            :"New answer for this mini-activity, so it goes to the AI with the rubric.","",true],
-    ["s-ai",4,"Grade against the rubric",cached?"skipped":(mode==="tuned"?"tuned prompt · strict settings":"first prompt"),
-      "The AI gets the activity, what to check, and anchor answers at 100 / 80 / 60 / 0, then must reply as a score plus feedback.",
-      cached?"":`{ "score": ${r.score}, "explanation": "${r.fb}" }`,!cached],
-    ["s-out",5,"Back to the learner","",null,"",true],
-    ["s-log",6,"Logged for review",ok?"agrees with expected":"flagged: disagrees with expected",
-      ok?"Stored with the activity, answer and score."
-        :`Expected ${a.expected}, scored ${r.score}. Flagged answers are reviewed and fed back into the rubric and test set.`,"",true]
-  ];
-  $("pipe").innerHTML=steps.map(([cls,n,t,tag,d,io,on])=>{
-    const body = cls==="s-out"
-      ? `<div class="child" style="--band:${b[1]};--band-soft:${b[2]}">${meterSVG(r.score,b[1])}<div><div class="sc">Learning Meter · ${r.score}/100</div><div class="fb">${r.fb}</div></div></div>`
-      : `${d?`<p class="d">${d}</p>`:""}${io?`<div class="io">${io}</div>`:""}`;
-    return `<div class="step ${cls} ${on?"on":"st-off"}"><div class="rail"><span class="dot">${n}</span></div><div class="b"><div class="t">${t}${tag?`<span class="tag">${tag}</span>`:""}</div>${body}</div></div>`;
-  }).join("") + (a.why&&mode==="early"
-    ? `<div class="whynote"><span class="k">Why the first prompt got this wrong</span><p>${a.why}</p></div>`
-    : "");
-}
-function setMode(m){
-  mode=m;$("m-early").setAttribute("aria-pressed",m==="early");$("m-tuned").setAttribute("aria-pressed",m==="tuned");
-  $("mode-note").textContent=m==="early"?"How the first prompts scored these answers, based on real failure patterns.":"How the tuned rubric and prompts score them.";
-  renderPipe();
-}
-$("m-early").onclick=()=>setMode("early");$("m-tuned").onclick=()=>setMode("tuned");
+<section id="lmw" aria-labelledby="lmw-h" style="display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.08em; color: #4d5f3e">CHECKPOINTS 1 AND 2 · PLAY IT THROUGH</span><h2 id="lmw-h" style="margin: 0; font-size: 36px; font-weight: 600">Follow one answer through the Learning Meter</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.55; max-width: 64ch; color: #2e2c28">This work lived in Jupyter notebooks, rubric spreadsheets and model runs, and what a learner saw at the end of it was ten words of feedback. The walkthrough rebuilds the pipeline so the stages in between are visible: the same rubric, the same anchor answers, the same scores. Switch between the first prompts and the tuned ones to see what the evaluation loop changed.</p></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><span class="lmw-lab">THE RUBRIC · FOUR BANDS, AN ANCHOR ANSWER AT EACH</span><div class="lmw-bands" id="lmw-bands"></div></div>
+<div class="lmw">
+<div class="lmw-card">
+<div class="lmw-q"><svg viewBox="0 0 120 120" role="img" aria-label="An analogue clock showing half past six"><circle cx="60" cy="60" r="54" fill="#fbfaf6" stroke="#1e1e1e" stroke-width="4"/><g stroke="#5f5b52" stroke-width="3" stroke-linecap="round"><line x1="60" y1="12" x2="60" y2="20"/><line x1="108" y1="60" x2="100" y2="60"/><line x1="60" y1="108" x2="60" y2="100"/><line x1="12" y1="60" x2="20" y2="60"/></g><line x1="60" y1="60" x2="60" y2="98" stroke="#1e1e1e" stroke-width="4" stroke-linecap="round"/><line x1="60" y1="60" x2="66" y2="86" stroke="#1e1e1e" stroke-width="6" stroke-linecap="round"/><circle cx="60" cy="60" r="5" fill="#a89660"/></svg>
+<div><span class="lmw-lab">SPEAKING · IMAGE PROMPT · AP1</span><div style="font-size: 26px; font-weight: 600">What time is it?</div></div></div>
+<div class="nb-seg" role="group" aria-label="Which version of the prompt"><button type="button" id="lmw-early" aria-pressed="false">FIRST PROMPTS (2023)</button><button type="button" id="lmw-tuned" aria-pressed="true">TUNED (2024)</button></div>
+<p id="lmw-note" style="margin: 0; font-size: 14px; color: #5f5b52"></p>
+<span class="lmw-lab">PICK WHAT THE LEARNER SAID</span>
+<div class="lmw-answers" id="lmw-answers"><noscript>The walkthrough needs JavaScript.</noscript></div>
+</div>
+<div class="lmw-card" aria-live="polite"><div id="lmw-pipe"></div></div>
+</div>
+</section>
 
-/* rubric */
-const BANDS=[
- [100,"b100",["Full sentence, clear and relevant","Correct grammar and vocabulary","Clear pronunciation"],"It’s half past six."],
- [80,"b80",["Full sentence, minor slips","Mostly correct grammar","Still easy to understand"],"Is half past six."],
- [60,"b60",["One word or a fragment","Frequent errors","Minimally does the task"],"Half six."],
- [0,"b0",["Wrong or off-topic","Breaks down communication","Not in English"],"Son las seis y media."]
-];
-$("bands").innerHTML=BANDS.map(([n,c,pts,ex])=>`<div class="band ${c}"><span class="n">${n}</span><ul>${pts.map(p=>`<li>${p}</li>`).join("")}</ul><div class="ex">“${ex}”</div></div>`).join("");
 
-/* results */
-const STATS=[
- ["Wrong answers wrongly passed",[["First",58,"bad"],["Tuned",27,"good"]],"Answers that should score 0 but got 60 or more. This was the number I cared about most."],
- ["Exact agreement with the expected score",[["First",44,"old"],["Tuned",56,"good"]],"The same score as the one set by a person."],
- ["Within one band",[["First",66,"old"],["Tuned",75,"good"]],"Off by at most one step, for example 80 instead of 100."]
-];
-$("stats").innerHTML=STATS.map(([t,rows,p])=>`<div class="stat"><div class="t">${t}</div>${rows.map(([l,v,c])=>`<div class="row"><span>${l}</span><span class="bar ${c}" role="img" aria-label="${l}: about ${v} per cent"><i style="width:${v}%"></i></span><span class="v approx" title="Rounded">≈${v}%</span></div>`).join("")}<p>${p}</p></div>`).join("");
-$("trade").innerHTML=`<b>The trade-off.</b> Tightening the rubric roughly halved false passes, and the model also got stricter with some perfect answers. That became the next thing to tune.`;
+<section aria-labelledby="score-h" style="border: 2px solid #1e1e1e; background: #fbfaf6; box-shadow: 8px 8px 0 #1e1e1e; padding: 22px; display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap"><h2 id="score-h" style="margin: 0; font-family: 'Silkscreen', monospace; font-size: 16px; font-weight: 400; letter-spacing: 0.08em">SCORE SCREEN · FIRST PROMPTS VS TUNED</h2><span style="font-family: 'Patrick Hand', cursive; font-size: 19px; color: #5f5b52">one block = 5%</span></div>
+<div style="display: flex; flex-direction: column; gap: 18px">
 
-renderAnswers();setMode("tuned");
-</script>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 8px 20px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 2px"><b style="font-size: 17px">Wrong answers wrongly passed</b><span style="font-size: 14px; color: #5f5b52">Lower is better. The number I cared about most.</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+
+<div style="display: flex; align-items: center; gap: 10px; font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.04em">
+<span style="width: 52px; flex: none; color: #5f5b52">FIRST</span>
+<span aria-hidden="true" style="display: flex; gap: 2px; flex-wrap: nowrap; min-width: 0; flex: 1 1 auto">
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #b07070"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #b07070"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #b07070"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #b07070"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #b07070"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #b07070"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #b07070"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #b07070"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #b07070"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #b07070"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #b07070"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #b07070"></span>
+
+
+
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+</span>
+<span style="width: 44px; flex: none">≈58%</span>
+</div>
+
+<div style="display: flex; align-items: center; gap: 10px; font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.04em">
+<span style="width: 52px; flex: none; color: #5f5b52">TUNED</span>
+<span aria-hidden="true" style="display: flex; gap: 2px; flex-wrap: nowrap; min-width: 0; flex: 1 1 auto">
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #83996f"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #83996f"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #83996f"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #83996f"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #83996f"></span>
+
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+</span>
+<span style="width: 44px; flex: none">≈27%</span>
+</div>
+
+</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 8px 20px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 2px"><b style="font-size: 17px">Exact agreement with the expected score</b><span style="font-size: 14px; color: #5f5b52">The same score as the one set by a person.</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+
+<div style="display: flex; align-items: center; gap: 10px; font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.04em">
+<span style="width: 52px; flex: none; color: #5f5b52">FIRST</span>
+<span aria-hidden="true" style="display: flex; gap: 2px; flex-wrap: nowrap; min-width: 0; flex: 1 1 auto">
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #a89660"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #a89660"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #a89660"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #a89660"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #a89660"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #a89660"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #a89660"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #a89660"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #a89660"></span>
+
+
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+</span>
+<span style="width: 44px; flex: none">≈44%</span>
+</div>
+
+<div style="display: flex; align-items: center; gap: 10px; font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.04em">
+<span style="width: 52px; flex: none; color: #5f5b52">TUNED</span>
+<span aria-hidden="true" style="display: flex; gap: 2px; flex-wrap: nowrap; min-width: 0; flex: 1 1 auto">
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #83996f"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #83996f"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #83996f"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #83996f"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #83996f"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #83996f"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #83996f"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #83996f"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #83996f"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #83996f"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #83996f"></span>
+
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+</span>
+<span style="width: 44px; flex: none">≈56%</span>
+</div>
+
+</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 8px 20px; align-items: center">
+<div style="display: flex; flex-direction: column; gap: 2px"><b style="font-size: 17px">Within one band</b><span style="font-size: 14px; color: #5f5b52">Off by at most one step.</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+
+<div style="display: flex; align-items: center; gap: 10px; font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.04em">
+<span style="width: 52px; flex: none; color: #5f5b52">FIRST</span>
+<span aria-hidden="true" style="display: flex; gap: 2px; flex-wrap: nowrap; min-width: 0; flex: 1 1 auto">
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #a89660"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #a89660"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #a89660"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #a89660"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #a89660"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #a89660"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #a89660"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #a89660"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #a89660"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #a89660"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #a89660"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #a89660"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #a89660"></span>
+
+
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+</span>
+<span style="width: 44px; flex: none">≈66%</span>
+</div>
+
+<div style="display: flex; align-items: center; gap: 10px; font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.04em">
+<span style="width: 52px; flex: none; color: #5f5b52">TUNED</span>
+<span aria-hidden="true" style="display: flex; gap: 2px; flex-wrap: nowrap; min-width: 0; flex: 1 1 auto">
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #83996f"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #83996f"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #83996f"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #83996f"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #83996f"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #83996f"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #83996f"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #83996f"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #83996f"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #83996f"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #83996f"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #83996f"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #83996f"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #83996f"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; background: #83996f"></span>
+
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+
+
+
+<span style="flex: 1 1 0; min-width: 2px; max-width: 12px; height: 14px; display: block; box-sizing: border-box; border: 1.5px solid #c9c4b6"></span>
+
+</span>
+<span style="width: 44px; flex: none">≈75%</span>
+</div>
+
+</div>
+</div>
+
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 14px; border-top: 1px dashed #c9c4b6; padding-top: 16px">
+<div style="display: flex; flex-direction: column; gap: 4px"><span style="font-family: 'Silkscreen', monospace; font-size: 26px">100%</span><span style="font-size: 15px; color: #2e2c28">of responses came back as a valid score plus feedback</span></div>
+<div style="display: flex; flex-direction: column; gap: 4px"><span style="font-family: 'Silkscreen', monospace; font-size: 26px">≈1–2 S</span><span style="font-size: 15px; color: #2e2c28">typical response, with rare peaks near 10 s</span></div>
+</div>
+</section>
+
+<section aria-labelledby="tr-h" style="display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.08em; color: #5f5b52">DESIGN DECISIONS</span><h2 id="tr-h" style="margin: 0; font-size: 36px; font-weight: 600">Trade-offs I designed around</h2></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr)); gap: 14px">
+<div style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 16px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.08em; color: #8a4848">RISK</span><b style="font-size: 19px">Quality varies from run to run</b><span style="font-size: 15px; line-height: 1.5; color: #2e2c28">Every answer in the test set was scored twice, and model settings stayed low-creativity, so drift showed up as a number before launch.</span></div>
+<div style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 16px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.08em; color: #8a4848">RISK</span><b style="font-size: 19px">False praise</b><span style="font-size: 15px; line-height: 1.5; color: #2e2c28">Anchor answers at every band and synthetic near-misses in the test set cut <span class="gl" tabindex="0">false passes<sup>?</sup><span class="gl-tip" role="tooltip"><b>FALSE PASS</b>When the AI said an answer met the level but a human grader said it didn’t. The error that matters most for learners.</span></span> from 58% to 27%.</span></div>
+<div style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 16px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.08em; color: #8a4848">RISK</span><b style="font-size: 19px">The wrong language</b><span style="font-size: 15px; line-height: 1.5; color: #2e2c28">Anything not in English scores 0, a hard rule in every prompt.</span></div>
+<div style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 16px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.08em; color: #8a4848">RISK</span><b style="font-size: 19px">Latency</b><span style="font-size: 15px; line-height: 1.5; color: #2e2c28">Feedback is read mid-game, so speed was tracked alongside accuracy.</span></div>
+<div style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 16px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.08em; color: #8a4848">RISK</span><b style="font-size: 19px">Cost and consistency</b><span style="font-size: 15px; line-height: 1.5; color: #2e2c28">Learners give many of the same answers. Matching them first made scoring instant and cheaper, and the same answer always got the same score.</span></div>
+<div style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 16px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.08em; color: #8a4848">RISK</span><b style="font-size: 19px">What the learner reads</b><span style="font-size: 15px; line-height: 1.5; color: #2e2c28">Ten words or fewer, in the first person, naming one fix, and strict on the score.</span></div>
+</div>
+</section>
+
+<section aria-labelledby="game-h" style="display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.08em; color: #5f5b52">IN THE APP</span><h2 id="game-h" style="margin: 0; font-size: 36px; font-weight: 600">What a learner plays</h2></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 18px; align-items: start"><figure style="margin: 0; display: flex; flex-direction: column; gap: 8px"><div style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 8px"><img src="assets/img/ku-recipe-rush.png" alt="A MyWay activity intro screen titled Recipe Rush on a patterned teal background. A card reads: first, complete the recipe, then follow the steps by using the correct utensils and carrying out the correct actions. A Play button sits below it, and a drag-and-drop icon marks the activity type in the corner." style="width: 100%; height: auto; display: block; max-height: 560px; object-fit: contain"></div><figcaption style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.06em; color: #5f5b52">AN ACTIVITY OPENS</span><span style="font-size: 15px; line-height: 1.45; color: #2e2c28">The task in a learner’s own words, and the activity type marked before they start.</span></figcaption></figure><figure style="margin: 0; display: flex; flex-direction: column; gap: 8px"><div style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 8px"><img src="assets/img/ku-recipe-task.png" alt="The Recipe Rush activity. A torn recipe card taped to a mint green patterned background reads: chop the onion and fry it in some olive oil. A knife, a frying pan, a pot boiling on a hob, a wooden spoon and an oven are laid out below it." style="width: 100%; height: auto; display: block; max-height: 560px; object-fit: contain"></div><figcaption style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.06em; color: #5f5b52">THE TASK ITSELF</span><span style="font-size: 15px; line-height: 1.45; color: #2e2c28">The instruction stays on screen while a learner picks the utensils and carries out the actions in order.</span></figcaption></figure><figure style="margin: 0; display: flex; flex-direction: column; gap: 8px"><div style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 8px"><img src="assets/img/ku-listening.png" alt="A MyWay listening activity. Three restaurant fronts sit across a patterned teal background: a sushi restaurant, an Italian one and a burger bar. A character avatar with a speaker bubble sits below them, and a multiple-choice icon marks the activity type in the corner." style="width: 100%; height: auto; display: block; max-height: 560px; object-fit: contain"></div><figcaption style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.06em; color: #5f5b52">A DIFFERENT TYPE</span><span style="font-size: 15px; line-height: 1.45; color: #2e2c28">Audio plays from the character, and a learner answers by choosing. The corner icon carries the change.</span></figcaption></figure></div>
+<figure style="margin: 0; display: flex; flex-direction: column; gap: 8px"><div style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 8px"><img src="assets/img/ku-activity-maker.png" alt="The Kids&amp;Us Activity Maker. Block categories run down the left: game objects, audio, video, position, appearance, custom logic, grading, arrays, waits and comments. The canvas holds three columns of blocks: an objects definition listing hearts, a test button and a fail screen; a configuration column setting variables and binding audio assets; and a start program column with the loop that runs them." style="width: 100%; height: auto; display: block; max-height: 560px; object-fit: contain"></div><figcaption style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.06em; color: #5f5b52">THE ACTIVITY MAKER</span><span style="font-size: 15px; line-height: 1.45; color: #2e2c28">Block categories, then three columns: the objects a screen contains, the configuration that sets them up, and the start program that runs them. Recipe Rush, above, was built here.</span></figcaption></figure>
+</section>
+
+<section aria-labelledby="eng-h" style="display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.08em; color: #5f5b52">BONUS ROUND</span><h2 id="eng-h" style="margin: 0; font-size: 36px; font-weight: 600">What moved engagement</h2></div>
+<p style="margin: 0; font-size: 18px; line-height: 1.55; max-width: 64ch; color: #2e2c28">I redesigned the gamified loops from engagement data and A/B tested the redesign. MyWay went on to reach more than 25,000 learners in its first rollout.</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 14px">
+<div style="border: 2px solid #1e1e1e; background: #eef3e9; padding: 16px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Silkscreen', monospace; font-size: 30px">+40%</span><span style="font-size: 15px">learner participation, A/B tested</span></div>
+<div style="border: 2px solid #1e1e1e; background: #f6f1e3; padding: 16px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Silkscreen', monospace; font-size: 30px">3–4 → 7–8</span><span style="font-size: 15px">activities a week</span></div>
+<div style="border: 2px solid #1e1e1e; background: #f0edf5; padding: 16px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Silkscreen', monospace; font-size: 30px">25,000+</span><span style="font-size: 15px">learners in the first rollout, reported by Microsoft (2025)</span></div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 18px; align-items: start"><figure style="margin: 0; display: flex; flex-direction: column; gap: 8px"><div style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 8px"><img src="assets/img/ku-world-map.jpg" alt="An illustrated world map of islands with mission markers on it, a learner's avatar in the middle, a settings button and a character icon in the corners, and a small robot companion at the bottom right." style="width: 100%; height: auto; display: block; max-height: 560px; object-fit: contain"></div><figcaption style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.06em; color: #5f5b52">THE WORLD MAP</span><span style="font-size: 15px; line-height: 1.45; color: #2e2c28">Missions open from an illustrated map of the course.</span></figcaption></figure><figure style="margin: 0; display: flex; flex-direction: column; gap: 8px"><div style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 8px"><img src="assets/img/ku-mission-structure.png" alt="A treemap of Mission 4. Three challenges, each split into blocks labelled Adaptive and Fixed, with adaptive blocks broken down by level 0.0, 1.0 and 2.0." style="width: 100%; height: auto; display: block; max-height: 560px; object-fit: contain"></div><figcaption style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.06em; color: #5f5b52">INSIDE A MISSION</span><span style="font-size: 15px; line-height: 1.45; color: #2e2c28">Each challenge mixes adaptive activities, at levels 0.0, 1.0 and 2.0, with fixed ones.</span></figcaption></figure></div><p style="margin: 0; font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.06em; color: #5f5b52">PRODUCT SCREENS AND ARTWORK ARE KIDS&amp;US’S</p>
+</section>
+
+<section aria-label="Rough work" style="border: 2px dashed #1e1e1e; background: #ebe8e0; padding: 18px 20px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap"><span style="font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.08em">ROUGH WORK · BEHIND THIS NOTE</span><a href="rough-work-learning-meter.html" style="font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em; min-height: 24px">FLIP TO THE ROUGH WORK ▸</a></div>
+<div style="display: flex; gap: 22px; overflow-x: auto; padding: 8px 4px 6px"><a href="rough-work-learning-meter.html#rw1" style="flex: 0 0 auto; width: 170px; text-decoration: none; display: flex; flex-direction: column; gap: 8px"><span style="position: relative; display: block; background: #fbfaf6; border: 1.5px solid #c9c4b6; padding: 6px; transform: rotate(-0.8deg); box-shadow: 3px 4px 0 rgba(30,30,30,0.12)"><img src="assets/img/lm-rough-skills.jpg" alt="" style="width: 100%; height: 110px; object-fit: cover; object-position: top left; display: block"></span><span style="font-family: 'Patrick Hand', cursive; font-size: 18px; line-height: 1.15">The diagnostic order</span></a><a href="rough-work-learning-meter.html#rw2" style="flex: 0 0 auto; width: 170px; text-decoration: none; display: flex; flex-direction: column; gap: 8px"><span style="position: relative; display: block; background: #fbfaf6; border: 1.5px solid #c9c4b6; padding: 6px; transform: rotate(0.6deg); box-shadow: 3px 4px 0 rgba(30,30,30,0.12)"><img src="assets/img/lm-rough-levels.jpg" alt="" style="width: 100%; height: 110px; object-fit: cover; object-position: top left; display: block"></span><span style="font-family: 'Patrick Hand', cursive; font-size: 18px; line-height: 1.15">What a level changes</span></a></div>
+</section>
+
+<section aria-labelledby="life-h" style="display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; justify-content: space-between; align-items: end; gap: 12px; flex-wrap: wrap">
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.08em; color: #5f5b52">STAGES CLEARED · 6/6</span><h2 id="life-h" style="margin: 0; font-size: 36px; font-weight: 600">Where I worked across the lifecycle</h2></div>
+<span aria-hidden="true" style="display: flex; gap: 3px"><span style="width: 18px; height: 14px; background: #83996f; display: block"></span><span style="width: 18px; height: 14px; background: #83996f; display: block"></span><span style="width: 18px; height: 14px; background: #83996f; display: block"></span><span style="width: 18px; height: 14px; background: #83996f; display: block"></span><span style="width: 18px; height: 14px; background: #83996f; display: block"></span><span style="width: 18px; height: 14px; background: #83996f; display: block"></span></span>
+</div>
+<ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr)); gap: 10px">
+<li style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 14px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 6px; font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em"><span>01 · DISCOVER</span><span aria-label="Cleared">✓</span></div>
+<span aria-hidden="true" style="display: flex; gap: 2px"><span style="flex: 1; height: 8px; background: #83996f; display: block"></span><span style="flex: 1; height: 8px; background: #83996f; display: block"></span><span style="flex: 1; height: 8px; background: #83996f; display: block"></span><span style="flex: 1; height: 8px; background: #83996f; display: block"></span></span>
+
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; font-size: 14px; line-height: 1.4"><li style="padding-left: 14px; position: relative"><span aria-hidden="true" style="position: absolute; left: 0; top: 7px; width: 6px; height: 6px; background: #1e1e1e; display: block"></span>Speech and writing tasks for learners around eight</li><li style="padding-left: 14px; position: relative"><span aria-hidden="true" style="position: absolute; left: 0; top: 7px; width: 6px; height: 6px; background: #1e1e1e; display: block"></span>Rubric bands</li></ul>
+
+</li><li style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 14px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 6px; font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em"><span>02 · PROTOTYPE</span><span aria-label="Cleared">✓</span></div>
+<span aria-hidden="true" style="display: flex; gap: 2px"><span style="flex: 1; height: 8px; background: #83996f; display: block"></span><span style="flex: 1; height: 8px; background: #83996f; display: block"></span><span style="flex: 1; height: 8px; background: #83996f; display: block"></span><span style="flex: 1; height: 8px; background: #83996f; display: block"></span></span>
+
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; font-size: 14px; line-height: 1.4"><li style="padding-left: 14px; position: relative"><span aria-hidden="true" style="position: absolute; left: 0; top: 7px; width: 6px; height: 6px; background: #1e1e1e; display: block"></span>Prompt databases</li><li style="padding-left: 14px; position: relative"><span aria-hidden="true" style="position: absolute; left: 0; top: 7px; width: 6px; height: 6px; background: #1e1e1e; display: block"></span>Anchor answers per activity</li></ul>
+
+</li><li style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 14px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 6px; font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em"><span>03 · PILOT</span><span aria-label="Cleared">✓</span></div>
+<span aria-hidden="true" style="display: flex; gap: 2px"><span style="flex: 1; height: 8px; background: #83996f; display: block"></span><span style="flex: 1; height: 8px; background: #83996f; display: block"></span><span style="flex: 1; height: 8px; background: #83996f; display: block"></span><span style="flex: 1; height: 8px; background: #83996f; display: block"></span></span>
+
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; font-size: 14px; line-height: 1.4"><li style="padding-left: 14px; position: relative"><span aria-hidden="true" style="position: absolute; left: 0; top: 7px; width: 6px; height: 6px; background: #1e1e1e; display: block"></span>A test set of about 4,000 answers</li><li style="padding-left: 14px; position: relative"><span aria-hidden="true" style="position: absolute; left: 0; top: 7px; width: 6px; height: 6px; background: #1e1e1e; display: block"></span>Real answers plus synthetic edge cases</li><li style="padding-left: 14px; position: relative"><span aria-hidden="true" style="position: absolute; left: 0; top: 7px; width: 6px; height: 6px; background: #1e1e1e; display: block"></span>10 representative franchise schools</li></ul>
+
+</li><li style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 14px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 6px; font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em"><span>04 · VALIDATE</span><span aria-label="Cleared">✓</span></div>
+<span aria-hidden="true" style="display: flex; gap: 2px"><span style="flex: 1; height: 8px; background: #83996f; display: block"></span><span style="flex: 1; height: 8px; background: #83996f; display: block"></span><span style="flex: 1; height: 8px; background: #83996f; display: block"></span><span style="flex: 1; height: 8px; background: #83996f; display: block"></span></span>
+
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; font-size: 14px; line-height: 1.4"><li style="padding-left: 14px; position: relative"><span aria-hidden="true" style="position: absolute; left: 0; top: 7px; width: 6px; height: 6px; background: #1e1e1e; display: block"></span>Evaluation loop before launch</li><li style="padding-left: 14px; position: relative"><span aria-hidden="true" style="position: absolute; left: 0; top: 7px; width: 6px; height: 6px; background: #1e1e1e; display: block"></span>Every answer graded twice</li></ul>
+
+</li><li style="border: 2px dashed #1e1e1e; background: #eef3e9; padding: 14px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 6px; font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em"><span>05 · BUILD</span><span aria-label="Cleared">✓</span></div>
+<span aria-hidden="true" style="display: flex; gap: 2px"><span style="flex: 1; height: 8px; background: #83996f; display: block"></span><span style="flex: 1; height: 8px; background: #83996f; display: block"></span><span style="flex: 1; height: 8px; background: #83996f; display: block"></span><span style="flex: 1; height: 8px; background: #83996f; display: block"></span></span>
+<span style="font-family: 'Silkscreen', monospace; font-size: 9px; letter-spacing: 0.06em; color: #4d5f3e">BEYOND THE BRIEF</span>
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; font-size: 14px; line-height: 1.4"><li style="padding-left: 14px; position: relative"><span aria-hidden="true" style="position: absolute; left: 0; top: 7px; width: 6px; height: 6px; background: #1e1e1e; display: block"></span>Handoff to engineers</li><li style="padding-left: 14px; position: relative"><span aria-hidden="true" style="position: absolute; left: 0; top: 7px; width: 6px; height: 6px; background: #1e1e1e; display: block"></span>Caching for repeat answers</li></ul>
+
+</li><li style="border: 2px dashed #1e1e1e; background: #eef3e9; padding: 14px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 6px; font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em"><span>06 · MEASURE</span><span aria-label="Cleared">✓</span></div>
+<span aria-hidden="true" style="display: flex; gap: 2px"><span style="flex: 1; height: 8px; background: #83996f; display: block"></span><span style="flex: 1; height: 8px; background: #83996f; display: block"></span><span style="flex: 1; height: 8px; background: #83996f; display: block"></span><span style="flex: 1; height: 8px; background: #83996f; display: block"></span></span>
+<span style="font-family: 'Silkscreen', monospace; font-size: 9px; letter-spacing: 0.06em; color: #4d5f3e">BEYOND THE BRIEF</span>
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; font-size: 14px; line-height: 1.4"><li style="padding-left: 14px; position: relative"><span aria-hidden="true" style="position: absolute; left: 0; top: 7px; width: 6px; height: 6px; background: #1e1e1e; display: block"></span>False passes, agreement, latency, cost</li></ul>
+
+</li>
+</ol>
+<p style="margin: 0; font-size: 16px; color: #5f5b52">From a rubric to the accuracy numbers that decided what shipped.</p>
+</section>
+
+<footer style="display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; border-top: 2px solid #1e1e1e; padding-top: 18px">
+<span style="font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.08em; color: #5f5b52">NOTE COMPLETE · ALL FIGURES ROUNDED · NO LEARNER DATA SHOWN</span>
+<a href="beeline.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border: 2px solid #1e1e1e; background: #1e1e1e; color: #f4f2ec; text-decoration: none; font-family: 'Silkscreen', monospace; font-size: 13px; letter-spacing: 0.08em; box-shadow: 4px 4px 0 #a89660">NEXT NOTE · BEELINE ▸</a>
+</footer>
+
+</div>
+</div>
+</main>
+</body>
 </html>

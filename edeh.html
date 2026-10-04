@@ -1,173 +1,86 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>European Digital Education Hub · Fatima Abid</title>
-<meta name="description" content="Two squads with the European Commission's Digital Education Hub: learning and space analytics in Future Classrooms, and public–private partnerships in AI adoption.">
+<title>Side quest — European Digital Education Hub · Fatima Abid</title>
+<meta name="description" content="Side quest · European Digital Education Hub">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="assets/img/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/img/favicon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Caveat:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/journal.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&amp;family=Silkscreen&amp;family=Patrick+Hand&amp;display=swap">
 <style>
-.stack{display:grid;gap:46px}
-.stack>section{display:grid;gap:16px}
-.label{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--pencil)}
-.sec-lede{margin:0;max-width:74ch;color:var(--pencil);font-size:15.5px}
-
-.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(265px,1fr));gap:20px}
-.cols>div{border-top:3px solid var(--k,var(--rule-strong));padding-top:11px;display:grid;gap:5px}
-.cols .lbl{font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--pencil)}
-.cols p{margin:0;font-size:15px}
-
-.squad{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border:1px solid var(--rule-strong);
-  border-radius:6px;overflow:hidden;background:var(--paper)}
-.squad>div{padding:14px 16px;border-left:1px dashed var(--rule);display:grid;gap:4px;align-content:start}
-.squad>div:first-child{border-left:0}
-.squad .s{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--pencil)}
-.squad b{font-family:var(--serif);font-size:17px;font-weight:600;line-height:1.2}
-.squad p{margin:0;font-size:13.5px;color:var(--pencil)}
-
-.parts{display:grid;gap:10px;margin:4px 0 0;padding:0;list-style:none}
-.parts li{display:grid;grid-template-columns:132px minmax(0,1fr);gap:18px;align-items:start;
-  border-top:1px solid var(--rule);padding:13px 0 0;font-size:14.5px;line-height:1.5}
-.parts .n{font-family:var(--mono);font-size:11px;color:var(--pencil);padding-top:3px;letter-spacing:.04em}
-
-.figs2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;align-items:start}
-.figs2>div{display:grid;gap:14px;align-content:start}
-.thread{border-left:3px solid var(--green);padding-left:18px;display:grid;gap:12px}
-.thread p{margin:0;max-width:72ch;font-size:15.5px}
-
-@media (max-width:860px){ .figs2{grid-template-columns:1fr} .squad{grid-template-columns:1fr}
-  .squad>div{border-left:0;border-top:1px dashed var(--rule)} .squad>div:first-child{border-top:0} }
-@media (max-width:620px){ .parts li{grid-template-columns:1fr;gap:3px} }
+body{margin:0;background:#f4f2ec}
+a{color:#1e1e1e}a:hover{color:#5d4f78}
+.gl{border-bottom:1.5px dotted #5d4f78;position:relative;cursor:help;outline:none}.gl:focus{background:#e9dda8}.gl-tip{display:none;position:absolute;left:0;top:calc(100% + 6px);z-index:40;width:260px;max-width:70vw;background:#fbfaf6;border:2px solid #1e1e1e;box-shadow:4px 4px 0 #1e1e1e;padding:10px 12px;font:15px/1.45 Newsreader,Georgia,serif;font-style:normal;font-weight:400;color:#1e1e1e;text-align:left;white-space:normal;letter-spacing:0}.gl-tip b{display:block;font-family:Silkscreen,monospace;font-weight:400;font-size:11px;letter-spacing:.06em;margin-bottom:4px;color:#5d4f78}.gl-tip a{display:block;margin-top:6px;font-family:Silkscreen,monospace;font-size:10px;letter-spacing:.06em}.gl:hover .gl-tip,.gl:focus .gl-tip,.gl:focus-within .gl-tip{display:block}.gl sup{font-family:Silkscreen,monospace;font-size:8px;color:#5d4f78;margin-left:1px}
 </style>
+<link rel="stylesheet" href="assets/notebook.css">
+<script src="assets/notebook.js" defer></script>
+</head>
+<body data-page="edeh">
+<main>
+<div style="position: relative; min-height: 100%; box-sizing: border-box; padding: 28px clamp(16px, 4vw, 56px) 64px; font-family: 'Newsreader', Georgia, serif; color: #1e1e1e; background-color: #f4f2ec">
+<div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(#cfcabd 1.2px, transparent 1.3px); background-size: 22px 22px"></div>
+<div style="position: relative; max-width: 1160px; margin: 0 auto; display: flex; flex-direction: column; gap: 52px">
 
-<a class="skip" href="#main">Skip to the page</a>
-<div class="layout">
-<main id="main" tabindex="-1">
-  <div class="pagehead norule">
-    <div class="eyebrow">
-      <span class="mono">European Commission · p. 27</span>
-    </div>
-    <h1>European Digital Education Hub</h1>
-    <p class="lede">Two squads with the European Commission’s Digital Education Hub, across a year. One asked how data
-      can inform the design of learning spaces. The other asked how public–private partnerships shape AI adoption in
-      education across Europe.</p>
-  </div>
+<header style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 24px; border: 2px dashed #1e1e1e; background: #fbfaf6; padding: 8px 12px; font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.06em">
+<a href="index.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; border: 2px solid #1e1e1e; text-decoration: none">◂ CONTENTS</a>
+<span style="background: #f0edf5; border: 2px solid #1e1e1e; padding: 6px 10px">SIDE QUEST · EUROPEAN COMMISSION · P. 22</span>
+<span>SELECTED TWICE</span>
+</header>
 
-  <div class="stack" style="margin-top:26px">
+<section style="display: flex; flex-direction: column; gap: 18px">
+<p style="margin: 0; font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.08em; color: #5d4f78">SIDE QUEST · TWO SQUADS, ONE YEAR</p>
+<h1 style="margin: 0; font-weight: 600; font-size: clamp(44px, 6.4vw, 84px); line-height: 1.02; letter-spacing: -0.02em">European Digital Education Hub</h1>
+<p style="margin: 0; font-size: 21px; line-height: 1.55; max-width: 64ch; color: #2e2c28">Two squads with the European Commission’s Digital Education Hub, across a year. One asked how data can inform the design of learning spaces. The other asked how public–private partnerships shape AI adoption in education across Europe.</p>
+</section>
 
-    <section aria-label="My role">
-      <div class="rolecard">
-        <div class="rolebar"><span class="k">My role</span>
-          <span class="meta">Dublin &middot; Brussels &middot; online &middot; 2025</span></div>
-        <div class="rolerow"><span class="lbl">Role</span>
-          <span class="fld">Research Collaborator</span></div>
-        <div class="rolerow"><span class="lbl">Led on</span>
-          <span class="fld">I wrote the section on data-informed design through learning and space analytics for the
-            Future Classrooms report, and contributed to the framework on AI adoption in education.</span></div>
-        <div class="rolerow"><span class="lbl">Team</span>
-          <span class="fld">Educators, researchers, designers, policymakers and technologists from across Europe,
-            working in small sub-groups.</span></div>
-      </div>
-    </section>
-
-    <section aria-labelledby="how-h">
-      <div class="label">How it ran</div>
-      <h2 id="how-h">A workshop, then five months of squad work</h2>
-      <p class="sec-lede">The Hub selects participants for a face-to-face workshop that opens the topic, then an online
-        squad that carries it for several months. I was selected twice.</p>
-      <div class="squad">
-        <div><span class="s">Squad one</span><b>Future Classrooms</b>
-          <p>Workshop in Dublin, 23–24 July 2025, then an online squad from August to December. How new technologies
-            are used in learning spaces: physical, digital and hybrid ones.</p></div>
-        <div><span class="s">Squad two</span><b>AI Adoption in Europe</b>
-          <p>Meeting in Brussels, with the squad running online around it. How public–private partnerships shape the
-            adoption of AI in education.</p></div>
-      </div>
-    </section>
-
-    <section aria-labelledby="fc-h">
-      <div class="label">Squad one</div>
-      <h2 id="fc-h">Learning and space analytics</h2>
-      <p class="sec-lede">Dublin opened with a study visit to Trinity College Dublin, then empathy mapping and
-        scenario design, with the group working through learning analytics, emotional wellbeing, and what it means to
-        design for the people who use a space rather than the people who commission it. The squad took that into five
-        months of sub-group work, and I sat in the one on data-informed design.</p>
-
-      <figure class="shot" style="max-width:620px">
-        <button type="button"><img loading="lazy" decoding="async" src="assets/img/ed-persona.jpg" width="1300" height="884"
-          alt="A folded yellow card standing on a dark workshop table, handwritten: Parent concerned about student well-being and engagement. A marker and a printed handout lie beside it."></button>
-        <figcaption>Empathy mapping in Dublin. Each card names whose point of view the next scenario has to hold.</figcaption>
-      </figure>
-
-      <p class="sec-lede">The sub-group’s question was how data can help design smarter and more responsive learning
-        environments, and what it should not be used for. My part was the section on learning and space analytics: what
-        a space can reasonably tell you about learning, what it cannot, and where the line sits between designing with
-        data and surveilling the people in the room.</p>
-      <ul class="parts">
-        <li><span class="n">The report</span><span>“Empowering Data-Informed Design through Learning and Space
-          Analytics”, drafted with the sub-group. I wrote the analytics section.</span></li>
-        <li><span class="n">Metric cards</span><span>A set of cards for digital learning spaces, so a school or
-          institution can pick what it will measure before it buys anything that measures.</span></li>
-        <li><span class="n">The constraint</span><span>Everything had to hold across very different national systems,
-          budgets and starting points, which is what stops a framework from being written for one country.</span></li>
-      </ul>
-    </section>
-
-    <section aria-labelledby="ai-h">
-      <div class="label">Squad two</div>
-      <h2 id="ai-h">Public–private partnerships and AI adoption</h2>
-      <p class="sec-lede">The second squad looked at how public–private partnerships shape AI adoption in education
-        across Europe. Meeting in Brussels made it clear the problem was harder than the group had assumed: the
-        arrangements are opaque, they vary by country, and the people they affect most have the least visibility of
-        them.</p>
-
-      <div class="figs2">
-        <figure class="shot">
-          <button type="button"><img loading="lazy" decoding="async" src="assets/img/ed-ppp-board.jpg" width="1080" height="1245"
-            alt="A flipchart covered in handwritten notes and sticky notes. A central circle marked Themes branches out to teacher training, data literacy, the AI Act, assessment, partners and finance. Below it, three card-shaped outlines are sketched as templates."></button>
-          <figcaption>The brainstorm the cards came out of, in Brussels. The card-shaped outlines along the bottom are
-            the first version of the deck.</figcaption>
-        </figure>
-        <div>
-          <p class="sec-lede">What the group built was a set of game-like cards: a way to walk someone through a
-            partnership and make the policy space legible to the people who have to live with it. It started as a
-            rough brainstorm and ended as something practical enough to use in a room.</p>
-          <p class="sec-lede">Cards were the right form for the same reason they were the right form for
-            <a href="beeline-unplugged.html">Beeline Unplugged</a>. An abstract arrangement becomes arguable once it is
-            an object on a table that several people can move around.</p>
-        </div>
-      </div>
-    </section>
-
-    <section aria-labelledby="thread-h">
-      <div class="label">What it changed</div>
-      <h2 id="thread-h">Where it went next</h2>
-      <div class="thread">
-        <p>The space analytics work taught me how much physical space matters to learning analytics, which is not
-          obvious from inside digital product design. That is what led directly to designing offline, tactile
-          discovery toolkits that bridge a physical room and a digital service.</p>
-        <p>Both squads were rooms where nobody shared my background, and the work had to hold across ten or more
-          national systems at once. Writing for that audience is a different discipline from writing for one
-          organisation, and it is the reason the Beeline metrics framework is written to be read by a delivery team, a
-          programme board and a community partner in the same way.</p>
-      </div>
-    </section>
-  </div>
-
-  <p class="disclaimer">Photographs from my own EDEH workshops. The Brussels flipchart is the sub-group’s working
-    brainstorm, cropped to the board.</p>
-
-  <div class="nextcase"><a href="index.html"><span><small>Back to</small>Contents</span><span class="open" aria-hidden="true">open →</span></a></div>
-  <footer class="pagefoot">
-    <span>European Digital Education Hub · European Commission, 2025</span>
-    <span><a href="index.html">← Contents</a></span>
-  </footer>
-</main>
+<section aria-label="Character sheet" style="border: 2px solid #1e1e1e; background: #fbfaf6; box-shadow: 8px 8px 0 #1e1e1e">
+<div style="display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; background: #1e1e1e; color: #f4f2ec; padding: 8px 14px; font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.08em"><span>CHARACTER SHEET</span><span>DUBLIN · BRUSSELS · ONLINE · 2025</span></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 0">
+<div style="padding: 18px 20px; display: flex; flex-direction: column; gap: 6px; border-right: 1px dashed #c9c4b6"><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.08em; color: #5f5b52">CLASS</span><span style="font-size: 19px; font-weight: 600">Research Collaborator</span></div>
+<div style="padding: 18px 20px; display: flex; flex-direction: column; gap: 6px; border-right: 1px dashed #c9c4b6"><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.08em; color: #5f5b52">QUEST</span><span style="font-size: 16px; line-height: 1.5">I wrote the section on data-informed design through learning and space analytics for the Future Classrooms report, and contributed to the framework on AI adoption in education.</span></div>
+<div style="padding: 18px 20px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.08em; color: #5f5b52">TEAM</span><span style="font-size: 16px; line-height: 1.5">Educators, researchers, designers, policymakers and technologists from across Europe, working in small sub-groups.</span></div>
 </div>
-<script src="assets/site.js"></script>
+</section>
+
+<section aria-labelledby="sq-h" style="display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.08em; color: #5f5b52">HOW IT RAN</span><h2 id="sq-h" style="margin: 0; font-size: 36px; font-weight: 600">A workshop, then months of squad work</h2></div>
+<div style="display: flex; flex-direction: column; gap: 28px">
+<article style="border: 2px solid #1e1e1e; background: #fbfaf6; box-shadow: 8px 8px 0 #1e1e1e; display: flex; flex-direction: column">
+<div style="background: #f0edf5; border-bottom: 2px solid #1e1e1e; padding: 8px 14px; font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em">SQUAD 1 · FUTURE CLASSROOMS · DUBLIN, JULY 2025</div>
+<div style="padding: 18px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr)); gap: 22px; align-items: start"><div style="display: flex; flex-direction: column; gap: 10px"><b style="font-size: 22px">Learning and space analytics</b>
+<span style="font-size: 16px; line-height: 1.55; color: #2e2c28">Dublin opened with a study visit to Trinity College Dublin, then empathy mapping and scenario design. I sat in the sub-group on data-informed design and wrote the section on learning and space analytics: what a space can reasonably tell you about learning, and where the line sits between designing with data and surveilling the people in the room.</span>
+</div><figure style="margin: 0; display: flex; flex-direction: column; gap: 8px"><div style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 8px"><img src="assets/img/ed-persona.jpg" alt="A folded yellow card standing on a dark workshop table, handwritten: Parent concerned about student well-being and engagement. A marker and a printed handout lie beside it." style="width: 100%; height: auto; display: block"></div><figcaption style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.06em; color: #5f5b52">DUBLIN</span><span style="font-size: 15px; line-height: 1.45; color: #2e2c28">Empathy mapping. Each card names whose point of view the next scenario has to hold.</span></figcaption></figure></div><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.06em; color: #5d4f78">WHAT CAME OUT · A REPORT SECTION AND METRIC CARDS</span>
+</div>
+</article>
+<article style="border: 2px solid #1e1e1e; background: #fbfaf6; box-shadow: 8px 8px 0 #1e1e1e; display: flex; flex-direction: column">
+<div style="background: #f0edf5; border-bottom: 2px solid #1e1e1e; padding: 8px 14px; font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em">SQUAD 2 · AI ADOPTION IN EUROPE · BRUSSELS</div>
+<div style="padding: 18px; display: flex; flex-direction: column; gap: 10px">
+<b style="font-size: 22px">Public–private partnerships and AI adoption</b>
+<span style="font-size: 16px; line-height: 1.55; color: #2e2c28">The arrangements are opaque, they vary by country, and the people they affect most have the least visibility of them. The group built a set of game-like cards that walk someone through a partnership and make the policy space legible to the people who have to live with it.</span>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 18px; align-items: start"><figure style="margin: 0; display: flex; flex-direction: column; gap: 8px; grid-column: 1 / -1"><div style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 8px"><img src="assets/img/ed-bxl-room.jpg" alt="A large group of workshop participants standing and kneeling together in a bright room with hexagonal ceiling lights and a green rug." style="width: 100%; height: auto; display: block"></div><figcaption style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.06em; color: #5f5b52">BRUSSELS · NOVEMBER 2025</span><span style="font-size: 15px; line-height: 1.45; color: #2e2c28">The whole workshop.</span></figcaption></figure><figure style="margin: 0; display: flex; flex-direction: column; gap: 8px"><div style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 8px"><img src="assets/img/ed-ppp-board-full.jpg" alt="A full flipchart on an easel in a workshop room. At the top, a circle marked Themes branches to teacher training, data literacy, AI, assessment, partnership, ownership and finance. Below it, four card outlines are drawn, then four stacks of cards over coloured circles labelled teachers, education institutions, policy and government, and tech and private SMEs, with 3+ PPP cards written underneath." style="width: 100%; height: auto; display: block"></div><figcaption style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.06em; color: #5f5b52">BEFORE</span><span style="font-size: 15px; line-height: 1.45; color: #2e2c28">The whole flipchart, before the sticky notes went on: the themes at the top, the first card outlines, and the four groups the deck is for.</span></figcaption></figure><figure style="margin: 0; display: flex; flex-direction: column; gap: 8px"><div style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 8px"><img src="assets/img/ed-ppp-board.jpg" alt="The same flipchart covered in orange, yellow, blue, green and pink sticky notes over the themes, the card outlines and the card stacks." style="width: 100%; height: auto; display: block"></div><figcaption style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.06em; color: #5f5b52">DURING</span><span style="font-size: 15px; line-height: 1.45; color: #2e2c28">The same flipchart once the sticky notes went on.</span></figcaption></figure><figure style="margin: 0; display: flex; flex-direction: column; gap: 8px"><div style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 8px"><img src="assets/img/ed-bxl-group-flipchart.jpg" alt="A group of nine people posing in front of the flipchart covered in sticky notes, some standing and some crouching, one holding up a sheet of paper." style="width: 100%; height: auto; display: block"></div><figcaption style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.06em; color: #5f5b52">AFTER</span><span style="font-size: 15px; line-height: 1.45; color: #2e2c28">The squad with the finished flipchart.</span></figcaption></figure><figure style="margin: 0; display: flex; flex-direction: column; gap: 8px"><div style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 8px"><img src="assets/img/ed-bxl-four.jpg" alt="Four people standing close together in front of a blue wall with sticky-note sheets pinned behind them, two making peace signs." style="width: 100%; height: auto; display: block"></div><figcaption style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.06em; color: #5f5b52">THE ROOM</span><span style="font-size: 15px; line-height: 1.45; color: #2e2c28">At the Brussels workshop.</span></figcaption></figure></div><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.06em; color: #5d4f78">WHAT CAME OUT · A CARD DECK FOR THE ROOM</span>
+</div>
+</article>
+</div>
+</section>
+
+<section aria-labelledby="next-h" style="display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.08em; color: #5f5b52">WHAT IT CHANGED</span><h2 id="next-h" style="margin: 0; font-size: 36px; font-weight: 600">Where it went next</h2></div>
+<p style="margin: 0; font-size: 18px; line-height: 1.55; max-width: 64ch; color: #2e2c28">The space analytics work taught me how much physical space matters to learning analytics. That led directly to designing offline, tactile discovery toolkits that bridge a physical room and a digital service.</p>
+<p style="margin: 0; font-size: 18px; line-height: 1.55; max-width: 64ch; color: #2e2c28">Both squads were rooms where nobody shared my background, and the work had to hold across ten or more national systems at once. It is the reason the <span class="gl" tabindex="0">Beeline<sup>?</sup><span class="gl-tip" role="tooltip"><b>BEELINE</b>The Greater Manchester service that helps young people up to 25 explore careers and find a next step.</span></span> metrics framework is written to be read by a delivery team, a programme board and a community partner in the same way.</p>
+<a href="beeline-unplugged.html" style="align-self: flex-start; display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border: 2px solid #1e1e1e; text-decoration: none; font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em">LINKED QUEST · BEELINE UNPLUGGED ▸</a>
+</section>
+
+<footer style="display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; border-top: 2px solid #1e1e1e; padding-top: 18px">
+<span style="font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.08em; color: #5f5b52">SIDE QUEST COMPLETE · PHOTOGRAPHS FROM MY OWN WORKSHOPS</span>
+<a href="index.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border: 2px solid #1e1e1e; background: #1e1e1e; color: #f4f2ec; text-decoration: none; font-family: 'Silkscreen', monospace; font-size: 13px; letter-spacing: 0.08em; box-shadow: 4px 4px 0 #83996f">BACK TO CONTENTS</a>
+</footer>
+
+</div>
+</div>
+</main>
+</body>
 </html>

@@ -1,342 +1,142 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>The Artificial Leaf · Fatima Abid</title>
-<meta name="description" content="The Artificial Leaf: nine months on SUGAR’s Triple Diamond finding a business opportunity for an artificial photosynthesis system, and the challenge we rewrote.">
+<title>Note 04 — The Artificial Leaf · Fatima Abid</title>
+<meta name="description" content="Note 04 · The Artificial Leaf">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="assets/img/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/img/favicon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Caveat:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/journal.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&amp;family=Silkscreen&amp;family=Patrick+Hand&amp;display=swap">
 <style>
-.stack{display:grid;gap:46px}
-.stack>section{display:grid;gap:16px}
-.label{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--pencil)}
-.sec-lede{margin:0;max-width:74ch;color:var(--pencil);font-size:15.5px}
-
-.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(265px,1fr));gap:20px}
-.cols>div{border-top:3px solid var(--k,var(--rule-strong));padding-top:11px;display:grid;gap:5px}
-.cols .lbl{font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--pencil)}
-.cols p{margin:0;font-size:15px}
-
-/* double diamond */
-.dd{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border:1px solid var(--rule-strong);
-  border-radius:6px;overflow:hidden;background:var(--paper)}
-.dd>div{padding:13px 14px;border-left:1px dashed var(--rule);display:grid;gap:4px;align-content:start}
-.dd>div:first-child{border-left:0}
-.dd .s{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--pencil)}
-.dd b{font-family:var(--serif);font-size:17px;font-weight:600}
-.dd p{margin:0;font-size:13.5px;color:var(--pencil)}
-
-/* markets */
-.q{margin:0;max-width:60ch;border-left:4px solid var(--hi-solid);padding:2px 0 2px 18px;
-  font-family:var(--serif);font-size:clamp(19px,2.2vw,23px);line-height:1.34}
-.fields{display:flex;flex-wrap:wrap;gap:7px;margin:4px 0 0;padding:0;list-style:none}
-.fields li{border:1px solid var(--rule-strong);border-radius:999px;padding:5px 13px;font-size:14px;
-  color:var(--pencil);background:var(--paper)}
-.fields li.pick{border-color:var(--ink);color:var(--ink);background:var(--hi)}
-.dead{display:grid;grid-template-columns:minmax(0,1fr) 46px minmax(0,1fr);gap:14px;align-items:center;
-  border:1px solid var(--rule-strong);border-radius:6px;padding:16px 18px;background:var(--paper)}
-.dead b{font-family:var(--serif);font-size:18px;font-weight:600;display:block;margin-bottom:4px}
-.dead .vs{font-size:1.7rem;color:var(--red);text-align:center;line-height:1}
-.dead p{margin:0;font-size:15px;color:var(--pencil)}
-.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:0;
-  border:1px solid var(--rule-strong);border-radius:6px;overflow:hidden;background:var(--paper)}
-.feat>div{padding:14px 15px;border-left:1px dashed var(--rule);display:grid;gap:4px;align-content:start}
-.feat>div:first-child{border-left:0}
-.feat .n{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;color:var(--pencil)}
-.feat b{font-family:var(--serif);font-size:17px;font-weight:600}
-.feat p{margin:0;font-size:13.5px;color:var(--pencil)}
-.persona{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:0;
-  border:1px solid var(--rule-strong);border-radius:6px;overflow:hidden;background:var(--paper)}
-.persona>div{padding:16px 18px;display:grid;gap:6px;align-content:start}
-.persona>div+div{border-left:1px dashed var(--rule)}
-.persona .who{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--pencil)}
-.persona h3{margin:0;font-family:var(--serif);font-size:21px;font-weight:600}
-.persona .role{margin:0;font-size:14px;color:var(--pencil)}
-.persona p{margin:0;font-size:14.5px}
-.persona ul{margin:2px 0 0;padding-left:17px;display:grid;gap:3px;font-size:14.5px}
-.persona .hmw{border-left:3px solid var(--hi-solid);padding-left:13px;font-family:var(--serif);font-size:17px;
-  line-height:1.35}
-@media (max-width:700px){ .persona{grid-template-columns:1fr} .persona>div+div{border-left:0;border-top:1px dashed var(--rule)} }
-.timeline{display:grid;margin:0;padding:0;list-style:none;border-left:2px solid var(--rule-strong);margin-left:6px}
-.timeline li{padding:0 0 16px 18px;position:relative;font-size:15px}
-.timeline li::before{content:"";position:absolute;left:-7px;top:7px;width:11px;height:11px;border-radius:50%;
-  background:var(--paper);border:2px solid var(--ink)}
-.timeline b{font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--pencil);display:block}
-.turn{display:grid;grid-template-columns:minmax(0,1fr) 44px minmax(0,1fr);gap:14px;align-items:center;
-  border:1px solid var(--rule-strong);border-radius:6px;padding:18px 20px;background:var(--paper)}
-.turn b{font-family:var(--serif);font-size:18px;font-weight:600;display:block;margin-bottom:4px}
-.turn .arrow{font-family:var(--hand);font-size:1.7rem;color:var(--red);text-align:center}
-.turn p{margin:0;font-size:15px;color:var(--pencil)}
-
-
-.todo{border:1px dashed var(--red);border-radius:6px;padding:14px 16px;display:grid;gap:6px;background:var(--paper);max-width:80ch}
-.todo .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--red)}
-.todo p{margin:0;font-size:14px;color:var(--pencil)}
-.todo ul{margin:2px 0 0;padding-left:18px;font-size:14px;color:var(--pencil);display:grid;gap:4px}
-
-@media (max-width:760px){
-  .dead{grid-template-columns:1fr;gap:8px}
-  .dead .vs{transform:rotate(90deg)}
-  .dd{grid-template-columns:1fr}
-  .dd>div{border-left:0;border-top:1px dashed var(--rule)}
-  .dd>div:first-child{border-top:0}
-  .feat>div{border-left:0;border-top:1px dashed var(--rule)}
-  .feat>div:first-child{border-top:0}
-  .dd{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .dd>div:nth-child(3){border-left:0}
-  .turn{grid-template-columns:1fr}
-  .turn .arrow{transform:rotate(90deg)}
-}
-
-
-.eyebrow{display:flex;flex-wrap:wrap;gap:9px 14px;align-items:center}
-.eyebrow .mono{line-height:1;display:inline-flex;align-items:center}
-.headmeta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin:24px 0 0;
-  border-top:1px solid var(--rule-strong)}
-.headmeta>div{padding:13px 20px 14px 18px;border-left:1px dashed var(--rule)}
-.headmeta>div:first-child{border-left:0;padding-left:0}
-.headmeta .k{font-family:var(--mono);font-size:.62rem;letter-spacing:.09em;text-transform:uppercase;
-  color:var(--pencil);display:block;margin-bottom:6px}
-.headmeta .rt{margin:0 0 7px;font-family:var(--serif);font-size:16px;font-weight:600;line-height:1.25}
-.headmeta ul{margin:0;padding-left:17px;display:grid;gap:5px;font-size:14.5px}
-.headmeta .cx{grid-column:1 / -1;border-left:0;padding:13px 0 0;border-top:1px dashed var(--rule)}
-.headmeta .cx .k{color:var(--red)}
-.headmeta .cx p{margin:0;font-size:15px;max-width:78ch}
-@media (max-width:700px){
-  .headmeta{grid-template-columns:1fr}
-  .headmeta>div{border-left:0;padding:12px 0 13px;border-top:1px dashed var(--rule)}
-  .headmeta>div:first-child{border-top:0;padding-top:0}
-}
+body{margin:0;background:#f4f2ec}
+a{color:#1e1e1e}a:hover{color:#5d4f78}
+.gl{border-bottom:1.5px dotted #5d4f78;position:relative;cursor:help;outline:none}.gl:focus{background:#e9dda8}.gl-tip{display:none;position:absolute;left:0;top:calc(100% + 6px);z-index:40;width:260px;max-width:70vw;background:#fbfaf6;border:2px solid #1e1e1e;box-shadow:4px 4px 0 #1e1e1e;padding:10px 12px;font:15px/1.45 Newsreader,Georgia,serif;font-style:normal;font-weight:400;color:#1e1e1e;text-align:left;white-space:normal;letter-spacing:0}.gl-tip b{display:block;font-family:Silkscreen,monospace;font-weight:400;font-size:11px;letter-spacing:.06em;margin-bottom:4px;color:#5d4f78}.gl-tip a{display:block;margin-top:6px;font-family:Silkscreen,monospace;font-size:10px;letter-spacing:.06em}.gl:hover .gl-tip,.gl:focus .gl-tip,.gl:focus-within .gl-tip{display:block}.gl sup{font-family:Silkscreen,monospace;font-size:8px;color:#5d4f78;margin-left:1px}
 </style>
+<link rel="stylesheet" href="assets/notebook.css">
+<script src="assets/notebook.js" defer></script>
+</head>
+<body data-page="sugar">
+<main>
+<div style="position: relative; min-height: 100%; box-sizing: border-box; padding: 28px clamp(16px, 4vw, 56px) 64px; font-family: 'Newsreader', Georgia, serif; color: #1e1e1e; background-color: #f4f2ec">
+<div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(#cfcabd 1.2px, transparent 1.3px); background-size: 22px 22px"></div>
+<div style="position: relative; max-width: 1160px; margin: 0 auto; display: flex; flex-direction: column; gap: 52px">
 
-<a class="skip" href="#main">Skip to the page</a>
-<div class="layout">
-<main id="main" tabindex="-1">
-  <div class="pagehead norule">
-    <div class="eyebrow">
-      <span class="mono">SUGAR Global Network · p. 18–20</span>
-    </div>
-    <h1>The Artificial Leaf</h1>
-    <p class="lede">An academic–industry innovation programme run on SUGAR’s Triple Diamond, with a six-person team of
-      students from the University of Bologna and the Université Côte d’Azur. I was hired by the Innovation Centre
-      for Entrepreneurship. The Istituto Italiano di Tecnologia was the client.</p>
-  </div>
+<header style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 24px; border: 2px solid #1e1e1e; background: #fbfaf6; padding: 8px 12px; font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.06em">
+<a href="index.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; border: 2px solid #1e1e1e; text-decoration: none">◂ CONTENTS</a>
+<span style="background: #f7ecec; border: 2px solid #1e1e1e; padding: 6px 10px">NOTE 04 · SUGAR GLOBAL NETWORK · P. 3–5</span>
+<span>NINE MONTHS · THREE CITIES</span>
+</header>
 
-  <div class="stack" style="margin-top:26px">
+<section style="display: flex; flex-direction: column; gap: 18px">
+<p style="margin: 0; font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.08em; color: #8a4848">NOTE 04 · A TECHNOLOGY WITH NO MARKET YET</p>
+<h1 style="margin: 0; font-weight: 600; font-size: clamp(48px, 7vw, 92px); line-height: 1; letter-spacing: -0.02em">The Artificial Leaf</h1>
+<p style="margin: 0; font-size: 21px; line-height: 1.55; max-width: 64ch; color: #2e2c28">An academic–industry innovation programme run on SUGAR’s <span class="gl" tabindex="0">Triple Diamond<sup>?</sup><span class="gl-tip" role="tooltip"><b>TRIPLE DIAMOND</b>SUGAR’s design process: three rounds of opening out and narrowing down, used to find where a technology could go, test it, and reframe the problem.</span></span>, with a six-person team of students from the University of Bologna and the Université Côte d’Azur. I was hired by the Innovation Centre for Entrepreneurship. The Istituto Italiano di Tecnologia was the client.</p>
+</section>
 
-    <section aria-label="My role">
-      <div class="rolecard">
-        <div class="rolebar"><span class="k">My role</span>
-          <span class="meta">Nice &middot; Bologna &amp; Turin &middot; San Francisco &middot; 2021–2022</span></div>
-      <div class="rolerow"><span class="lbl">Role</span>
-        <span class="fld">Product Designer and Developer</span></div>
-      <div class="rolerow"><span class="lbl">My part</span>
-        <span class="fld">I designed CO/LAB, the onboarding tool, and built the service blueprints and value proposition maps that aligned the science and business sides. I pitched it at the SUGAR Expo in San Francisco.</span></div>
-      <div class="rolerow"><span class="lbl">Team</span>
-        <span class="fld">A team of six students across service design, engineering, architecture, economics and education.</span></div>
-      </div>
-    </section>
-
-    <section aria-label="Rough work">
-      <button class="roughtab" type="button" aria-haspopup="dialog" data-rough="rough-sugar"
-              data-label="Rough work behind The Artificial Leaf"
-              data-hand="Working artefacts from the team’s own fall and spring reports, which I co-authored.
-                One interviewed company is named with its permission in the report.">
-        <span class="stack" aria-hidden="true"><span></span><span></span><i></i><b></b></span>
-        <span class="t"><b>Rough work</b><small>Three artefacts &middot; opens over the page</small></span>
-      </button>
-      <div id="rough-sugar" hidden>
-        <div class="rough-item" data-src="assets/img/sg-rough-journey.jpg" data-cap="Customer journey map"
-             data-alt="A customer journey map across investigation, evaluation and deliver phases. Rows list main stages, user actions, touchpoints and stakeholders involved. An experience map at the bottom plots happy, neutral and sad faces along the journey.">The service from the point of view of a company looking for new technologies, drawn from the Laurentia interview. Main stages across the top, then user actions, touchpoints and stakeholders, with an experience map underneath tracking how it feels at each step.</div>
-        <div class="rough-item" data-src="assets/img/sg-rough-blueprint.jpg" data-cap="Service blueprint"
-             data-alt="A service blueprint split into evaluation and collaboration phases. Columns cover completing the survey, the technical simulation, visualising results, financial estimation, 3D model plant installation, the follow-up meeting and starting a collaboration. Rows below a dashed line of visibility describe what the institute does at each step.">The same journey with what happens behind it: what the user does, what the institute does in response, and what each step needs. The 3D model step is marked as the next build rather than something we delivered.</div>
-        <div class="rough-item" data-src="assets/img/sg-rough-canvas.jpg" data-cap="Business model canvas"
-             data-alt="A business model canvas with panels for key partners, key activities, value propositions, customer relationships and customer segments across the top, and cost structure and revenue streams along the bottom.">How the tool would pay for itself: partners, activities, the value proposition to each side, and the cost and revenue lines under it.</div>
-      </div>
-    </section>
-
-    <section aria-labelledby="brief-h">
-      <div class="label">The brief</div>
-      <h2 id="brief-h">A technology with no market yet</h2>
-      <div class="cols">
-        <div style="--k:var(--green)"><span class="lbl">What they had</span>
-          <p>An artificial photosynthesis system turning CO₂ into carbon monoxide, formic acid, methanol, ethanol and
-            ethylene using solar energy. Built at lab scale, with no market.</p></div>
-        <div style="--k:var(--blue)"><span class="lbl">What we were asked</span>
-          <p>Find it a business opportunity. Six students across service design, engineering, architecture, economics
-            and education, over nine months.</p></div>
-      </div>
-    </section>
-
-    <section aria-labelledby="ch-h">
-      <div class="label">The challenge, as written</div>
-      <h2 id="ch-h">What the institute asked for</h2>
-      <blockquote class="q">How might we develop an innovative service based on the &ldquo;Artificial photosynthesis
-        technology&rdquo; and create a business opportunity out of it?</blockquote>
-      <p class="sec-lede">Nine months, three diamonds, three cities. The answer we delivered was a different question.</p>
-    </section>
-
-    <section aria-labelledby="dd-h">
-      <div class="label">The method</div>
-      <h2 id="dd-h">Three diamonds, diverge and converge each time</h2>
-      <div class="dd">
-        <div><span class="s">Diamond 1 &middot; autumn</span><b>Where could it go?</b>
-          <p>Desk research across nine fields, case studies of comparable technologies, expert interviews, personas.</p></div>
-        <div><span class="s">Diamond 2 &middot; winter</span><b>Does it work there?</b>
-          <p>Plastics taken forward. Critical experience prototypes, then dark horse and funky prototypes, then one
-            merged functional system.</p></div>
-        <div><span class="s">Diamond 3 &middot; spring</span><b>What is the real problem?</b>
-          <p>The challenge turned around. Design vision, solution, brand and interface, built and tested against a
-            real case.</p></div>
-      </div>
-    </section>
-
-    <section aria-labelledby="mk-h">
-      <div class="label">Diamond 1 &middot; discover</div>
-      <h2 id="mk-h">Nine fields, narrowed twice</h2>
-      <p class="sec-lede">The technology turns CO&#8322; into carbon monoxide, formic acid, methanol, ethanol and
-        ethylene, which means almost any heavy-emitting sector is arguably a candidate. Narrowing it took two passes.</p>
-      <div class="cols">
-        <div style="--k:var(--blue)"><span class="lbl">Pass one &middot; three guiding features</span>
-          <p>Desirability, technical feasibility, economic viability. Used to contextualise each application and pick
-            the three most promising sectors to research in depth.</p></div>
-        <div style="--k:var(--green)"><span class="lbl">Pass two &middot; eight selection criteria</span>
-          <p>Efficiency. Space the technology needs. Amount of waste produced. Feasibility. Subsidy. Filtration system.
-            Cutting pollution and using the derived chemicals at once. Future relevance.</p></div>
-      </div>
-      <p class="sec-lede">The criteria went onto a mind map of every application we had found, and the team voted on it
-        directly. Plastics upcycling was taken forward.</p>
-      <ul class="fields" aria-label="Fields researched">
-        <li>Chimneys</li><li>Cement production</li><li>Fashion</li><li>Building sector</li><li>Transportation</li>
-        <li class="pick">Plastic upcycling</li><li>Agriculture</li><li>Digital pollution</li><li>Waste sector</li>
-      </ul>
-      <figure class="shot">
-        <button type="button"><img loading="lazy" decoding="async" src="assets/img/sugar-mindmap.png" width="1400" height="947"
-          alt="Mind map of applications for artificial photosynthesis, branching from a central node into clothing,
-            smart cities, construction, industry, food, tech, oceans, transportation and enhanced photosynthesis.
-            Green dots above a node record votes; the most-voted nodes are outlined."></button>
-        <figcaption><b>Fall report, 2021</b>Every application we found, on one map. The green dots are the team&rsquo;s
-          votes against the eight criteria, so the shortlist is visible in the artefact rather than written up
-          afterwards.</figcaption>
-      </figure>
-    </section>
-
-    <section aria-labelledby="per-h">
-      <div class="label">Diamond 1 &middot; define</div>
-      <h2 id="per-h">A persona, and the question it opens</h2>
-      <p class="sec-lede">Personas were built from the interviews with companies, experts and researchers, one per
-        sector. Each one ends in a &ldquo;how might we&rdquo; question, which is what the next phase prototypes
-        against.</p>
-      <div class="persona">
-        <div>
-          <span class="who">Persona &middot; cement production</span>
-          <h3>Sebasti&agrave;n</h3>
-          <p class="role">Carbon capture lead in a cement production factory. Environmental engineer in southwest
-            France, working on solutions to climate change. Calls himself a navigator, runs, skis.</p>
-          <p><b>Frustrations</b></p>
-          <p>Subsidies, and a government doing too little in power generation.</p>
-        </div>
-        <div>
-          <span class="who">Main needs</span>
-          <ul>
-            <li>Turn carbon dioxide into an opportunity, and avoid the fees.</li>
-            <li>Keep productivity and efficiency running around the clock.</li>
-            <li>Work inside an ecosystem.</li>
-            <li>Be an industrial leader in the energy transition.</li>
-          </ul>
-          <p class="hmw">How might we help Sebasti&agrave;n use the artificial leaf to intervene with carbon dioxide
-            storage during the production of cement, in order to add value to it?</p>
-        </div>
-      </div>
-    </section>
-
-    <section aria-labelledby="turn-h">
-      <div class="label">Diamond 3 &middot; the u-turn</div>
-      <h2 id="turn-h">The deadlock underneath</h2>
-      <p class="sec-lede">We had plastics, months of research behind it and prototypes tested against it. Reaching out
-        to companies is where the pattern showed up. The technology is so customisable that defining a valuable
-        application meant involving a company in designing it, and no company would engage at that stage.</p>
-      <div class="dead">
-        <div><b>The scientists</b><p>Need companies to invest so the technology can be developed further.</p></div>
-        <div class="vs" aria-hidden="true">&#8644;</div>
-        <div><b>The companies</b><p>Need the technology developed further before they are comfortable investing.</p></div>
-      </div>
-      <p class="sec-lede">The problem was not finding an application for the leaf. It was getting companies to
-        understand its value while it was still early. We rewrote the challenge:</p>
-      <blockquote class="q">How might we create a reliable system around the artificial leaf technology during its
-        development phase in order to onboard companies?</blockquote>
-    </section>
-
-    <section aria-labelledby="sol-h">
-      <div class="label">What we delivered</div>
-      <h2 id="sol-h">CO/LAB, an onboarding tool for a technology that is not finished</h2>
-      <p class="sec-lede">Software that simulates installing the leaf in a specific factory, so the institute and a
-        company can work through the technical, physical and financial logistics together, on editable templates, in
-        the same room. It states plainly that the technology has a low readiness level, and pairs that with the
-        projections a company needs in order to invest anyway.</p>
-      <div class="feat">
-        <div><span class="n">01</span><b>Survey</b><p>The company enters its CO&#8322; emissions, its emissions taxes,
-          the space it has and the output it wants.</p></div>
-        <div><span class="n">02</span><b>Technical simulation</b><p>Location and desired output volume produce a
-          detailed simulation.</p></div>
-        <div><span class="n">03</span><b>Financial estimation</b><p>A benefits evaluation and a costs-and-benefits
-          analysis built from what they entered.</p></div>
-        <div><span class="n">04</span><b>3D model of the plant</b><p>How much space the installation takes and what
-          infrastructure it needs. Specified, and left as the next build.</p></div>
-      </div>
-      <figure class="shot">
-        <button type="button"><img loading="lazy" decoding="async" src="assets/img/sugar-colab.png" width="1400" height="909"
-          alt="The CO/LAB dashboard: a left navigation rail, three simulation cards for survey, technical simulation
-            and financial simulation with progress bars, a visual data chart and a placeholder for the 3D model of the
-            plant, and a right sidebar holding the company name and date."></button>
-        <figcaption><b>Spring report, 2022</b>The dashboard. The three simulations run in order and each one carries
-          its progress, so a company can see how far into the conversation it is. The 3D model sits in its place,
-          marked as the next build.</figcaption>
-      </figure>
-      <p class="sec-lede">The parts that mattered most were the ones around the software. Questions the scientists were
-        answering over and over got compiled in one place. Meetings got a structure that survived a company&rsquo;s
-        questions. Each session left an automatic record, and the company left with a printed report to plan from.</p>
-    </section>
-
-    <section aria-labelledby="tl-h">
-      <div class="label">Nine months, in order</div>
-      <h2 id="tl-h">How it ran</h2>
-      <ul class="timeline">
-        <li><b>Oct 2021 &middot; Nice</b>Global kickoff. The team meets.</li>
-        <li><b>Nov 2021</b>Needfinding. Desk research, case studies, expert interviews, personas.</li>
-        <li><b>Dec 2021</b>Plastics selected as the application. A critical experience prototype built against it.
-          Fall presentation.</li>
-        <li><b>Jan 2022</b>Plastic industry research. Dark horse and funky prototypes, developed and tested.</li>
-        <li><b>Feb 2022</b>The prototypes merged into one functional system prototype.</li>
-        <li><b>Mar 2022 &middot; Bologna</b>The u-turn. Away from plastics, toward science communication and
-          onboarding for technology transfer.</li>
-        <li><b>Apr 2022 &middot; Turin</b>Design principles and design vision. Winter presentation.</li>
-        <li><b>May 2022</b>Both ends of the solution built: the interface and what sits behind it.</li>
-        <li><b>Jun 2022 &middot; San Francisco</b>CO/LAB presented at the SUGAR Expo.</li>
-      </ul>
-    </section>
-
-
-    <section aria-labelledby="life-h">
-      <h2 id="life-h">Where I worked across the lifecycle</h2>
-      <p class="sec-lede">Nine months, from desk research to a specified tool.</p>
-      <div data-life="sugar" class="life-wrap"></div>
-    </section>
-
-  </div>
-
-  <div class="nextcase"><a href="how-i-work.html"><span><small>Next</small>How I work</span><span class="open" aria-hidden="true">open →</span></a></div>
-  <footer class="pagefoot">
-    <span>The Artificial Leaf · SUGAR Global Network with the Istituto Italiano di Tecnologia, 2021–22</span>
-    <span><a href="index.html">← Contents</a></span>
-  </footer>
-</main>
+<section aria-label="Character sheet" style="border: 2px solid #1e1e1e; background: #fbfaf6; box-shadow: 8px 8px 0 #1e1e1e">
+<div style="display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; background: #1e1e1e; color: #f4f2ec; padding: 8px 14px; font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.08em"><span>CHARACTER SHEET</span><span>NICE · BOLOGNA &amp; TURIN · SAN FRANCISCO · 2021–2022</span></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 0">
+<div style="padding: 18px 20px; display: flex; flex-direction: column; gap: 6px; border-right: 1px dashed #c9c4b6"><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.08em; color: #5f5b52">CLASS</span><span style="font-size: 19px; font-weight: 600">Product Designer</span></div>
+<div style="padding: 18px 20px; display: flex; flex-direction: column; gap: 6px; border-right: 1px dashed #c9c4b6"><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.08em; color: #5f5b52">QUEST</span><span style="font-size: 16px; line-height: 1.5">I designed CO/LAB, the onboarding tool, and built the <span class="gl" tabindex="0">service blueprints<sup>?</sup><span class="gl-tip" role="tooltip"><b>SERVICE BLUEPRINT</b>A diagram of a service phase by phase: what the person does, the touchpoints they meet, and what happens behind the scenes to support each step.</span></span> and value proposition maps that aligned the science and business sides. I pitched it at the SUGAR Expo in San Francisco.</span></div>
+<div style="padding: 18px 20px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.08em; color: #5f5b52">TEAM</span><span style="font-size: 16px; line-height: 1.5">Six students across service design, engineering, architecture, economics and education.</span></div>
 </div>
-<script src="assets/site.js"></script>
+</section>
+
+<section aria-labelledby="brief-h" style="display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.08em; color: #5f5b52">THE BRIEF</span><h2 id="brief-h" style="margin: 0; font-size: 36px; font-weight: 600">What the institute asked for</h2></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 16px">
+<div style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 18px; display: flex; flex-direction: column; gap: 8px"><span style="font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em; color: #8a4848">WHAT THEY HAD</span><span style="font-size: 16px; line-height: 1.5">An artificial photosynthesis system turning CO₂ into carbon monoxide, formic acid, methanol, ethanol and ethylene using solar energy. Built at lab scale, with no market.</span></div>
+<div style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 18px; display: flex; flex-direction: column; gap: 8px"><span style="font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em; color: #8a4848">THE CHALLENGE, AS WRITTEN</span><span style="font-size: 18px; line-height: 1.45; font-style: italic">How might we develop an innovative service based on the “Artificial photosynthesis technology” and create a business opportunity out of it?</span></div>
+</div>
+</section>
+
+<section aria-labelledby="dia-h" style="display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.08em; color: #5f5b52">THE METHOD · THREE WORLDS</span><h2 id="dia-h" style="margin: 0; font-size: 36px; font-weight: 600">Three diamonds, diverge and converge each time</h2></div>
+<ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 14px">
+<li style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 16px; display: flex; flex-direction: column; gap: 8px"><span style="font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em; color: #5f5b52">◇ DIAMOND 1 · AUTUMN</span><b style="font-size: 20px">Where could it go?</b><span style="font-size: 15px; line-height: 1.5; color: #2e2c28">Desk research across nine fields, case studies of comparable technologies, expert interviews, personas.</span></li>
+<li style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 16px; display: flex; flex-direction: column; gap: 8px"><span style="font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em; color: #5f5b52">◇ DIAMOND 2 · WINTER</span><b style="font-size: 20px">Does it work there?</b><span style="font-size: 15px; line-height: 1.5; color: #2e2c28">Plastics taken forward. Critical experience prototypes, then dark horse and funky prototypes, then one merged functional system.</span></li>
+<li style="border: 2px solid #1e1e1e; background: #f7ecec; padding: 16px; display: flex; flex-direction: column; gap: 8px"><span style="font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em; color: #8a4848">◆ DIAMOND 3 · SPRING</span><b style="font-size: 20px">What is the real problem?</b><span style="font-size: 15px; line-height: 1.5; color: #2e2c28">The challenge turned around. Design vision, solution, brand and interface, built and tested against a real case.</span></li>
+</ol>
+</section>
+
+<section aria-labelledby="fields-h" style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 22px; display: flex; flex-direction: column; gap: 14px">
+<h2 id="fields-h" style="margin: 0; font-family: 'Silkscreen', monospace; font-size: 14px; font-weight: 400; letter-spacing: 0.08em">NINE FIELDS, NARROWED TWICE</h2>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; font-size: 15px">
+<span style="border: 1.5px solid #c9c4b6; padding: 4px 10px">Chimneys</span><span style="border: 1.5px solid #c9c4b6; padding: 4px 10px">Cement production</span><span style="border: 1.5px solid #c9c4b6; padding: 4px 10px">Fashion</span><span style="border: 1.5px solid #c9c4b6; padding: 4px 10px">Building sector</span><span style="border: 1.5px solid #c9c4b6; padding: 4px 10px">Transportation</span><span style="border: 2px solid #1e1e1e; background: #eef3e9; padding: 4px 10px">★ Plastic upcycling</span><span style="border: 1.5px solid #c9c4b6; padding: 4px 10px">Agriculture</span><span style="border: 1.5px solid #c9c4b6; padding: 4px 10px">Digital pollution</span><span style="border: 1.5px solid #c9c4b6; padding: 4px 10px">Waste sector</span>
+</div>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #2e2c28">Pass one used three guiding features: desirability, technical feasibility, economic viability. Pass two used eight selection criteria, voted on directly on a mind map of every application we had found. Plastics upcycling was taken forward.</p>
+<figure style="margin: 0; display: flex; flex-direction: column; gap: 8px"><div style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 8px"><img src="assets/img/sugar-mindmap.png" alt="Mind map of applications for artificial photosynthesis, branching from a central node into clothing, smart cities, construction, industry, food, tech, oceans, transportation and enhanced photosynthesis. Green dots above a node record votes; the most-voted nodes are outlined." style="width: 100%; height: auto; display: block; max-height: 560px; object-fit: contain"></div><figcaption style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.06em; color: #5f5b52">FALL REPORT, 2021</span><span style="font-size: 15px; line-height: 1.45; color: #2e2c28">Every application we found, on one map. The green dots are the team’s votes against the eight criteria, so the shortlist is visible in the artefact itself.</span></figcaption></figure>
+</section>
+
+<section aria-labelledby="turn-h" style="display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.08em; color: #5f5b52">PLOT TWIST · THE U-TURN</span><h2 id="turn-h" style="margin: 0; font-size: 36px; font-weight: 600">The deadlock underneath</h2></div>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 14px; align-items: center">
+<div style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 16px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em">THE SCIENTISTS</span><span style="font-size: 15px; line-height: 1.5">Need companies to invest so the technology can be developed further.</span></div>
+<span aria-hidden="true" style="font-family: 'Silkscreen', monospace; font-size: 22px">⇄</span>
+<div style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 16px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em">THE COMPANIES</span><span style="font-size: 15px; line-height: 1.5">Need the technology developed further before they are comfortable investing.</span></div>
+</div>
+<div style="border: 2px solid #1e1e1e; background: #f7ecec; padding: 18px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em; color: #8a4848">THE CHALLENGE, REWRITTEN</span><span style="font-size: 19px; line-height: 1.45; font-style: italic">How might we create a reliable system around the artificial leaf technology during its development phase in order to onboard companies?</span></div>
+</section>
+
+<section aria-labelledby="colab-h" style="border: 2px solid #1e1e1e; background: #fbfaf6; box-shadow: 8px 8px 0 #1e1e1e; padding: 22px; display: flex; flex-direction: column; gap: 16px">
+<h2 id="colab-h" style="margin: 0; font-family: 'Silkscreen', monospace; font-size: 16px; font-weight: 400; letter-spacing: 0.08em">WHAT WE DELIVERED · CO/LAB</h2>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; max-width: 70ch; color: #2e2c28">Software that simulates installing the leaf in a specific factory, so the institute and a company can work through the technical, physical and financial logistics together, on editable templates, in the same room.</p>
+<ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 12px">
+<li style="border: 2px solid #1e1e1e; padding: 14px; display: flex; flex-direction: column; gap: 6px; background: #eef3e9"><span style="font-family: 'Silkscreen', monospace; font-size: 11px">01 · SURVEY ✓</span><span style="font-size: 14px; line-height: 1.45">Emissions, emissions taxes, space and the output wanted.</span></li>
+<li style="border: 2px solid #1e1e1e; padding: 14px; display: flex; flex-direction: column; gap: 6px; background: #eef3e9"><span style="font-family: 'Silkscreen', monospace; font-size: 11px">02 · TECHNICAL SIMULATION ✓</span><span style="font-size: 14px; line-height: 1.45">Location and output volume produce a detailed simulation.</span></li>
+<li style="border: 2px solid #1e1e1e; padding: 14px; display: flex; flex-direction: column; gap: 6px; background: #eef3e9"><span style="font-family: 'Silkscreen', monospace; font-size: 11px">03 · FINANCIAL ESTIMATION ✓</span><span style="font-size: 14px; line-height: 1.45">A benefits evaluation and a costs-and-benefits analysis.</span></li>
+<li style="border: 2px dashed #1e1e1e; padding: 14px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Silkscreen', monospace; font-size: 11px; color: #5f5b52">04 · 3D MODEL · LOCKED</span><span style="font-size: 14px; line-height: 1.45">Specified, and left as the next build.</span></li>
+</ol>
+<a href="rough-work-artificial-leaf.html#rw2" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 4px 12px 4px 4px; border: 1.5px dashed #1e1e1e; background: #ebe8e0; text-decoration: none"><img src="assets/img/sg-rough-blueprint.jpg" alt="" style="width: 56px; height: 36px; object-fit: cover; object-position: top left; border: 1px solid #c9c4b6; display: block"><span style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Silkscreen', monospace; font-size: 9px; letter-spacing: 0.06em; color: #5f5b52">SKETCHED FIRST · ROUGH WORK</span><span style="font-family: 'Patrick Hand', cursive; font-size: 18px; line-height: 1">Service blueprint ▸</span></span></a>
+<figure style="margin: 0; display: flex; flex-direction: column; gap: 8px"><div style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 8px"><img src="assets/img/sugar-colab.png" alt="The CO/LAB dashboard: a left navigation rail, three simulation cards for survey, technical simulation and financial simulation with progress bars, a visual data chart and a placeholder for the 3D model of the plant, and a right sidebar holding the company name and date." style="width: 100%; height: auto; display: block; max-height: 560px; object-fit: contain"></div><figcaption style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.06em; color: #5f5b52">SPRING REPORT, 2022</span><span style="font-size: 15px; line-height: 1.45; color: #2e2c28">The dashboard. The three simulations run in order and each one carries its progress, so a company can see how far into the conversation it is. The 3D model sits in its place, marked as the next build.</span></figcaption></figure>
+</section>
+
+<section aria-labelledby="time-h" style="display: flex; flex-direction: column; gap: 16px">
+<h2 id="time-h" style="margin: 0; font-family: 'Silkscreen', monospace; font-size: 14px; font-weight: 400; letter-spacing: 0.08em">NINE MONTHS, IN ORDER</h2>
+<ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 120px), 1fr)); gap: 0; border-top: 3px dashed #1e1e1e">
+<li style="padding: 12px 10px 0 0; display: flex; flex-direction: column; gap: 4px"><span style="font-family: 'Silkscreen', monospace; font-size: 10px">OCT 21 · NICE</span><span style="font-size: 13px; line-height: 1.4">Global kickoff.</span></li>
+<li style="padding: 12px 10px 0 0; display: flex; flex-direction: column; gap: 4px"><span style="font-family: 'Silkscreen', monospace; font-size: 10px">NOV 21</span><span style="font-size: 13px; line-height: 1.4">Needfinding.</span></li>
+<li style="padding: 12px 10px 0 0; display: flex; flex-direction: column; gap: 4px"><span style="font-family: 'Silkscreen', monospace; font-size: 10px">DEC 21</span><span style="font-size: 13px; line-height: 1.4">Plastics selected. Fall presentation.</span></li>
+<li style="padding: 12px 10px 0 0; display: flex; flex-direction: column; gap: 4px"><span style="font-family: 'Silkscreen', monospace; font-size: 10px">JAN 22</span><span style="font-size: 13px; line-height: 1.4">Dark horse and funky prototypes.</span></li>
+<li style="padding: 12px 10px 0 0; display: flex; flex-direction: column; gap: 4px"><span style="font-family: 'Silkscreen', monospace; font-size: 10px">FEB 22</span><span style="font-size: 13px; line-height: 1.4">One functional system prototype.</span></li>
+<li style="padding: 12px 10px 0 0; display: flex; flex-direction: column; gap: 4px; background: #f7ecec"><span style="font-family: 'Silkscreen', monospace; font-size: 10px">MAR 22 · BOLOGNA</span><span style="font-size: 13px; line-height: 1.4">The u-turn.</span></li>
+<li style="padding: 12px 10px 0 0; display: flex; flex-direction: column; gap: 4px"><span style="font-family: 'Silkscreen', monospace; font-size: 10px">APR 22 · TURIN</span><span style="font-size: 13px; line-height: 1.4">Design vision. Winter presentation.</span></li>
+<li style="padding: 12px 10px 0 0; display: flex; flex-direction: column; gap: 4px"><span style="font-family: 'Silkscreen', monospace; font-size: 10px">MAY 22</span><span style="font-size: 13px; line-height: 1.4">Interface and back end built.</span></li>
+<li style="padding: 12px 10px 0 0; display: flex; flex-direction: column; gap: 4px"><span style="font-family: 'Silkscreen', monospace; font-size: 10px">JUN 22 · SF</span><span style="font-size: 13px; line-height: 1.4">CO/LAB at the SUGAR Expo.</span></li>
+</ol>
+</section>
+
+<section aria-label="Rough work" style="border: 2px dashed #1e1e1e; background: #ebe8e0; padding: 18px 20px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap"><span style="font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.08em">ROUGH WORK · BEHIND THIS NOTE</span><a href="rough-work-artificial-leaf.html" style="font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em; min-height: 24px">FLIP TO THE ROUGH WORK ▸</a></div>
+<div style="display: flex; gap: 22px; overflow-x: auto; padding: 8px 4px 6px"><a href="rough-work-artificial-leaf.html#rw1" style="flex: 0 0 auto; width: 170px; text-decoration: none; display: flex; flex-direction: column; gap: 8px"><span style="position: relative; display: block; background: #fbfaf6; border: 1.5px solid #c9c4b6; padding: 6px; transform: rotate(-0.8deg); box-shadow: 3px 4px 0 rgba(30,30,30,0.12)"><img src="assets/img/sg-rough-journey.jpg" alt="" style="width: 100%; height: 110px; object-fit: cover; object-position: top left; display: block"></span><span style="font-family: 'Patrick Hand', cursive; font-size: 18px; line-height: 1.15">Customer journey map</span></a><a href="rough-work-artificial-leaf.html#rw2" style="flex: 0 0 auto; width: 170px; text-decoration: none; display: flex; flex-direction: column; gap: 8px"><span style="position: relative; display: block; background: #fbfaf6; border: 1.5px solid #c9c4b6; padding: 6px; transform: rotate(0.6deg); box-shadow: 3px 4px 0 rgba(30,30,30,0.12)"><img src="assets/img/sg-rough-blueprint.jpg" alt="" style="width: 100%; height: 110px; object-fit: cover; object-position: top left; display: block"></span><span style="font-family: 'Patrick Hand', cursive; font-size: 18px; line-height: 1.15">Service blueprint</span></a><a href="rough-work-artificial-leaf.html#rw3" style="flex: 0 0 auto; width: 170px; text-decoration: none; display: flex; flex-direction: column; gap: 8px"><span style="position: relative; display: block; background: #fbfaf6; border: 1.5px solid #c9c4b6; padding: 6px; transform: rotate(-0.4deg); box-shadow: 3px 4px 0 rgba(30,30,30,0.12)"><img src="assets/img/sg-rough-canvas.jpg" alt="" style="width: 100%; height: 110px; object-fit: cover; object-position: top left; display: block"></span><span style="font-family: 'Patrick Hand', cursive; font-size: 18px; line-height: 1.15">Business model canvas</span></a></div>
+</section>
+
+<section aria-labelledby="life-h" style="display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; justify-content: space-between; align-items: end; gap: 12px; flex-wrap: wrap">
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.08em; color: #5f5b52">STAGES CLEARED · 5/6</span><h2 id="life-h" style="margin: 0; font-size: 36px; font-weight: 600">Where I worked across the lifecycle</h2></div>
+<span aria-hidden="true" style="display: flex; gap: 3px"><span style="width: 18px; height: 14px; background: #83996f; display: block"></span><span style="width: 18px; height: 14px; background: #83996f; display: block"></span><span style="width: 18px; height: 14px; background: #83996f; display: block"></span><span style="width: 18px; height: 14px; background: #83996f; display: block"></span><span style="width: 18px; height: 14px; background: #83996f; display: block"></span><span style="width: 18px; height: 14px; box-sizing: border-box; border: 2px solid #c9c4b6; display: block"></span></span>
+</div>
+<ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr)); gap: 10px">
+<li style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 14px; display: flex; flex-direction: column; gap: 10px"><span style="font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em">01 · DISCOVER ✓</span><ul style="margin: 0; padding-left: 16px; font-size: 14px; line-height: 1.4; display: flex; flex-direction: column; gap: 6px"><li>Desk research across nine fields</li><li>Case studies of comparable technologies</li><li>Expert and company interviews</li><li>Personas per sector</li></ul></li>
+<li style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 14px; display: flex; flex-direction: column; gap: 10px"><span style="font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em">02 · PROTOTYPE ✓</span><ul style="margin: 0; padding-left: 16px; font-size: 14px; line-height: 1.4; display: flex; flex-direction: column; gap: 6px"><li>A critical experience prototype</li><li>Dark horse and funky prototypes</li></ul></li>
+<li style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 14px; display: flex; flex-direction: column; gap: 10px"><span style="font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em">03 · PILOT ✓</span><ul style="margin: 0; padding-left: 16px; font-size: 14px; line-height: 1.4; display: flex; flex-direction: column; gap: 6px"><li>Prototype development and testing</li><li>Reaching out to companies</li></ul></li>
+<li style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 14px; display: flex; flex-direction: column; gap: 10px"><span style="font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em">04 · VALIDATE ✓</span><ul style="margin: 0; padding-left: 16px; font-size: 14px; line-height: 1.4; display: flex; flex-direction: column; gap: 6px"><li>The challenge rewritten</li><li>Knowledge transfer office interview and <span class="gl" tabindex="0">journey map<sup>?</sup><span class="gl-tip" role="tooltip"><b>JOURNEY MAP</b>A diagram of the steps someone goes through to reach a goal, with how each step feels to them.</span></span></li></ul></li>
+<li style="border: 2px dashed #1e1e1e; background: #eef3e9; padding: 14px; display: flex; flex-direction: column; gap: 10px"><span style="font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em">05 · BUILD ✓</span><span style="font-family: 'Silkscreen', monospace; font-size: 9px; letter-spacing: 0.06em; color: #4d5f3e">BEYOND THE BRIEF</span><ul style="margin: 0; padding-left: 16px; font-size: 14px; line-height: 1.4; display: flex; flex-direction: column; gap: 6px"><li>CO/LAB: survey, technical simulation, financial estimation</li><li>Service blueprint and business model canvas</li></ul></li>
+<li style="border: 2px dashed #c9c4b6; background: transparent; padding: 14px; display: flex; flex-direction: column; gap: 10px; color: #5f5b52"><span style="font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em">06 · MEASURE · LOCKED</span><span style="font-size: 14px; line-height: 1.4">Unlocked later, at Kids&amp;Us and <span class="gl" tabindex="0">GMCA<sup>?</sup><span class="gl-tip" role="tooltip"><b>GMCA</b>Greater Manchester Combined Authority, the regional government for Greater Manchester’s ten boroughs.</span></span>.</span></li>
+</ol>
+<p style="margin: 0; font-size: 16px; color: #5f5b52">Five stages of six. The measurement end came later, at Kids&amp;Us and GMCA.</p>
+</section>
+
+<footer style="display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; border-top: 2px solid #1e1e1e; padding-top: 18px">
+<span style="font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.08em; color: #5f5b52">NOTE COMPLETE · SUGAR WITH THE ISTITUTO ITALIANO DI TECNOLOGIA</span>
+<a href="how-i-work.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border: 2px solid #1e1e1e; background: #1e1e1e; color: #f4f2ec; text-decoration: none; font-family: 'Silkscreen', monospace; font-size: 13px; letter-spacing: 0.08em; box-shadow: 4px 4px 0 #83996f">NEXT · HOW I WORK ▸</a>
+</footer>
+
+</div>
+</div>
+</main>
+</body>
 </html>

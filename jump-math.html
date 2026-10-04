@@ -1,397 +1,127 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>JUMP Math Lab · Fatima Abid</title>
-<meta name="description" content="JUMP Math Lab: one design decision in depth. A forked pathway decided by a student’s own results, and the teacher dashboards that made it readable.">
+<title>Note 03 — JUMP Math Lab · Fatima Abid</title>
+<meta name="description" content="Note 03 · JUMP Math Lab">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="assets/img/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/img/favicon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Caveat:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/journal.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&amp;family=Silkscreen&amp;family=Patrick+Hand&amp;display=swap">
 <style>
-.stack{display:grid;gap:46px}
-.stack>section{display:grid;gap:16px}
-.label{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--pencil)}
-.sec-lede{margin:0;max-width:74ch;color:var(--pencil);font-size:15.5px}
-.evtag{font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
-  background:var(--hi);color:var(--hi-ink);border-radius:3px;padding:4px 9px;width:max-content}
-
-/* forked job story */
-.jobfork{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.7fr);
-  border:1px solid var(--rule-strong);border-radius:8px;background:var(--paper);overflow:hidden;max-width:92ch}
-.jobfork .k{font-family:var(--mono);font-size:.6rem;letter-spacing:.09em;text-transform:uppercase;color:var(--pencil)}
-.trigger{padding:20px;background:var(--paper-2);display:grid;gap:7px;align-content:center;
-  border-right:1px solid var(--rule-strong)}
-.trigger p{margin:0;font-family:var(--serif);font-size:18px;line-height:1.3}
-.arms{display:grid}
-.arm{padding:17px 22px;display:grid;gap:7px;position:relative;border-top:1px dashed var(--rule)}
-.arm:first-child{border-top:0}
-.arm::before{content:"";position:absolute;left:0;top:50%;width:11px;border-top:1px solid var(--rule-strong)}
-.arm .who{font-family:var(--mono);font-size:.6rem;letter-spacing:.09em;text-transform:uppercase;color:var(--blue)}
-.arm .want{margin:0;font-family:var(--serif);font-size:18px;line-height:1.36}
-.arm .so{margin:0;font-size:14.5px;color:var(--pencil);line-height:1.5}
-.arm .so .k{display:block;margin-bottom:2px}
-@media (max-width:760px){
-  .jobfork{grid-template-columns:1fr}
-  .trigger{border-right:0;border-bottom:1px solid var(--rule-strong)}
-  .arm::before{display:none}
-}
-
-/* fork diagram */
-.forkwrap{border:1px solid var(--rule-strong);border-radius:8px;background:var(--paper);padding:18px 16px 14px;
-  overflow-x:auto}
-.fork{display:block;width:100%;min-width:600px;height:auto}
-.fork text{font-family:var(--body)}
-.forkkey{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:13.5px;color:var(--pencil);margin-top:12px;align-items:center}
-.forkkey i{display:inline-block;width:15px;height:9px;border-radius:2px;margin-right:7px;vertical-align:middle}
-
-.twoup{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px}
-.twoup>div{border-top:3px solid var(--k,var(--rule-strong));padding-top:11px;display:grid;gap:5px}
-.twoup .lbl{font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--pencil)}
-.twoup p{margin:0;font-size:15px}
-
-.todo{border:1px dashed var(--red);border-radius:6px;padding:14px 16px;display:grid;gap:6px;background:var(--paper);max-width:80ch}
-.todo .lbl{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--red)}
-.todo p{margin:0;font-size:14px;color:var(--pencil)}
-.todo ul{margin:2px 0 0;padding-left:18px;font-size:14px;color:var(--pencil);display:grid;gap:4px}
-
-
-.eyebrow{display:flex;flex-wrap:wrap;gap:9px 14px;align-items:center}
-.eyebrow .mono{line-height:1;display:inline-flex;align-items:center}
-.eyebrow .evtag{line-height:1;display:inline-flex;align-items:center;padding:6px 10px;margin:0}
-.headmeta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin:24px 0 0;
-  border-top:1px solid var(--rule-strong)}
-.headmeta>div{padding:13px 20px 14px 18px;border-left:1px dashed var(--rule)}
-.headmeta>div:first-child{border-left:0;padding-left:0}
-.headmeta .k{font-family:var(--mono);font-size:.62rem;letter-spacing:.09em;text-transform:uppercase;
-  color:var(--pencil);display:block;margin-bottom:6px}
-.headmeta .rt{margin:0 0 7px;font-family:var(--serif);font-size:16px;font-weight:600;line-height:1.25}
-.headmeta ul{margin:0;padding-left:17px;display:grid;gap:5px;font-size:14.5px}
-.headmeta .cx{grid-column:1 / -1;border-left:0;padding:13px 0 0;border-top:1px dashed var(--rule)}
-.headmeta .cx .k{color:var(--red)}
-.headmeta .cx p{margin:0;font-size:15px;max-width:78ch}
-@media (max-width:700px){
-  .headmeta{grid-template-columns:1fr}
-  .headmeta>div{border-left:0;padding:12px 0 13px;border-top:1px dashed var(--rule)}
-  .headmeta>div:first-child{border-top:0;padding-top:0}
-}
-
-/* dashboard iterations */
-:root{ --surface:var(--paper); --sunk:var(--paper-2); --line:var(--rule-strong); --muted:var(--pencil);
-  --display:var(--serif); --honey:var(--hi-solid); --honey-soft:var(--amber-w); --honey-ink:var(--hi-ink);
-  --ok:var(--green); --ok-soft:var(--green-w); --bad:var(--red); --bad-soft:var(--red-w);
-  --warn:var(--amber); --warn-soft:var(--amber-w);
-  --dia:var(--green); --dia-soft:var(--green-w); --for:var(--blue); --for-soft:var(--blue-w);
-  --sum:var(--amber); --sum-soft:var(--amber-w); }
-.stepper{display:flex;gap:6px;flex-wrap:wrap}
-.stepper button{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 15px;
-  cursor:pointer;font-size:14px;font-family:var(--body);color:var(--pencil)}
-.stepper button:hover{border-color:var(--ink);color:var(--ink)}
-.stepper button[aria-pressed="true"]{background:var(--ink);color:var(--surface);border-color:var(--ink)}
-.evo{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(16px,2.4vw,26px);align-items:start}
-.screen{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
-.screen .bar{display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid var(--line);
-  font-family:var(--mono);font-size:11px;color:var(--muted)}
-.screen .bar i{width:9px;height:9px;border-radius:50%;background:var(--line);display:inline-block}
-.scr{padding:14px;display:grid;gap:12px}
-.scr .scrh{margin:0;font-family:var(--display);font-size:18px;font-weight:600}
-.tiles{display:grid;gap:8px}
-.tile{border:1px solid var(--line);border-radius:8px;padding:10px;display:grid;gap:2px;align-content:start}
-.tile .k{font-size:11.5px;color:var(--muted)}
-.tile .v{font-family:var(--display);font-weight:600;font-size:22px;line-height:1.1}
-.tile .s{font-size:11.5px;color:var(--muted)}
-.tile.warn{border-color:var(--warn);background:var(--warn-soft)}
-.tile.bad{border-color:var(--bad);background:var(--bad-soft)}
-.tile .tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;
-  border-radius:5px;padding:1px 6px;width:max-content}
-.t-dia{background:var(--dia-soft);color:var(--dia)} .t-for{background:var(--for-soft);color:var(--for)}
-.t-sum{background:var(--sum-soft);color:var(--sum)}
-.journey{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;align-items:end}
-.journey .col{display:grid;gap:4px;text-align:center;font-size:11px;color:var(--muted)}
-.journey .colbar{height:88px;background:var(--sunk);border-radius:5px;display:flex;align-items:flex-end;overflow:hidden}
-.journey .colbar i{display:block;width:100%;background:var(--for);border-radius:5px 5px 0 0}
-.journey .col.pre .colbar i{background:var(--sum)}
-.journey .col.tgt .colbar{background:none;border:2px dashed var(--honey)}
-.journey .col b{font-family:var(--mono);font-size:12px;color:var(--ink)}
-.grid-wrap{overflow-x:auto}
-table.qg{border-collapse:separate;border-spacing:3px;font-size:12px;min-width:460px;width:100%}
-.qg th{font-family:var(--mono);font-size:10.5px;color:var(--muted);font-weight:400;text-align:center}
-.qg th:first-child,.qg td:first-child{text-align:left;white-space:nowrap}
-.qg td{text-align:center;border-radius:4px;padding:4px 0;min-width:26px}
-.qg td.c{background:var(--ok-soft);color:var(--ok)} .qg td.x{background:var(--bad-soft);color:var(--bad)}
-.qg td.sc{font-family:var(--mono)}
-.qg tr.flag td:first-child{color:var(--bad);font-weight:700}
-.qg .pth{font-family:var(--mono);font-size:10px;border-radius:5px;padding:1px 6px}
-.p-b{background:var(--honey-soft);color:var(--honey-ink)} .p-s{background:var(--dia-soft);color:var(--dia)}
-.annot{display:grid;gap:10px}
-.annot .a{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 14px;
-  display:grid;gap:4px;border-left:4px solid var(--k)}
-.annot .a b{font-family:var(--display);font-size:16.5px}
-.annot .a p{margin:0;font-size:14px;color:var(--muted)}
-.annot .v{font-family:var(--mono);font-size:11px;color:var(--muted)}
-@media (max-width:980px){ .evo{grid-template-columns:1fr} }
-@media (max-width:640px){ .journey{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .journey .col:nth-child(3),.journey .col:nth-child(4){display:none} }
-.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+body{margin:0;background:#f4f2ec}
+a{color:#1e1e1e}a:hover{color:#5d4f78}
+.gl{border-bottom:1.5px dotted #5d4f78;position:relative;cursor:help;outline:none}.gl:focus{background:#e9dda8}.gl-tip{display:none;position:absolute;left:0;top:calc(100% + 6px);z-index:40;width:260px;max-width:70vw;background:#fbfaf6;border:2px solid #1e1e1e;box-shadow:4px 4px 0 #1e1e1e;padding:10px 12px;font:15px/1.45 Newsreader,Georgia,serif;font-style:normal;font-weight:400;color:#1e1e1e;text-align:left;white-space:normal;letter-spacing:0}.gl-tip b{display:block;font-family:Silkscreen,monospace;font-weight:400;font-size:11px;letter-spacing:.06em;margin-bottom:4px;color:#5d4f78}.gl-tip a{display:block;margin-top:6px;font-family:Silkscreen,monospace;font-size:10px;letter-spacing:.06em}.gl:hover .gl-tip,.gl:focus .gl-tip,.gl:focus-within .gl-tip{display:block}.gl sup{font-family:Silkscreen,monospace;font-size:8px;color:#5d4f78;margin-left:1px}
 </style>
+<link rel="stylesheet" href="assets/notebook.css">
+<script src="assets/notebook.js" defer></script>
+</head>
+<body data-page="jump-math">
+<main>
+<div style="position: relative; min-height: 100%; box-sizing: border-box; padding: 28px clamp(16px, 4vw, 56px) 64px; font-family: 'Newsreader', Georgia, serif; color: #1e1e1e; background-color: #f4f2ec">
+<div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(#cfcabd 1.2px, transparent 1.3px); background-size: 22px 22px"></div>
+<div style="position: relative; max-width: 1160px; margin: 0 auto; display: flex; flex-direction: column; gap: 52px">
 
-<a class="skip" href="#main">Skip to the page</a>
-<div class="layout">
-<main id="main" tabindex="-1">
-  <div class="pagehead norule">
-    <div class="eyebrow">
-      <span class="mono">JUMP Math · p. 14–17</span>
-      <span class="evtag">One design decision, in depth</span>
-    </div>
-    <h1>The forked pathway</h1>
-    <p class="lede">A student finishes the core questions, and what happens next is decided by what they just did.
-      This page stays with that one decision and shows how it was made.</p>
-  </div>
+<header style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 24px; border: 2px solid #1e1e1e; background: #fbfaf6; padding: 8px 12px; font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.06em">
+<a href="index.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; border: 2px solid #1e1e1e; text-decoration: none">◂ CONTENTS</a>
+<span style="background: #f0edf5; border: 2px solid #1e1e1e; padding: 6px 10px">NOTE 03 · JUMP MATH · P. 12–15</span>
+<span>ONE DESIGN DECISION, IN DEPTH</span>
+</header>
 
-  <div class="stack">
+<section style="display: flex; flex-direction: column; gap: 18px">
+<p style="margin: 0; font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.08em; color: #5d4f78">NOTE 03 · THE FORKED PATHWAY</p>
+<h1 style="margin: 0; font-weight: 600; font-size: clamp(48px, 7vw, 92px); line-height: 1; letter-spacing: -0.02em">JUMP Math Lab</h1>
+<p style="margin: 0; font-size: 21px; line-height: 1.55; max-width: 64ch; color: #2e2c28">A student finishes the core questions, and what happens next is decided by what they just did. This note stays with that one decision and shows how it was made.</p>
+</section>
 
-    <section aria-label="My role">
-      <div class="rolecard">
-        <div class="rolebar"><span class="k">My role</span>
-          <span class="meta">Remote &middot; Bilbao &amp; Toronto &middot; 2024–2025</span></div>
-      <div class="rolerow"><span class="lbl">Role</span>
-        <span class="fld">EdTech Specialist &amp; eLearning Developer</span></div>
-      <div class="rolerow"><span class="lbl">Led on</span>
-        <span class="fld">I designed the JUMP Math Lab template, including its UI patterns, its accessibility features and the forked pathway, and I redesigned the teacher dashboard over three rounds of Figma prototypes. I also ran <i>Making Math Click</i> on Coursera and the five-course professional learning site.</span></div>
-      <div class="rolerow"><span class="lbl">Team</span>
-        <span class="fld">Content leads and developers across Canada and Spain, working together on the professional learning site.</span></div>
-      </div>
-    </section>
-
-    <section aria-label="Rough work">
-      <button class="roughtab" type="button" aria-haspopup="dialog" data-rough="rough-jm"
-              data-label="Rough work behind JUMP Math Lab"
-              data-hand="My own sketches, notebook and working specs, made by hand while I designed this. Student names are invented.">
-        <span class="stack" aria-hidden="true"><span></span><span></span><i></i><b></b></span>
-        <span class="t"><b>Rough work</b><small>Five items &middot; opens over the page</small></span>
-      </button>
-      <div id="rough-jm" hidden>
-        <div class="rough-item" data-src="assets/img/jm-rough-fork.jpg" data-cap="The fork, first sketch"
-             data-alt="A hand-drawn diagram. A rounded box reading core question connects by a dashed line to what
-               the results say, which forks into two boxes, bonus in green and scaffold in blue. Both feed a note
-               reading data visual on lab. A dashed line runs under the whole thing labelled meaningful
-               gamification.">The whole decision on one line: the core questions, what the results say, and the two
-               ways on. The dashed line underneath is the reason for it, and what the data on the Lab had to
-               support.</div>
-        <div class="rough-item" data-src="assets/img/jm-rough-xapi.jpg" data-cap="What an activity records"
-             data-alt="A code notebook open beside an activity file. It imports the activity data from a
-               spreadsheet, then defines an xAPI statement template with fields for the actor, the verb, the object
-               and its definition, a timestamp, a result and a context.">Working out what each activity would emit
-               as a student moved through it. The dashboard could only show what the template recorded, so this
-               and the fork above are the same decision.</div>
-        <div class="rough-item" data-src="assets/img/jm-spec-1.jpg" data-cap="The check-in timeline"
-             data-alt="An annotated design spec for the JUMP Math teacher dashboard. A row of assessment nodes runs across the top with a hover panel showing a mastery breakdown, over a grid of students against questions. Handwritten notes in red down both margins point at elements and explain them.">The assessment timeline, from pre-assessment through the check-ins to post-assessment, with the hover snapshot and its mastery breakdown. My notes down the margins say what each element is for.</div>
-        <div class="rough-item" data-src="assets/img/jm-spec-2.jpg" data-cap="A student, in depth"
-             data-alt="An annotated design spec showing a single student panel. A chip marks the scaffold pathway, and beneath it core questions, a bonus question and a scaffold question are listed with attempts and time taken. Red annotations in the margins explain each element.">One student’s snapshot: the pathway they were routed onto, then the core, bonus and scaffold questions with attempts, time and the answer-video flags. This is the fork made legible to a teacher.</div>
-        <div class="rough-item" data-src="assets/img/jm-spec-3.jpg" data-cap="The three assessment views"
-             data-alt="A teacher dashboard spec with three assessment cards across the top, the first showing core question progress with the proportion on the bonus pathway and on the scaffold pathway, above a grid of students against questions.">Diagnostic, formative and summative side by side, with the diagnostic card carrying the split between the bonus pathway and the scaffold pathway.</div>
-      </div>
-    </section>
-
-    <section aria-labelledby="evo-h">
-      <div class="label">Design iterations</div>
-      <h2 id="evo-h">How the teacher dashboard changed</h2>
-      <p class="sec-lede">Three rounds of Figma prototypes, from a teacher survey and usage data. The question each
-        round had to answer: can a teacher read this and know what to do next lesson?</p>
-      <div class="stepper" role="group" aria-label="Dashboard version">
-        <button type="button" data-v="0" aria-pressed="false">1 · Counts</button>
-        <button type="button" data-v="1" aria-pressed="false">2 · Progress</button>
-        <button type="button" data-v="2" aria-pressed="true">3 · Decisions</button>
-      </div>
-      <div class="evo">
-        <div class="screen" aria-live="polite">
-          <div class="bar"><i></i><i></i><i></i>&nbsp;JUMP Math Lab · Teacher dashboard · Class 5A</div>
-          <div class="scr" id="scr"></div>
-        </div>
-        <div class="annot" id="annot"></div>
-      </div>
-      <p class="disclaimer"><b>The student names and answers are invented.</b> These are recreations of the
-        dashboards I designed, rebuilt for this portfolio. No real class data appears.</p>
-    </section>
-
-    <section aria-labelledby="jobs-h">
-      <div class="label">The jobs behind it</div>
-      <h2 id="jobs-h">Two people, one decision</h2>
-      <p class="sec-lede">Both jobs start at the same moment, and separate only in what each person wants
-        from it.</p>
-      <div class="jobfork">
-        <div class="trigger">
-          <span class="k">When</span>
-          <p>a student finishes the core questions…</p>
-        </div>
-        <div class="arms">
-          <div class="arm">
-            <span class="who">The teacher</span>
-            <p class="want">I want to know whether to challenge or support them next,</p>
-            <p class="so"><span class="k">so that</span>I don’t waste their time on questions they’re not ready for,
-              or bore them with ones they’ve already shown they know.</p>
-          </div>
-          <div class="arm">
-            <span class="who">The student</span>
-            <p class="want">I want the next questions to match what I actually know,</p>
-            <p class="so"><span class="k">so that</span>I don’t feel punished for struggling or bored by
-              repetition.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section aria-labelledby="fork-h">
-      <div class="label">The decision</div>
-      <h2 id="fork-h">Core questions, then two ways on</h2>
-      <p class="sec-lede">The fork sits at the end of the core set. What a student did there decides which path opens
-        next, so the same lesson serves a student who is ready to stretch and one who needs another way in.</p>
-      <div class="forkwrap">
-        <svg class="fork" viewBox="0 0 700 250" role="img" aria-labelledby="forkT forkD">
-          <title id="forkT">The forked pathway</title>
-          <desc id="forkD">Core questions lead to a fork. A student’s own results decide whether the next questions are a bonus path that stretches them, or a scaffold path that gives another way in.</desc>
-          <!-- core -->
-          <rect x="14" y="98" width="150" height="54" rx="6" fill="var(--paper-2)" stroke="var(--rule-strong)"/>
-          <text x="89" y="120" text-anchor="middle" font-size="14" fill="var(--ink)">Core questions</text>
-          <text x="89" y="138" text-anchor="middle" font-size="12" fill="var(--pencil)">the same for everyone</text>
-          <!-- decision -->
-          <path d="M164 125 L214 125" stroke="var(--rule-strong)" stroke-width="2"/>
-          <g>
-            <path d="M282 125 L232 92 L182 125 L232 158 Z" fill="var(--paper)" stroke="var(--ink)" stroke-width="2"/>
-            <text x="232" y="122" text-anchor="middle" font-size="11.5" fill="var(--ink)">what the</text>
-            <text x="232" y="136" text-anchor="middle" font-size="11.5" fill="var(--ink)">results say</text>
-          </g>
-          <!-- up: bonus -->
-          <path d="M282 118 C330 114 330 62 372 58" fill="none" stroke="var(--green)" stroke-width="2.5"/>
-          <rect x="372" y="30" width="200" height="56" rx="6" fill="var(--green-w)" stroke="var(--green)"/>
-          <text x="388" y="52" font-size="14" fill="var(--ink)">Bonus path</text>
-          <text x="388" y="70" font-size="12" fill="var(--pencil)">stretch, without repeating</text>
-          <!-- down: scaffold -->
-          <path d="M282 132 C330 136 330 190 372 194" fill="none" stroke="var(--blue)" stroke-width="2.5"/>
-          <rect x="372" y="166" width="200" height="56" rx="6" fill="var(--blue-w)" stroke="var(--blue)"/>
-          <text x="388" y="188" font-size="14" fill="var(--ink)">Scaffold path</text>
-          <text x="388" y="206" font-size="12" fill="var(--pencil)">another way in, not a repeat</text>
-          <!-- back to teacher view -->
-          <path d="M572 58 C620 58 620 118 646 122" fill="none" stroke="var(--rule-strong)" stroke-width="2" stroke-dasharray="5 5"/>
-          <path d="M572 194 C620 194 620 132 646 128" fill="none" stroke="var(--rule-strong)" stroke-width="2" stroke-dasharray="5 5"/>
-          <text x="656" y="118" font-size="11.5" fill="var(--pencil)">the</text>
-          <text x="656" y="132" font-size="11.5" fill="var(--pencil)">teacher</text>
-          <text x="656" y="146" font-size="11.5" fill="var(--pencil)">sees it</text>
-        </svg>
-        <div class="forkkey">
-          <span><i style="background:var(--green)"></i>Stretch</span>
-          <span><i style="background:var(--blue)"></i>Support</span>
-          <span>The route is chosen by the student’s own results, and the teacher sees which one opened.</span>
-        </div>
-      </div>
-    </section>
-
-    <section aria-labelledby="stu-h">
-      <div class="label">What the student sees</div>
-      <h2 id="stu-h">The same section, from the student&rsquo;s side</h2>
-      <p class="sec-lede">A section teaches, then asks. The bar along the bottom carries the three stages, so a
-        student can see where they are inside the section while they are working through it.</p>
-      <div class="shots">
-        <figure class="shot">
-          <button type="button"><img loading="lazy" decoding="async" src="assets/img/jump-student-video.png" width="1300" height="732"
-            alt="A JUMP Math lesson screen. Three multiplication problems are set out, the first worked through in a
-              grid with the carried digits in red. A Practice button sits to the right, locked."></button>
-          <figcaption><b>Teaching step</b>The method is worked through first. Practice stays locked until it is
-            done.</figcaption>
-        </figure>
-        <figure class="shot">
-          <button type="button"><img loading="lazy" decoding="async" src="assets/img/jump-student-question.png" width="1300" height="731"
-            alt="A JUMP Math practice question with four multiple-choice answers. The chosen answer is highlighted and
-              a banner at the top reads Correct, you aced that question. Next and Answer buttons sit to the right."></button>
-          <figcaption><b>Practice step</b>Feedback lands on the answer itself, and an answer video stays one tap away
-            whether or not the student got it right.</figcaption>
-        </figure>
-      </div>
-      <p class="disclaimer"><b>Product screens from JUMP Math Lab.</b> The question content is JUMP Math&rsquo;s.</p>
-    </section>
-
-    <section aria-labelledby="why-h">
-      <div class="label">What it serves</div>
-      <h2 id="why-h">One fork, two jobs</h2>
-      <div class="twoup">
-        <div style="--k:var(--green)"><span class="lbl">For the teacher</span>
-          <p>The decision is made at the point the evidence exists, so a teacher reads a result and acts on it
-            before the next lesson.</p></div>
-        <div style="--k:var(--blue)"><span class="lbl">For the student</span>
-          <p>The next questions match what they have shown, so struggling opens a different route rather than
-            the same one again.</p></div>
-      </div>
-    </section>
-
-    <section aria-labelledby="life-h">
-      <h2 id="life-h">Where I worked across the lifecycle</h2>
-      <p class="sec-lede">From a teacher survey through to the data the dashboards read.</p>
-      <div data-life="jm" class="life-wrap"></div>
-    </section>
-
-  </div>
-
-  <div class="nextcase"><a href="sugar.html"><span><small>Next</small>The Artificial Leaf</span><span class="open" aria-hidden="true">open →</span></a></div>
-  <footer class="pagefoot">
-    <span>JUMP Math Lab</span>
-    <span><a href="index.html">← Contents</a> · <a href="beeline.html">Beeline →</a></span>
-  </footer>
-</main>
+<section aria-label="Character sheet" style="border: 2px solid #1e1e1e; background: #fbfaf6; box-shadow: 8px 8px 0 #1e1e1e">
+<div style="display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; background: #1e1e1e; color: #f4f2ec; padding: 8px 14px; font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.08em"><span>CHARACTER SHEET</span><span>REMOTE · BILBAO &amp; TORONTO · 2024–2025</span></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 0">
+<div style="padding: 18px 20px; display: flex; flex-direction: column; gap: 6px; border-right: 1px dashed #c9c4b6"><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.08em; color: #5f5b52">CLASS</span><span style="font-size: 19px; font-weight: 600">EdTech Specialist &amp; eLearning Developer</span></div>
+<div style="padding: 18px 20px; display: flex; flex-direction: column; gap: 6px; border-right: 1px dashed #c9c4b6"><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.08em; color: #5f5b52">QUEST</span><span style="font-size: 16px; line-height: 1.5">The JUMP Math Lab template, its UI patterns, accessibility features and the forked pathway, and the teacher dashboard over three rounds of Figma prototypes. Also Making Math Click on Coursera and the five-course professional learning site.</span></div>
+<div style="padding: 18px 20px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.08em; color: #5f5b52">TEAM</span><span style="font-size: 16px; line-height: 1.5">Content leads and developers across Canada and Spain.</span></div>
 </div>
-<script src="assets/site.js"></script>
-<script>
-(function(){
-const $=id=>document.getElementById(id);
-/* sample students, invented */
-const S=[["Amara",[1,1,1,1,1],"b",[1,1]],["Leo",[0,1,0,1,0],"s",[1,1]],["Priya",[1,1,0,1,1],"b",[1,1]],
-         ["Sam",[0,0,0,0,0],"s",[0,0]],["Noah",[1,1,1,0,0],"s",[1,0]]];
-const cell=v=>v?'<td class="c" aria-label="correct">\u2713</td>':'<td class="x" aria-label="incorrect">\u2717</td>';
-function grid(mode){
-  const head=mode===0?'<th>Q1</th><th>Q2</th><th>Q3</th><th>Q4</th><th>Q5</th><th>B1</th><th>B2</th>'
-                     :'<th>Q1</th><th>Q2</th><th>Q3</th><th>Q4</th><th>Q5</th><th>Path</th><th>P1</th><th>P2</th>';
-  const rows=S.map(([n,q,p,pq])=>{
-    const sc=Math.round(q.reduce((a,b)=>a+b,0)/5*100);
-    const flag=mode===2&&sc<=40;
-    const tail=`<td><span class="pth ${p==="b"?"p-b":"p-s"}">${p==="b"?"Bonus":"Scaffold"}</span></td>${pq.map(cell).join("")}`;
-    const b0=mode===0?(p==="b"?pq.map(cell).join(""):'<td class="x">\u2717</td><td class="x">\u2717</td>'):"";
-    return `<tr class="${flag?"flag":""}"><td>${n}${flag?" \u00b7 needs help":""}</td><td class="sc">${sc}%</td>${q.map(cell).join("")}${mode===0?b0:tail}</tr>`;
-  }).join("");
-  return `<div class="grid-wrap"><table class="qg"><thead><tr><th>Student</th><th>Score</th>${head}</tr></thead><tbody>${rows}</tbody></table></div>`;
-}
-const V=[
- {html:`<div class="scrh">Your dashboard</div>
-   <div class="tiles" style="grid-template-columns:repeat(3,minmax(0,1fr))"><div class="tile"><span class="k">Active students</span><span class="v">36</span><span class="s">this semester</span></div><div class="tile"><span class="k">Active classes</span><span class="v">2</span></div><div class="tile"><span class="k">Active modules</span><span class="v">3</span></div></div>
-   <div class="tiles" style="grid-template-columns:repeat(2,minmax(0,1fr))"><div class="tile bad"><span class="k">Review struggling students</span><span class="s">Several students scored below 50% in recent assessments</span></div><div class="tile warn"><span class="k">Review inactive students</span><span class="s">Some students have not logged in this week</span></div></div>`+grid(0),
-  notes:[["var(--muted)","Counts, not decisions","\u201c36 active students\u201d is true, and it does not tell a teacher what to do on Monday."],
-         ["var(--bad)","Alerts without names","\u201cSeveral students\u201d means clicking around to find out who."],
-         ["var(--warn)","Everyone does the bonus questions","Students who struggled with the core questions were still pushed into B1 and B2, and failed them again."]]},
- {html:`<div class="scrh">Algebra: Expressions and Equations 1</div>
-   <div class="journey">${[["Pre-assessment",45,"pre"],["Check-in 1",67,""],["Check-in 2",72,""],["Check-in 3",0,""],["Module target",85,"tgt"]].map(([l,v,c])=>`<div class="col ${c}"><div class="colbar">${c==="tgt"?"":`<i style="height:${v}%"></i>`}</div><b>${v?v+"%":"\u2014"}</b>${l}</div>`).join("")}</div>
-   <div class="tiles" style="grid-template-columns:repeat(2,minmax(0,1fr))"><div class="tile"><span class="tag t-sum">summative</span><span class="k">Pre-assessment</span><span class="v">45%</span><span class="s">25 of 36 attempted</span></div><div class="tile"><span class="tag t-for">formative</span><span class="k">Latest check-in</span><span class="v">72%</span><span class="s">28 of 32 students improved</span></div></div>`+grid(1),
-  notes:[["var(--for)","Progress against a target","Check-ins after each lesson show the class moving toward the module target."],
-         ["var(--sum)","Assessments get a type","Summative and formative are labelled, so a teacher knows what each number is for."],
-         ["var(--dia)","Pathways appear","Each student\u2019s route, bonus or scaffold, shows in the grid beside their answers."]]},
- {html:`<div class="scrh">Algebra: Expressions and Equations 1</div>
-   <div class="tiles" style="grid-template-columns:repeat(3,minmax(0,1fr))">
-     <div class="tile"><span class="tag t-sum">summative</span><span class="k">Pre \u2192 post</span><span class="v">45% \u2192 82%</span><span class="s">28 of 32 improved</span></div>
-     <div class="tile"><span class="tag t-for">formative</span><span class="k">Check-ins 1\u20133</span><span class="v">85 \u00b7 72 \u00b7 88%</span><span class="s">Focus lessons: multiplication, division</span></div>
-     <div class="tile"><span class="tag t-dia">diagnostic</span><span class="k">Bonus / scaffold</span><span class="v">45% / 55%</span><span class="s">Focus: long division</span></div></div>`+grid(2),
-  notes:[["var(--bad)","Alerts became names","The dashboard says who needs help, and a click shows every attempt, hint and video they used."],
-         ["var(--honey-ink)","One view, three assessment types","Diagnostic, formative and summative side by side, each answering a different question."],
-         ["var(--dia)","Focus areas, not just scores","The weakest lessons and sections are named, so the next lesson plan writes itself."]]}
-];
-function renderV(i){
-  document.querySelectorAll(".stepper button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.v==i));
-  $("scr").innerHTML=V[i].html;
-  $("annot").innerHTML=`<div class="v">Version ${i+1} of 3</div>`+
-    V[i].notes.map(([k,t,p])=>`<div class="a" style="--k:${k}"><b>${t}</b><p>${p}</p></div>`).join("");
-}
-document.querySelectorAll(".stepper button").forEach(b=>b.onclick=()=>renderV(+b.dataset.v));
-renderV(2);
-})();
-</script>
+</section>
 
+<section aria-labelledby="dash-h" style="display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.08em; color: #5f5b52">DESIGN ITERATIONS · 3 ROUNDS</span><h2 id="dash-h" style="margin: 0; font-size: 36px; font-weight: 600">How the teacher dashboard changed</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.55; max-width: 64ch; color: #2e2c28">Three rounds of Figma prototypes, from a teacher survey and usage data. The question each round had to answer: can a teacher read this and know what to do next lesson?</p></div>
+<ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 14px">
+<li style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 16px; display: flex; flex-direction: column; gap: 8px"><span style="font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em; color: #5f5b52">ROUND 1</span><b style="font-size: 22px">Counts</b><span aria-hidden="true" style="display: flex; gap: 2px"><span style="flex: 1; height: 10px; background: #8f80a8; display: block"></span><span style="flex: 1; height: 10px; border: 1.5px solid #c9c4b6; display: block"></span><span style="flex: 1; height: 10px; border: 1.5px solid #c9c4b6; display: block"></span></span><span style="font-size: 15px; color: #2e2c28">Raw counts of activity.</span></li>
+<li style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 16px; display: flex; flex-direction: column; gap: 8px"><span style="font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em; color: #5f5b52">ROUND 2</span><b style="font-size: 22px">Progress</b><span aria-hidden="true" style="display: flex; gap: 2px"><span style="flex: 1; height: 10px; background: #8f80a8; display: block"></span><span style="flex: 1; height: 10px; background: #8f80a8; display: block"></span><span style="flex: 1; height: 10px; border: 1.5px solid #c9c4b6; display: block"></span></span><span style="font-size: 15px; color: #2e2c28">Progress through the work.</span></li>
+<li style="border: 2px solid #1e1e1e; background: #f0edf5; padding: 16px; display: flex; flex-direction: column; gap: 8px"><span style="font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em; color: #5d4f78">ROUND 3 ✓</span><b style="font-size: 22px">Decisions</b><span aria-hidden="true" style="display: flex; gap: 2px"><span style="flex: 1; height: 10px; background: #8f80a8; display: block"></span><span style="flex: 1; height: 10px; background: #8f80a8; display: block"></span><span style="flex: 1; height: 10px; background: #8f80a8; display: block"></span></span><span style="font-size: 15px; color: #2e2c28">Decisions a teacher can act on in class.</span></li>
+</ol>
+<div style="display: flex; flex-wrap: wrap; gap: 10px"><a href="rough-work-jump-math.html#rw3" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 4px 12px 4px 4px; border: 1.5px dashed #1e1e1e; background: #ebe8e0; text-decoration: none"><img src="assets/img/jm-spec-1.jpg" alt="" style="width: 56px; height: 36px; object-fit: cover; object-position: top left; border: 1px solid #c9c4b6; display: block"><span style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Silkscreen', monospace; font-size: 9px; letter-spacing: 0.06em; color: #5f5b52">SKETCHED FIRST · ROUGH WORK</span><span style="font-family: 'Patrick Hand', cursive; font-size: 18px; line-height: 1">The check-in timeline ▸</span></span></a><a href="rough-work-jump-math.html#rw4" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 4px 12px 4px 4px; border: 1.5px dashed #1e1e1e; background: #ebe8e0; text-decoration: none"><img src="assets/img/jm-spec-2.jpg" alt="" style="width: 56px; height: 36px; object-fit: cover; object-position: top left; border: 1px solid #c9c4b6; display: block"><span style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Silkscreen', monospace; font-size: 9px; letter-spacing: 0.06em; color: #5f5b52">SKETCHED FIRST · ROUGH WORK</span><span style="font-family: 'Patrick Hand', cursive; font-size: 18px; line-height: 1">A student, in depth ▸</span></span></a><a href="rough-work-jump-math.html#rw5" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 4px 12px 4px 4px; border: 1.5px dashed #1e1e1e; background: #ebe8e0; text-decoration: none"><img src="assets/img/jm-spec-3.jpg" alt="" style="width: 56px; height: 36px; object-fit: cover; object-position: top left; border: 1px solid #c9c4b6; display: block"><span style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Silkscreen', monospace; font-size: 9px; letter-spacing: 0.06em; color: #5f5b52">SKETCHED FIRST · ROUGH WORK</span><span style="font-family: 'Patrick Hand', cursive; font-size: 18px; line-height: 1">The three assessment views ▸</span></span></a></div>
+</section>
+
+<section aria-labelledby="jobs-h" style="display: flex; flex-direction: column; gap: 20px">
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.08em; color: #5f5b52">TWO PLAYERS</span><h2 id="jobs-h" style="margin: 0; font-size: 36px; font-weight: 600">Two people, one decision</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.55; max-width: 64ch; color: #2e2c28">When a student finishes the core questions…</p></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 16px">
+<div style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 18px; display: flex; flex-direction: column; gap: 8px"><span style="font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em; color: #5d4f78">P1 · THE TEACHER</span><b style="font-size: 20px">I want to know whether to challenge or support them next,</b><span style="font-size: 16px; line-height: 1.5; color: #2e2c28">so that I don’t waste their time on questions they’re not ready for, or bore them with ones they’ve already shown they know.</span></div>
+<div style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 18px; display: flex; flex-direction: column; gap: 8px"><span style="font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em; color: #5d4f78">P2 · THE STUDENT</span><b style="font-size: 20px">I want the next questions to match what I actually know,</b><span style="font-size: 16px; line-height: 1.5; color: #2e2c28">so that I don’t feel punished for struggling or bored by repetition.</span></div>
+</div>
+</section>
+
+<section aria-labelledby="fork-h" style="border: 2px solid #1e1e1e; background: #fbfaf6; box-shadow: 8px 8px 0 #1e1e1e; padding: 22px; display: flex; flex-direction: column; gap: 18px">
+<h2 id="fork-h" style="margin: 0; font-family: 'Silkscreen', monospace; font-size: 16px; font-weight: 400; letter-spacing: 0.08em">THE FORK · CORE QUESTIONS, THEN TWO WAYS ON</h2>
+<div style="overflow-x: auto"><svg viewBox="0 0 720 250" role="img" aria-label="Core questions lead to a fork. A student’s own results decide whether the next questions are a bonus path that stretches them, or a scaffold path that gives another way in. The teacher sees which opened." style="width: 100%; min-width: 560px; height: auto; display: block">
+<rect x="14" y="98" width="150" height="54" fill="#f4f2ec" stroke="#1e1e1e" stroke-width="2"/>
+<text x="89" y="121" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-size="15" fill="#1e1e1e">Core questions</text>
+<text x="89" y="139" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-size="12" fill="#5f5b52">the same for everyone</text>
+<path d="M164 125 L182 125" stroke="#1e1e1e" stroke-width="2"/>
+<path d="M282 125 L232 92 L182 125 L232 158 Z" fill="#fbfaf6" stroke="#1e1e1e" stroke-width="2"/>
+<text x="232" y="122" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-size="12" fill="#1e1e1e">what the</text>
+<text x="232" y="136" text-anchor="middle" font-family="Newsreader, Georgia, serif" font-size="12" fill="#1e1e1e">results say</text>
+<path d="M282 118 C330 114 330 62 372 58" fill="none" stroke="#83996f" stroke-width="2.5"/>
+<rect x="372" y="30" width="200" height="56" fill="#eef3e9" stroke="#1e1e1e" stroke-width="2"/>
+<text x="386" y="52" font-family="Silkscreen, monospace" font-size="11" fill="#1e1e1e">▲ BONUS PATH</text>
+<text x="386" y="72" font-family="Newsreader, Georgia, serif" font-size="13" fill="#5f5b52">stretch, without repeating</text>
+<path d="M282 132 C330 136 330 190 372 194" fill="none" stroke="#8f80a8" stroke-width="2.5"/>
+<rect x="372" y="166" width="200" height="56" fill="#f0edf5" stroke="#1e1e1e" stroke-width="2"/>
+<text x="386" y="188" font-family="Silkscreen, monospace" font-size="11" fill="#1e1e1e">▼ SCAFFOLD PATH</text>
+<text x="386" y="208" font-family="Newsreader, Georgia, serif" font-size="13" fill="#5f5b52">another way in</text>
+<path d="M572 58 C620 58 620 118 646 122" fill="none" stroke="#c9c4b6" stroke-width="2" stroke-dasharray="5 5"/>
+<path d="M572 194 C620 194 620 132 646 128" fill="none" stroke="#c9c4b6" stroke-width="2" stroke-dasharray="5 5"/>
+<text x="654" y="116" font-family="'Patrick Hand', cursive" font-size="18" fill="#5d4f78">the</text>
+<text x="654" y="134" font-family="'Patrick Hand', cursive" font-size="18" fill="#5d4f78">teacher</text>
+<text x="654" y="152" font-family="'Patrick Hand', cursive" font-size="18" fill="#5d4f78">sees it</text>
+</svg></div>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #2e2c28">The route is chosen by the student’s own results, and the teacher sees which one opened. The decision is made at the point the evidence exists, so a teacher reads a result and acts on it before the next lesson.</p>
+<a href="rough-work-jump-math.html#rw1" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 4px 12px 4px 4px; border: 1.5px dashed #1e1e1e; background: #ebe8e0; text-decoration: none"><img src="assets/img/jm-rough-fork.jpg" alt="" style="width: 56px; height: 36px; object-fit: cover; object-position: top left; border: 1px solid #c9c4b6; display: block"><span style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Silkscreen', monospace; font-size: 9px; letter-spacing: 0.06em; color: #5f5b52">SKETCHED FIRST · ROUGH WORK</span><span style="font-family: 'Patrick Hand', cursive; font-size: 18px; line-height: 1">The fork, first sketch ▸</span></span></a>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 18px; align-items: start"><figure style="margin: 0; display: flex; flex-direction: column; gap: 8px"><div style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 8px"><img src="assets/img/jump-student-video.png" alt="A JUMP Math lesson screen. Three multiplication problems are set out, the first worked through in a grid with the carried digits in red. A Practice button sits to the right, locked." style="width: 100%; height: auto; display: block; max-height: 560px; object-fit: contain"></div><figcaption style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.06em; color: #5f5b52">TEACHING STEP</span><span style="font-size: 15px; line-height: 1.45; color: #2e2c28">The method is worked through first. Practice stays locked until it is done.</span></figcaption></figure><figure style="margin: 0; display: flex; flex-direction: column; gap: 8px"><div style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 8px"><img src="assets/img/jump-student-question.png" alt="A JUMP Math practice question with four multiple-choice answers. The chosen answer is highlighted and a banner at the top reads Correct, you aced that question. Next and Answer buttons sit to the right." style="width: 100%; height: auto; display: block; max-height: 560px; object-fit: contain"></div><figcaption style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.06em; color: #5f5b52">PRACTICE STEP</span><span style="font-size: 15px; line-height: 1.45; color: #2e2c28">Feedback lands on the answer itself, and an answer video stays one tap away whether or not the student got it right.</span></figcaption></figure></div>
+</section>
+
+<section aria-label="Rough work" style="border: 2px dashed #1e1e1e; background: #ebe8e0; padding: 18px 20px; display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap"><span style="font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.08em">ROUGH WORK · BEHIND THIS NOTE</span><a href="rough-work-jump-math.html" style="font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em; min-height: 24px">FLIP TO THE ROUGH WORK ▸</a></div>
+<div style="display: flex; gap: 22px; overflow-x: auto; padding: 8px 4px 6px"><a href="rough-work-jump-math.html#rw1" style="flex: 0 0 auto; width: 170px; text-decoration: none; display: flex; flex-direction: column; gap: 8px"><span style="position: relative; display: block; background: #fbfaf6; border: 1.5px solid #c9c4b6; padding: 6px; transform: rotate(-0.8deg); box-shadow: 3px 4px 0 rgba(30,30,30,0.12)"><img src="assets/img/jm-rough-fork.jpg" alt="" style="width: 100%; height: 110px; object-fit: cover; object-position: top left; display: block"></span><span style="font-family: 'Patrick Hand', cursive; font-size: 18px; line-height: 1.15">The fork, first sketch</span></a><a href="rough-work-jump-math.html#rw2" style="flex: 0 0 auto; width: 170px; text-decoration: none; display: flex; flex-direction: column; gap: 8px"><span style="position: relative; display: block; background: #fbfaf6; border: 1.5px solid #c9c4b6; padding: 6px; transform: rotate(0.6deg); box-shadow: 3px 4px 0 rgba(30,30,30,0.12)"><img src="assets/img/jm-rough-xapi.jpg" alt="" style="width: 100%; height: 110px; object-fit: cover; object-position: top left; display: block"></span><span style="font-family: 'Patrick Hand', cursive; font-size: 18px; line-height: 1.15">What an activity records</span></a><a href="rough-work-jump-math.html#rw3" style="flex: 0 0 auto; width: 170px; text-decoration: none; display: flex; flex-direction: column; gap: 8px"><span style="position: relative; display: block; background: #fbfaf6; border: 1.5px solid #c9c4b6; padding: 6px; transform: rotate(-0.4deg); box-shadow: 3px 4px 0 rgba(30,30,30,0.12)"><img src="assets/img/jm-spec-1.jpg" alt="" style="width: 100%; height: 110px; object-fit: cover; object-position: top left; display: block"></span><span style="font-family: 'Patrick Hand', cursive; font-size: 18px; line-height: 1.15">The check-in timeline</span></a><a href="rough-work-jump-math.html#rw4" style="flex: 0 0 auto; width: 170px; text-decoration: none; display: flex; flex-direction: column; gap: 8px"><span style="position: relative; display: block; background: #fbfaf6; border: 1.5px solid #c9c4b6; padding: 6px; transform: rotate(0.9deg); box-shadow: 3px 4px 0 rgba(30,30,30,0.12)"><img src="assets/img/jm-spec-2.jpg" alt="" style="width: 100%; height: 110px; object-fit: cover; object-position: top left; display: block"></span><span style="font-family: 'Patrick Hand', cursive; font-size: 18px; line-height: 1.15">A student, in depth</span></a><a href="rough-work-jump-math.html#rw5" style="flex: 0 0 auto; width: 170px; text-decoration: none; display: flex; flex-direction: column; gap: 8px"><span style="position: relative; display: block; background: #fbfaf6; border: 1.5px solid #c9c4b6; padding: 6px; transform: rotate(-0.6deg); box-shadow: 3px 4px 0 rgba(30,30,30,0.12)"><img src="assets/img/jm-spec-3.jpg" alt="" style="width: 100%; height: 110px; object-fit: cover; object-position: top left; display: block"></span><span style="font-family: 'Patrick Hand', cursive; font-size: 18px; line-height: 1.15">The three assessment views</span></a></div>
+</section>
+
+<section aria-labelledby="life-h" style="display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; justify-content: space-between; align-items: end; gap: 12px; flex-wrap: wrap">
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.08em; color: #5f5b52">STAGES CLEARED · 6/6</span><h2 id="life-h" style="margin: 0; font-size: 36px; font-weight: 600">Where I worked across the lifecycle</h2></div>
+<span aria-hidden="true" style="display: flex; gap: 3px"><span style="width: 18px; height: 14px; background: #83996f; display: block"></span><span style="width: 18px; height: 14px; background: #83996f; display: block"></span><span style="width: 18px; height: 14px; background: #83996f; display: block"></span><span style="width: 18px; height: 14px; background: #83996f; display: block"></span><span style="width: 18px; height: 14px; background: #83996f; display: block"></span><span style="width: 18px; height: 14px; background: #83996f; display: block"></span></span>
+</div>
+<ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr)); gap: 10px">
+<li style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 14px; display: flex; flex-direction: column; gap: 10px"><span style="font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em">01 · DISCOVER ✓</span><ul style="margin: 0; padding-left: 16px; font-size: 14px; line-height: 1.4; display: flex; flex-direction: column; gap: 6px"><li>Teacher survey</li><li>Usage patterns</li></ul></li>
+<li style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 14px; display: flex; flex-direction: column; gap: 10px"><span style="font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em">02 · PROTOTYPE ✓</span><ul style="margin: 0; padding-left: 16px; font-size: 14px; line-height: 1.4; display: flex; flex-direction: column; gap: 6px"><li>Figma dashboard mocks</li><li>Three rounds</li></ul></li>
+<li style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 14px; display: flex; flex-direction: column; gap: 10px"><span style="font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em">03 · PILOT ✓</span><ul style="margin: 0; padding-left: 16px; font-size: 14px; line-height: 1.4; display: flex; flex-direction: column; gap: 6px"><li>Forked pathways</li><li>Check-in quizzes</li></ul></li>
+<li style="border: 2px solid #1e1e1e; background: #fbfaf6; padding: 14px; display: flex; flex-direction: column; gap: 10px"><span style="font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em">04 · VALIDATE ✓</span><ul style="margin: 0; padding-left: 16px; font-size: 14px; line-height: 1.4; display: flex; flex-direction: column; gap: 6px"><li>Teacher feedback on shipped screens</li></ul></li>
+<li style="border: 2px dashed #1e1e1e; background: #eef3e9; padding: 14px; display: flex; flex-direction: column; gap: 10px"><span style="font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em">05 · BUILD ✓</span><span style="font-family: 'Silkscreen', monospace; font-size: 9px; letter-spacing: 0.06em; color: #4d5f3e">BEYOND THE BRIEF</span><ul style="margin: 0; padding-left: 16px; font-size: 14px; line-height: 1.4; display: flex; flex-direction: column; gap: 6px"><li><span class="gl" tabindex="0">xAPI<sup>?</sup><span class="gl-tip" role="tooltip"><b>XAPI</b>A data standard that records what learners do inside a course, so dashboards can use it.</span></span> data spec</li><li>Needs versus wants for developers</li></ul></li>
+<li style="border: 2px dashed #1e1e1e; background: #eef3e9; padding: 14px; display: flex; flex-direction: column; gap: 10px"><span style="font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em">06 · MEASURE ✓</span><span style="font-family: 'Silkscreen', monospace; font-size: 9px; letter-spacing: 0.06em; color: #4d5f3e">BEYOND THE BRIEF</span><ul style="margin: 0; padding-left: 16px; font-size: 14px; line-height: 1.4; display: flex; flex-direction: column; gap: 6px"><li>Diagnostic, <span class="gl" tabindex="0">formative<sup>?</sup><span class="gl-tip" role="tooltip"><b>FORMATIVE</b>Checks that happen during learning, to adjust teaching. Summative checks measure what was learned at the end.</span></span> and summative views</li></ul></li>
+</ol>
+<p style="margin: 0; font-size: 16px; color: #5f5b52">From a teacher survey to xAPI data the dashboards read.</p>
+</section>
+
+<footer style="display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; border-top: 2px solid #1e1e1e; padding-top: 18px">
+<span style="font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.08em; color: #5f5b52">NOTE COMPLETE · DASHBOARDS RECREATED, NO REAL CLASS DATA</span>
+<a href="sugar.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border: 2px solid #1e1e1e; background: #1e1e1e; color: #f4f2ec; text-decoration: none; font-family: 'Silkscreen', monospace; font-size: 13px; letter-spacing: 0.08em; box-shadow: 4px 4px 0 #b07070">NEXT NOTE · THE ARTIFICIAL LEAF ▸</a>
+</footer>
+
+</div>
+</div>
+</main>
+</body>
 </html>
