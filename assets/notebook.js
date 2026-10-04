@@ -101,15 +101,17 @@ if(page==="beeline-experience-curve"){
   }
 }
 
-/* ---------- conversational layer: switch the nudges on and off ---------- */
+/* ---------- conversational layer: now / next ---------- */
 if(page==="beeline-conversational-layer"){
-  var board=$("section[aria-labelledby='board-h']");
-  if(board){
-    var nudges=$$("span",board).filter(function(s){return /Excalifont|Patrick Hand/.test(s.getAttribute("style")||"")&&/#f0edf5/.test(s.getAttribute("style")||"")});
-    var btn=document.createElement("button"); btn.type="button"; btn.setAttribute("aria-pressed","false");
-    btn.style.cssText="align-self:flex-start;font:400 11px Silkscreen,monospace;letter-spacing:.06em;min-height:44px;padding:0 14px;border:2px solid #1e1e1e;background:#f0edf5;cursor:pointer;box-shadow:3px 3px 0 #1e1e1e";
-    function set(on){nudges.forEach(function(n){n.classList.toggle("nb-hidden",!on)});btn.setAttribute("aria-pressed",String(on));btn.textContent=on?"HIDE THE CONVERSATIONAL LAYER":"SHOW THE CONVERSATIONAL LAYER ▸"}
-    var head=$("div",board); head.parentNode.insertBefore(btn,head.nextSibling); btn.onclick=function(){set(btn.getAttribute("aria-pressed")!=="true")}; set(false);
+  var lseg=$("[data-layer-seg]"), views=$$("[data-layer-view]");
+  if(lseg&&views.length){
+    var lbtns=$$("[data-v]",lseg);
+    function showView(v){
+      views.forEach(function(x){x.parentNode.classList.toggle("nb-hidden",x.dataset.layerView!==v)});
+      lbtns.forEach(function(x){var on=x.dataset.v===v;x.setAttribute("aria-current",on?"true":"false");x.style.background=on?"#1e1e1e":"#fbfaf6";x.style.color=on?"#f4f2ec":"#1e1e1e"});
+    }
+    lbtns.forEach(function(x){x.addEventListener("click",function(e){e.preventDefault();showView(x.dataset.v);if(history.replaceState)history.replaceState(null,"","#layer-"+x.dataset.v)})});
+    showView(location.hash==="#layer-next"?"next":"now");
   }
 }
 
