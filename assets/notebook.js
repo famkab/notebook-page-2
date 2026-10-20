@@ -22,7 +22,7 @@ function apply(){
 apply();
 
 var PAGES=[["Start here",""],["index.html","1","Contents"],["how-i-work.html","2","How I work"],
- ["Notes",""],["beeline.html","3–8","Beeline"],["learning-meter.html","9–14","Learning Meter"],["jump-math.html","15–18","JUMP Math Lab"],["sugar.html","19–21","The Artificial Leaf"],
+ ["Projects",""],["beeline.html","3–8","Beeline"],["learning-meter.html","9–14","Learning Meter"],["jump-math.html","15–18","JUMP Math Lab"],["sugar.html","19–21","The Artificial Leaf"],
  ["Beeline artefacts",""],["beeline-service-landscape.html","·","Service landscape"],["beeline-problem-model.html","·","Problem model"],["beeline-decision-trail.html","·","Decision trail"],["beeline-metric-ladder.html","·","Metric ladder"],["beeline-experience-curve.html","·","MVP experience curve"],["beeline-conversational-layer.html","·","Conversational layer"],
  ["Side quests",""],["edeh.html","22","Digital Education Hub"],["beeline-unplugged.html","23–26","Beeline Unplugged"],["mbacc-summit.html","27","MBacc Summit"],
  ["Rough work",""],["rough-work-beeline.html","·","Behind Beeline"],["rough-work-learning-meter.html","·","Behind the Learning Meter"],["rough-work-jump-math.html","·","Behind JUMP Math Lab"],["rough-work-artificial-leaf.html","·","Behind The Artificial Leaf"]];
