@@ -53,6 +53,7 @@ document.addEventListener("keydown",function(e){if(e.key==="Escape"&&open){var b
 /* ---------- helper: numbered points on a chart open a note ---------- */
 function hotspots(svg,list,opts){
   if(!svg||!list) return;
+  if(svg.getAttribute("role")==="img"){svg.setAttribute("role","group")}
   var items=$$(":scope > li",list), marks=opts.marks(svg);
   if(!items.length||items.length!==marks.length) return;
   var note=document.createElement("div"); note.className="nb-note"; note.setAttribute("aria-live","polite");
@@ -60,7 +61,7 @@ function hotspots(svg,list,opts){
   var tip=document.createElement("p"); tip.className="nb-tip"; tip.style.margin="0"; tip.textContent=opts.tip||"TAP A NUMBERED POINT ON THE CURVE TO READ WHAT HAPPENED THERE";
   note.parentNode.insertBefore(tip,note);
   function sel(i){
-    note.innerHTML=""; var c=items[i].cloneNode(true); c.style.border="0"; c.style.padding="0"; note.appendChild(c);
+    note.innerHTML=""; var c=document.createElement("div"); c.innerHTML=items[i].innerHTML; c.style.cssText=items[i].style.cssText; c.style.border="0"; c.style.padding="0"; note.appendChild(c);
     marks.forEach(function(m,j){m.g.setAttribute("aria-pressed",String(i===j)); m.ring.setAttribute("fill",i===j?"#e9dda8":"#fbfaf6")});
   }
   marks.forEach(function(m,j){
@@ -204,7 +205,7 @@ function gaugeStops(){
   var stops=gaugeStops(); if(stops.length<3) return;
   stops.forEach(function(s,i){if(!s.el.id)s.el.id="sec-"+(i+1)});
   var nav=document.createElement("nav"); nav.className="nb-gauge"; nav.setAttribute("aria-label","On this page");
-  nav.innerHTML='<span class="g-line" aria-hidden="true"><span class="g-fill"></span></span><ol>'+stops.map(function(s,i){return '<li><a href="#'+s.el.id+'"><span class="g-tick" aria-hidden="true"></span><span class="g-lab">'+s.label+'</span></a></li>'}).join("")+'</ol><span class="g-now" aria-hidden="true"></span>';
+  nav.innerHTML='<span class="g-line" aria-hidden="true"><span class="g-fill"></span></span><ol>'+stops.map(function(s,i){return '<li><a href="#'+s.el.id+'" aria-label="'+s.label.replace(/"/g,"&quot;")+'"><span class="g-tick" aria-hidden="true"></span><span class="g-lab">'+s.label+'</span></a></li>'}).join("")+'</ol><span class="g-now" aria-hidden="true"></span>';
   var bar=document.createElement("div"); bar.className="nb-gbar"; bar.setAttribute("aria-hidden","true");
   bar.innerHTML='<span class="b-lab"></span><span class="b-line"><span class="b-fill"></span></span><span class="b-n"></span>';
   document.body.appendChild(nav); document.body.appendChild(bar);
@@ -251,9 +252,9 @@ if(page!=="glossary"){
   var COL=["var(--c8f80a8)","var(--ca89660)","var(--cb07070)","var(--c83996f)"], INK=["var(--c5d4f78)","var(--c6f5f2c)","var(--c8a4848)","var(--c4d5f3e)"];
   var rows=secs.map(function(sec,si){
     var dts=$$("dt",sec), n=0, cells="";
-    dts.forEach(function(dt){var k=gnorm(txt(dt)), hit=m[k];if(hit)n++;
-      var mk=document.createElement("span"); mk.className="gl-mark"+(hit?" on":""); mk.style.setProperty("--mc",COL[si]); mk.setAttribute("aria-hidden","true"); dt.parentNode.insertBefore(mk,dt);
-      if(hit){var a=document.createElement("a");a.className="gl-where";a.href=hit[0]==="index.html"?"./":hit[0];a.textContent="MET IN "+String(hit[1]).toUpperCase();a.style.color=INK[si];dt.parentNode.appendChild(a)}
+    dts.forEach(function(dt){var te=$(".gl-term",dt)||dt, k=gnorm(txt(te)), hit=m[k];if(hit)n++;
+      var mk=document.createElement("span"); mk.className="gl-mark"+(hit?" on":""); mk.style.setProperty("--mc",COL[si]); mk.setAttribute("aria-hidden","true"); dt.insertBefore(mk,dt.firstChild);
+      if(hit){var a=document.createElement("a");a.className="gl-where";a.href=hit[0]==="index.html"?"./":hit[0];a.textContent="MET IN "+String(hit[1]).toUpperCase();a.style.color=INK[si];dt.appendChild(a)}
       cells+='<span class="gl-cell'+(hit?" on":"")+'" style="--mc:'+COL[si]+'"></span>'});
     var cnt=$("div > span:last-child",sec); if(cnt&&/TERMS/.test(txt(cnt))) cnt.textContent=dts.length+" TERMS · "+n+" MET";
     var h=$("h2",sec);
@@ -267,4 +268,9 @@ if(page!=="glossary"){
   }
 }
 
+
+/* ---------- wide figures that scroll sideways can be reached by keyboard ---------- */
+var nScroll=0;function scrollables(){$$("main *").forEach(function(el){var cs=getComputedStyle(el);
+  if((cs.overflowX==="auto"||cs.overflowX==="scroll")&&el.scrollWidth>el.clientWidth+2&&!el.hasAttribute("tabindex")&&!el.querySelector("a,button,input,summary,[tabindex]")){el.setAttribute("tabindex","0");el.setAttribute("role","group");var sec=el.closest("[aria-labelledby]");if(sec&&!el.getAttribute("aria-label"))el.setAttribute("aria-labelledby",sec.getAttribute("aria-labelledby"));else if(!el.getAttribute("aria-label"))el.setAttribute("aria-label","Wide figure "+(++nScroll)+", scrolls sideways")}})}
+addEventListener("load",scrollables);
 })();
