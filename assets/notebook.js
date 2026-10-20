@@ -1,3 +1,5 @@
+/* home page: show the clean address */
+try{if(/\/index\.html$/.test(location.pathname)&&history.replaceState){history.replaceState(null,"",location.pathname.replace(/index\.html$/,"")+location.search+location.hash);}}catch(e){}
 /* shared interactive layer: reading settings, pages, and the interactive figures */
 (function(){
 "use strict";
@@ -27,7 +29,7 @@ var PAGES=[["Start here",""],["index.html","1","Contents"],["how-i-work.html","2
 var here=location.pathname.split("/").pop()||"index.html";
 function pagesHTML(){return PAGES.map(function(p){
   if(p[1]==="") return '<div class="grp">'+p[0].toUpperCase()+'</div>';
-  return '<a href="'+p[0]+'"'+(p[0]===here?' aria-current="page"':'')+'><small>'+(p[1]==="·"?"":"P. "+p[1])+'</small><span>'+p[2]+'</span></a>';}).join("")}
+  return '<a href="'+(p[0]==="index.html"?"./":p[0])+'"'+(p[0]===here?' aria-current="page"':'')+'><small>'+(p[1]==="·"?"":"P. "+p[1])+'</small><span>'+p[2]+'</span></a>';}).join("")}
 function opt(g,v,label){var cur=store.get(g,g==="paper"?"page":g==="ink"?"colour":"auto");return '<button type="button" data-set="'+g+'" data-val="'+v+'" aria-pressed="'+(cur===v)+'">'+label+'</button>'}
 function setHTML(){return '<div><h4>PAPER</h4><div class="opts">'+opt("paper","page","As drawn")+opt("paper","dots","Dots")+opt("paper","lined","Lined")+opt("paper","grid","Grid")+opt("paper","blank","Blank")+'</div></div>'+
  '<div><h4>INK</h4><div class="opts">'+opt("ink","colour","Muted colour")+opt("ink","black","Black only")+'</div></div>'+
