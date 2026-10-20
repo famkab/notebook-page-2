@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Skill — Service blueprints · Fatima Abid</title>
-<meta name="description" content="Inventory · Service blueprints">
+<meta name="description" content="Skill · Service blueprints">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="assets/img/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/img/favicon-180.png">
@@ -14,6 +14,15 @@
 body{margin:0;background:#f4f2ec}
 a{color:#1e1e1e}a:hover{color:#5d4f78}
 .gl{border-bottom:1.5px dotted #5d4f78;position:relative;cursor:help;outline:none}.gl:focus{background:#e9dda8}.gl-tip{display:none;position:absolute;left:0;top:calc(100% + 6px);z-index:40;width:260px;max-width:70vw;background:#fbfaf6;border:2px solid #1e1e1e;box-shadow:4px 4px 0 #1e1e1e;padding:10px 12px;font:15px/1.45 Newsreader,Georgia,serif;font-style:normal;font-weight:400;color:#1e1e1e;text-align:left;white-space:normal;letter-spacing:0}.gl-tip b{display:block;font-family:Silkscreen,monospace;font-weight:400;font-size:11px;letter-spacing:.06em;margin-bottom:4px;color:#5d4f78}.gl-tip a{display:block;margin-top:6px;font-family:Silkscreen,monospace;font-size:10px;letter-spacing:.06em}.gl:hover .gl-tip,.gl:focus .gl-tip,.gl:focus-within .gl-tip{display:block}.gl sup{font-family:Silkscreen,monospace;font-size:8px;color:#5d4f78;margin-left:1px}
+.sk-r{position:absolute;opacity:0;pointer-events:none}
+.sk-pane{display:none !important}
+#sk-sb-beeline:checked ~ #sb-beeline,#sk-sb-leaf:checked ~ #sb-leaf{display:block !important}
+.sk-tab{cursor:pointer;color:#1e1e1e;border:2px solid #1e1e1e;background:#fbfaf6;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
+.sk-tab .sk-on{display:none}.sk-tab .sk-off{display:inline}.sk-tab:hover{background:#f6f1e3}
+#sk-sb-beeline:checked ~ section .t-sb-beeline,#sk-sb-leaf:checked ~ section .t-sb-leaf{background:#f6f1e3;box-shadow:4px 4px 0 #a89660}
+#sk-sb-beeline:checked ~ section .t-sb-beeline .sk-on,#sk-sb-leaf:checked ~ section .t-sb-leaf .sk-on{display:inline}
+#sk-sb-beeline:checked ~ section .t-sb-beeline .sk-off,#sk-sb-leaf:checked ~ section .t-sb-leaf .sk-off{display:none}
+#sk-sb-beeline:focus-visible ~ section .t-sb-beeline,#sk-sb-leaf:focus-visible ~ section .t-sb-leaf{outline:2px solid #5d4f78;outline-offset:3px}
 </style>
 <link rel="stylesheet" href="assets/notebook.css">
 <script src="assets/notebook.js" defer></script>
@@ -24,6 +33,7 @@ a{color:#1e1e1e}a:hover{color:#5d4f78}
 <div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(#cfcabd 1.2px, transparent 1.3px); background-size: 22px 22px"></div>
 <div style="position: relative; max-width: 1160px; margin: 0 auto; display: flex; flex-direction: column; gap: 52px">
 
+<input type="radio" name="sk-proj" id="sk-sb-beeline" class="sk-r" checked aria-label="Show Beeline"><input type="radio" name="sk-proj" id="sk-sb-leaf" class="sk-r" aria-label="Show The Artificial Leaf">
 <header style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 24px; border: 2px solid #1e1e1e; background: #fbfaf6; padding: 8px 12px; font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.06em">
 <a href="./" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; border: 2px solid #1e1e1e; text-decoration: none">◂ CONTENTS</a>
 <span style="display: inline-flex; align-items: center; gap: 8px; background: #f6f1e3; border: 2px solid #1e1e1e; padding: 6px 10px"><span aria-hidden="true" style="width: 10px; height: 10px; background: #a89660; display: block"></span>SKILL · SERVICE DESIGN AND CO-DESIGN</span>
@@ -31,14 +41,14 @@ a{color:#1e1e1e}a:hover{color:#5d4f78}
 </header>
 
 <section style="display: flex; flex-direction: column; gap: 18px">
-<p style="margin: 0; font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.08em; color: #6f5f2c">SKILL 4 OF 8 · SERVICE DESIGN AND CO-DESIGN</p>
+<p style="margin: 0; font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.08em; color: #6f5f2c">SKILL 4 OF 9 · SERVICE DESIGN AND CO-DESIGN</p>
 <h1 style="margin: 0; font-weight: 600; font-size: clamp(48px, 7vw, 88px); line-height: 1; letter-spacing: -0.02em">Service blueprints</h1>
 <p style="margin: 0; font-size: 21px; line-height: 1.55; max-width: 62ch; color: #2e2c28">A journey laid out phase by phase: what someone does, which touchpoint carries it, what happens behind it, and who supports them. I have drawn one in two projects, for a lab technology looking for a market and for a careers service for young people.</p>
 </section>
 
 <section aria-labelledby="where-h" style="display: flex; flex-direction: column; gap: 16px">
-<h2 id="where-h" style="margin: 0; font-family: 'Silkscreen', monospace; font-size: 13px; font-weight: 400; letter-spacing: 0.08em">WHERE IT SHOWS UP</h2>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 12px"><a href="#sb-beeline" style="text-decoration: none; color: #1e1e1e; border: 2px solid #1e1e1e; background: #f6f1e3; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; box-shadow: 4px 4px 0 #a89660"><span style="font-family: 'Silkscreen', monospace; letter-spacing: 0.06em; font-size: 10px; color: #6f5f2c">PROJECT 01 · USED</span><b style="font-size: 18px; font-weight: 600">Beeline</b><span style="font-family: 'Silkscreen', monospace; letter-spacing: 0.06em; font-size: 10px">SEE BELOW ▾</span></a><div style="border: 1.5px dashed #c9c4b6; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; color: #9a958a"><span style="font-family: 'Silkscreen', monospace; letter-spacing: 0.06em; font-size: 10px">PROJECT 02</span><span style="font-size: 18px">Learning Meter</span></div><div style="border: 1.5px dashed #c9c4b6; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; color: #9a958a"><span style="font-family: 'Silkscreen', monospace; letter-spacing: 0.06em; font-size: 10px">PROJECT 03</span><span style="font-size: 18px">JUMP Math Lab</span></div><a href="#sb-leaf" style="text-decoration: none; color: #1e1e1e; border: 2px solid #1e1e1e; background: #f6f1e3; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; box-shadow: 4px 4px 0 #a89660"><span style="font-family: 'Silkscreen', monospace; letter-spacing: 0.06em; font-size: 10px; color: #6f5f2c">PROJECT 04 · USED</span><b style="font-size: 18px; font-weight: 600">The Artificial Leaf</b><span style="font-family: 'Silkscreen', monospace; letter-spacing: 0.06em; font-size: 10px">SEE BELOW ▾</span></a></div>
+<h2 id="where-h" style="margin: 0; font-family: 'Silkscreen', monospace; font-size: 13px; font-weight: 400; letter-spacing: 0.08em">WHERE IT SHOWS UP · PICK A PROJECT</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 12px"><label for="sk-sb-beeline" class="sk-tab t-sb-beeline"><span style="font-family: 'Silkscreen', monospace; letter-spacing: 0.06em; font-size: 10px; color: #6f5f2c">PROJECT 01 · USED</span><b style="font-size: 18px; font-weight: 600">Beeline</b><span style="font-family: 'Silkscreen', monospace; letter-spacing: 0.06em; font-size: 10px"><span class="sk-off">SHOW ▾</span><span class="sk-on">SHOWING BELOW ▾</span></span></label><div style="border: 1.5px dashed #c9c4b6; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; color: #9a958a"><span style="font-family: 'Silkscreen', monospace; letter-spacing: 0.06em; font-size: 10px">PROJECT 02</span><span style="font-size: 18px">Learning Meter</span></div><div style="border: 1.5px dashed #c9c4b6; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; color: #9a958a"><span style="font-family: 'Silkscreen', monospace; letter-spacing: 0.06em; font-size: 10px">PROJECT 03</span><span style="font-size: 18px">JUMP Math Lab</span></div><label for="sk-sb-leaf" class="sk-tab t-sb-leaf"><span style="font-family: 'Silkscreen', monospace; letter-spacing: 0.06em; font-size: 10px; color: #6f5f2c">PROJECT 04 · USED</span><b style="font-size: 18px; font-weight: 600">The Artificial Leaf</b><span style="font-family: 'Silkscreen', monospace; letter-spacing: 0.06em; font-size: 10px"><span class="sk-off">SHOW ▾</span><span class="sk-on">SHOWING BELOW ▾</span></span></label></div>
 </section>
 
 <section aria-labelledby="rows-h" style="display: flex; flex-direction: column; gap: 16px">
@@ -60,7 +70,7 @@ a{color:#1e1e1e}a:hover{color:#5d4f78}
 <span style="font-family: 'Excalifont', cursive; font-size: 17px; color: #6f5f2c">at Beeline, every phase also names the Learning Moment it should move</span>
 </section>
 
-<section id="sb-beeline" aria-labelledby="bl-h" style="border: 2px solid #1e1e1e; background: #fbfaf6; box-shadow: 8px 8px 0 #1e1e1e">
+<section id="sb-beeline" class="sk-pane" aria-labelledby="bl-h" style="border: 2px solid #1e1e1e; background: #fbfaf6; box-shadow: 8px 8px 0 #1e1e1e">
 <div style="display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; background: #f6f1e3; border-bottom: 2px solid #1e1e1e; padding: 8px 14px; font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em"><span>PROJECT 01 · BEELINE · 2026</span><span>FROM P. 23–26</span></div>
 <div style="padding: 22px; display: flex; flex-direction: column; gap: 18px">
 <h3 id="bl-h" style="margin: 0; font-size: 30px; font-weight: 600">Beeline Discovery service blueprint</h3>
@@ -80,7 +90,7 @@ a{color:#1e1e1e}a:hover{color:#5d4f78}
 </div>
 </section>
 
-<section id="sb-leaf" aria-labelledby="lf-h" style="border: 2px solid #1e1e1e; background: #fbfaf6; box-shadow: 8px 8px 0 #1e1e1e">
+<section id="sb-leaf" class="sk-pane" aria-labelledby="lf-h" style="border: 2px solid #1e1e1e; background: #fbfaf6; box-shadow: 8px 8px 0 #1e1e1e">
 <div style="display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; background: #f7ecec; border-bottom: 2px solid #1e1e1e; padding: 8px 14px; font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em"><span>PROJECT 04 · THE ARTIFICIAL LEAF · 2021–2022</span><span>FROM P. 19–21</span></div>
 <div style="padding: 22px; display: flex; flex-direction: column; gap: 18px">
 <h3 id="lf-h" style="margin: 0; font-size: 30px; font-weight: 600">A company looking for new technologies</h3>

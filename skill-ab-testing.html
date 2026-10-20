@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Skill — A/B testing · Fatima Abid</title>
-<meta name="description" content="Inventory · A/B testing">
+<meta name="description" content="Skill · A/B testing">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="assets/img/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/img/favicon-180.png">
@@ -14,6 +14,15 @@
 body{margin:0;background:#f4f2ec}
 a{color:#1e1e1e}a:hover{color:#5d4f78}
 .gl{border-bottom:1.5px dotted #5d4f78;position:relative;cursor:help;outline:none}.gl:focus{background:#e9dda8}.gl-tip{display:none;position:absolute;left:0;top:calc(100% + 6px);z-index:40;width:260px;max-width:70vw;background:#fbfaf6;border:2px solid #1e1e1e;box-shadow:4px 4px 0 #1e1e1e;padding:10px 12px;font:15px/1.45 Newsreader,Georgia,serif;font-style:normal;font-weight:400;color:#1e1e1e;text-align:left;white-space:normal;letter-spacing:0}.gl-tip b{display:block;font-family:Silkscreen,monospace;font-weight:400;font-size:11px;letter-spacing:.06em;margin-bottom:4px;color:#5d4f78}.gl-tip a{display:block;margin-top:6px;font-family:Silkscreen,monospace;font-size:10px;letter-spacing:.06em}.gl:hover .gl-tip,.gl:focus .gl-tip,.gl:focus-within .gl-tip{display:block}.gl sup{font-family:Silkscreen,monospace;font-size:8px;color:#5d4f78;margin-left:1px}
+.sk-r{position:absolute;opacity:0;pointer-events:none}
+.sk-pane{display:none !important}
+#sk-n02:checked ~ #n02,#sk-n01:checked ~ #n01{display:block !important}
+.sk-tab{cursor:pointer;color:#1e1e1e;border:2px solid #1e1e1e;background:#fbfaf6;padding:12px 14px;display:flex;flex-direction:column;gap:6px}
+.sk-tab .sk-on{display:none}.sk-tab .sk-off{display:inline}.sk-tab:hover{background:#f0edf5}
+#sk-n02:checked ~ section .t-n02,#sk-n01:checked ~ section .t-n01{background:#f0edf5;box-shadow:4px 4px 0 #8f80a8}
+#sk-n02:checked ~ section .t-n02 .sk-on,#sk-n01:checked ~ section .t-n01 .sk-on{display:inline}
+#sk-n02:checked ~ section .t-n02 .sk-off,#sk-n01:checked ~ section .t-n01 .sk-off{display:none}
+#sk-n02:focus-visible ~ section .t-n02,#sk-n01:focus-visible ~ section .t-n01{outline:2px solid #5d4f78;outline-offset:3px}
 </style>
 <link rel="stylesheet" href="assets/notebook.css">
 <script src="assets/notebook.js" defer></script>
@@ -24,6 +33,7 @@ a{color:#1e1e1e}a:hover{color:#5d4f78}
 <div aria-hidden="true" style="position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(#cfcabd 1.2px, transparent 1.3px); background-size: 22px 22px"></div>
 <div style="position: relative; max-width: 1160px; margin: 0 auto; display: flex; flex-direction: column; gap: 52px">
 
+<input type="radio" name="sk-proj" id="sk-n02" class="sk-r" checked aria-label="Show Beeline"><input type="radio" name="sk-proj" id="sk-n01" class="sk-r" aria-label="Show Learning Meter">
 <header style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px 24px; border: 2px solid #1e1e1e; background: #fbfaf6; padding: 8px 12px; font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.06em">
 <a href="./" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; border: 2px solid #1e1e1e; text-decoration: none">◂ CONTENTS</a>
 <span style="display: inline-flex; align-items: center; gap: 8px; background: #f0edf5; border: 2px solid #1e1e1e; padding: 6px 10px"><span aria-hidden="true" style="width: 10px; height: 10px; background: #8f80a8; display: block"></span>SKILL · METRICS AND LEARNING ANALYTICS</span>
@@ -31,14 +41,14 @@ a{color:#1e1e1e}a:hover{color:#5d4f78}
 </header>
 
 <section style="display: flex; flex-direction: column; gap: 18px">
-<p style="margin: 0; font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.08em; color: #5d4f78">SKILL 6 OF 8 · METRICS AND LEARNING ANALYTICS</p>
+<p style="margin: 0; font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.08em; color: #5d4f78">SKILL 7 OF 9 · METRICS AND LEARNING ANALYTICS</p>
 <h1 style="margin: 0; font-weight: 600; font-size: clamp(48px, 7vw, 88px); line-height: 1; letter-spacing: -0.02em">A/B testing</h1>
 <p style="margin: 0; font-size: 21px; line-height: 1.55; max-width: 62ch; color: #2e2c28">Changing one thing for some people and comparing what they do. I read the result with Alex Edmans’ <span class="gl" tabindex="0">Ladder of Misinference<sup>?</sup><span class="gl-tip" role="tooltip"><b>LADDER OF MISINFERENCE</b>Alex Edmans’ four checks before trusting a finding: is it accurate, is the sample representative, could something else explain it, and does it hold beyond this case?</span></span> before anything is claimed.</p>
 </section>
 
 <section style="display: flex; flex-direction: column; gap: 14px">
-<h2 style="margin: 0; font-family: 'Silkscreen', monospace; font-size: 13px; font-weight: 400; letter-spacing: 0.08em">WHERE IT SHOWS UP</h2>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 12px"><a href="#n02" style="text-decoration: none; color: #1e1e1e; border: 2px solid #1e1e1e; background: #f0edf5; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; box-shadow: 4px 4px 0 #8f80a8"><span style="font-family: 'Silkscreen', monospace; letter-spacing: 0.06em; font-size: 10px; color: #5d4f78">PROJECT 01 · USED</span><b style="font-size: 18px; font-weight: 600">Beeline</b><span style="font-family: 'Silkscreen', monospace; letter-spacing: 0.06em; font-size: 10px">SEE BELOW ▾</span></a><a href="#n01" style="text-decoration: none; color: #1e1e1e; border: 2px solid #1e1e1e; background: #f0edf5; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; box-shadow: 4px 4px 0 #8f80a8"><span style="font-family: 'Silkscreen', monospace; letter-spacing: 0.06em; font-size: 10px; color: #5d4f78">PROJECT 02 · USED</span><b style="font-size: 18px; font-weight: 600">Learning Meter</b><span style="font-family: 'Silkscreen', monospace; letter-spacing: 0.06em; font-size: 10px">SEE BELOW ▾</span></a><div style="border: 1.5px dashed #c9c4b6; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; color: #9a958a"><span style="font-family: 'Silkscreen', monospace; letter-spacing: 0.06em; font-size: 10px">PROJECT 03</span><span style="font-size: 18px">JUMP Math Lab</span></div><div style="border: 1.5px dashed #c9c4b6; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; color: #9a958a"><span style="font-family: 'Silkscreen', monospace; letter-spacing: 0.06em; font-size: 10px">PROJECT 04</span><span style="font-size: 18px">The Artificial Leaf</span></div></div>
+<h2 style="margin: 0; font-family: 'Silkscreen', monospace; font-size: 13px; font-weight: 400; letter-spacing: 0.08em">WHERE IT SHOWS UP · PICK A PROJECT</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 12px"><label for="sk-n02" class="sk-tab t-n02"><span style="font-family: 'Silkscreen', monospace; letter-spacing: 0.06em; font-size: 10px; color: #5d4f78">PROJECT 01 · USED</span><b style="font-size: 18px; font-weight: 600">Beeline</b><span style="font-family: 'Silkscreen', monospace; letter-spacing: 0.06em; font-size: 10px"><span class="sk-off">SHOW ▾</span><span class="sk-on">SHOWING BELOW ▾</span></span></label><label for="sk-n01" class="sk-tab t-n01"><span style="font-family: 'Silkscreen', monospace; letter-spacing: 0.06em; font-size: 10px; color: #5d4f78">PROJECT 02 · USED</span><b style="font-size: 18px; font-weight: 600">Learning Meter</b><span style="font-family: 'Silkscreen', monospace; letter-spacing: 0.06em; font-size: 10px"><span class="sk-off">SHOW ▾</span><span class="sk-on">SHOWING BELOW ▾</span></span></label><div style="border: 1.5px dashed #c9c4b6; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; color: #9a958a"><span style="font-family: 'Silkscreen', monospace; letter-spacing: 0.06em; font-size: 10px">PROJECT 03</span><span style="font-size: 18px">JUMP Math Lab</span></div><div style="border: 1.5px dashed #c9c4b6; padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; color: #9a958a"><span style="font-family: 'Silkscreen', monospace; letter-spacing: 0.06em; font-size: 10px">PROJECT 04</span><span style="font-size: 18px">The Artificial Leaf</span></div></div>
 
 </section>
 
@@ -47,14 +57,14 @@ a{color:#1e1e1e}a:hover{color:#5d4f78}
 <ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column-reverse; gap: 6px; max-width: 640px"><li style="margin-left: 0px; border: 2px solid #1e1e1e; background: #fbfaf6; padding: 10px 14px; display: flex; gap: 14px; align-items: baseline"><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.06em; color: #5d4f78">RUNG 1</span><span style="font-size: 16px">Is the number accurate?</span></li><li style="margin-left: 40px; border: 2px solid #1e1e1e; background: #fbfaf6; padding: 10px 14px; display: flex; gap: 14px; align-items: baseline"><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.06em; color: #5d4f78">RUNG 2</span><span style="font-size: 16px">Is the sample representative?</span></li><li style="margin-left: 80px; border: 2px solid #1e1e1e; background: #fbfaf6; padding: 10px 14px; display: flex; gap: 14px; align-items: baseline"><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.06em; color: #5d4f78">RUNG 3</span><span style="font-size: 16px">Could something else explain it?</span></li><li style="margin-left: 120px; border: 2px solid #1e1e1e; background: #fbfaf6; padding: 10px 14px; display: flex; gap: 14px; align-items: baseline"><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.06em; color: #5d4f78">RUNG 4</span><span style="font-size: 16px">Does it hold beyond this case?</span></li></ol>
 </section>
 
-<section id="n01" style="border: 2px solid #1e1e1e; background: #fbfaf6; box-shadow: 8px 8px 0 #1e1e1e">
+<section id="n01" class="sk-pane" style="border: 2px solid #1e1e1e; background: #fbfaf6; box-shadow: 8px 8px 0 #1e1e1e">
 <div style="display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; background: #f0edf5; border-bottom: 2px solid #1e1e1e; padding: 8px 14px; font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em"><span>PROJECT 02 · LEARNING METER</span><span>FROM P. 9–14</span></div>
 <div style="padding: 22px; display: flex; flex-direction: column; gap: 16px">
 <h3 style="margin: 0; font-size: 28px; font-weight: 600">Redesigning the gamified loops</h3>
 <p style="margin: 0; font-size: 17px; line-height: 1.55; max-width: 66ch; color: #2e2c28">I redesigned Animal Planet’s gamified loops from engagement data and A/B tested the redesign.</p><div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 12px"><div style="border: 2px solid #1e1e1e; background: #f0edf5; padding: 14px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.06em; color: #5f5b52">PARTICIPATION</span><b style="font-size: 17px">+40%</b><span style="font-size: 15px; line-height: 1.45">learner participation, A/B tested.</span></div><div style="border: 2px solid #1e1e1e; background: #f0edf5; padding: 14px; display: flex; flex-direction: column; gap: 6px"><span style="font-family: 'Silkscreen', monospace; font-size: 10px; letter-spacing: 0.06em; color: #5f5b52">ACTIVITIES A WEEK</span><b style="font-size: 17px">3–4 → 7–8</b><span style="font-size: 15px; line-height: 1.45">per learner.</span></div></div>
 <a href="learning-meter.html" style="align-self: flex-start; display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border: 2px solid #1e1e1e; text-decoration: none; font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.06em">OPEN PROJECT 02 ▸</a>
 </div></section>
-<section id="n02" style="border: 2px solid #1e1e1e; background: #fbfaf6; box-shadow: 8px 8px 0 #1e1e1e">
+<section id="n02" class="sk-pane" style="border: 2px solid #1e1e1e; background: #fbfaf6; box-shadow: 8px 8px 0 #1e1e1e">
 <div style="display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; background: #f0edf5; border-bottom: 2px solid #1e1e1e; padding: 8px 14px; font-family: 'Silkscreen', monospace; font-size: 11px; letter-spacing: 0.06em"><span>PROJECT 01 · BEELINE</span><span>FROM P. 3–8</span></div>
 <div style="padding: 22px; display: flex; flex-direction: column; gap: 16px">
 <h3 style="margin: 0; font-size: 28px; font-weight: 600">Randomising the gateway cards</h3>
@@ -72,7 +82,7 @@ a{color:#1e1e1e}a:hover{color:#5d4f78}
 </section>
 
 <footer style="display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; border-top: 2px solid #1e1e1e; padding-top: 18px">
-<a href="skill-co-design.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border: 2px solid #1e1e1e; text-decoration: none; font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.06em">◂ CO-DESIGN (LUNDY MODEL)</a>
+<a href="skill-personas.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border: 2px solid #1e1e1e; text-decoration: none; font-family: 'Silkscreen', monospace; font-size: 12px; letter-spacing: 0.06em">◂ PERSONAS</a>
 <a href="skill-learning-analytics.html" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border: 2px solid #1e1e1e; background: #1e1e1e; color: #f4f2ec; text-decoration: none; font-family: 'Silkscreen', monospace; font-size: 13px; letter-spacing: 0.08em; box-shadow: 4px 4px 0 #8f80a8">NEXT SKILL · LEARNING ANALYTICS ▸</a>
 </footer>
 
