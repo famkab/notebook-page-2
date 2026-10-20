@@ -12,8 +12,8 @@ var PAPER={dots:"radial-gradient(var(--ccfcabd) 1.2px, transparent 1.3px)",lined
 var SIZE={dots:"22px 22px",lined:"100% 32px",grid:"28px 28px",blank:"auto"};
 var bg=$("main > div > div[aria-hidden='true']"), own=bg?{img:bg.style.backgroundImage,size:bg.style.backgroundSize}:null;
 function apply(){
-  var r=document.documentElement, th=store.get("theme","auto");
-  var dark=th==="dark"||(th==="auto"&&window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches);
+  var r=document.documentElement, th=store.get("theme","light");
+  var dark=th==="dark";
   r.setAttribute("data-theme",dark?"dark":"light");
   r.setAttribute("data-ink",store.get("ink","colour"));
   var p=store.get("paper","page");
@@ -33,8 +33,7 @@ function pagesHTML(){return PAGES.map(function(p){
   return '<a href="'+(p[0]==="index.html"?"./":p[0])+'"'+(p[0]===here?' aria-current="page"':'')+'><small>'+(p[1]==="·"?"":"P. "+p[1])+'</small><span>'+p[2]+'</span></a>';}).join("")}
 function opt(g,v,label){var cur=g==="theme"?(document.documentElement.getAttribute("data-theme")==="dark"?"dark":"light"):store.get(g,g==="paper"?"page":"colour");return '<button type="button" data-set="'+g+'" data-val="'+v+'" aria-pressed="'+(cur===v)+'">'+label+'</button>'}
 function setHTML(){return '<div><h4>PAPER</h4><div class="opts">'+opt("paper","page","As drawn")+opt("paper","dots","Dots")+opt("paper","lined","Lined")+opt("paper","grid","Grid")+opt("paper","blank","Blank")+'</div></div>'+
- '<div><h4>INK</h4><div class="opts">'+opt("ink","colour","Muted colour")+opt("ink","black","Black only")+'</div></div>'+
- '<div><h4>LIGHT</h4><div class="opts">'+opt("theme","light","Day")+opt("theme","dark","Night")+'</div></div>'}
+ '<div><h4>INK</h4><div class="opts">'+opt("ink","colour","Muted colour")+opt("ink","black","Black only")+'</div></div>'}
 document.body.insertAdjacentHTML("beforeend",'<div class="nb-dock"><button type="button" id="nbPages" aria-expanded="false" aria-controls="nbPop">PAGES</button><button type="button" id="nbSet" aria-expanded="false" aria-controls="nbPop" aria-label="Reading settings">⚙ READING</button></div>');
 var open=null;
 function close(){var p=$("#nbPop");if(p)p.remove();if(open)open.setAttribute("aria-expanded","false");open=null}
@@ -183,7 +182,6 @@ if(topbar){
   topbar.insertAdjacentHTML("beforeend",'<span class="nb-dn" role="group" aria-label="Day or night"><button type="button" data-t="light">DAY</button><button type="button" data-t="dark">NIGHT</button></span>');
   $$(".nb-dn button").forEach(function(b){b.onclick=function(){store.set("theme",b.dataset.t);apply();syncDN()}});
 }
-if(window.matchMedia){var mq=matchMedia("(prefers-color-scheme: dark)");var onmq=function(){apply();syncDN()};mq.addEventListener?mq.addEventListener("change",onmq):mq.addListener&&mq.addListener(onmq)}
 syncDN();
 
 /* ---------- depth gauge: where you are on a long page ---------- */
