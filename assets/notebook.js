@@ -8,12 +8,12 @@ var store={get:function(k,d){try{return localStorage.getItem("fa-"+k)||d}catch(e
 var page=document.body.getAttribute("data-page")||"";
 
 /* ---------- reading settings ---------- */
-var PAPER={dots:"radial-gradient(#cfcabd 1.2px, transparent 1.3px)",lined:"linear-gradient(#ddd8cc 1px, transparent 1px)",grid:"linear-gradient(90deg, #ddd8cc 1px, transparent 1px), linear-gradient(#ddd8cc 1px, transparent 1px)",blank:"none"};
+var PAPER={dots:"radial-gradient(var(--ccfcabd) 1.2px, transparent 1.3px)",lined:"linear-gradient(var(--cddd8cc) 1px, transparent 1px)",grid:"linear-gradient(90deg, var(--cddd8cc) 1px, transparent 1px), linear-gradient(var(--cddd8cc) 1px, transparent 1px)",blank:"none"};
 var SIZE={dots:"22px 22px",lined:"100% 32px",grid:"28px 28px",blank:"auto"};
 var bg=$("main > div > div[aria-hidden='true']"), own=bg?{img:bg.style.backgroundImage,size:bg.style.backgroundSize}:null;
 function apply(){
   var r=document.documentElement, th=store.get("theme","auto");
-  var dark=th==="dark"||(th==="auto"&&window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches&&store.get("autodark","off")==="on");
+  var dark=th==="dark"||(th==="auto"&&window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches);
   r.setAttribute("data-theme",dark?"dark":"light");
   r.setAttribute("data-ink",store.get("ink","colour"));
   var p=store.get("paper","page");
@@ -31,10 +31,10 @@ var here=location.pathname.split("/").pop()||"index.html";
 function pagesHTML(){return PAGES.map(function(p){
   if(p[1]==="") return '<div class="grp">'+p[0].toUpperCase()+'</div>';
   return '<a href="'+(p[0]==="index.html"?"./":p[0])+'"'+(p[0]===here?' aria-current="page"':'')+'><small>'+(p[1]==="·"?"":"P. "+p[1])+'</small><span>'+p[2]+'</span></a>';}).join("")}
-function opt(g,v,label){var cur=store.get(g,g==="paper"?"page":g==="ink"?"colour":"auto");return '<button type="button" data-set="'+g+'" data-val="'+v+'" aria-pressed="'+(cur===v)+'">'+label+'</button>'}
+function opt(g,v,label){var cur=g==="theme"?(document.documentElement.getAttribute("data-theme")==="dark"?"dark":"light"):store.get(g,g==="paper"?"page":"colour");return '<button type="button" data-set="'+g+'" data-val="'+v+'" aria-pressed="'+(cur===v)+'">'+label+'</button>'}
 function setHTML(){return '<div><h4>PAPER</h4><div class="opts">'+opt("paper","page","As drawn")+opt("paper","dots","Dots")+opt("paper","lined","Lined")+opt("paper","grid","Grid")+opt("paper","blank","Blank")+'</div></div>'+
  '<div><h4>INK</h4><div class="opts">'+opt("ink","colour","Muted colour")+opt("ink","black","Black only")+'</div></div>'+
- '<div><h4>LIGHT</h4><div class="opts">'+opt("theme","auto","Day")+opt("theme","dark","Night")+'</div></div>'}
+ '<div><h4>LIGHT</h4><div class="opts">'+opt("theme","light","Day")+opt("theme","dark","Night")+'</div></div>'}
 document.body.insertAdjacentHTML("beforeend",'<div class="nb-dock"><button type="button" id="nbPages" aria-expanded="false" aria-controls="nbPop">PAGES</button><button type="button" id="nbSet" aria-expanded="false" aria-controls="nbPop" aria-label="Reading settings">⚙ READING</button></div>');
 var open=null;
 function close(){var p=$("#nbPop");if(p)p.remove();if(open)open.setAttribute("aria-expanded","false");open=null}
@@ -42,7 +42,7 @@ function show(btn,html,label){
   if(open===btn){close();return} close();
   document.body.insertAdjacentHTML("beforeend",'<div class="nb-pop" id="nbPop" role="dialog" aria-label="'+label+'">'+html+'</div>');
   btn.setAttribute("aria-expanded","true"); open=btn;
-  $$("#nbPop button[data-set]").forEach(function(b){b.onclick=function(){store.set(b.dataset.set,b.dataset.val);apply();
+  $$("#nbPop button[data-set]").forEach(function(b){b.onclick=function(){store.set(b.dataset.set,b.dataset.val);apply();if(typeof syncDN==="function")syncDN();
     $$('#nbPop button[data-set="'+b.dataset.set+'"]').forEach(function(x){x.setAttribute("aria-pressed",x===b)})}});
   var f=$("#nbPop button, #nbPop a");f&&f.focus();
 }
@@ -111,7 +111,7 @@ if(page==="beeline-conversational-layer"){
     var lbtns=$$("[data-v]",lseg);
     function showView(v){
       views.forEach(function(x){x.parentNode.classList.toggle("nb-hidden",x.dataset.layerView!==v)});
-      lbtns.forEach(function(x){var on=x.dataset.v===v;x.setAttribute("aria-current",on?"true":"false");x.style.background=on?"#1e1e1e":"#fbfaf6";x.style.color=on?"#f4f2ec":"#1e1e1e"});
+      lbtns.forEach(function(x){var on=x.dataset.v===v;x.setAttribute("aria-current",on?"true":"false");x.style.background=on?"var(--c1e1e1e)":"var(--cfbfaf6)";x.style.color=on?"var(--cf4f2ec)":"var(--c1e1e1e)"});
     }
     lbtns.forEach(function(x){x.addEventListener("click",function(e){e.preventDefault();showView(x.dataset.v);if(history.replaceState)history.replaceState(null,"","#layer-"+x.dataset.v)})});
     showView(location.hash==="#layer-next"?"next":"now");
@@ -120,7 +120,7 @@ if(page==="beeline-conversational-layer"){
 
 /* ---------- Learning Meter walkthrough ---------- */
 if(page==="learning-meter"&&$("#lmw")){
-  var BAND={100:["#83996f","#eef3e9","#4d5f3e"],80:["#a89660","#f6f1e3","#6f5f2c"],60:["#8f80a8","#f0edf5","#5d4f78"],0:["#b07070","#f7ecec","#8a4848"]};
+  var BAND={100:["var(--c83996f)","var(--ceef3e9)","var(--c4d5f3e)"],80:["var(--ca89660)","var(--cf6f1e3)","var(--c6f5f2c)"],60:["var(--c8f80a8)","var(--cf0edf5)","var(--c5d4f78)"],0:["var(--cb07070)","var(--cf7ecec)","var(--c8a4848)"]};
   function band(s){return s>=90?100:s>=70?80:s>=40?60:0}
   var ANSWERS=[
    {id:"a1",said:"It’s half past six.",stt:"its half past six",clean:"it's half past six",seen:true,expected:100,tuned:{score:100,fb:"Great job! That's exactly right."},early:{score:100,fb:"Great job! Your answer is perfect!"}},
@@ -167,11 +167,106 @@ if(tp){
   function showTrail(id){
     trails.forEach(function(t){t.classList.toggle("nb-hidden",t.dataset.trail!==id)});
     picks.forEach(function(p){var on=p.dataset.pick===id;p.setAttribute("aria-current",on?"true":"false");
-      p.style.background=on?"#f7ecec":"#fbfaf6";p.style.borderColor=on?"#8a4848":"#1e1e1e";p.style.boxShadow=on?"4px 4px 0 #8a4848":"none"});
+      p.style.background=on?"var(--cf7ecec)":"var(--cfbfaf6)";p.style.borderColor=on?"var(--c8a4848)":"var(--c1e1e1e)";p.style.boxShadow=on?"4px 4px 0 var(--c8a4848)":"none"});
   }
   picks.forEach(function(p){p.addEventListener("click",function(e){e.preventDefault();showTrail(p.dataset.pick);
     if(history.replaceState)history.replaceState(null,"","#trail-"+p.dataset.pick)})});
   var h=(location.hash||"").replace("#trail-","");
   showTrail(picks.some(function(p){return p.dataset.pick===h})?h:picks[0].dataset.pick);
 }
+
+/* ---------- day and night switch in the top bar ---------- */
+function effTheme(){return document.documentElement.getAttribute("data-theme")==="dark"?"dark":"light"}
+function syncDN(){var t=effTheme();$$(".nb-dn button").forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.t===t))})}
+var topbar=$("main header");
+if(topbar){
+  topbar.insertAdjacentHTML("beforeend",'<span class="nb-dn" role="group" aria-label="Day or night"><button type="button" data-t="light">DAY</button><button type="button" data-t="dark">NIGHT</button></span>');
+  $$(".nb-dn button").forEach(function(b){b.onclick=function(){store.set("theme",b.dataset.t);apply();syncDN()}});
+}
+if(window.matchMedia){var mq=matchMedia("(prefers-color-scheme: dark)");var onmq=function(){apply();syncDN()};mq.addEventListener?mq.addEventListener("change",onmq):mq.addListener&&mq.addListener(onmq)}
+syncDN();
+
+/* ---------- depth gauge: where you are on a long page ---------- */
+var GAUGE={
+ "beeline":[["the discovery quiz","Quiz"],["the whole learner","Learner experience"],["my plan","My Plan"],["understanding careers","Context"],["problem model","Problem model"],["five learning moments","Metrics"],["what i would do","Differently"],["where i work","Lifecycle"]],
+ "learning-meter":[["four checkpoints","Checkpoints"],["trade-offs","Trade-offs"],["animal planet","The app"],["what a learner plays","Gameplay"],["what moved engagement","Engagement"],["what i would do","Differently"],["where i worked","Lifecycle"]],
+ "jump-math":[["how the teacher dashboard","Dashboard"],["two people","One decision"],["the fork","The fork"],["what i would do","Differently"],["where i worked","Lifecycle"]],
+ "sugar":[["what the institute","The brief"],["three diamonds","Triple Diamond"],["nine fields","Nine fields"],["the deadlock","Deadlock"],["what we delivered","CO/LAB"],["nine months","Timeline"],["what i would do","Differently"],["where i worked","Lifecycle"]]};
+function txt(el){return (el.textContent||"").replace(/\s+/g," ").trim()}
+function gaugeStops(){
+  var map=GAUGE[page], hs=$$("main h2"), out=[];
+  if(map){ hs.forEach(function(h){var t=txt(h).toLowerCase();map.forEach(function(m){if(t.indexOf(m[0])===0&&!out.some(function(o){return o.label===m[1]}))out.push({el:h,label:m[1]})})}); return out }
+  if(hs.length>=3) return hs.map(function(h){var t=txt(h);if(t===t.toUpperCase()&&t.indexOf("·")>0)t=t.split("·")[0].trim();if(t===t.toUpperCase())t=t.charAt(0)+t.slice(1).toLowerCase();return {el:h,label:t.length>28?t.slice(0,27)+"…":t}});
+  var figs=$$("main figure[id^='rw']");
+  if(figs.length>=3) return figs.sort(function(a,b){return a.getBoundingClientRect().top-b.getBoundingClientRect().top}).map(function(f,i){var fc=f.querySelector("figcaption"), lv=fc?$$("span, b",fc).filter(function(e){return !e.children.length}).map(txt).filter(function(x){return x&&!/^sketch \d+ of \d+$/i.test(x)}):[];var t=lv[0]||"Sketch "+(i+1);if(t===t.toUpperCase())t=t.charAt(0)+t.slice(1).toLowerCase();return {el:f,label:t.length>28?t.slice(0,27)+"…":t}});
+  return [];
+}
+(function(){
+  if(page==="index"||here==="index.html") return;
+  var stops=gaugeStops(); if(stops.length<3) return;
+  stops.forEach(function(s,i){if(!s.el.id)s.el.id="sec-"+(i+1)});
+  var nav=document.createElement("nav"); nav.className="nb-gauge"; nav.setAttribute("aria-label","On this page");
+  nav.innerHTML='<span class="g-line" aria-hidden="true"><span class="g-fill"></span></span><ol>'+stops.map(function(s,i){return '<li><a href="#'+s.el.id+'"><span class="g-tick" aria-hidden="true"></span><span class="g-lab">'+s.label+'</span></a></li>'}).join("")+'</ol><span class="g-now" aria-hidden="true"></span>';
+  var bar=document.createElement("div"); bar.className="nb-gbar"; bar.setAttribute("aria-hidden","true");
+  bar.innerHTML='<span class="b-lab"></span><span class="b-line"><span class="b-fill"></span></span><span class="b-n"></span>';
+  document.body.appendChild(nav); document.body.appendChild(bar);
+  var lis=$$("li",nav), fill=$(".g-fill",nav), now=$(".g-now",nav), line=$(".g-line",nav);
+  function place(){
+    var max=Math.max(1,document.documentElement.scrollHeight-innerHeight), H=line.offsetHeight;
+    stops.forEach(function(s,i){var y=s.el.getBoundingClientRect().top+scrollY-120;lis[i].style.top=Math.min(H,Math.max(0,H*y/max))+"px"});
+    var last=-99; lis.forEach(function(li){var t=parseFloat(li.style.top)||0, want=Math.max(t,last+22), lab=li.querySelector(".g-lab"); lab.style.transform="translateY("+(want-t)+"px)"; last=want});
+    update();
+  }
+  function update(){
+    var max=Math.max(1,document.documentElement.scrollHeight-innerHeight), p=Math.min(1,Math.max(0,scrollY/max)), H=line.offsetHeight, cur=-1;
+    stops.forEach(function(s,i){if(s.el.getBoundingClientRect().top<innerHeight*0.35)cur=i});
+    fill.style.height=(p*H)+"px";
+    lis.forEach(function(li,i){li.classList.toggle("on",i===cur);li.classList.toggle("past",i<cur)});
+    if(cur>=0){now.textContent=stops[cur].label.toUpperCase();now.style.top=(p*H)+"px";now.style.opacity=1}else now.style.opacity=0;
+    $(".b-lab",bar).textContent=cur>=0?stops[cur].label.toUpperCase():"";
+    $(".b-n",bar).textContent=cur>=0?(cur+1)+"/"+stops.length:"";
+    $(".b-fill",bar).style.width=(p*100)+"%";
+    bar.classList.toggle("show",cur>=0);
+  }
+  addEventListener("scroll",update,{passive:true}); addEventListener("resize",place);
+  addEventListener("load",place); place();
+})();
+
+/* ---------- glossary: terms you have met ---------- */
+var GLOSS=["alternative provision","apprenticeship","careers lead","connexions","destination","dfe","dwp","ebacc","ehcp","equalex","gatsby benchmarks","key stage","local skills improvement plan","national careers service","neet","pru","send","skills builder","statutory","t level","ucas","beeline","beeline unplugged","gateways","gm skills plan","gmca","gmyca","i can outcomes","launch & learn","learning moments","mbacc","meaningful next step rate","programme board","design assurance","journey map","lundy model","micro-action","service blueprint","show & tell","triple diamond","a/b test","anchor answer","bigquery","cefr","false pass","formative","ladder of misinference","llm","rubric band","xapi"];
+function gnorm(t){return String(t).toLowerCase().replace(/[“”"…\.]/g,"").replace(/&amp;/g,"&").replace(/\s+/g," ").trim()}
+function metGet(){try{return JSON.parse(localStorage.getItem("fa-met")||"{}")||{}}catch(e){return {}}}
+function metSet(m){try{localStorage.setItem("fa-met",JSON.stringify(m))}catch(e){}}
+function metCount(m){return GLOSS.filter(function(t){return m[t]}).length}
+var pageLabel=(PAGES.filter(function(p){return p[0]===here})[0]||[,,document.title.split("·")[0].trim()])[2];
+if(page!=="glossary"){
+  $$("main .gl").forEach(function(g){
+    var tip=$(".gl-tip",g), b=tip&&$("b",tip); if(!b) return;
+    var key=gnorm(txt(b)); if(GLOSS.indexOf(key)<0) return;
+    var line=document.createElement("span"); line.className="gl-met"; tip.appendChild(line);
+    function paint(){var m=metGet();line.innerHTML='<span>■ IN YOUR GLOSSARY</span><span>'+metCount(m)+' OF '+GLOSS.length+'</span>'}
+    function mark(){var m=metGet();if(!m[key]){m[key]=[here,pageLabel];metSet(m)}paint()}
+    paint(); g.addEventListener("mouseenter",mark); g.addEventListener("focusin",mark); g.addEventListener("click",mark);
+  });
+} else {
+  var m=metGet(), secs=$$("main section[id^='g']").filter(function(s){return /^g\d$/.test(s.id)});
+  var COL=["var(--c8f80a8)","var(--ca89660)","var(--cb07070)","var(--c83996f)"], INK=["var(--c5d4f78)","var(--c6f5f2c)","var(--c8a4848)","var(--c4d5f3e)"];
+  var rows=secs.map(function(sec,si){
+    var dts=$$("dt",sec), n=0, cells="";
+    dts.forEach(function(dt){var k=gnorm(txt(dt)), hit=m[k];if(hit)n++;
+      var mk=document.createElement("span"); mk.className="gl-mark"+(hit?" on":""); mk.style.setProperty("--mc",COL[si]); mk.setAttribute("aria-hidden","true"); dt.parentNode.insertBefore(mk,dt);
+      if(hit){var a=document.createElement("a");a.className="gl-where";a.href=hit[0]==="index.html"?"./":hit[0];a.textContent="MET IN "+String(hit[1]).toUpperCase();a.style.color=INK[si];dt.parentNode.appendChild(a)}
+      cells+='<span class="gl-cell'+(hit?" on":"")+'" style="--mc:'+COL[si]+'"></span>'});
+    var cnt=$("div > span:last-child",sec); if(cnt&&/TERMS/.test(txt(cnt))) cnt.textContent=dts.length+" TERMS · "+n+" MET";
+    var h=$("h2",sec);
+    return '<div class="gl-row"><span class="gl-rl" style="color:'+INK[si]+'">'+(h?txt(h):"")+'</span><span class="gl-cells">'+cells+'</span><span class="gl-rn">'+n+"/"+dts.length+'</span></div>';
+  }).join("");
+  var nav=$("main nav[aria-label='Glossary sections']");
+  if(nav&&secs.length){
+    var total=metCount(m);
+    nav.insertAdjacentHTML("afterend",'<section class="gl-prog" aria-label="Terms you have met"><div class="gl-ph"><span>TERMS YOU HAVE MET ON THIS SITE</span><span>'+total+' OF '+GLOSS.length+(total?' · <button type="button" id="glClear">CLEAR</button>':'')+'</span></div>'+rows+'<p class="gl-pn">Open a dotted term in any project and it is marked here. This is saved in your own browser only.</p></section>');
+    var c=$("#glClear"); if(c) c.onclick=function(){metSet({});location.reload()};
+  }
+}
+
 })();
